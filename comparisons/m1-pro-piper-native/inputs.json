@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "inputs": [
+    {
+      "id": "2026-11-09t20-33-26-966z-piper-en-gb-southern-english-female-low-cpu-warm-9a0ba981",
+      "sha256": "84f08b32fcbfbb4d3256b2b46e9b94926e15803c8f51dc52510e7a00dad05704"
+    },
+    {
+      "id": "2026-11-09t20-52-18-629z-piper-en-gb-southern-english-female-low-webgpu-warm-d8fb8392",
+      "sha256": "32043d04cae5abd65373549f87f688b353445c82722fec0b225c4a48b75700cc"
+    }
+  ]
+}
