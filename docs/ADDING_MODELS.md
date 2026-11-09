@@ -70,3 +70,24 @@ output sample counts and audio digest. Compare only compatible protocols on the
 same machine. A new adapter's speed says nothing about intelligibility until its
 speech is reviewed. Contributor CI checks structure and arithmetic, not the
 truthfulness of local hardware measurements.
+
+## Piper en-GB trial adapter
+
+The selected `piper-en-gb-southern-english-female-low` adapter uses the official
+`rhasspy/piper-samples` frontend at the asset lock's pinned commit, fetched into
+the ignored local asset cache. The pinned model JSON omits `phoneme_type`, while
+the official frontend initializes eSpeak only when that field equals `espeak`.
+The local response wrapper supplies `phoneme_type: "espeak"` for this legacy
+config shape without changing the hash-pinned config bytes. Other explicit
+phoneme types fail validation. The upstream frontend silently skips unmapped IPA
+symbols, so the adapter wraps `phoneme_id_map` with a strict membership check that
+throws on an unknown symbol. The adapter explicitly requests one-thread WASM,
+passes the pinned config's length/noise scales to the raw-Float32 API, copies
+CPU-readable PCM, and disposes captured tensors and the ONNX session. WebGPU and
+WebGL have no validated Piper path and remain unavailable for this model.
+The upstream eSpeak Emscripten factory also installs a worker-level `onmessage`
+handler whenever it sees `WorkerGlobalScope`. The adapter keeps the real browser
+worker environment, saves the benchmark RPC handler before the official
+`setVoice` initialization, and restores that handler in `finally` before
+receiving another benchmark request. The eSpeak `ready` message is ignored by the
+RPC bridge because it has no request ID.

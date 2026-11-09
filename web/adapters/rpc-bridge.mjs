@@ -24,7 +24,15 @@ export function createRpcAdapter(workerUrl, label, fixedOptions = {}) {
       };
       worker.onerror = event => {
         failed = true;
-        for (const call of pending.values()) call.reject(new Error(event.message || label + ' worker failed'));
+        const details = [event?.message, event?.filename, event?.lineno && `line ${event.lineno}`, event?.colno && `column ${event.colno}`].filter(Boolean).join(' ');
+        const error = new Error(label + ' worker failed' + (details ? ': ' + details : '.'));
+        for (const call of pending.values()) call.reject(error);
+        pending.clear();
+      };
+      worker.onmessageerror = () => {
+        failed = true;
+        const error = new Error(label + ' worker message could not be deserialized.');
+        for (const call of pending.values()) call.reject(error);
         pending.clear();
       };
       return request('initialize', { options: { ...options, ...fixedOptions } });
