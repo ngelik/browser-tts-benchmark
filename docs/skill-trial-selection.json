@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "sha256-seed-pool-counter-u32be-rejection-v1",
+  "seed": "5b4c674ce9ce01a6949da743a1abd5dfce9724f25a2e56154fcf50b62cb6af16",
+  "poolSha256": "a22f25b7f58c784c9797329d095ce5c82603e6b2bf0caf58d9fc495c71a8ca8a",
+  "pool": {
+    "scope": "Random draw from three public English Piper low checkpoints, each 63,104,526 model bytes (under 64 MB), 16 kHz, one speaker, not already in this benchmark. Eligible for a local technical benchmark with no weight/runtime/audio redistribution; model-card dataset terms and Ryan ancestry are disclosed, not a commercial-use clearance. Other Piper low voices whose model cards only link unspecified terms or a separate custom license were excluded before drawing. This is not a uniform draw from all Hugging Face models.",
+    "candidates": [
+      {
+        "id": "piper-en-us-kathleen-low",
+        "source": "https://huggingface.co/rhasspy/piper-voices/tree/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_US/kathleen/low",
+        "revision": "e7229f7d33a10e145e109b886d661984201ac3c4",
+        "reason": "Public English single-speaker 16 kHz ONNX checkpoint below 64 MB; official Piper browser implementation exists; local research benchmark only, no model/audio redistribution.",
+        "modelPath": "en/en_US/kathleen/low/en_US-kathleen-low.onnx",
+        "modelBytes": 63104526,
+        "modelCard": "https://huggingface.co/rhasspy/piper-voices/raw/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_US/kathleen/low/MODEL_CARD",
+        "terms": "CC0 dataset; fine-tuned from Ryan low, whose dataset is CC BY-NC-SA 4.0"
+      },
+      {
+        "id": "piper-en-us-ryan-low",
+        "source": "https://huggingface.co/rhasspy/piper-voices/tree/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_US/ryan/low",
+        "revision": "e7229f7d33a10e145e109b886d661984201ac3c4",
+        "reason": "Public English single-speaker 16 kHz ONNX checkpoint below 64 MB; official Piper browser implementation exists; local research benchmark only, no model/audio redistribution.",
+        "modelPath": "en/en_US/ryan/low/en_US-ryan-low.onnx",
+        "modelBytes": 63104526,
+        "modelCard": "https://huggingface.co/rhasspy/piper-voices/raw/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_US/ryan/low/MODEL_CARD",
+        "terms": "Dataset CC BY-NC-SA 4.0; trained from scratch"
+      },
+      {
+        "id": "piper-en-gb-southern-english-female-low",
+        "source": "https://huggingface.co/rhasspy/piper-voices/tree/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low",
+        "revision": "e7229f7d33a10e145e109b886d661984201ac3c4",
+        "reason": "Public English single-speaker 16 kHz ONNX checkpoint below 64 MB; official Piper browser implementation exists; local research benchmark only, no model/audio redistribution.",
+        "modelPath": "en/en_GB/southern_english_female/low/en_GB-southern_english_female-low.onnx",
+        "modelBytes": 63104526,
+        "modelCard": "https://huggingface.co/rhasspy/piper-voices/raw/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low/MODEL_CARD",
+        "terms": "Dataset CC BY-SA 4.0; fine-tuned from Ryan low, whose dataset is CC BY-NC-SA 4.0"
+      }
+    ]
+  },
+  "index": 2,
+  "selected": {
+    "id": "piper-en-gb-southern-english-female-low",
+    "source": "https://huggingface.co/rhasspy/piper-voices/tree/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low",
+    "revision": "e7229f7d33a10e145e109b886d661984201ac3c4",
+    "reason": "Public English single-speaker 16 kHz ONNX checkpoint below 64 MB; official Piper browser implementation exists; local research benchmark only, no model/audio redistribution.",
+    "modelPath": "en/en_GB/southern_english_female/low/en_GB-southern_english_female-low.onnx",
+    "modelBytes": 63104526,
+    "modelCard": "https://huggingface.co/rhasspy/piper-voices/raw/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low/MODEL_CARD",
+    "terms": "Dataset CC BY-SA 4.0; fine-tuned from Ryan low, whose dataset is CC BY-NC-SA 4.0"
+  }
+}

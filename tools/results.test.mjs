@@ -19,6 +19,17 @@ test('empty, negative and nonfinite scores are rejected',()=>{for(const value of
 test('unknown payloads and private paths are rejected',()=>{const d=native();d.environment.machineLabel=['','Users','private','machine'].join('/');assert.throws(()=>validateResult(d),/Private/);const e=native();e.credentials='hidden';assert.throws(()=>validateResult(e),/unexpected/);});
 test('native trials cannot substitute a WAV hash for missing float PCM evidence',()=>{const d=native();d.cells[0].trials[0].pcmSha256=null;assert.throws(()=>validateResult(d));});
 test('report is deterministic, escapes labels and never plots unsupported as zero',()=>{const d=structuredClone(historical);d.environment.machineLabel='<script>alert(1)</script>';const a=renderReport(d);assert.deepEqual(a,renderReport(d));assert.ok(a.svg.includes('&lt;script&gt;'));assert.ok(!a.svg.includes('<script>'));assert.ok(a.svg.includes('unsupported — no score'));assert.equal(median([9,1,4,2,3]),3);});
+test('chart truncates long model labels accessibly and preserves short labels exactly',()=>{
+ const d=native();
+ const short=renderReport(d).svg;
+ assert.ok(short.includes('<text x="24" y="115" font-size="14">paradee</text>'));
+ assert.ok(!short.includes('aria-label="paradee"'));
+ const model='piper-en-gb-southern-english-female-low';
+ d.cells[0].model=model;
+ const svg=renderReport(d).svg;
+ assert.ok(svg.includes(`aria-label="${model}"`));
+ assert.ok(svg.includes(`<title>${model}</title>${model.slice(0,25)}…`));
+});
 test('overview CPU/GPU labels and medians reconcile with distinct historical protocols',async()=>{
  const overview=JSON.parse(await readFile(new URL('../docs/reference-data.json',import.meta.url)));
  const old=JSON.parse(await readFile(new URL('../results/historical-2026-11-08-m1pro-primary-warm/result.json',import.meta.url)));

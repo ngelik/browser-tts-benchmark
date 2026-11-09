@@ -8,15 +8,39 @@ const root = resolve(import.meta.dirname, '..');
 
 test('catalog entries match the pinned browser backends', () => {
   const models = listModels();
-  assert.deepEqual(models.map(model => model.id), ['paradee', 'phonon', 'leokani-7m', 'leokani-4.5m', 'pivo-curated', 'woof']);
+  assert.deepEqual(models.map(model => model.id), ['paradee', 'phonon', 'leokani-7m', 'leokani-4.5m', 'pivo-curated', 'woof', 'piper-en-gb-southern-english-female-low']);
   assert.deepEqual(models[0].backends, ['cpu', 'webgpu', 'webgl']);
   assert.equal(models[0].modelRevision, 'ed2934d4df8a4fd891e29584c5e1104649409765');
   assert.deepEqual(models[1].backends, ['cpu', 'webgpu']);
   assert.equal(models[1].modelRevision, '92741c5b07d085ff840e26fea8ce43110b87852f');
-  assert.deepEqual(models[2].backends, ['cpu', 'webgpu']);
-  assert.deepEqual(models[3].backends, ['cpu', 'webgpu']);
+  assert.deepEqual(models[2].backends, ['cpu', 'webgpu', 'webgl']);
+  assert.deepEqual(models[3].backends, ['cpu', 'webgpu', 'webgl']);
   assert.deepEqual(models[4].backends, ['cpu', 'webgpu', 'webgl']);
   assert.deepEqual(models[5].backends, ['webgpu']);
+  assert.deepEqual(models[6].backends, ['cpu']);
+  assert.equal(models[6].modelRevision, 'e7229f7d33a10e145e109b886d661984201ac3c4');
+  assert.equal(models[6].license.requiresAcceptance, true);
+});
+
+test('Piper has voice and lineage cards plus immutable cache-only runtime pins', async () => {
+  const lock = JSON.parse(await readFile(resolve(root, 'assets.lock.json'), 'utf8'));
+  const model = lock.models['piper-en-gb-southern-english-female-low'];
+  assert.equal(model.runtime.package, 'onnxruntime-web');
+  assert.equal(model.runtime.version, '1.23.2');
+  const assets = new Map(model.assets.map(asset => [asset.id, asset]));
+  assert.equal(assets.get('piper-southern-english-female-low-voice').bytes, 63104526);
+  assert.equal(assets.get('piper-southern-english-female-low-voice').sha256, 'f2f37aed1b3a093476f719d1379ba0c0b1b1cf6f1ef99288e2ebf502971a07c3');
+  assert.equal(assets.get('piper-southern-english-female-low-model-card').bytes, 296);
+  assert.equal(assets.get('piper-southern-english-female-low-ryan-ancestry-card').bytes, 263);
+  for (const id of ['piper-browser-frontend', 'piper-espeak-module', 'piper-espeak-wasm', 'piper-espeak-data']) {
+    assert.match(assets.get(id).url, /piper-samples\/da672d1157136d07365790f51da3357a17cf9650/);
+  }
+  for (const asset of model.assets.filter(asset => asset.id.startsWith('piper-') && asset.id !== 'piper-espeak-ng-license')) {
+    assert.match(asset.sha256, /^[a-f0-9]{64}$/);
+    assert.ok(Number.isSafeInteger(asset.bytes) && asset.bytes > 0);
+  }
+  assert.ok(!model.runtime.files.some(file => file.target.endsWith('/ort.webgl.min.mjs')));
+  assert.equal(model.license.requiresAcceptance, true);
 });
 
 test('asset lock pins content and permits only identical shared runtime targets', async () => {
@@ -64,7 +88,7 @@ test('asset lock pins content and permits only identical shared runtime targets'
   assert.equal(lock.models['leokani-4.5m'].assets.find(asset => asset.id === 'leokani-4-5m-config').sourcePath, 'web/data/leokani/config-4.5m.json');
 });
 
-test('each ONNX runtime stages its pinned WebGL probe bundle', async () => {
+test('each ONNX model declaring WebGL stages its pinned probe bundle', async () => {
   const lock = JSON.parse(await readFile(resolve(root, 'assets.lock.json'), 'utf8'));
   const expected = {
     path: 'dist/ort.webgl.min.mjs',
@@ -74,9 +98,9 @@ test('each ONNX runtime stages its pinned WebGL probe bundle', async () => {
     bytes: 454343,
     sha256: 'bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271',
   };
-  const onnxModels = Object.entries(lock.models).filter(([, model]) => model.runtime.package === 'onnxruntime-web');
-  assert.ok(onnxModels.length > 0, 'expected ONNX model entries');
-  for (const [id, model] of onnxModels) {
+  const webglModels = Object.entries(lock.models).filter(([, model]) => model.runtime.package === 'onnxruntime-web' && model.backends.includes('webgl'));
+  assert.ok(webglModels.length > 0, 'expected WebGL model entries');
+  for (const [id, model] of webglModels) {
     const bundle = model.runtime.files.find(file => file.target === expected.target);
     assert.ok(bundle, `${id} must stage its own WebGL probe bundle`);
     for (const [key, value] of Object.entries(expected)) {

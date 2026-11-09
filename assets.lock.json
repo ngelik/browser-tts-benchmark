@@ -519,7 +519,8 @@
       },
       "backends": [
         "cpu",
-        "webgpu"
+        "webgpu",
+        "webgl"
       ]
     },
     "leokani-4.5m": {
@@ -778,7 +779,8 @@
       },
       "backends": [
         "cpu",
-        "webgpu"
+        "webgpu",
+        "webgl"
       ]
     },
     "pivo-curated": {
@@ -1060,6 +1062,137 @@
       },
       "backends": [
         "webgpu"
+      ]
+    },
+    "piper-en-gb-southern-english-female-low": {
+      "displayName": "Piper en-GB Southern English Female low",
+      "modelRevision": "e7229f7d33a10e145e109b886d661984201ac3c4",
+      "runtime": {
+        "package": "onnxruntime-web",
+        "version": "1.23.2",
+        "license": "MIT; bundled third-party notices apply",
+        "files": [
+          {
+            "path": "dist/ort.wasm.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.wasm.min.mjs",
+            "bytes": 49856,
+            "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.mjs",
+            "bytes": 20321,
+            "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.wasm",
+            "bytes": 11905541,
+            "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15"
+          },
+          {
+            "path": "LICENSE",
+            "target": "licenses/onnxruntime-web-1.23.2/LICENSE",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/LICENSE",
+            "bytes": 1073,
+            "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          },
+          {
+            "path": "ThirdPartyNotices.txt",
+            "target": "licenses/onnxruntime-web-1.23.2/ThirdPartyNotices.txt",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/ThirdPartyNotices.txt",
+            "bytes": 326866,
+            "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "piper-southern-english-female-low-voice",
+          "target": "models/piper-en-gb-southern-english-female-low/e7229f7d33a10e145e109b886d661984201ac3c4/en_GB-southern_english_female-low.onnx",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low/en_GB-southern_english_female-low.onnx",
+          "bytes": 63104526,
+          "sha256": "f2f37aed1b3a093476f719d1379ba0c0b1b1cf6f1ef99288e2ebf502971a07c3",
+          "kind": "model-weights"
+        },
+        {
+          "id": "piper-southern-english-female-low-config",
+          "target": "models/piper-en-gb-southern-english-female-low/e7229f7d33a10e145e109b886d661984201ac3c4/en_GB-southern_english_female-low.onnx.json",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low/en_GB-southern_english_female-low.onnx.json",
+          "bytes": 4189,
+          "sha256": "a1af43310f8756161506e849a2863d342a98b0853af9e2437581d39e9922d0e5",
+          "kind": "model-support"
+        },
+        {
+          "id": "piper-southern-english-female-low-model-card",
+          "target": "models/piper-en-gb-southern-english-female-low/e7229f7d33a10e145e109b886d661984201ac3c4/MODEL_CARD",
+          "url": "https://huggingface.co/rhasspy/piper-voices/raw/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low/MODEL_CARD",
+          "bytes": 296,
+          "sha256": "41a64585a49d46362042b1a01b0a4b54127518eb50063c45846e2703e5790260",
+          "kind": "model-terms"
+        },
+        {
+          "id": "piper-southern-english-female-low-ryan-ancestry-card",
+          "target": "models/piper-en-gb-southern-english-female-low/e7229f7d33a10e145e109b886d661984201ac3c4/upstream/ryan-low-MODEL_CARD",
+          "url": "https://huggingface.co/rhasspy/piper-voices/raw/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_US/ryan/low/MODEL_CARD",
+          "bytes": 263,
+          "sha256": "82409c9c68863650e407a89dcebfc946afd992203593f0e4af234bce83c4144d",
+          "kind": "model-terms"
+        },
+        {
+          "id": "piper-browser-frontend",
+          "target": "runtimes/piper-samples/da672d1157136d07365790f51da3357a17cf9650/resources/piper.js",
+          "url": "https://raw.githubusercontent.com/rhasspy/piper-samples/da672d1157136d07365790f51da3357a17cf9650/resources/piper.js",
+          "bytes": 8177,
+          "sha256": "eae618bad024a1c68c5516a5f5025e167b7dca0e33a7fc2ee1e5aea18a0d8c9c",
+          "kind": "browser-runtime"
+        },
+        {
+          "id": "piper-espeak-module",
+          "target": "runtimes/piper-samples/da672d1157136d07365790f51da3357a17cf9650/resources/espeakng.worker.js",
+          "url": "https://raw.githubusercontent.com/rhasspy/piper-samples/da672d1157136d07365790f51da3357a17cf9650/resources/espeakng.worker.js",
+          "bytes": 134698,
+          "sha256": "141236dc04b79b13a417ffd10c25a9b25f93dd7cc978448dad58b9b95d2ac210",
+          "kind": "browser-runtime"
+        },
+        {
+          "id": "piper-espeak-wasm",
+          "target": "runtimes/piper-samples/da672d1157136d07365790f51da3357a17cf9650/resources/espeakng.worker.wasm",
+          "url": "https://raw.githubusercontent.com/rhasspy/piper-samples/da672d1157136d07365790f51da3357a17cf9650/resources/espeakng.worker.wasm",
+          "bytes": 361999,
+          "sha256": "eb0ea920003d62ed0a97f6d51a0903ff0cb6553d8d5e02eb5dce4c26e055f33f",
+          "kind": "browser-runtime"
+        },
+        {
+          "id": "piper-espeak-data",
+          "target": "runtimes/piper-samples/da672d1157136d07365790f51da3357a17cf9650/espeakng.worker.data",
+          "url": "https://raw.githubusercontent.com/rhasspy/piper-samples/da672d1157136d07365790f51da3357a17cf9650/espeakng.worker.data",
+          "bytes": 24183288,
+          "sha256": "07263c3a96e26dcea39e0d7e5001d2121f0f4fccbb8110c2ad9285e527d77e97",
+          "kind": "browser-runtime-data"
+        },
+        {
+          "id": "piper-espeak-ng-license",
+          "target": "licenses/espeak-ng/COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "kind": "license",
+          "sourcePath": "web/licenses/ESPEAK-NG-COPYING.txt"
+        }
+      ],
+      "license": {
+        "model": "Model license not separately stated in the card; dataset CC BY-SA 4.0; fine-tuned from Ryan low, whose dataset is CC BY-NC-SA 4.0",
+        "runtime": "ONNX Runtime Web MIT; pinned piper-samples browser bundle has no separate license file; eSpeak NG GPL-3.0",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "cpu"
       ]
     }
   }

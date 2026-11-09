@@ -27,6 +27,10 @@ npm ci
 npm run bench -- models
 ```
 
+If `npm ci` fails because the shared npm cache contains root-owned files, retry
+with an ignored checkout-local cache: `npm ci --cache .cache/npm`. Do not use
+`sudo` or change ownership of the shared cache.
+
 Read `docs/CLI.md`, `docs/PROTOCOL.md` and the selected model's `docs/LICENSING.md`
 entry **in that checkout**. Installed copies of this skill may be outside the
 repository: resolve those documents from the checkout, not the skill directory.
@@ -73,6 +77,11 @@ Follow the CLI's progress in `runs/<id>/status.json`; use bounded waits and repo
 meaningful progress. If interrupted or a runtime fails, inspect the failure and
 fix its cause. Keep failed evidence. Do not repeatedly rerun an unchanged failure
 or launch a second benchmark while the first still owns Chrome.
+
+If Chrome exits before the canonical fixture loads, keep the CLI's
+`runs/<id>/error.json` browser-setup diagnostic and distinguish host permissions
+from a model/backend incompatibility. Retry only in an already approved Chrome
+execution context; do not disable Chrome's sandbox or use a personal profile.
 
 Inspect the final JSON and locally saved WAV. Check RIFF/sample rate/sample count,
 file digest, all source chunks and finite/nonempty PCM. These checks do not prove

@@ -3,6 +3,7 @@ import { createParadeeAdapter } from './adapters/paradee.mjs';
 import { createLeokaniAdapter } from './adapters/leokani.mjs';
 import { createPivoAdapter } from './adapters/pivo.mjs';
 import { createWoofAdapter } from './adapters/woof.mjs';
+import { createPiperAdapter } from './adapters/piper.mjs';
 
 const statusNode = document.querySelector('#status');
 const state = { fixture: null, chunks: null, engine: null, model: null, backend: null, smoke: false };
@@ -13,6 +14,7 @@ const FACTORIES = {
   'leokani-4.5m': () => createLeokaniAdapter('leokani-4.5m'),
   'pivo-curated': createPivoAdapter,
   woof: createWoofAdapter,
+  'piper-en-gb-southern-english-female-low': createPiperAdapter,
 };
 let canonical = null;
 

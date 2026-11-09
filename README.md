@@ -87,6 +87,9 @@ same `SKILL.md`; no Codex-only tool is required by the workflow.
 Publication follows the user's authorization. Without it, the skill prepares
 local result files and does not push. Audio and model binaries stay local.
 
+The [fresh-clone skill trial](docs/SKILL_TRIAL.md) records a reproducible random
+Piper selection, integration issues, and full offline correctness evidence.
+
 ## Run a benchmark
 
 Requirements: Node.js 22 or newer, npm, installed Google Chrome, enough free disk
@@ -117,12 +120,14 @@ Pinned model IDs (use these with `--model`):
 | `leokani-4.5m` | Yes | Yes, CPU G2P/iSTFT | `--accept-license` |
 | `pivo-curated` | Yes | Yes, current adapter is slow | No |
 | `woof` | Unavailable in pinned runtime | Yes | `--accept-license` |
+| `piper-en-gb-southern-english-female-low` | Yes | Not validated | `--accept-license` |
 
 WebGL is an explicit compatibility probe; none of these pinned model paths
 produced a successful WebGL score. Model catalog backend lists describe adapter
-probe targets, not a guarantee that a model graph is compatible. Phonon and Woof
-use official browser runtimes. The ONNX models use explicit browser adapters,
+probe targets, not a guarantee that a model graph is compatible. Phonon, Woof and
+Piper use official browser runtimes. The ONNX models use explicit browser adapters,
 with upstream frontends and model-specific processing documented in their settings.
+Piper WebGPU and WebGL remain unvalidated; its current adapter exposes CPU/WASM only.
 
 New native warm runs use one common CPU/GPU timing boundary: first chunk request
 through final CPU-readable PCM, excluding warm-up, validation, hashing and export.
