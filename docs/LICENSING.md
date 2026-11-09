@@ -17,8 +17,8 @@ their own licenses. A benchmark result is not a commercial-use clearance.
 | Leokani browser engine | Grant for the exact historical engine was not separately established; do not vendor it under MIT |
 | Adapted PiVo frontend in `web/pivo/text.mjs` | Apache-2.0; source/change record and upstream notices in `web/pivo/` |
 | PiVo | Apache-2.0 acoustic model/code, BSD/Opus FARGAN-derived component, CMU dictionary notices |
-| Woof historical one-voice assets | Underdog noncommercial terms; exact one-voice lineage is less explicit than newer releases; no assets or audio redistributed here |
-| Piper en-GB Southern English Female low weights | The pinned card lists the training dataset as CC BY-SA 4.0 and says it was fine-tuned from Ryan low. The Ryan card lists its dataset as CC BY-NC-SA 4.0. The cards do not state a separate model or output license; local technical benchmark only, with no model or WAV redistribution. |
+| Woof historical one-voice assets | Underdog noncommercial terms; exact one-voice lineage is less explicit than newer releases; weights/runtime assets remain excluded; opt-in attributed evaluation recordings are documented in audio/README.md |
+| Piper en-GB Southern English Female low weights | The pinned card lists the training dataset as CC BY-SA 4.0 and says it was fine-tuned from Ryan low. The Ryan card lists its dataset as CC BY-NC-SA 4.0. The cards do not state a separate model or output license; model/runtime redistribution remains excluded; approved evaluation audio retains these notices separately from the code license. |
 | Piper official browser files and eSpeak data | `rhasspy/piper-samples` at `da672d1157136d07365790f51da3357a17cf9650` has no separate license file in its pinned tree. Its JavaScript, WebAssembly, and data bundle remain in the ignored local cache; do not redistribute the runtime. The eSpeak NG COPYING file is staged for reference, but it does not establish terms for the overall browser bundle. |
 | ONNX Runtime Web | MIT, with third-party notices |
 
@@ -29,10 +29,11 @@ license. The small derived Leokani configuration/vocabulary files in
 Restricted or unclear-license runtime files belong only in a local ignored cache.
 Use upstream download/import instructions and read their terms before running.
 Accepting an upstream license is a local decision, not a grant from this project.
-Do not upload weights, voices, minified upstream engines, browser profiles or
-generated audio in a result pull request. Audio can be shared separately only
-where the applicable model/output terms permit it; Woof additionally requires
-attribution where outputs are played.
+Do not upload weights, voices, minified upstream engines or browser profiles.
+Explicitly authorized evaluation audio uses the documented audio manifest,
+small in-repository clips and full-recording release assets. Preserve attribution
+and applicable model/output terms; Woof requires credit wherever outputs play.
+See [listening provenance and terms](../audio/README.md).
 
 Changing a frontend to avoid a license obligation changes the implementation.
 Benchmark it as a new configuration and compare its outputs before substituting it.

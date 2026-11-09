@@ -1,3 +1,4 @@
+import { updateReference } from './reference.mjs';
 import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
 import { readResult, sha256 } from './results.mjs';
@@ -11,4 +12,5 @@ await writeFile(join(out,'result.json'),JSON.stringify(d,null,2)+'\n');
 await writeReport(join(out,'result.json'));
 const sums={};for(const name of ['result.json','summary.md','chart.svg'])sums[name]=sha256(await readFile(join(out,name)));
 await writeFile(join(out,'checksums.json'),JSON.stringify(sums,null,2)+'\n');
-console.log(`Prepared results/${d.id}. Review it, commit it on a branch, and open a pull request. Nothing was uploaded.`);
+await updateReference();
+console.log(`Updated README Reference results. Prepared results/${d.id}. Review it, commit it on a branch, and open a pull request. Nothing was uploaded.`);

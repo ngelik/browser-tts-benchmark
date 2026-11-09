@@ -46,11 +46,6 @@
       "bytes": 66261
     },
     {
-      "id": "runtime:paradee:dist/ort.webgl.min.mjs",
-      "sha256": "bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271",
-      "bytes": 454343
-    },
-    {
       "id": "runtime:paradee:dist/ort-wasm-simd-threaded.mjs",
       "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e",
       "bytes": 20321
@@ -248,6 +243,7 @@
   "notes": [
     "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
     "Raw WAV stays local and is not part of automatic submission.",
-    "AC power verified before run. CPU then WebGPU sequential order; normal desktop background processes, no simultaneous benchmark inference. Timing-only protocol; thermal state not instrumented."
+    "AC power verified before run. CPU then WebGPU sequential order; normal desktop background processes, no simultaneous benchmark inference. Timing-only protocol; thermal state not instrumented.",
+    "Presentation pruning removed retired backend rows and/or unused runtime inventory. CPU/WebGPU measurements are unchanged. Original unpruned receipt: commit 8dae4a37e61e662037fd73a58c7254e1dac9dd89, same result path."
   ]
 }

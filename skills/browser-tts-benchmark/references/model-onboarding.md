@@ -28,6 +28,9 @@ For the selected model:
    and upstream browser implementation. Use immutable revisions and SHA-256/byte
    pins; branch names and claimed parameter counts are not enough. Treat weights,
    frontends, vocoders and training-data notices separately. Do not invent rights.
+   Record supported and bundled voice counts, language count/codes, scope and
+   primary sources. Separate the checkpoint from a broader family/catalog;
+   unknown counts stay null. Coverage of this run is recorded separately.
 2. Prefer the official browser runtime. Adapt only the integration boundary needed
    for local asset paths, explicit providers, raw PCM and cleanup. Document changes.
    If no usable browser runtime exists, build an adapter and disclose the port,

@@ -23,3 +23,5 @@ chrome-profile*/
 __pycache__/
 *.pyc
 
+
+!audio/samples/*.wav

@@ -14,13 +14,16 @@ audio or machine details automatically.
 
    ```sh
    npm run submit -- runs/<run-id>/result.json
+   npm run reference -- --check
    npm run validate
    npm test
    ```
 
 6. Review the generated `results/<run-id>/` files for privacy and completeness.
-   Commit `result.json`, `summary.md`, `chart.svg` and `checksums.json` on a branch.
-   Open a pull request using the template. Do not commit `.cache/`, `runs/`, audio,
+   Commit `result.json`, `summary.md`, `chart.svg`, `checksums.json` and the updated
+   README Reference results section on the same branch. `npm run submit` refreshes
+   the section; `npm run reference` refreshes it after adding comparisons or audio.
+   Open a pull request using the template. Do not commit `.cache/`, `runs/`, unregistered audio,
    weights, browser profiles, screenshots of personal apps or raw traces.
 
 CI checks the result contract, hashes, generated reports and unit tests. It does
@@ -51,3 +54,8 @@ are maintenance proposals, not evidence that changed runtimes preserve a modelâ€
 performance: update byte/hash pins deliberately and run affected Chrome adapters
 before merging runtime changes. Keep `.gitattributes` LF normalization so source
 fingerprints and the fixed article remain identical across operating systems.
+
+Record voice/language counts and primary sources in the model support metadata;
+keep checkpoint/catalog scope distinct from tested voice/language. For approved
+recordings, follow [audio publication](audio/README.md) and refresh the same
+Reference results section before opening the PR.

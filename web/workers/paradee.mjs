@@ -55,7 +55,7 @@ async function generate(chunk) {
 }
 
 async function initialize({ backend, probe, probeText }) {
-  if (!['cpu', 'webgpu', 'webgl'].includes(backend)) return unsupported('Unknown backend');
+  if (!['cpu', 'webgpu'].includes(backend)) return unsupported('Unknown backend');
   let gpu = null;
   if (backend === 'webgpu') {
     if (!navigator.gpu) return unsupported('Chrome does not expose WebGPU');
@@ -64,7 +64,7 @@ async function initialize({ backend, probe, probeText }) {
     if (adapter.info?.isFallbackAdapter || adapter.isFallbackAdapter) return unsupported('Software WebGPU adapters are not ranked');
     gpu = adapter.info?.description || adapter.info?.vendor || 'Hardware WebGPU adapter';
   }
-  const bundle = backend === 'cpu' ? 'ort.wasm.min.mjs' : backend === 'webgpu' ? 'ort.webgpu.min.mjs' : 'ort.webgl.min.mjs';
+  const bundle = backend === 'cpu' ? 'ort.wasm.min.mjs' : 'ort.webgpu.min.mjs';
   ort = await import(RUNTIME + bundle);
   ort.env.wasm.numThreads = 1;
   ort.env.wasm.proxy = false;
@@ -75,13 +75,10 @@ async function initialize({ backend, probe, probeText }) {
   if (responses.some(response => !response.ok)) throw new Error('Paradee local assets could not be loaded');
   config = await responses[0].json();
   const model = await responses[1].arrayBuffer();
-  const executionProviders = backend === 'cpu' ? ['wasm'] : backend === 'webgpu' ? ['webgpu', 'wasm'] : ['webgl'];
+  const executionProviders = backend === 'cpu' ? ['wasm'] : ['webgpu', 'wasm'];
   try {
     session = await ort.InferenceSession.create(model, { executionProviders, graphOptimizationLevel: 'all' });
   } catch (error) {
-    if (backend === 'webgl' && /FLOAT16|int64|not supported|unsupported|no available backend/i.test(String(error))) {
-      return unsupported('Pinned Paradee WebGL provider cannot load this graph: ' + String(error).slice(0, 500));
-    }
     throw error;
   }
   if (backend === 'webgpu') {
@@ -104,10 +101,9 @@ async function initialize({ backend, probe, probeText }) {
       if (observed === 0) return unsupported('No actual WebGPU compute dispatch was observed during synthesis');
       capability = { gpuDispatchVerified: true, description: `Observed ${observed} compute dispatches in a separate untimed utterance. WebGPU + WASM operator fallback; CPU text preprocessing. Hooks removed before timing.` };
     }
-    if (backend === 'webgl') return unsupported('WebGL graph loaded but this harness has no validated draw-dispatch evidence path');
   }
   return { ...INFO, settings: { ...INFO.settings, executionProviders }, status: 'measured',
-    backendEffective: backend === 'cpu' ? 'cpu/wasm' : backend === 'webgpu' ? 'webgpu+wasm' : 'webgl', capability, gpu };
+    backendEffective: backend === 'cpu' ? 'cpu/wasm' : 'webgpu+wasm', capability, gpu };
 }
 
 self.onmessage = async ({ data }) => {

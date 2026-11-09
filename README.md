@@ -3,64 +3,101 @@
 [![Validate benchmark submissions](https://github.com/ngelik/browser-tts-benchmark/actions/workflows/validate.yml/badge.svg)](https://github.com/ngelik/browser-tts-benchmark/actions/workflows/validate.yml)
 
 Repeatable, local text-to-speech benchmarks in **Google Chrome**: CPU/WASM,
-WebGPU and explicit WebGL compatibility results. Select a model, run a fixed
+and WebGPU. Select a model, run a fixed
 20,000-character English article, then contribute a result through a pull request.
 
 All inference happens in the browser. A local Node process serves static assets
 and controls Chrome; it never performs speech synthesis. Results are not uploaded
 automatically. Model assets are pinned, verified and kept outside Git.
 
-## Standardized native results
-
-The packaged protocol was independently exercised from a clean checkout on an
-Apple M1 Pro (8 cores, 16 GiB), headed Chrome 157. One full article warm-up and
-five scored full articles per backend use the same CPU-readable PCM timer.
-
-| Model | Backend | Median | Observed min–max | Scored runs |
-|---|---|---:|---:|---:|
-| Paradee 8M | CPU/WASM | 103.92 s | 103.69–103.99 s | 5 |
-| Paradee 8M | WebGPU + WASM operators | 18.74 s | 18.61–18.80 s | 5 |
-
-![Standardized Paradee CPU and GPU comparison](comparisons/m1-pro-paradee-native/chart.svg)
-
-The median ratio is **5.55×** for this configuration and machine. It is not a
-universal hardware claim. CPU ran before GPU, on mains power; desktop background
-processes were present and thermal state was not instrumented. These new native
-scores must not be pooled with the historical reference campaign below.
-
-[Full table, additional metrics and input receipts](comparisons/m1-pro-paradee-native/summary.md).
-
 ## Reference results
 
-Apple M1 Pro · Chrome 157 · five warm repetitions · same 93 article chunks.
-These are **historical imports** from the experiment that motivated this project.
-CPU times include local PCM storage; the later GPU timer excludes it. Do not
-calculate speedup ratios between those two protocols. Woof was already WebGPU
-in the first experiment and has no CPU score.
+<!-- benchmark-results:start -->
 
-| Model | CPU warm | WebGPU warm | Original download | Ideal at 1 Mbps |
-|---|---:|---:|---:|---:|
-| Paradee 8M | 111.15 s | **18.72 s** | 21.1 MB | 2:49 |
-| Phonon 31M q8 | 270.41 s | 51.73 s | 69.3 MB | 9:14 |
-| Leokani 7M | 75.19 s | 58.11 s | 38.9 MB | 5:11 |
-| Leokani 4.5M | **55.96 s** | 61.57 s | 36.2 MB | 4:49 |
-| Woof | Not measured | 181.81 s | 31.8 MB | 4:14 |
-| PiVo curated | 87.92 s | 2,562.69 s | 21.4 MB | 2:51 |
+Generated from every submitted result. Latest warm attempt per model/backend and exact environment is shown; errors are retained. No cross-machine or cross-protocol speedup is implied.
 
-![Generation, startup, browser memory and download comparison](docs/reference-overview.svg)
+- **E1**: Apple M1 Pro reference machine · Google Chrome 157.0.8103.39 · macOS 26.6.2.
+- **E2**: Apple M1 Pro / 16 GiB · Google Chrome 157.0.8103.39 · Darwin 25.6.0.
 
-Downloads are the original complete runtime/model stacks, not new GPU bundle
-measurements. Times at 1 Mbps are ideal body-transfer estimates, in minutes:seconds.
-All six pinned WebGL paths were unsupported or unavailable. GPU paths may include
-CPU preprocessing and disclosed WASM operator fallback. PiVo's slow GPU result
-describes the current custom adapter, not its theoretical best performance.
+| Model | Environment | CPU warm median | WebGPU warm median | Evidence scope |
+|---|---|---:|---:|---|
+| Leokani 4.5M INT8 | E1 | [55.96 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [61.57 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | Historical; distinct timing protocols |
+| Leokani 7M INT8 | E1 | [75.19 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [58.11 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | Historical; distinct timing protocols |
+| Paradee 8M INT8 | E1 | [111.15 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [18.72 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | Historical; distinct timing protocols |
+| Phonon 31M q8 | E1 | [270.41 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [51.73 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | Historical; distinct timing protocols |
+| PiVo 1.4M curated (Pi voice) | E1 | [87.92 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [2562.69 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | Historical; distinct timing protocols |
+| Underdog Woof one-voice (Isla) | E1 | — | [181.81 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | Historical; distinct timing protocols |
+| Paradee 8M INT8 | E2 | [103.92 s](results/2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f/summary.md) | [18.74 s](results/2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0/summary.md) | Native; matched source |
+| Piper en-GB Southern English Female low | E2 | [167.57 s](results/2026-11-09t07-33-26-519z-piper-en-gb-southern-english-female-low-cpu-warm-810f85a3/summary.md) | — | Native; separate configuration |
 
-Inspect [the raw historical results](results/), [GPU trial table](results/historical-2026-11-08-m1pro-gpu-warm/summary.md),
-[original warm table](results/historical-2026-11-08-m1pro-primary-warm/summary.md),
-and [backend dispatch evidence](docs/backend-evidence.json). See the
-[methodology](docs/PROTOCOL.md). There are 102 original article measurements
-and 30 later GPU measurements; failures and diagnostic limitations remain explicit.
-Speech quality is left to listening review.
+Each measured warm cell uses five scored full 20,000-character articles. Missing values are not zero. Open receipts for voice, precision, timing boundaries, power conditions and observed min–max.
+
+### Voice and language support
+
+Counts describe the pinned model/catalog, not the number of voices or languages benchmarked. All current measurements use English and one selected voice per model. Other checkpoints in a family are excluded.
+
+| Model | Supported voices | Bundled voices | Supported languages | Scope / source |
+|---|---:|---:|---|---|
+| Paradee 8M INT8 | 4 | 4 | 1 (en) | [Details](docs/MODEL_SUPPORT.md#paradee) |
+| Phonon 31M q8 | 102 | 1 | 1 (en) | [Details](docs/MODEL_SUPPORT.md#phonon) |
+| Leokani 7M INT8 | 1 | 1 | 1 (en) | [Details](docs/MODEL_SUPPORT.md#leokani-7m) |
+| Leokani 4.5M INT8 | 1 | 1 | 1 (en) | [Details](docs/MODEL_SUPPORT.md#leokani-4.5m) |
+| PiVo 1.4M curated (Pi voice) | 2 | 2 | 1 (en) | [Details](docs/MODEL_SUPPORT.md#pivo-curated) |
+| Underdog Woof one-voice (Isla) | 1 | 1 | 1 (en) | [Details](docs/MODEL_SUPPORT.md#woof) |
+| Piper en-GB Southern English Female low | 1 | 1 | 1 (en) | [Details](docs/MODEL_SUPPORT.md#piper-en-gb-southern-english-female-low) |
+
+### Controlled native comparisons
+
+Only compatible receipts enter these comparisons; source, settings, fixture and environment checks must pass.
+
+[m1-pro-paradee-native — table and input receipts](comparisons/m1-pro-paradee-native/summary.md)
+
+![m1-pro-paradee-native](comparisons/m1-pro-paradee-native/chart.svg)
+
+### Historical resource measurements
+
+Startup, memory and download figures below belong to the original campaign. They were not remeasured in subsequent warm-only runs. CPU and later GPU timer boundaries differ; do not calculate a speedup ratio across them.
+
+![Historical generation, startup, memory and transfer](docs/reference-overview.svg)
+
+### Listening samples
+
+Synthetic speech from the actual recorded runs. [Listening instructions and attribution](audio/README.md). Compact clips stay in Git; full recordings are repository release assets.
+
+| Model | Backend | Source run | 30-second clip | Full article WAV |
+|---|---|---|---|---|
+| Leokani 4.5M INT8 | cpu | [Receipt](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [Listen](audio/samples/historical-2026-11-08-m1pro-primary-warm--leokani-4.5m--cpu.wav) | [Download / listen](https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--leokani-4.5m--cpu-full.wav) |
+| Leokani 4.5M INT8 | webgpu | [Receipt](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | [Listen](audio/samples/historical-2026-11-08-m1pro-gpu-warm--leokani-4.5m--webgpu.wav) | [Download / listen](https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--leokani-4.5m--webgpu-full.wav) |
+| Leokani 7M INT8 | cpu | [Receipt](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [Listen](audio/samples/historical-2026-11-08-m1pro-primary-warm--leokani-7m--cpu.wav) | [Download / listen](https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--leokani-7m--cpu-full.wav) |
+| Leokani 7M INT8 | webgpu | [Receipt](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | [Listen](audio/samples/historical-2026-11-08-m1pro-gpu-warm--leokani-7m--webgpu.wav) | [Download / listen](https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--leokani-7m--webgpu-full.wav) |
+| Paradee 8M INT8 | cpu | [Receipt](results/2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f/summary.md) | [Listen](audio/samples/2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f--paradee--cpu.wav) | [Download / listen](https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f--paradee--cpu-full.wav) |
+| Paradee 8M INT8 | webgpu | [Receipt](results/2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0/summary.md) | [Listen](audio/samples/2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0--paradee--webgpu.wav) | [Download / listen](https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0--paradee--webgpu-full.wav) |
+| Phonon 31M q8 | cpu | [Receipt](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [Listen](audio/samples/historical-2026-11-08-m1pro-primary-warm--phonon--cpu.wav) | [Download / listen](https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--phonon--cpu-full.wav) |
+| Phonon 31M q8 | webgpu | [Receipt](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | [Listen](audio/samples/historical-2026-11-08-m1pro-gpu-warm--phonon--webgpu.wav) | [Download / listen](https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--phonon--webgpu-full.wav) |
+| PiVo 1.4M curated (Pi voice) | cpu | [Receipt](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [Listen](audio/samples/historical-2026-11-08-m1pro-primary-warm--pivo-curated--cpu.wav) | [Download / listen](https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--pivo-curated--cpu-full.wav) |
+| PiVo 1.4M curated (Pi voice) | webgpu | [Receipt](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | [Listen](audio/samples/historical-2026-11-08-m1pro-gpu-warm--pivo-curated--webgpu.wav) | [Download / listen](https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--pivo-curated--webgpu-full.wav) |
+| Underdog Woof one-voice (Isla) | webgpu | [Receipt](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | [Listen](audio/samples/historical-2026-11-08-m1pro-gpu-warm--woof--webgpu.wav) | [Download / listen](https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--woof--webgpu-full.wav) |
+
+<details>
+<summary>All submitted results — every scenario and earlier run</summary>
+
+| Run | Models / backends | Scenario / protocol | Status | Table | Chart |
+|---|---|---|---|---|---|
+| 1 · 2026-11-08 | phonon/cpu, paradee/cpu, leokani-7m/cpu, leokani-4.5m/cpu, pivo-curated/cpu, woof/webgpu | cached / legacy-storage-v0-network-cached-return | measured | [Report](results/historical-2026-11-08-m1pro-network-cached-return/summary.md) | [SVG](results/historical-2026-11-08-m1pro-network-cached-return/chart.svg) |
+| 2 · 2026-11-08 | phonon/cpu, paradee/cpu, leokani-7m/cpu, leokani-4.5m/cpu, pivo-curated/cpu, woof/webgpu | network / legacy-storage-v0-network-cold | measured | [Report](results/historical-2026-11-08-m1pro-network-cold/summary.md) | [SVG](results/historical-2026-11-08-m1pro-network-cold/chart.svg) |
+| 3 · 2026-11-08 | phonon/cpu, paradee/cpu, leokani-7m/cpu, leokani-4.5m/cpu, pivo-curated/cpu, woof/webgpu | switch / legacy-storage-v0-network-switch | measured | [Report](results/historical-2026-11-08-m1pro-network-switch/summary.md) | [SVG](results/historical-2026-11-08-m1pro-network-switch/chart.svg) |
+| 4 · 2026-11-08 | phonon/cpu, paradee/cpu, leokani-7m/cpu, leokani-4.5m/cpu, pivo-curated/cpu, woof/webgpu | offline / legacy-storage-v0-offline-cache-verification | measured | [Report](results/historical-2026-11-08-m1pro-offline-cache-verification/summary.md) | [SVG](results/historical-2026-11-08-m1pro-offline-cache-verification/chart.svg) |
+| 5 · 2026-11-08 | phonon/cpu, paradee/cpu, leokani-7m/cpu, leokani-4.5m/cpu, pivo-curated/cpu, woof/webgpu | cached / legacy-storage-v0-primary-cached | measured | [Report](results/historical-2026-11-08-m1pro-primary-cached/summary.md) | [SVG](results/historical-2026-11-08-m1pro-primary-cached/chart.svg) |
+| 6 · 2026-11-08 | phonon/cpu, paradee/cpu, leokani-7m/cpu, leokani-4.5m/cpu, pivo-curated/cpu, woof/webgpu | cold / legacy-storage-v0-primary-cold | measured | [Report](results/historical-2026-11-08-m1pro-primary-cold/summary.md) | [SVG](results/historical-2026-11-08-m1pro-primary-cold/chart.svg) |
+| 7 · 2026-11-08 | phonon/cpu, paradee/cpu, leokani-7m/cpu, leokani-4.5m/cpu, pivo-curated/cpu, woof/webgpu | warm / legacy-storage-v0-primary-warm | measured | [Report](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [SVG](results/historical-2026-11-08-m1pro-primary-warm/chart.svg) |
+| 8 · 2026-11-08 | woof/webgpu, phonon/webgpu, paradee/webgpu, leokani-7m/webgpu, pivo-curated/webgpu, leokani-4.5m/webgpu | warm / legacy-gpu-pcm-v0 | measured | [Report](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | [SVG](results/historical-2026-11-08-m1pro-gpu-warm/chart.svg) |
+| 9 · 2026-11-09 | paradee/cpu | warm / browser-tts-warm-v1 | measured | [Report](results/2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f/summary.md) | [SVG](results/2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f/chart.svg) |
+| 10 · 2026-11-09 | paradee/webgpu | warm / browser-tts-warm-v1 | measured | [Report](results/2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0/summary.md) | [SVG](results/2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0/chart.svg) |
+| 11 · 2026-11-09 | piper-en-gb-southern-english-female-low/cpu | warm / browser-tts-warm-v1 | measured | [Report](results/2026-11-09t07-33-26-519z-piper-en-gb-southern-english-female-low-cpu-warm-810f85a3/summary.md) | [SVG](results/2026-11-09t07-33-26-519z-piper-en-gb-southern-english-female-low-cpu-warm-810f85a3/chart.svg) |
+
+</details>
+
+<!-- benchmark-results:end -->
 
 ## Use with an AI agent
 
@@ -85,22 +122,11 @@ Review an existing installed copy before replacing it. Other agents can load the
 same `SKILL.md`; no Codex-only tool is required by the workflow.
 
 Publication follows the user's authorization. Without it, the skill prepares
-local result files and does not push. Audio and model binaries stay local.
+local result files and does not push. Model binaries stay local; explicitly
+authorized audio uses verified clips and repository release assets.
 
-The [fresh-clone skill trial](docs/SKILL_TRIAL.md) exercised the workflow with a
-reproducibly selected Piper en-GB model. On Apple M1 Pro / 16 GiB, headed Chrome
-157, one full warm-up and five full measured articles produced:
-
-| Model | Backend | Median generation | Observed min–max | First PCM, median |
-|---|---|---:|---:|---:|
-| Piper en-GB Southern English Female low | CPU/WASM, one thread | 167.57 s | 167.19–167.97 s | 1.78 s |
-
-[Full table and verified receipts](results/2026-11-09t07-33-26-519z-piper-en-gb-southern-english-female-low-cpu-warm-810f85a3/summary.md).
-This is a separate source configuration, not a pooled ranking with the earlier
-results. GPU paths and speech quality remain unvalidated. See the trial record
-for offline checks, licensing limits and integration issues.
-
-![Piper skill-trial generation result](results/2026-11-09t07-33-26-519z-piper-en-gb-southern-english-female-low-cpu-warm-810f85a3/chart.svg)
+The [fresh-clone skill trial](docs/SKILL_TRIAL.md) exercised this workflow.
+All submitted runs, including Piper, appear in [Reference results](#reference-results).
 
 ## Run a benchmark
 
@@ -132,14 +158,10 @@ Pinned model IDs (use these with `--model`):
 | `leokani-4.5m` | Yes | Yes, CPU G2P/iSTFT | `--accept-license` |
 | `pivo-curated` | Yes | Yes, current adapter is slow | No |
 | `woof` | Unavailable in pinned runtime | Yes | `--accept-license` |
-| `piper-en-gb-southern-english-female-low` | Yes | Not validated | `--accept-license` |
+| `piper-en-gb-southern-english-female-low` | Yes | Yes, mixed operators | `--accept-license` |
 
-WebGL is an explicit compatibility probe; none of these pinned model paths
-produced a successful WebGL score. Model catalog backend lists describe adapter
-probe targets, not a guarantee that a model graph is compatible. Phonon, Woof and
-Piper use official browser runtimes. The ONNX models use explicit browser adapters,
-with upstream frontends and model-specific processing documented in their settings.
-Piper WebGPU and WebGL remain unvalidated; its current adapter exposes CPU/WASM only.
+Phonon, Woof and Piper use official browser runtimes. Model-specific adapters
+record their preprocessing, voice and allowed CPU operator fallback.
 
 New native warm runs use one common CPU/GPU timing boundary: first chunk request
 through final CPU-readable PCM, excluding warm-up, validation, hashing and export.

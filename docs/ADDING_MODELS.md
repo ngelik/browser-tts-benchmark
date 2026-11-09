@@ -59,8 +59,7 @@ preprocessing and allowed mixed WASM operators in settings/capability text.
 The controller uses a separate profile initialization for capability probing,
 then starts a fresh, uninstrumented engine for timing. Probe evidence and timing
 configuration must refer to the same pinned implementation and assets. GPU-only
-execution is not implied by the presence of dispatches. Do not invent a WebGL
-implementation or report zero seconds for unsupported operators.
+execution is not implied by the presence of dispatches. Do not report zero seconds for unsupported operators.
 
 ## Review evidence
 
@@ -83,8 +82,7 @@ phoneme types fail validation. The upstream frontend silently skips unmapped IPA
 symbols, so the adapter wraps `phoneme_id_map` with a strict membership check that
 throws on an unknown symbol. The adapter explicitly requests one-thread WASM,
 passes the pinned config's length/noise scales to the raw-Float32 API, copies
-CPU-readable PCM, and disposes captured tensors and the ONNX session. WebGPU and
-WebGL have no validated Piper path and remain unavailable for this model.
+CPU-readable PCM, and disposes captured tensors and the ONNX session. The GPU path must independently demonstrate compute dispatch.
 The upstream eSpeak Emscripten factory also installs a worker-level `onmessage`
 handler whenever it sees `WorkerGlobalScope`. The adapter keeps the real browser
 worker environment, saves the benchmark RPC handler before the official

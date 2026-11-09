@@ -9,7 +9,8 @@ The skill also works when copied outside this checkout.
 - Inference belongs in headed Google Chrome. Node serves assets and controls runs.
 - Run Chrome benchmarks sequentially in disposable profiles. Do not use a personal
   profile or silently replace an unavailable GPU backend with CPU.
-- Keep weights, recordings, caches and raw runs ignored. Review public metadata.
+- Keep weights, caches and raw runs ignored. Publish only explicitly authorized
+  recording clips verified by the audio manifest; full WAVs are release assets.
 - Validate changes with `npm test`, `npm run validate`,
   `node tools/compare.mjs --check comparisons` and, after staging,
   `node tools/publication-check.mjs`. Test affected adapters in real Chrome.

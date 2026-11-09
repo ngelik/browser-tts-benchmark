@@ -1,21 +1,7 @@
 {
   "origin": "historical-import",
-  "note": "Allowlisted capability evidence from separate untimed probes. Timing workers were uninstrumented. CPU/GPU partitioning may remain; a nonzero GPU count does not prove GPU-exclusive execution.",
+  "note": "Allowlisted capability evidence from separate untimed probes. Timing workers were uninstrumented. CPU/GPU partitioning may remain; a nonzero GPU count does not prove GPU-exclusive execution. Published subset retains active backend evidence; original unpruned file is in commit 8dae4a37e61e662037fd73a58c7254e1dac9dd89.",
   "cells": [
-    {
-      "caseId": "paradee",
-      "backend": "webgl",
-      "status": "unsupported",
-      "modelRevision": "ed2934d4df8a4fd891e29584c5e1104649409765",
-      "attemptedInference": true,
-      "error": {
-        "name": "Error",
-        "message": "{\"name\":\"Error\",\"message\":\"Failed to load model as ONNX format: Error: unsupported data type: FLOAT16\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\",\"stack\":\"Error: Failed to load model as ONNX format: Error: unsupported data type: FLOAT16\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\\n    at Sr.load (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1801:28277)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1858\\n    at Nn.event (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:6:23633)\\n    at Ar.initialize (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1736)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1560\"}",
-        "stack": "Error: {\"name\":\"Error\",\"message\":\"Failed to load model as ONNX format: Error: unsupported data type: FLOAT16\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\",\"stack\":\"Error: Failed to load model as ONNX format: Error: unsupported data type: FLOAT16\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\\n    at Sr.load (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1801:28277)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1858\\n    at Nn.event (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:6:23633)\\n    at Ar.initialize (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1736)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1560\"}\n    at Worker.message (http://127.0.0.1:4187/gpu-experiment/probe.js:179:23)",
-        "timeoutMs": null
-      },
-      "originalReceiptSha256": "3c5cbbd6169b801c241f163ef1a0670c1934ce0f096a9386ab4339880d3f73ef"
-    },
     {
       "caseId": "paradee",
       "backend": "webgpu",
@@ -29,9 +15,6 @@
         "wasm"
       ],
       "executionProviderDispatch": {
-        "webglDrawArrays": 0,
-        "webglDrawElements": 0,
-        "webglOtherDraws": 0,
         "webgpuQueueSubmits": 120,
         "webgpuDispatches": 1046,
         "webgpuIndirectDispatches": 0
@@ -90,9 +73,6 @@
         "wasm"
       ],
       "executionProviderDispatch": {
-        "webglDrawArrays": 0,
-        "webglDrawElements": 0,
-        "webglOtherDraws": 0,
         "webgpuQueueSubmits": 1472,
         "webgpuDispatches": 4568,
         "webgpuIndirectDispatches": 0
@@ -139,34 +119,6 @@
       "originalReceiptSha256": "bae766786828372799d6291a781bb44448eed449a6cc0d1888bd54c6dc56d7b9"
     },
     {
-      "caseId": "leokani-7m",
-      "backend": "webgl",
-      "status": "unsupported",
-      "modelRevision": "ba0beb24f7b124dc1eb297ffc28d01db892462bd",
-      "attemptedInference": true,
-      "error": {
-        "name": "Error",
-        "message": "{\"name\":\"Error\",\"message\":\"Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\",\"stack\":\"Error: Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\\n    at Sr.load (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1801:28277)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1858\\n    at Nn.event (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:6:23633)\\n    at Ar.initialize (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1736)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1560\"}",
-        "stack": "Error: {\"name\":\"Error\",\"message\":\"Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\",\"stack\":\"Error: Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\\n    at Sr.load (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1801:28277)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1858\\n    at Nn.event (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:6:23633)\\n    at Ar.initialize (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1736)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1560\"}\n    at Worker.message (http://127.0.0.1:4187/gpu-experiment/probe.js:179:23)",
-        "timeoutMs": null
-      },
-      "originalReceiptSha256": "d67ada3aba6be75d1af89968e3336cace0272b72ca086c53c06288401376c8b0"
-    },
-    {
-      "caseId": "leokani-4.5m",
-      "backend": "webgl",
-      "status": "unsupported",
-      "modelRevision": "d9eb742dfb6567872fe451d559674ec42c32e6c8",
-      "attemptedInference": true,
-      "error": {
-        "name": "Error",
-        "message": "{\"name\":\"Error\",\"message\":\"Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\",\"stack\":\"Error: Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\\n    at Sr.load (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1801:28277)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1858\\n    at Nn.event (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:6:23633)\\n    at Ar.initialize (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1736)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1560\"}",
-        "stack": "Error: {\"name\":\"Error\",\"message\":\"Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\",\"stack\":\"Error: Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\\n    at Sr.load (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1801:28277)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1858\\n    at Nn.event (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:6:23633)\\n    at Ar.initialize (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1736)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1560\"}\n    at Worker.message (http://127.0.0.1:4187/gpu-experiment/probe.js:179:23)",
-        "timeoutMs": null
-      },
-      "originalReceiptSha256": "08b75692337156d4907e617819514f12a4f580c8ff3846a8eefabdab2ff2c8c7"
-    },
-    {
       "caseId": "leokani-4.5m",
       "backend": "webgpu",
       "status": "gpu-verified",
@@ -179,9 +131,6 @@
         "wasm"
       ],
       "executionProviderDispatch": {
-        "webglDrawArrays": 0,
-        "webglDrawElements": 0,
-        "webglOtherDraws": 0,
         "webgpuQueueSubmits": 1656,
         "webgpuDispatches": 5028,
         "webgpuIndirectDispatches": 0
@@ -280,20 +229,6 @@
       "originalReceiptSha256": "8a1194736871bbbbbdeac34100e63fbac4b92b659cc3f1057fe60cbc38698868"
     },
     {
-      "caseId": "pivo-curated",
-      "backend": "webgl",
-      "status": "unsupported",
-      "modelRevision": "515d84fc3420da6ae138f1b81017fcbc24d622a8",
-      "attemptedInference": true,
-      "error": {
-        "name": "Error",
-        "message": "Failed to load model as ONNX format: TypeError: int64 is not supported\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')",
-        "stack": "Error: Failed to load model as ONNX format: TypeError: int64 is not supported\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\n    at Worker.onMessage (http://127.0.0.1:4187/gpu-experiment/probe.js:234:66)",
-        "timeoutMs": null
-      },
-      "originalReceiptSha256": "1877e65f865f634bb9a05f076df1779f1ac58321e7614d050c61fe3c1969965f"
-    },
-    {
       "caseId": "phonon",
       "backend": "webgpu",
       "status": "gpu-verified",
@@ -342,22 +277,6 @@
       "sampleRate": 24000,
       "pcmSha256": "8d390f3f7bf36ff00283e7d8096559e8148a49a2b2d82b61d2fb8d22b1f3e487",
       "originalReceiptSha256": "23ed6bad22a4775f1b4df195b5ba001498f565c2aa233352d834974502cd47b5"
-    },
-    {
-      "caseId": "phonon",
-      "backend": "webgl",
-      "status": "unsupported",
-      "modelRevision": "92741c5b07d085ff840e26fea8ce43110b87852f",
-      "attemptedInference": false,
-      "originalReceiptSha256": "4e545c3d231ead565ef9d5227d2a6ff86d8461c4e6e99bd4a4a63457ac23ba80"
-    },
-    {
-      "caseId": "woof",
-      "backend": "webgl",
-      "status": "unsupported",
-      "modelRevision": "local-one-voice-parts-sha256-pinned",
-      "attemptedInference": false,
-      "originalReceiptSha256": "b0627d94c9b3c593103203dcc6b87717b6059518921483339f1f59361c31ace4"
     },
     {
       "caseId": "woof",

@@ -82,7 +82,7 @@
   "notes": [
     "Same 20,000-character article; Chrome on Apple M1 Pro. Generation medians: five warm runs per available backend.",
     "CPU timings are from the earlier campaign and include local audio storage; GPU timings exclude it. These are contextual comparisons, not controlled speedup estimates.",
-    "Woof has no CPU measurement: it already used WebGPU in the original experiment. All tested WebGL implementations were unavailable or unsupported.",
+    "Woof has no CPU measurement: it already used WebGPU in the original experiment.",
     "Startup, memory and downloads are original-campaign values: CPU/WASM for five models, WebGPU for Woof. They were not remeasured for the new GPU paths.",
     "First sound is the measured first nonzero output, not a human judgment of audible speech. Memory is sampled total Chrome-process-tree peak RSS from Play through WAV-ready, including browser baseline; not model RAM or GPU VRAM.",
     "Downloads include unique HTTP bodies for models, runtime and supporting assets, in decimal MB. The 1 Mbps estimate is bytes / 125,000: ideal transfer only, excluding overhead, latency and initialization.",

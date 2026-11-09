@@ -22,12 +22,6 @@
             "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864"
           },
           {
-            "path": "dist/ort.webgl.min.mjs",
-            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgl.min.mjs",
-            "bytes": 454343,
-            "sha256": "bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271"
-          },
-          {
             "path": "dist/ort-wasm-simd-threaded.mjs",
             "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.mjs",
             "bytes": 20321,
@@ -122,9 +116,22 @@
       },
       "backends": [
         "cpu",
-        "webgpu",
-        "webgl"
-      ]
+        "webgpu"
+      ],
+      "support": {
+        "voiceCount": 4,
+        "bundledVoiceCount": 4,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned benchmark checkpoint",
+        "sources": [
+          "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/raw/ed2934d4df8a4fd891e29584c5e1104649409765/README.md",
+          "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/resolve/ed2934d4df8a4fd891e29584c5e1104649409765/config.json"
+        ],
+        "notes": "Four embedded voices: af_heart, bf_isabella, am_puck, bm_fable. Only af_heart is benchmarked. Accents are not separate languages."
+      }
     },
     "phonon": {
       "displayName": "Phonon 31M q8",
@@ -261,7 +268,21 @@
       "backends": [
         "cpu",
         "webgpu"
-      ]
+      ],
+      "support": {
+        "voiceCount": 102,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned benchmark checkpoint plus separately pinned compatible voice catalog",
+        "sources": [
+          "https://huggingface.co/gradium/phonon-31m-en/raw/92741c5b07d085ff840e26fea8ce43110b87852f/README.md",
+          "https://huggingface.co/gradium/phonon-voices/resolve/0ee17205f254b5abc43b266c8a0f215565c352f7/voices.jsonl"
+        ],
+        "notes": "102 embeddings in the separately pinned official catalog; only default is staged and benchmarked. Voice catalog locales do not expand this English checkpoint language support."
+      }
     },
     "leokani-7m": {
       "displayName": "Leokani 7M INT8",
@@ -284,14 +305,6 @@
             "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs",
             "bytes": 66261,
             "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
-            "package": "onnxruntime-web",
-            "version": "1.23.2"
-          },
-          {
-            "path": "dist/ort.webgl.min.mjs",
-            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgl.min.mjs",
-            "bytes": 454343,
-            "sha256": "bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271",
             "package": "onnxruntime-web",
             "version": "1.23.2"
           },
@@ -519,9 +532,21 @@
       },
       "backends": [
         "cpu",
-        "webgpu",
-        "webgl"
-      ]
+        "webgpu"
+      ],
+      "support": {
+        "voiceCount": 1,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned benchmark checkpoint",
+        "sources": [
+          "https://huggingface.co/milliwattlabs/leokani-tts-7M/raw/ba0beb24f7b124dc1eb297ffc28d01db892462bd/README.md"
+        ],
+        "notes": "One female American English voice; no other voice is exposed by this checkpoint."
+      }
     },
     "leokani-4.5m": {
       "displayName": "Leokani 4.5M INT8",
@@ -544,14 +569,6 @@
             "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs",
             "bytes": 66261,
             "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
-            "package": "onnxruntime-web",
-            "version": "1.23.2"
-          },
-          {
-            "path": "dist/ort.webgl.min.mjs",
-            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgl.min.mjs",
-            "bytes": 454343,
-            "sha256": "bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271",
             "package": "onnxruntime-web",
             "version": "1.23.2"
           },
@@ -779,9 +796,21 @@
       },
       "backends": [
         "cpu",
-        "webgpu",
-        "webgl"
-      ]
+        "webgpu"
+      ],
+      "support": {
+        "voiceCount": 1,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned benchmark checkpoint",
+        "sources": [
+          "https://huggingface.co/milliwattlabs/leokani-tts-4.5M/raw/d9eb742dfb6567872fe451d559674ec42c32e6c8/README.md"
+        ],
+        "notes": "One female American English voice, Dala; the 7M and 4.5M checkpoints share the voice."
+      }
     },
     "pivo-curated": {
       "displayName": "PiVo 1.4M curated (Pi voice)",
@@ -804,14 +833,6 @@
             "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs",
             "bytes": 66261,
             "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
-            "package": "onnxruntime-web",
-            "version": "1.23.2"
-          },
-          {
-            "path": "dist/ort.webgl.min.mjs",
-            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgl.min.mjs",
-            "bytes": 454343,
-            "sha256": "bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271",
             "package": "onnxruntime-web",
             "version": "1.23.2"
           },
@@ -966,12 +987,24 @@
       },
       "backends": [
         "cpu",
-        "webgpu",
-        "webgl"
+        "webgpu"
       ],
       "configuration": {
         "variant": "pivo-curated-v1",
         "fixture": "english-20k-v1"
+      },
+      "support": {
+        "voiceCount": 2,
+        "bundledVoiceCount": 2,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned benchmark checkpoint",
+        "sources": [
+          "https://huggingface.co/empero-ai/PiVo-1.4M/raw/515d84fc3420da6ae138f1b81017fcbc24d622a8/README.md"
+        ],
+        "notes": "Two embedded voices, Pi and Vo; this adapter benchmarks Pi only."
       }
     },
     "woof": {
@@ -1062,7 +1095,21 @@
       },
       "backends": [
         "webgpu"
-      ]
+      ],
+      "support": {
+        "voiceCount": 1,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned benchmark checkpoint",
+        "sources": [
+          "https://huggingface.co/ConwayResearch/Underdog-Woof/raw/be702960539777fc3f698e54335276a8391b00f9/README.md",
+          "https://github.com/ngelik/browser-tts-benchmark/blob/8dae4a37e61e662037fd73a58c7254e1dac9dd89/web/workers/woof.mjs"
+        ],
+        "notes": "The pinned browser one-voice case uses Isla. The separate two-voice Juno/Mira release is not this measured case."
+      }
     },
     "piper-en-gb-southern-english-female-low": {
       "displayName": "Piper en-GB Southern English Female low",
@@ -1079,6 +1126,12 @@
             "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7"
           },
           {
+            "path": "dist/ort.webgpu.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs",
+            "bytes": 66261,
+            "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864"
+          },
+          {
             "path": "dist/ort-wasm-simd-threaded.mjs",
             "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.mjs",
             "bytes": 20321,
@@ -1089,6 +1142,18 @@
             "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.wasm",
             "bytes": 11905541,
             "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.mjs",
+            "bytes": 51913,
+            "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.wasm",
+            "bytes": 25499390,
+            "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada"
           },
           {
             "path": "LICENSE",
@@ -1192,8 +1257,23 @@
         "requiresAcceptance": true
       },
       "backends": [
-        "cpu"
-      ]
+        "cpu",
+        "webgpu"
+      ],
+      "support": {
+        "voiceCount": 1,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned benchmark checkpoint",
+        "sources": [
+          "https://huggingface.co/rhasspy/piper-voices/resolve/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low/en_GB-southern_english_female-low.onnx.json",
+          "https://huggingface.co/rhasspy/piper-voices/raw/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low/MODEL_CARD"
+        ],
+        "notes": "One British English speaker in this checkpoint. The broader Piper voice repository contains other independent models and languages; they are not included in this count."
+      }
     }
   }
 }

@@ -12,7 +12,7 @@ const usage=`Browser TTS Benchmark
   npm run bench -- run --model phonon --backend cpu --smoke
   npm run bench -- run --model paradee --backend webgpu --scenario warm --machine "M1 Pro"
 
-Options: --model ID --backend cpu|webgpu|webgl --scenario warm|cold|cached|network|offline|switch
+Options: --model ID --backend cpu|webgpu --scenario warm|cold|cached|network|offline|switch
          --repetitions N --machine LABEL --chrome PATH --smoke --resources
          --accept-license --timeout-minutes N --predecessor ID --note TEXT
 

@@ -121,12 +121,12 @@ export async function createPhononAdapter() {
       if (!['cpu', 'webgpu'].includes(backend)) {
         return {
           status: 'unsupported',
-          reason: 'Phonon supports explicit CPU/WASM and WebGPU backends; it has no WebGL execution provider.',
+          reason: 'Phonon supports explicit CPU/WASM and WebGPU backends.',
           backendEffective: 'none',
           voice: 'default',
           precision: 'q8 GGUF',
           settings: { quant: 'q8', threads: 1, seed: String(SEED) },
-          capability: { gpuDispatchVerified: false, description: 'This Phonon runtime does not implement WebGL.' },
+          capability: { gpuDispatchVerified: false, description: 'Requested backend is not available in this Phonon runtime.' },
         };
       }
       let adapterInfo = null;

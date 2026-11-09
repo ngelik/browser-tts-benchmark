@@ -34,6 +34,11 @@ with an ignored checkout-local cache: `npm ci --cache .cache/npm`. Do not use
 Read `docs/CLI.md`, `docs/PROTOCOL.md` and the selected model's `docs/LICENSING.md`
 entry **in that checkout**. Installed copies of this skill may be outside the
 repository: resolve those documents from the checkout, not the skill directory.
+Record supported voice count, bundled voice count, language count/codes, scope and
+primary source URLs in the model manifest. Separate pinned checkpoint support from
+a broader family/catalog and from the voice/language actually tested. Use null for
+unverified counts, never zero or a guess. Refresh `docs/MODEL_SUPPORT.md` with evidence.
+
 Record the Git commit. Check installed desktop Chrome, available disk/RAM and
 hardware WebGPU if requested. Keep benchmark inference sequential and use mains
 power where possible. Record relevant background load, order and thermal limits.
@@ -65,7 +70,7 @@ permission to redistribute weights or publish recordings.
   warm-up and at least five scored repetitions. Keep all repetitions, including
   errors; do not substitute projections or synthetic audio.
 - WebGPU must show actual compute dispatch and awaited CPU-readable PCM. Report
-  mixed CPU/WASM work. Record unsupported WebGL/GPU paths as unavailable; do not
+  mixed CPU/WASM work. Record unsupported GPU paths as unavailable; do not
   change backend silently. Headless or software-renderer runs are diagnostics.
 - Do not change timer boundaries, text, voice, precision, or preprocessing under
   an existing result configuration. Preserve and disclose model-specific settings.
@@ -98,17 +103,35 @@ npm run report -- runs/RUN_ID/result.json
 npm run submit -- runs/RUN_ID/result.json
 npm test
 npm run validate
-git add results/RUN_ID
+npm run reference
+git add results/RUN_ID README.md
 node tools/publication-check.mjs
 ```
 
+Every result PR must refresh the generated **README → Reference results** section
+with `npm run reference` (submission does this automatically), including failed
+or unsupported full attempts. Keep all previous run links; never bury a new model
+in a separate section or delete older measurements. Run `npm run reference -- --check`;
+CI rejects missing or stale entries. Include comparison tables/charts in that same
+section through the generator.
+
 Review the four public result files and stage them before the tracked-file
-publication check. Keep `.cache/`, raw runs, browser profiles, model binaries and
-recordings out of Git. Read `CONTRIBUTING.md` and the PR template. The generated
+publication check. Keep `.cache/`, raw runs, browser profiles and model binaries
+out of Git. Authorized recordings follow the audio workflow below. Read `CONTRIBUTING.md` and the PR template. The generated
 SVG/table are derived from JSON; fix the generator or evidence instead of hand
 editing numbers. Use `npm run compare -- --out comparisons/NAME ...` only for
 compatible native input bundles; never combine historical CPU/GPU protocols into
 speedup ratios or pool different machines. Read all run-specific notes.
+
+When audio publication is authorized, use `npm run audio -- add --result
+results/RUN_ID/result.json --wav PATH --model MODEL --backend BACKEND`, then
+`npm run audio -- check`. Read `audio/README.md`, retain source attribution and
+model/output terms, and upload the exact full WAV to the uniquely named repository
+release asset from the manifest. Verify the uploaded digest. Commit only the
+verified small clip and manifest to Git, refresh `npm run reference`, and include
+them in the result PR. Never substitute a demo, regenerate audio outside the scored
+run, silently normalize the recording, or claim the code license covers the voice.
+Prior explicit audio approval persists; do not ask again.
 
 When publication is authorized, create a result branch, push to an authorized
 remote (or the user's fork), and open a PR with commands, hardware, source commit,

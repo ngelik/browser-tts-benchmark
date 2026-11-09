@@ -59,7 +59,7 @@ async function initialize({ model, backend, probe, probeText }) {
     if (adapter.info?.isFallbackAdapter || adapter.isFallbackAdapter) return unsupported('Software WebGPU adapters are not ranked');
     gpu = adapter.info?.description || adapter.info?.vendor || 'Hardware WebGPU adapter';
   }
-  if (!['cpu', 'webgpu', 'webgl'].includes(backend)) return unsupported('Unknown backend');
+  if (!['cpu', 'webgpu'].includes(backend)) return unsupported('Unknown backend');
   const response = await fetch('/runtimes/leokani/config-' + variant + '.json');
   if (!response.ok) throw new Error('Missing local Leokani configuration');
   config = await response.json();
@@ -71,7 +71,7 @@ async function initialize({ model, backend, probe, probeText }) {
     const pending = tail.then(() => Reflect.apply(create, cpuOrt.InferenceSession, [bytes, options]));
     tail = pending.catch(() => {}); return pending;
   };
-  ttsOrt = backend === 'cpu' ? cpuOrt : await import(ORT + (backend === 'webgpu' ? 'ort.webgpu.min.mjs' : 'ort.webgl.min.mjs'));
+  ttsOrt = backend === 'cpu' ? cpuOrt : await import(ORT + 'ort.webgpu.min.mjs');
   if (backend !== 'cpu') configure(ttsOrt, backend === 'webgpu');
   const entries = Object.entries(config.files).filter(([key]) => key !== 'ortWasm');
   const bytes = Object.fromEntries(await Promise.all(entries.map(async ([key, file]) => [key, await pinned(file)])));
@@ -80,10 +80,9 @@ async function initialize({ model, backend, probe, probeText }) {
   const { create: createG2P } = await import('/runtimes/leokani/load.mjs?v=6f666de59070ed04');
   g2p = await createG2P(null, cpuOrt, { files: { lexicon: bytes.g2pLexicon, encoder: bytes.g2pEncoder,
     decoder: bytes.g2pDecoder, context: bytes.g2pContext }, sha256: false, executionProviders: ['wasm'] });
-  const executionProviders = backend === 'cpu' ? ['wasm'] : backend === 'webgpu' ? ['webgpu', 'wasm'] : ['webgl'];
+  const executionProviders = backend === 'cpu' ? ['wasm'] : ['webgpu', 'wasm'];
   try { session = await ttsOrt.InferenceSession.create(bytes.model, { executionProviders, graphOptimizationLevel: 'all' }); }
   catch (error) {
-    if (backend === 'webgl' && /int64|FLOAT16|not supported|unsupported|no available backend/i.test(String(error))) return unsupported('Pinned Leokani WebGL graph is incompatible: ' + String(error).slice(0, 500));
     throw error;
   }
   if (backend === 'webgpu') {
@@ -109,7 +108,6 @@ async function initialize({ model, backend, probe, probeText }) {
       if (count === 0) return unsupported('No actual WebGPU dispatch observed during Leokani synthesis');
       capability = { gpuDispatchVerified: true, description: `Observed ${count} compute dispatches in a separate utterance. WebGPU TTS with WASM fallback; CPU G2P and JavaScript iSTFT. Hooks removed before timing.` };
     }
-    if (backend === 'webgl') return unsupported('WebGL lacks validated draw-dispatch evidence in this adapter');
   }
   return { ...INFO, status: 'measured', backendEffective: backend === 'cpu' ? 'cpu/wasm' : 'webgpu+wasm', gpu,
     settings: { variant, threads: 1, speed: 1, sampleRate, executionProviders, g2pExecutionProviders: ['wasm'], initializationWarmup: 'Hello there.' }, capability };

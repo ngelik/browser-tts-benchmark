@@ -28,10 +28,11 @@ test('fresh asset import reads URL-backed runtime notices from the provided asse
   await mkdir(join(dir,'lib'));await mkdir(join(dir,'node_modules/mock-runtime'),{recursive:true});
   await copyFile(join(root,'lib/assets.mjs'),join(dir,'lib/assets.mjs'));
   await copyFile(join(root,'lib/catalog.mjs'),join(dir,'lib/catalog.mjs'));
+  await copyFile(join(root,'lib/model-support.mjs'),join(dir,'lib/model-support.mjs'));
   await writeFile(join(dir,'node_modules/mock-runtime/package.json'),JSON.stringify({name:'mock-runtime',version:'1.0.0'}));
   const bytes=Buffer.from('Pinned runtime license fixture\n');
   const file={path:'LICENSE',target:'licenses/mock-runtime/LICENSE',bytes:bytes.length,sha256:sha(bytes),url:'https://example.invalid/LICENSE'};
-  const model={displayName:'Import test',modelRevision:'a'.repeat(40),backends:['cpu'],license:{requiresAcceptance:false},runtime:{package:'mock-runtime',version:'1.0.0',files:[file]},assets:[]};
+  const model={displayName:'Import test',modelRevision:'a'.repeat(40),backends:['cpu'],support:{voiceCount:null,bundledVoiceCount:null,languageCount:null,languages:null,scope:'Test fixture',sources:['https://example.invalid/model'],notes:'Unknown test support'},license:{requiresAcceptance:false},runtime:{package:'mock-runtime',version:'1.0.0',files:[file]},assets:[]};
   await writeFile(join(dir,'assets.lock.json'),JSON.stringify({schemaVersion:1,models:{mock:model}}));
   const source=join(dir,'asset-tree');await mkdir(join(source,'licenses/mock-runtime'),{recursive:true});
   await writeFile(join(source,file.target),bytes);

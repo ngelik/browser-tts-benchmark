@@ -122,7 +122,7 @@ async function load(data) {
   const began = performance.now();
   caseId = data.caseId ?? 'pivo-curated';
   requestedBackend = data.options?.backend ?? 'cpu';
-  if (!['cpu', 'webgpu', 'webgl'].includes(requestedBackend)) {
+  if (!['cpu', 'webgpu'].includes(requestedBackend)) {
     self.postMessage({ type: 'ready', info: unsupported('Unknown PiVo backend: ' + requestedBackend) });
     return;
   }
@@ -139,7 +139,7 @@ async function load(data) {
     }
     gpuAdapterInfo = adapter.info?.description || adapter.info?.vendor || 'Hardware WebGPU adapter';
   }
-  const bundle = requestedBackend === 'cpu' ? 'ort.wasm.min.mjs' : requestedBackend === 'webgpu' ? 'ort.webgpu.min.mjs' : 'ort.webgl.min.mjs';
+  const bundle = requestedBackend === 'cpu' ? 'ort.wasm.min.mjs' : 'ort.webgpu.min.mjs';
   ort = await import('/runtimes/onnxruntime-web/1.23.2/' + bundle);
   ort.env.logLevel = 'error';
   ort.env.wasm.numThreads = 1;
@@ -150,7 +150,7 @@ async function load(data) {
     mjs: '/runtimes/onnxruntime-web/1.23.2/' + wasm + '.mjs',
     wasm: '/runtimes/onnxruntime-web/1.23.2/' + wasm + '.wasm',
   };
-  executionProviders = requestedBackend === 'cpu' ? ['wasm'] : requestedBackend === 'webgpu' ? ['webgpu', 'wasm'] : ['webgl'];
+  executionProviders = requestedBackend === 'cpu' ? ['wasm'] : ['webgpu', 'wasm'];
   const [metadataBytes, dictionaryBytes, articleBytes] = await Promise.all([
     fetchBytes(`${MODEL_ROOT}/metadata.json`, 'PiVo model metadata'),
     fetchBytes(`${MODEL_ROOT}/cmudict.dict`, 'CMU pronunciation dictionary'),
@@ -223,10 +223,6 @@ async function load(data) {
       });
     }
   } catch (error) {
-    if (requestedBackend === 'webgl' && /int64|FLOAT16|unsupported|not supported|no available backend/i.test(String(error?.message ?? error))) {
-      self.postMessage({ type: 'ready', info: unsupported('Pinned PiVo WebGL provider cannot load this graph: ' + String(error?.message ?? error).slice(0, 400)) });
-      return;
-    }
     throw error;
   }
   if (requestedBackend === 'webgpu') {
@@ -249,10 +245,6 @@ async function load(data) {
     }
     if (!warmup.samples) throw new Error('PiVo initialization synthesis returned no samples');
   }
-  if (data.options?.probe && requestedBackend === 'webgl') {
-    self.postMessage({ type: 'ready', info: unsupported('WebGL synthesis completed, but this adapter lacks validated draw-dispatch evidence; no GPU score is published.') });
-    return;
-  }
   if (data.options?.probe && requestedBackend === 'webgpu' && dispatches === 0) {
     self.postMessage({ type: 'ready', info: unsupported('No WebGPU compute dispatch was observed during PiVo synthesis.') });
     return;
@@ -260,7 +252,7 @@ async function load(data) {
   if (data.options?.probe) capability = requestedBackend === 'webgpu'
     ? { gpuDispatchVerified: true, description: `Observed ${dispatches} WebGPU compute dispatches during an untimed PiVo probe; hooks were removed before timed synthesis.` }
     : { gpuDispatchVerified: null, description: `The ${requestedBackend} provider produced finite PiVo PCM in an untimed compatibility probe.` };
-  const effectiveBackend = requestedBackend === 'cpu' ? 'cpu/wasm' : requestedBackend === 'webgpu' ? 'webgpu+wasm' : 'webgl';
+  const effectiveBackend = requestedBackend === 'cpu' ? 'cpu/wasm' : 'webgpu+wasm';
   self.postMessage({ type: 'ready', info: {
     status: 'measured',
     modelId: 'PiVo-1.4M', revision: '515d84fc3420da6ae138f1b81017fcbc24d622a8',
