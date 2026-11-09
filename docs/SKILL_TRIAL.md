@@ -78,7 +78,37 @@ PR steps; only validated metadata, table, chart and checksums belong in Git.
 GPU/WebGL remain unvalidated for this adapter. The model graph has no validated
 seed input, so output duration and waveform can vary across repetitions.
 
-The scored result is published separately after the exact implementation commit
-is public. Its receipts, rather than the diagnostic timings above, define the
-benchmark result. Do not pool it with historical protocols or runs from a
-different source fingerprint.
+## Completed scored result
+
+The exact implementation commit
+[`e1efaa2c3220f4a19c6c730a2037395854531428`](https://github.com/ngelik/browser-tts-benchmark/commit/e1efaa2c3220f4a19c6c730a2037395854531428)
+was published before scoring and merged through [PR #7](https://github.com/ngelik/browser-tts-benchmark/pull/7).
+The checkout remained clean throughout one full warm-up and five scored articles.
+All six articles passed 93-chunk, finite/nonempty PCM validation.
+
+| Metric | Measured result |
+|---|---:|
+| Median full-article generation | 167.568 s |
+| Observed generation range | 167.194–167.972 s |
+| Scored repetitions | 5, plus 1 excluded full warm-up |
+| Median first PCM | 1.783 s |
+| Median output duration | 1,054.352 s |
+| Median generation / audio duration | 0.159060 |
+
+[Generated report, table and chart](../results/2026-11-09t07-33-26-519z-piper-en-gb-southern-english-female-low-cpu-warm-810f85a3/summary.md)
+are derived from the submitted receipt. Source fingerprint:
+`22cba72c376cc714ebe9b82175d87b70b941d1dce616d279832048d0a6501b8e`.
+The final WAV was independently reconciled: PCM16 mono, 16 kHz,
+16,846,592 samples, 33,693,228 bytes, SHA-256
+`39e2c3a873e4001dfaaaa6fb9291a9321f2c5ce077eb7db79000f756631a0c3a`.
+It remains local and is not part of the public bundle.
+
+Conditions: AC power attached; pre-run load averages 1.40 / 1.48 / 1.60;
+no concurrent benchmark or test suite. `pmset` reported no thermal/performance
+warning, but temperatures and thermal state were not instrumented. The host
+blocked `ps`/`top` access, so background process inventory was unavailable.
+No warm-trial errors, retries or discarded repetitions occurred. No memory or
+network-throttle metrics were requested for this warm execution trial.
+
+These receipts define the scored result; development diagnostics do not.
+Do not pool it with historical protocols or a different source fingerprint.
