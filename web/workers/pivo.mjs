@@ -249,6 +249,10 @@ async function load(data) {
     }
     if (!warmup.samples) throw new Error('PiVo initialization synthesis returned no samples');
   }
+  if (data.options?.probe && requestedBackend === 'webgl') {
+    self.postMessage({ type: 'ready', info: unsupported('WebGL synthesis completed, but this adapter lacks validated draw-dispatch evidence; no GPU score is published.') });
+    return;
+  }
   if (data.options?.probe && requestedBackend === 'webgpu' && dispatches === 0) {
     self.postMessage({ type: 'ready', info: unsupported('No WebGPU compute dispatch was observed during PiVo synthesis.') });
     return;

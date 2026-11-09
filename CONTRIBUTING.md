@@ -45,3 +45,9 @@ hash mismatch fails closed; investigate it rather than accepting new bytes.
 See [the adapter contract](docs/ADDING_MODELS.md) for adding a model or backend.
 
 For a multi-run table and SVG, use `npm run compare -- --out comparisons/<name> results/<id>/result.json results/<other-id>/result.json`. Commit the input bundles and generated comparison together; CI checks both.
+
+Please follow [community conduct](CODE_OF_CONDUCT.md). Automated dependency PRs
+are maintenance proposals, not evidence that changed runtimes preserve a model’s
+performance: update byte/hash pins deliberately and run affected Chrome adapters
+before merging runtime changes. Keep `.gitattributes` LF normalization so source
+fingerprints and the fixed article remain identical across operating systems.
