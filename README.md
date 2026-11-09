@@ -62,6 +62,31 @@ and [backend dispatch evidence](docs/backend-evidence.json). See the
 and 30 later GPU measurements; failures and diagnostic limitations remain explicit.
 Speech quality is left to listening review.
 
+## Use with an AI agent
+
+Give your agent this instruction:
+
+> Use the [browser-tts-benchmark skill](skills/browser-tts-benchmark/SKILL.md).
+> Benchmark MODEL in Google Chrome on CPU (and WebGPU if requested), verify the
+> full article and audio, then prepare a table, chart and result pull request.
+> I authorize publishing the reviewed source and result metadata to my fork.
+
+Replace MODEL with a catalog ID or Hugging Face model URL. A new model goes through
+runtime/asset/license verification and a code PR before scored results. For a
+random model, the skill records the eligible pool, seed and selection before any
+timing. It never treats smoke tests, native Python inference or CPU fallback as
+successful browser GPU measurements.
+
+The skill is agent-neutral Markdown with a small Node.js selection helper. Agents
+can read it directly from the clone. For Codex discovery, copy the entire
+`skills/browser-tts-benchmark/` folder to `~/.codex/skills/browser-tts-benchmark/`
+when that destination does not already exist, then invoke `$browser-tts-benchmark`.
+Review an existing installed copy before replacing it. Other agents can load the
+same `SKILL.md`; no Codex-only tool is required by the workflow.
+
+Publication follows the user's authorization. Without it, the skill prepares
+local result files and does not push. Audio and model binaries stay local.
+
 ## Run a benchmark
 
 Requirements: Node.js 22 or newer, npm, installed Google Chrome, enough free disk
@@ -130,7 +155,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for review requirements and adding models
 
 ## Scope and licensing
 
-The original harness and fixture are MIT licensed. Model/runtime licenses are
+The original harness, agent skill and fixture are MIT licensed; [retained notices](NOTICE.md) identify exceptions. Model/runtime licenses are
 separate: Leokani weights and Woof have noncommercial restrictions; Paradee's
 tested frontend includes a GPL component. Restricted weights, upstream engine
 bundles, recordings and browser profiles are not redistributed here.

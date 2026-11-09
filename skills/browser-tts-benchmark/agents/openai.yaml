@@ -1,0 +1,4 @@
+interface:
+  display_name: "Browser TTS Benchmark"
+  short_description: "Run and publish reproducible browser TTS benchmarks"
+  default_prompt: "Use $browser-tts-benchmark to run a verified Chrome TTS benchmark and prepare a result pull request."

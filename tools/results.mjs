@@ -13,6 +13,32 @@ const text = (x, max=500) => typeof x === 'string' && x.length > 0 && x.length <
 const slug = x => typeof x === 'string' && /^[a-z0-9][a-z0-9._-]{0,119}$/.test(x);
 const keys = (x, allowed, at) => { check(object(x), `${at}: expected object`); for (const k of Object.keys(x)) check(allowed.includes(k), `${at}: unexpected field ${k}`); };
 const int = (x, low=0, high=Number.MAX_SAFE_INTEGER) => Number.isSafeInteger(x) && x >= low && x <= high;
+const closeEnough = (actual, expected) => Math.abs(actual - expected) <= Math.max(1e-9, Math.abs(expected) * 1e-9);
+
+function validateNativeMetrics(t) {
+  const m=t.metrics;
+  if(!object(m))return;
+  const audioSeconds=t.samples/t.sampleRate;
+  const realTimeFactor=t.generationMs/(audioSeconds*1000);
+  const timingTolerance=Math.max(0.01,t.generationMs*1e-6);
+  if(m.audioSeconds!==undefined&&m.audioSeconds!==null)check(closeEnough(m.audioSeconds,audioSeconds),'Native audioSeconds must equal samples/sampleRate');
+  if(m.realTimeFactor!==undefined&&m.realTimeFactor!==null)check(closeEnough(m.realTimeFactor,realTimeFactor),'Native realTimeFactor must equal generationMs/audio duration');
+  for(const name of ['firstPcmMs','firstSourceChunkCompletedMs'])if(m[name]!==undefined&&m[name]!==null)check(m[name]<=t.generationMs+timingTolerance,'Native '+name+' cannot exceed generationMs');
+  if(m.downloadBytes!==undefined&&m.downloadBytes!==null)check(int(m.downloadBytes),'Native downloadBytes must be an integer');
+  if(m.idealDownloadSecondsAt1Mbps!==undefined&&m.idealDownloadSecondsAt1Mbps!==null){
+    check(int(m.downloadBytes),'Native idealDownloadSecondsAt1Mbps requires integer downloadBytes');
+    check(closeEnough(m.idealDownloadSecondsAt1Mbps,m.downloadBytes/125000),'Native idealDownloadSecondsAt1Mbps must equal downloadBytes/125000');
+  }
+}
+
+function validateNativeBackend(c) {
+  const labels={
+    cpu:/^(?:cpu|cpu\/wasm|wasm)$/i,
+    webgpu:/^(?:webgpu|webgpu\+wasm)$/i,
+    webgl:/^webgl$/i,
+  };
+  check(labels[c.backendRequested].test(c.backendEffective),`Effective backend ${c.backendEffective} does not match requested ${c.backendRequested}`);
+}
 
 export function validateResult(d, { publication = false } = {}) {
   keys(d, ['schemaVersion','id','createdAt','origin','protocol','environment','fixture','source','assets','cells','notes'], 'result');
@@ -33,7 +59,9 @@ export function validateResult(d, { publication = false } = {}) {
   if(publication) check(!e.headless,'Ranked contributions require headed Chrome; headless runs are diagnostics');
   keys(d.fixture,['id','sha256','characters','chunks'],'fixture');
   check(slug(d.fixture.id) && hash(d.fixture.sha256) && int(d.fixture.characters,1,10000000) && int(d.fixture.chunks,1,100000),'Invalid fixture');
-  if(!p.smoke && d.fixture.id==='english-20k-v1') check(d.fixture.sha256===FIXTURE_SHA && d.fixture.characters===20000 && d.fixture.chunks===93,'Canonical fixture mismatch');
+  const canonicalFixture=d.fixture.id==='english-20k-v1' && d.fixture.sha256===FIXTURE_SHA && d.fixture.characters===20000 && d.fixture.chunks===93;
+  if(!p.smoke && d.fixture.id==='english-20k-v1') check(canonicalFixture,'Canonical fixture mismatch');
+  if(publication && d.origin==='native' && !p.smoke) check(canonicalFixture,'Native publication requires the canonical fixture');
   keys(d.source,['gitCommit','dirty','manifestSha256'],'source');
   check((d.source.gitCommit===null || /^[a-f0-9]{40,64}$/.test(d.source.gitCommit)) && typeof d.source.dirty==='boolean' && hash(d.source.manifestSha256),'Invalid source provenance');
   if(publication && d.origin==='native') check(d.source.gitCommit!==null && !d.source.dirty,'Publish native runs from a clean committed checkout');
@@ -53,6 +81,7 @@ export function validateResult(d, { publication = false } = {}) {
     check(Array.isArray(c.warmup)&&Array.isArray(c.trials),'Trial arrays required');
     if(c.status==='measured'){
       check(c.trials.length===p.repetitions && c.warmup.length===p.warmupRuns,'Measured cell repetition count mismatch');
+      if(d.origin==='native')validateNativeBackend(c);
       if(c.backendRequested!=='cpu')check(c.capability.gpuDispatchVerified===true,'GPU results require actual dispatch evidence');
     } else check(text(c.reason,2000),'Unsupported/error cell requires a reason');
     if(c.status==='unsupported')check(c.trials.length===0,'Unsupported cell cannot contain scores');
@@ -65,6 +94,7 @@ export function validateResult(d, { publication = false } = {}) {
       if(t.pcmSha256===null)check(t.audio&&hash(t.audio.sha256),'Historical records without float PCM hashes require WAV hashes');
       if(t.audio!==undefined){keys(t.audio,['sha256','bytes'],'audio');check(hash(t.audio.sha256)&&int(t.audio.bytes,1),'Invalid audio digest');}
       if(t.metrics!==undefined){check(object(t.metrics),'Invalid metrics');for(const [k,v] of Object.entries(t.metrics))check(/^[a-zA-Z][a-zA-Z0-9]{0,79}$/.test(k)&&(v===null||finite(v)&&v>=0),'Metrics must be finite, nonnegative or null');}
+      if(d.origin==='native'&&t.metrics!==undefined)validateNativeMetrics(t);
     }
   }
   if(d.notes!==undefined)check(Array.isArray(d.notes)&&d.notes.length<=50&&d.notes.every(n=>text(n,2000)),'Invalid notes');

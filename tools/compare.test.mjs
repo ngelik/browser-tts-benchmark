@@ -3,8 +3,9 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { buildComparison } from './compare.mjs';
 const raw = JSON.parse(await readFile(new URL('../results/historical-2026-11-08-m1pro-gpu-warm/result.json', import.meta.url)));
+const native = JSON.parse(await readFile(new URL('../results/2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0/result.json', import.meta.url)));
 function example() {
-  const d = structuredClone(raw);
+  const d = structuredClone(native);
   d.origin = 'native'; d.source.gitCommit = 'a'.repeat(40); d.source.dirty = false;
   d.cells = d.cells.filter(c => c.status === 'measured').slice(0, 1);
   d.cells[0].settings = { speed: 1, nested: { pronunciation: 'fixed' }, executionProviders: ['webgpu','wasm'] };

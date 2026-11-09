@@ -1,0 +1,37 @@
+name: Benchmark bug
+description: Report a reproducible harness, model adapter or reporting issue.
+title: "[Bug] "
+body:
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and source commit
+      description: Include model/backend/scenario and the exact commit, with private paths removed.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Hardware and Chrome
+      description: Coarse CPU/GPU, RAM, OS, Chrome version, and whether the desktop run used hardware WebGPU. Do not include a hostname.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and observed behavior
+      description: Include the error and a minimal reproduction. Unsupported is distinct from a runtime error.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Public evidence
+      description: Link a reviewed result JSON or PR if available. Do not attach weights, profiles, private logs, credentials or restricted recordings.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Publication review
+      options:
+        - label: I reviewed this report for private data and credentials.
+          required: true

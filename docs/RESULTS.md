@@ -10,7 +10,10 @@ Each published directory has exactly four generated artifacts:
 [JSON Schema](../schemas/result.schema.json) describes the structural contract.
 `tools/results.mjs` is the executable semantic validator: it also checks counts,
 canonical fixture identity, clean source provenance, GPU dispatch evidence,
-publication eligibility and common private-path/credential patterns.
+publication eligibility and common private-path/credential patterns. Native submissions
+must use the canonical article and their recorded source fingerprint must reproduce
+from the recorded Git commit. Fetch full history when validating a shallow clone:
+`git fetch --unshallow` (only for a shallow checkout).
 
 `generationMs` is elapsed wall time, not CPU-seconds. `samples` is mono sample
 count and `sampleRate` is Hz. `pcmSha256` hashes the actual float PCM representation
