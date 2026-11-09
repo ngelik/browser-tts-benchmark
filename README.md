@@ -87,8 +87,20 @@ same `SKILL.md`; no Codex-only tool is required by the workflow.
 Publication follows the user's authorization. Without it, the skill prepares
 local result files and does not push. Audio and model binaries stay local.
 
-The [fresh-clone skill trial](docs/SKILL_TRIAL.md) records a reproducible random
-Piper selection, integration issues, and full offline correctness evidence.
+The [fresh-clone skill trial](docs/SKILL_TRIAL.md) exercised the workflow with a
+reproducibly selected Piper en-GB model. On Apple M1 Pro / 16 GiB, headed Chrome
+157, one full warm-up and five full measured articles produced:
+
+| Model | Backend | Median generation | Observed min–max | First PCM, median |
+|---|---|---:|---:|---:|
+| Piper en-GB Southern English Female low | CPU/WASM, one thread | 167.57 s | 167.19–167.97 s | 1.78 s |
+
+[Full table and verified receipts](results/2026-11-09t07-33-26-519z-piper-en-gb-southern-english-female-low-cpu-warm-810f85a3/summary.md).
+This is a separate source configuration, not a pooled ranking with the earlier
+results. GPU paths and speech quality remain unvalidated. See the trial record
+for offline checks, licensing limits and integration issues.
+
+![Piper skill-trial generation result](results/2026-11-09t07-33-26-519z-piper-en-gb-southern-english-female-low-cpu-warm-810f85a3/chart.svg)
 
 ## Run a benchmark
 
