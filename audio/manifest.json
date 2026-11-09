@@ -222,6 +222,62 @@
       }
     },
     {
+      "resultId": "2026-11-09t20-33-26-966z-piper-en-gb-southern-english-female-low-cpu-warm-9a0ba981",
+      "model": "piper-en-gb-southern-english-female-low",
+      "backend": "cpu",
+      "trialIndex": 5,
+      "voice": "en_GB-southern_english_female-low (single speaker)",
+      "language": "en",
+      "attribution": "Piper / rhasspy Southern English Female low; OpenSLR 83 dataset; Ryan low checkpoint ancestry.",
+      "modelTerms": "Model license not separately stated in the card; dataset CC BY-SA 4.0; fine-tuned from Ryan low, whose dataset is CC BY-NC-SA 4.0",
+      "sourceUrls": [
+        "https://huggingface.co/rhasspy/piper-voices/resolve/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low/en_GB-southern_english_female-low.onnx.json",
+        "https://huggingface.co/rhasspy/piper-voices/raw/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low/MODEL_CARD"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-09t20-33-26-966z-piper-en-gb-southern-english-female-low-cpu-warm-9a0ba981--piper-en-gb-southern-english-female-low--cpu.wav",
+        "sha256": "996c9115184b36d14714bab80893f73993ddc187aea15f8774e071d6da87aa24",
+        "bytes": 960044,
+        "startSample": 0,
+        "sampleRate": 16000,
+        "samples": 480000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-09t20-33-26-966z-piper-en-gb-southern-english-female-low-cpu-warm-9a0ba981--piper-en-gb-southern-english-female-low--cpu-full.wav",
+        "sha256": "4b205c1777a3939fae48c4ed8f45a1a71ada66142d4abd183c80fee6c15b4f94",
+        "bytes": 33750572
+      }
+    },
+    {
+      "resultId": "2026-11-09t20-52-18-629z-piper-en-gb-southern-english-female-low-webgpu-warm-d8fb8392",
+      "model": "piper-en-gb-southern-english-female-low",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "en_GB-southern_english_female-low (single speaker)",
+      "language": "en",
+      "attribution": "Piper / rhasspy Southern English Female low; OpenSLR 83 dataset; Ryan low checkpoint ancestry.",
+      "modelTerms": "Model license not separately stated in the card; dataset CC BY-SA 4.0; fine-tuned from Ryan low, whose dataset is CC BY-NC-SA 4.0",
+      "sourceUrls": [
+        "https://huggingface.co/rhasspy/piper-voices/resolve/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low/en_GB-southern_english_female-low.onnx.json",
+        "https://huggingface.co/rhasspy/piper-voices/raw/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low/MODEL_CARD"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-09t20-52-18-629z-piper-en-gb-southern-english-female-low-webgpu-warm-d8fb8392--piper-en-gb-southern-english-female-low--webgpu.wav",
+        "sha256": "190034acc7f43ba6addad4b6135d2ac2d4814f24600e707036780b8cd2779e3e",
+        "bytes": 960044,
+        "startSample": 0,
+        "sampleRate": 16000,
+        "samples": 480000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-09t20-52-18-629z-piper-en-gb-southern-english-female-low-webgpu-warm-d8fb8392--piper-en-gb-southern-english-female-low--webgpu-full.wav",
+        "sha256": "7e9cb2ef736010d30fbf08b0ad06cbfe359702ee1c7016f3c6402a3212785fd4",
+        "bytes": 33568812
+      }
+    },
+    {
       "resultId": "historical-2026-11-08-m1pro-primary-warm",
       "model": "pivo-curated",
       "backend": "cpu",
