@@ -43,3 +43,5 @@ timing boundaries under an existing protocol ID. Version those changes. An asset
 hash mismatch fails closed; investigate it rather than accepting new bytes.
 
 See [the adapter contract](docs/ADDING_MODELS.md) for adding a model or backend.
+
+For a multi-run table and SVG, use `npm run compare -- --out comparisons/<name> results/<id>/result.json results/<other-id>/result.json`. Commit the input bundles and generated comparison together; CI checks both.

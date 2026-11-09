@@ -5,7 +5,7 @@ import { readResult, summaries, median } from './results.mjs';
 const esc=x=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const md=x=>String(x??'').replaceAll('|','\\|').replaceAll('\n',' ');
 export function renderReport(d){
-  const rows=summaries(d), vals=rows.map(r=>r.medianSeconds).filter(v=>v!==null), max=Math.max(1,...vals), min=Math.min(1,...vals);
+  const rows=summaries(d), max=Math.max(1,...rows.filter(r=>r.maxSeconds!==null).map(r=>r.maxSeconds)), min=Math.min(1,...rows.filter(r=>r.minSeconds!==null).map(r=>r.minSeconds));
   const left=230,right=850,width=1000,height=200+rows.length*66;
   const logMax=Math.log10(max*1.8),logMin=Math.log10(min);
   const px=v=>left+(Math.log10(v)-logMin)/(logMax-logMin)*(right-left);

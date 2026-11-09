@@ -1,0 +1,105 @@
+{
+  "id": "pivo-curated-v1",
+  "articleSha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+  "normalizationRules": [
+    {
+      "pattern": "\\b(\\d{4})-(\\d{4})\\b",
+      "replacement": "$1 to $2",
+      "purpose": "year range, not negative second year"
+    },
+    {
+      "pattern": "\\bA-(\\d+)\\b",
+      "replacement": "ay $1",
+      "purpose": "pronounce letter A in the corpus identifier, retain its following number"
+    }
+  ],
+  "overrides": {
+    "mara's": [
+      "M",
+      "AA1",
+      "R",
+      "AH0",
+      "Z"
+    ],
+    "leila's": [
+      "L",
+      "IY1",
+      "L",
+      "AH0",
+      "Z"
+    ],
+    "jo's": [
+      "JH",
+      "OW1",
+      "Z"
+    ],
+    "archive's": [
+      "AA1",
+      "R",
+      "K",
+      "AY2",
+      "V",
+      "Z"
+    ],
+    "nia": [
+      "N",
+      "IY1",
+      "AH0"
+    ],
+    "nia's": [
+      "N",
+      "IY1",
+      "AH0",
+      "Z"
+    ],
+    "okafor": [
+      "OW0",
+      "K",
+      "AA1",
+      "F",
+      "AO0",
+      "R"
+    ],
+    "salma": [
+      "S",
+      "AA1",
+      "L",
+      "M",
+      "AH0"
+    ],
+    "boatbuilder": [
+      "B",
+      "OW1",
+      "T",
+      "B",
+      "IH1",
+      "L",
+      "D",
+      "ER0"
+    ],
+    "seawall": [
+      "S",
+      "IY1",
+      "W",
+      "AO1",
+      "L"
+    ],
+    "shipwrecks": [
+      "SH",
+      "IH1",
+      "P",
+      "R",
+      "EH1",
+      "K",
+      "S"
+    ],
+    "dpi": [
+      "D",
+      "IY1",
+      "P",
+      "IY1",
+      "AY1"
+    ]
+  },
+  "chosenPronunciationNote": "Nia, Okafor and Salma are explicit chosen English pronunciations for fictional people; no claim of author-preferred pronunciation. Possessives derive from pinned CMU base entries; compounds concatenate dictionary words. Leila keeps the pinned dictionary pronunciation."
+}

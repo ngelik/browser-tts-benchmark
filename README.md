@@ -1,5 +1,7 @@
 # Browser TTS Benchmark
 
+[![Validate benchmark submissions](https://github.com/ngelik/browser-tts-benchmark/actions/workflows/validate.yml/badge.svg)](https://github.com/ngelik/browser-tts-benchmark/actions/workflows/validate.yml)
+
 Repeatable, local text-to-speech benchmarks in **Google Chrome**: CPU/WASM,
 WebGPU and explicit WebGL compatibility results. Select a model, run a fixed
 20,000-character English article, then contribute a result through a pull request.
@@ -60,6 +62,23 @@ cold, offline, bandwidth-limited and model-switch scenarios. Assets are fetched/
 Use a smoke check to validate installation; use the full article and five
 repetitions for a publishable warm result. Do not run models concurrently.
 
+Pinned model IDs (use these with `--model`):
+
+| Model ID | CPU/WASM | WebGPU | Local terms acknowledgment |
+|---|---|---|---|
+| `phonon` | Yes | Yes | No |
+| `paradee` | Yes | Yes, mixed operators | No |
+| `leokani-7m` | Yes | Yes, CPU G2P/iSTFT | `--accept-license` |
+| `leokani-4.5m` | Yes | Yes, CPU G2P/iSTFT | `--accept-license` |
+| `pivo-curated` | Yes | Yes, current adapter is slow | No |
+| `woof` | Unavailable in pinned runtime | Yes | `--accept-license` |
+
+WebGL is an explicit compatibility probe; none of these pinned model paths
+produced a successful WebGL score. Model catalog backend lists describe adapter
+probe targets, not a guarantee that a model graph is compatible. Phonon and Woof
+use official browser runtimes. The ONNX models use explicit browser adapters,
+with upstream frontends and model-specific processing documented in their settings.
+
 New native warm runs use one common CPU/GPU timing boundary: first chunk request
 through final CPU-readable PCM, excluding warm-up, validation, hashing and export.
 Model loading is excluded. One full article warm-up is followed by five scored
@@ -67,6 +86,9 @@ articles with the model resident. The historical PiVo GPU configuration can take
 over four hours for this sequence.
 
 ## Publish your result through a pull request
+
+Fork this repository on GitHub first. Replace `YOUR_USERNAME` below with your
+account; keep the original `origin` remote pointing to upstream.
 
 ```sh
 npm run report -- runs/<run-id>/result.json
@@ -76,12 +98,14 @@ npm test
 git switch -c results/my-machine
 git add results/<run-id>
 git commit -m "Add benchmark results for my machine"
-git push -u origin results/my-machine
+git remote add fork https://github.com/YOUR_USERNAME/browser-tts-benchmark.git
+git push -u fork results/my-machine
 ```
 
 Open a pull request from your fork. The submitted bundle contains a JSON receipt,
 generated Markdown table, SVG chart and checksums. CI validates these artifacts;
 it does not pretend a shared GitHub runner reproduces your laptop's GPU timings.
+Use `npm run compare -- --out comparisons/my-machine results/<cpu-id>/result.json results/<gpu-id>/result.json` for a combined table and chart of compatible runs.
 See [CONTRIBUTING.md](CONTRIBUTING.md) for review requirements and adding models.
 
 ## Scope and licensing
@@ -92,6 +116,7 @@ tested frontend includes a GPL component. Restricted weights, upstream engine
 bundles, recordings and browser profiles are not redistributed here.
 Read [component licensing](docs/LICENSING.md) before downloading or deploying.
 
+See the [implementation validation record](docs/VALIDATION.md) for checks and limits.
 Supported commands and validation status are documented, including limitations;
 an unsupported path is not replaced by a fabricated score. The result schema,
 privacy rules and evidence limits are in [docs/RESULTS.md](docs/RESULTS.md).

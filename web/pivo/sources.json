@@ -1,0 +1,15 @@
+{
+  "model": "empero-ai/PiVo-1.4M",
+  "revision": "515d84fc3420da6ae138f1b81017fcbc24d622a8",
+  "frontend": {
+    "file": "text.mjs",
+    "source": "https://huggingface.co/empero-ai/PiVo-1.4M/resolve/515d84fc3420da6ae138f1b81017fcbc24d622a8/pivo/text.py",
+    "sourceBytes": 7608,
+    "sourceSha256": "d239d9ff4b16b5ab822bcabc09ce6abfb74d4979d19f65521c1b5ea820609306",
+    "license": "Apache-2.0",
+    "portBytes": 6180,
+    "portSha256": "3517191a263bf7bec646d55e30892ef31e9ee3220f7457aac93ba5e4d2616571",
+    "change": "Python text normalization and CMU dictionary frontend translated to a synchronous browser JavaScript module; pronunciation overrides are supplied separately by fixtures/pivo-curated-variant.json."
+  },
+  "notice": "See LICENSE-APACHE.txt and THIRD_PARTY.md for retained notices."
+}

@@ -24,4 +24,5 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm test
       - run: npm run validate
+      - run: node tools/compare.mjs --check comparisons
       - run: node tools/publication-check.mjs

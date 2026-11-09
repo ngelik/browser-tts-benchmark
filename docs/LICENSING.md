@@ -11,16 +11,20 @@ their own licenses. A benchmark result is not a commercial-use clearance.
 | Paradee weights | Apache-2.0 |
 | Vendored Kokoro frontend / Paradee Misaki mapping | Apache-2.0; pinned sources, changes and full licenses in `web/paradee/` |
 | Paradee browser phonemizer | Package Apache-2.0; compiled eSpeak NG is GPL-3.0; do not treat the whole stack as MIT |
+| Derived Leokani config/vocabulary in `web/data/leokani/` | CC BY-NC 4.0; retain Milliwatt Labs attribution and adjacent change/source notice |
 | Leokani 7M / 4.5M weights | CC BY-NC 4.0; commercial use needs additional rights |
 | Leokani G2P | MIT code; CC BY 4.0 weights/lexicon |
 | Leokani browser engine | Grant for the exact historical engine was not separately established; do not vendor it under MIT |
+| Adapted PiVo frontend in `web/pivo/text.mjs` | Apache-2.0; source/change record and upstream notices in `web/pivo/` |
 | PiVo | Apache-2.0 acoustic model/code, BSD/Opus FARGAN-derived component, CMU dictionary notices |
 | Woof historical one-voice assets | Underdog noncommercial terms; exact one-voice lineage is less explicit than newer releases; no assets or audio redistributed here |
 | ONNX Runtime Web | MIT, with third-party notices |
 
 The small Apache-2.0 frontend source files in `web/paradee/` retain separate
 license files and a source/change manifest. They are exceptions to the root MIT
-license. Restricted or unclear-license runtime files belong only in a local ignored cache.
+license. The small derived Leokani configuration/vocabulary files in
+`web/data/leokani/` retain CC BY-NC 4.0 terms and attribution.
+Restricted or unclear-license runtime files belong only in a local ignored cache.
 Use upstream download/import instructions and read their terms before running.
 Accepting an upstream license is a local decision, not a grant from this project.
 Do not upload weights, voices, minified upstream engines, browser profiles or

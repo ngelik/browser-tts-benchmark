@@ -1,9 +1,19 @@
 import { createPhononAdapter } from './adapters/phonon.mjs';
 import { createParadeeAdapter } from './adapters/paradee.mjs';
+import { createLeokaniAdapter } from './adapters/leokani.mjs';
+import { createPivoAdapter } from './adapters/pivo.mjs';
+import { createWoofAdapter } from './adapters/woof.mjs';
 
 const statusNode = document.querySelector('#status');
 const state = { fixture: null, chunks: null, engine: null, model: null, backend: null, smoke: false };
-const FACTORIES = { phonon: createPhononAdapter, paradee: createParadeeAdapter };
+const FACTORIES = {
+  phonon: createPhononAdapter,
+  paradee: createParadeeAdapter,
+  'leokani-7m': () => createLeokaniAdapter('leokani-7m'),
+  'leokani-4.5m': () => createLeokaniAdapter('leokani-4.5m'),
+  'pivo-curated': createPivoAdapter,
+  woof: createWoofAdapter,
+};
 let canonical = null;
 
 function setStatus(message) {

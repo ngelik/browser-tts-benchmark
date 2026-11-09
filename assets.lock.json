@@ -9,27 +9,122 @@
         "version": "1.23.2",
         "license": "MIT; bundled third-party notices apply",
         "files": [
-          { "path": "dist/ort.wasm.min.mjs", "target": "runtimes/onnxruntime-web/1.23.2/ort.wasm.min.mjs", "bytes": 49856, "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7" },
-          { "path": "dist/ort.webgpu.min.mjs", "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs", "bytes": 66261, "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864" },
-          { "path": "dist/ort.webgl.min.mjs", "target": "runtimes/onnxruntime-web/1.23.2/ort.webgl.min.mjs", "bytes": 454343, "sha256": "bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271" },
-          { "path": "dist/ort-wasm-simd-threaded.mjs", "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.mjs", "bytes": 20321, "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e" },
-          { "path": "dist/ort-wasm-simd-threaded.wasm", "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.wasm", "bytes": 11905541, "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15" },
-          { "path": "dist/ort-wasm-simd-threaded.asyncify.mjs", "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.mjs", "bytes": 51913, "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff" },
-          { "path": "dist/ort-wasm-simd-threaded.asyncify.wasm", "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.wasm", "bytes": 25499390, "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada" },
-          { "package": "phonemizer", "version": "1.2.1", "path": "dist/phonemizer.js", "target": "runtimes/phonemizer/1.2.1/phonemizer.js", "bytes": 1322380, "sha256": "193481f474f7c1ea81df3195d18b45df8ef7254dbdccb3f193d60215c4897bec" },
-          { "package": "phonemizer", "version": "1.2.1", "path": "LICENSE", "target": "licenses/phonemizer-1.2.1/LICENSE", "bytes": 11357, "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4" }
+          {
+            "path": "dist/ort.wasm.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.wasm.min.mjs",
+            "bytes": 49856,
+            "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7"
+          },
+          {
+            "path": "dist/ort.webgpu.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs",
+            "bytes": 66261,
+            "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864"
+          },
+          {
+            "path": "dist/ort.webgl.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgl.min.mjs",
+            "bytes": 454343,
+            "sha256": "bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.mjs",
+            "bytes": 20321,
+            "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.wasm",
+            "bytes": 11905541,
+            "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.mjs",
+            "bytes": 51913,
+            "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.wasm",
+            "bytes": 25499390,
+            "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada"
+          },
+          {
+            "package": "phonemizer",
+            "version": "1.2.1",
+            "path": "dist/phonemizer.js",
+            "target": "runtimes/phonemizer/1.2.1/phonemizer.js",
+            "bytes": 1322380,
+            "sha256": "193481f474f7c1ea81df3195d18b45df8ef7254dbdccb3f193d60215c4897bec"
+          },
+          {
+            "package": "phonemizer",
+            "version": "1.2.1",
+            "path": "LICENSE",
+            "target": "licenses/phonemizer-1.2.1/LICENSE",
+            "bytes": 11357,
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          },
+          {
+            "path": "LICENSE",
+            "target": "licenses/onnxruntime-web-1.23.2/LICENSE",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/LICENSE",
+            "bytes": 1073,
+            "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          },
+          {
+            "path": "ThirdPartyNotices.txt",
+            "target": "licenses/onnxruntime-web-1.23.2/ThirdPartyNotices.txt",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/ThirdPartyNotices.txt",
+            "bytes": 326866,
+            "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          }
         ]
       },
       "assets": [
-        { "id": "paradee-config", "target": "models/paradee-8m-v1.2/config.json", "url": "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/resolve/ed2934d4df8a4fd891e29584c5e1104649409765/config.json", "bytes": 1827, "sha256": "002535cf8dd08a434cdddb13372da8a7b4844152bdf9b5b4e7342e12ec30bcfb", "kind": "model-support" },
-        { "id": "paradee-weights-int8", "target": "models/paradee-8m-v1.2/paradee_int8.onnx", "url": "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/resolve/ed2934d4df8a4fd891e29584c5e1104649409765/onnx/paradee_int8.onnx", "bytes": 8462119, "sha256": "a6989796692ac173597e15d405c971989202d5c73cfad65f22e90bd7b6c97da1", "kind": "model-weights" }
+        {
+          "id": "paradee-config",
+          "target": "models/paradee-8m-v1.2/config.json",
+          "url": "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/resolve/ed2934d4df8a4fd891e29584c5e1104649409765/config.json",
+          "bytes": 1827,
+          "sha256": "002535cf8dd08a434cdddb13372da8a7b4844152bdf9b5b4e7342e12ec30bcfb",
+          "kind": "model-support"
+        },
+        {
+          "id": "paradee-weights-int8",
+          "target": "models/paradee-8m-v1.2/paradee_int8.onnx",
+          "url": "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/resolve/ed2934d4df8a4fd891e29584c5e1104649409765/onnx/paradee_int8.onnx",
+          "bytes": 8462119,
+          "sha256": "a6989796692ac173597e15d405c971989202d5c73cfad65f22e90bd7b6c97da1",
+          "kind": "model-weights"
+        },
+        {
+          "id": "paradee-espeak-ng-license",
+          "target": "licenses/espeak-ng/COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "kind": "license",
+          "sourcePath": "web/licenses/ESPEAK-NG-COPYING.txt"
+        }
       ],
       "license": {
         "model": "Apache-2.0",
         "runtime": "MIT (ONNX Runtime Web); Apache-2.0 + GPL-3.0 eSpeak NG (phonemizer bundle)",
         "requiresAcceptance": false
       },
-      "backends": ["cpu", "webgpu", "webgl"]
+      "backends": [
+        "cpu",
+        "webgpu",
+        "webgl"
+      ]
     },
     "phonon": {
       "displayName": "Phonon 31M q8",
@@ -38,34 +133,918 @@
         "package": "phonon-tts",
         "version": "0.6.0",
         "files": [
-          { "path": "index.js", "target": "runtimes/phonon-tts/0.6.0/index.js", "bytes": 17020, "sha256": "9a682b5d248222d2d6dcf010c0089390e419b83942b35fc2d6e5f149df14b448" },
-          { "path": "worker.js", "target": "runtimes/phonon-tts/0.6.0/worker.js", "bytes": 12663, "sha256": "9bfcf650f5d2af09b22268233993395a7182aa50f1d0eb9c01ffa60febb9b632" },
-          { "path": "fetch.js", "target": "runtimes/phonon-tts/0.6.0/fetch.js", "bytes": 4622, "sha256": "fe28ae73b476a1b014098843335141efad3a943c98939a72d2d907ee4596582c" },
-          { "path": "hub.js", "target": "runtimes/phonon-tts/0.6.0/hub.js", "bytes": 5366, "sha256": "f6efff9bb477527b4ecd4cf617a3f6473dcea58e37763d431f582c7262bb19c3" },
-          { "path": "wav.js", "target": "runtimes/phonon-tts/0.6.0/wav.js", "bytes": 1519, "sha256": "ffe180a940387cf3e5259e68b0a052934b9860034d2f9c82527c986e132d9ce1" },
-          { "path": "device.js", "target": "runtimes/phonon-tts/0.6.0/device.js", "bytes": 2249, "sha256": "b261780c034384efb013015012ba197738c06bf66ac54c909d7b67e2c26d446c" },
-          { "path": "threads.js", "target": "runtimes/phonon-tts/0.6.0/threads.js", "bytes": 1664, "sha256": "19782737d03b71e028b7924d80cd5d14820f23e28ca352e65975c1a0dfccea0f" },
-          { "path": "simd.js", "target": "runtimes/phonon-tts/0.6.0/simd.js", "bytes": 894, "sha256": "002ae86d173038fe83449b623510c2e697f3837e3a9f39c2c7445525efd9fb3b" },
-          { "path": "wasm/phonon_tts.js", "target": "runtimes/phonon-tts/0.6.0/wasm/phonon_tts.js", "bytes": 51129, "sha256": "22f81b4d51ef1f9b9b23cbde97d2a97bc530be9c429e522bbab55da72d3bac08" },
-          { "path": "wasm/phonon_tts_bg.wasm", "target": "runtimes/phonon-tts/0.6.0/wasm/phonon_tts_bg.wasm", "bytes": 4435037, "sha256": "0a3d53ca7432c740908745603ce1098de52d2c4cc129a3556142c9606acdb8d4" },
-          { "path": "wasm/phonon_tts_simd_bg.wasm", "target": "runtimes/phonon-tts/0.6.0/wasm/phonon_tts_simd_bg.wasm", "bytes": 4413972, "sha256": "be18f1187c1a395440a64251711878cd4793e10ce6669506046044364d9f570b" },
-          { "path": "LICENSE-MIT", "target": "licenses/phonon-tts-0.6.0/LICENSE-MIT", "bytes": 1023, "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3" },
-          { "path": "LICENSE-APACHE", "target": "licenses/phonon-tts-0.6.0/LICENSE-APACHE", "bytes": 11357, "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4" },
-          { "path": "THIRD_PARTY_LICENSES.md", "target": "licenses/phonon-tts-0.6.0/THIRD_PARTY_LICENSES.md", "bytes": 200374, "sha256": "3439b6914586279762dd0924c2991f49787f9c101d6ae77393f42f203fab0be7" }
+          {
+            "path": "index.js",
+            "target": "runtimes/phonon-tts/0.6.0/index.js",
+            "bytes": 17020,
+            "sha256": "9a682b5d248222d2d6dcf010c0089390e419b83942b35fc2d6e5f149df14b448"
+          },
+          {
+            "path": "worker.js",
+            "target": "runtimes/phonon-tts/0.6.0/worker.js",
+            "bytes": 12663,
+            "sha256": "9bfcf650f5d2af09b22268233993395a7182aa50f1d0eb9c01ffa60febb9b632"
+          },
+          {
+            "path": "fetch.js",
+            "target": "runtimes/phonon-tts/0.6.0/fetch.js",
+            "bytes": 4622,
+            "sha256": "fe28ae73b476a1b014098843335141efad3a943c98939a72d2d907ee4596582c"
+          },
+          {
+            "path": "hub.js",
+            "target": "runtimes/phonon-tts/0.6.0/hub.js",
+            "bytes": 5366,
+            "sha256": "f6efff9bb477527b4ecd4cf617a3f6473dcea58e37763d431f582c7262bb19c3"
+          },
+          {
+            "path": "wav.js",
+            "target": "runtimes/phonon-tts/0.6.0/wav.js",
+            "bytes": 1519,
+            "sha256": "ffe180a940387cf3e5259e68b0a052934b9860034d2f9c82527c986e132d9ce1"
+          },
+          {
+            "path": "device.js",
+            "target": "runtimes/phonon-tts/0.6.0/device.js",
+            "bytes": 2249,
+            "sha256": "b261780c034384efb013015012ba197738c06bf66ac54c909d7b67e2c26d446c"
+          },
+          {
+            "path": "threads.js",
+            "target": "runtimes/phonon-tts/0.6.0/threads.js",
+            "bytes": 1664,
+            "sha256": "19782737d03b71e028b7924d80cd5d14820f23e28ca352e65975c1a0dfccea0f"
+          },
+          {
+            "path": "simd.js",
+            "target": "runtimes/phonon-tts/0.6.0/simd.js",
+            "bytes": 894,
+            "sha256": "002ae86d173038fe83449b623510c2e697f3837e3a9f39c2c7445525efd9fb3b"
+          },
+          {
+            "path": "wasm/phonon_tts.js",
+            "target": "runtimes/phonon-tts/0.6.0/wasm/phonon_tts.js",
+            "bytes": 51129,
+            "sha256": "22f81b4d51ef1f9b9b23cbde97d2a97bc530be9c429e522bbab55da72d3bac08"
+          },
+          {
+            "path": "wasm/phonon_tts_bg.wasm",
+            "target": "runtimes/phonon-tts/0.6.0/wasm/phonon_tts_bg.wasm",
+            "bytes": 4435037,
+            "sha256": "0a3d53ca7432c740908745603ce1098de52d2c4cc129a3556142c9606acdb8d4"
+          },
+          {
+            "path": "wasm/phonon_tts_simd_bg.wasm",
+            "target": "runtimes/phonon-tts/0.6.0/wasm/phonon_tts_simd_bg.wasm",
+            "bytes": 4413972,
+            "sha256": "be18f1187c1a395440a64251711878cd4793e10ce6669506046044364d9f570b"
+          },
+          {
+            "path": "LICENSE-MIT",
+            "target": "licenses/phonon-tts-0.6.0/LICENSE-MIT",
+            "bytes": 1023,
+            "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+          },
+          {
+            "path": "LICENSE-APACHE",
+            "target": "licenses/phonon-tts-0.6.0/LICENSE-APACHE",
+            "bytes": 11357,
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          },
+          {
+            "path": "THIRD_PARTY_LICENSES.md",
+            "target": "licenses/phonon-tts-0.6.0/THIRD_PARTY_LICENSES.md",
+            "bytes": 200374,
+            "sha256": "3439b6914586279762dd0924c2991f49787f9c101d6ae77393f42f203fab0be7"
+          }
         ]
       },
       "assets": [
-        { "id": "phonon-config", "target": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/config.json", "url": "https://huggingface.co/gradium/phonon-31m-en/resolve/92741c5b07d085ff840e26fea8ce43110b87852f/config.json", "bytes": 4634, "sha256": "b5d0f88353638370d94035b7d73d7d6577c0554d78f8d7ecfd40490aae39ae85", "kind": "model-support" },
-        { "id": "phonon-tokenizer", "target": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/tokenizer.json", "url": "https://huggingface.co/gradium/phonon-31m-en/resolve/92741c5b07d085ff840e26fea8ce43110b87852f/tokenizer.json", "bytes": 277967, "sha256": "691a00068fa7b989f2f3e5ae5daa2d1a5bb319f2d5360deafcfb19a8bb6e7936", "kind": "model-support" },
-        { "id": "phonon-weights-q8", "target": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/model.q8.gguf", "url": "https://huggingface.co/gradium/phonon-31m-en/resolve/92741c5b07d085ff840e26fea8ce43110b87852f/model.q8.gguf", "bytes": 64512352, "sha256": "a7d9aad2cd6dc66473f24a08bc6d2939030ef4d751ef82349361fbef3272dbae", "kind": "model-weights" },
-        { "id": "phonon-voice-default", "target": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/default-voice.safetensors", "url": "https://huggingface.co/gradium/phonon-31m-en/resolve/92741c5b07d085ff840e26fea8ce43110b87852f/default-voice.safetensors", "bytes": 256136, "sha256": "dc537478eaadc1a5257fcda2e3501ab81e14c111a5d95a5838f350db2afd0f1a", "kind": "voice" }
+        {
+          "id": "phonon-config",
+          "target": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/config.json",
+          "url": "https://huggingface.co/gradium/phonon-31m-en/resolve/92741c5b07d085ff840e26fea8ce43110b87852f/config.json",
+          "bytes": 4634,
+          "sha256": "b5d0f88353638370d94035b7d73d7d6577c0554d78f8d7ecfd40490aae39ae85",
+          "kind": "model-support"
+        },
+        {
+          "id": "phonon-tokenizer",
+          "target": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/tokenizer.json",
+          "url": "https://huggingface.co/gradium/phonon-31m-en/resolve/92741c5b07d085ff840e26fea8ce43110b87852f/tokenizer.json",
+          "bytes": 277967,
+          "sha256": "691a00068fa7b989f2f3e5ae5daa2d1a5bb319f2d5360deafcfb19a8bb6e7936",
+          "kind": "model-support"
+        },
+        {
+          "id": "phonon-weights-q8",
+          "target": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/model.q8.gguf",
+          "url": "https://huggingface.co/gradium/phonon-31m-en/resolve/92741c5b07d085ff840e26fea8ce43110b87852f/model.q8.gguf",
+          "bytes": 64512352,
+          "sha256": "a7d9aad2cd6dc66473f24a08bc6d2939030ef4d751ef82349361fbef3272dbae",
+          "kind": "model-weights"
+        },
+        {
+          "id": "phonon-voice-default",
+          "target": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/default-voice.safetensors",
+          "url": "https://huggingface.co/gradium/phonon-31m-en/resolve/92741c5b07d085ff840e26fea8ce43110b87852f/default-voice.safetensors",
+          "bytes": 256136,
+          "sha256": "dc537478eaadc1a5257fcda2e3501ab81e14c111a5d95a5838f350db2afd0f1a",
+          "kind": "voice"
+        }
       ],
       "license": {
         "model": "Apache-2.0",
         "runtime": "MIT OR Apache-2.0",
         "requiresAcceptance": false
       },
-      "backends": ["cpu", "webgpu"]
+      "backends": [
+        "cpu",
+        "webgpu"
+      ]
+    },
+    "leokani-7m": {
+      "displayName": "Leokani 7M INT8",
+      "modelRevision": "ba0beb24f7b124dc1eb297ffc28d01db892462bd",
+      "runtime": {
+        "package": "onnxruntime-web",
+        "version": "1.23.2",
+        "license": "ONNX Runtime Web MIT with third-party notices; Leokani browser engine rights not independently established, staged locally only",
+        "files": [
+          {
+            "path": "dist/ort.wasm.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.wasm.min.mjs",
+            "bytes": 49856,
+            "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort.webgpu.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs",
+            "bytes": 66261,
+            "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.mjs",
+            "bytes": 20321,
+            "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.wasm",
+            "bytes": 11905541,
+            "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.mjs",
+            "bytes": 51913,
+            "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.wasm",
+            "bytes": 25499390,
+            "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "LICENSE",
+            "target": "licenses/onnxruntime-web-1.23.2/LICENSE",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/LICENSE",
+            "bytes": 1073,
+            "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          },
+          {
+            "path": "ThirdPartyNotices.txt",
+            "target": "licenses/onnxruntime-web-1.23.2/ThirdPartyNotices.txt",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/ThirdPartyNotices.txt",
+            "bytes": 326866,
+            "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "leokani-7m-model-int8",
+          "target": "models/leokani-7m-int8/model.onnx",
+          "url": "https://huggingface.co/milliwattlabs/leokani-tts-7M/resolve/ba0beb24f7b124dc1eb297ffc28d01db892462bd/leokani-tts-int8.onnx",
+          "bytes": 7838742,
+          "sha256": "b68ebd5df4e2ac24ed8eddae9519db0b3766b1bf5999ddcff0779be036c14a54",
+          "kind": "model-weights"
+        },
+        {
+          "id": "leokani-7m-config",
+          "target": "runtimes/leokani/config-7m.json",
+          "bytes": 2102,
+          "sha256": "f418f4158b9fa43833364e5c6d6b9a2b7eba3d9a262d8eeae1dbce1a9e84cb0d",
+          "kind": "model-config",
+          "sourcePath": "web/data/leokani/config-7m.json"
+        },
+        {
+          "id": "leokani-7m-g2p-leokani-g2p.json.gz",
+          "target": "models/leokani-g2p/leokani-g2p.json.gz",
+          "url": "https://milliwattlabs.com/vendor/leokani-g2p/leokani-g2p.json.gz?v=2d0da7653feb2f71",
+          "bytes": 4656918,
+          "sha256": "2d0da7653feb2f7174ecc313b5e30dea3c0e2fb6e58f9255816c7e06e9c9c962",
+          "kind": "g2p-data"
+        },
+        {
+          "id": "leokani-7m-g2p-oov-encoder.onnx",
+          "target": "models/leokani-g2p/oov-encoder.onnx",
+          "url": "https://milliwattlabs.com/vendor/leokani-g2p/oov-encoder.onnx?v=5ffcb175371b369c",
+          "bytes": 3868129,
+          "sha256": "5ffcb175371b369ca0f4a28d39e8d8a75abab796b46e63ed7d0a311cacf89307",
+          "kind": "g2p-data"
+        },
+        {
+          "id": "leokani-7m-g2p-oov-decoder.onnx",
+          "target": "models/leokani-g2p/oov-decoder.onnx",
+          "url": "https://milliwattlabs.com/vendor/leokani-g2p/oov-decoder.onnx?v=c188e599976bb820",
+          "bytes": 5105543,
+          "sha256": "c188e599976bb820209b1dd8747a8e3278aa7aa372e73ab5367809e406f25088",
+          "kind": "g2p-data"
+        },
+        {
+          "id": "leokani-7m-g2p-context.onnx",
+          "target": "models/leokani-g2p/context.onnx",
+          "url": "https://milliwattlabs.com/vendor/leokani-g2p/context.onnx?v=283f1122bbcb8cc5",
+          "bytes": 5371378,
+          "sha256": "283f1122bbcb8cc577c568d2b52e1a2e205c286cae528f0b7b9e3b9492c91409",
+          "kind": "g2p-data"
+        },
+        {
+          "id": "leokani-7m-runtime-frontend-mjs",
+          "target": "runtimes/leokani/frontend.mjs",
+          "url": "https://milliwattlabs.com/tts/frontend.mjs?v=6f666de59070ed04",
+          "bytes": 9655,
+          "sha256": "c61912a13a7f12abf26ede1f71fff75dad030be402cea5580efbd3c52779838d",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-7m-runtime-istft-mjs",
+          "target": "runtimes/leokani/istft.mjs",
+          "url": "https://milliwattlabs.com/tts/istft.mjs?v=6f666de59070ed04",
+          "bytes": 2758,
+          "sha256": "849a87e7a8f8a11f58a46420fcf101a4834aabd1a36c4b25798c81c5b35c666e",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-7m-runtime-load-mjs",
+          "target": "runtimes/leokani/load.mjs",
+          "url": "https://milliwattlabs.com/tts/load.mjs?v=6f666de59070ed04",
+          "bytes": 3275,
+          "sha256": "176d17834be79f840ca21b584fc898ced43a6050cddca3d4328caa8cf7fd0095",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-7m-runtime-g2p-mjs",
+          "target": "runtimes/leokani/g2p.mjs",
+          "url": "https://milliwattlabs.com/tts/g2p.mjs?v=6f666de59070ed04",
+          "bytes": 21333,
+          "sha256": "81a72da26ee2d87ed1ff476e406581ec1739bf386b6b62f2f0d3f57f171ee373",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-7m-runtime-models-mjs",
+          "target": "runtimes/leokani/models.mjs",
+          "url": "https://milliwattlabs.com/tts/models.mjs?v=6f666de59070ed04",
+          "bytes": 1427,
+          "sha256": "b7a7ac3c1ac0a2af33288bdc5a4841c519c2e1e6f65080d3b2c4eee9895cb260",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-7m-runtime-py-mjs",
+          "target": "runtimes/leokani/py.mjs",
+          "url": "https://milliwattlabs.com/tts/py.mjs?v=6f666de59070ed04",
+          "bytes": 6543,
+          "sha256": "9bb58e9a44e2e406fa62bc6a2d0c805b96a1a9245b4192fae6ac9f663e61a034",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-7m-runtime-normalize-mjs",
+          "target": "runtimes/leokani/normalize.mjs",
+          "url": "https://milliwattlabs.com/tts/normalize.mjs?v=6f666de59070ed04",
+          "bytes": 91457,
+          "sha256": "1265cac9ec17430e41933673afa62298558d7ef06daaf405829ce76eedbc5c77",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-7m-runtime-numbers-mjs",
+          "target": "runtimes/leokani/numbers.mjs",
+          "url": "https://milliwattlabs.com/tts/numbers.mjs?v=6f666de59070ed04",
+          "bytes": 7231,
+          "sha256": "2365343bf9ccd0bf554e0bf7ee17d0feb1a3066dacfa90fe4c57a87af379b8ae",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-7m-runtime-userlex-mjs",
+          "target": "runtimes/leokani/userlex.mjs",
+          "url": "https://milliwattlabs.com/tts/userlex.mjs?v=6f666de59070ed04",
+          "bytes": 7283,
+          "sha256": "897b6067bf3b139de85d01e2ac337c663c9b46b89019af7cb32cc3b2c4e695ea",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-7m-runtime-homographs-mjs",
+          "target": "runtimes/leokani/homographs.mjs",
+          "url": "https://milliwattlabs.com/tts/homographs.mjs?v=6f666de59070ed04",
+          "bytes": 36582,
+          "sha256": "dbc2021ceffdac26e0d54ac163d09e840819d7ba7cbb496dc13f42a32db51c44",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-7m-leokani-tts-license-txt",
+          "target": "licenses/leokani/7m/LICENSE.txt",
+          "url": "https://huggingface.co/milliwattlabs/leokani-tts-7M/raw/ba0beb24f7b124dc1eb297ffc28d01db892462bd/LICENSE",
+          "bytes": 19347,
+          "sha256": "41003d4a74749c0220e33dd415042164b5a1093ed401f36277234f772d22d3d0",
+          "kind": "license"
+        },
+        {
+          "id": "leokani-7m-leokani-g2p-license-txt",
+          "target": "licenses/leokani/g2p/LICENSE.txt",
+          "url": "https://huggingface.co/milliwattlabs/leokani-tts-7M/raw/ba0beb24f7b124dc1eb297ffc28d01db892462bd/g2p/LICENSE",
+          "bytes": 1754,
+          "sha256": "ae56b97d2fbae3de90be62010e8e46afdfa627b0ce3360b858a38edfc5ca48e1",
+          "kind": "license"
+        },
+        {
+          "id": "leokani-7m-leokani-g2p-cc-by-4-txt",
+          "target": "licenses/leokani/g2p/LICENSE-CC-BY-4.0.txt",
+          "url": "https://huggingface.co/milliwattlabs/leokani-tts-7M/raw/ba0beb24f7b124dc1eb297ffc28d01db892462bd/g2p/LICENSE-CC-BY-4.0.txt",
+          "bytes": 18657,
+          "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+          "kind": "license"
+        },
+        {
+          "id": "leokani-7m-leokani-g2p-notice-txt",
+          "target": "licenses/leokani/g2p/NOTICE.txt",
+          "url": "https://huggingface.co/milliwattlabs/leokani-tts-7M/raw/ba0beb24f7b124dc1eb297ffc28d01db892462bd/g2p/NOTICE",
+          "bytes": 3010,
+          "sha256": "0b5b42fcbee3754e7731fbcc244072eea4b0735089f8b63318f899003926bfdf",
+          "kind": "license"
+        }
+      ],
+      "license": {
+        "model": "CC BY-NC 4.0",
+        "g2p": "MIT code; CC BY 4.0 data",
+        "runtime": "ONNX Runtime Web MIT; Milliwatt Labs browser engine terms not separately established",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "cpu",
+        "webgpu"
+      ]
+    },
+    "leokani-4.5m": {
+      "displayName": "Leokani 4.5M INT8",
+      "modelRevision": "d9eb742dfb6567872fe451d559674ec42c32e6c8",
+      "runtime": {
+        "package": "onnxruntime-web",
+        "version": "1.23.2",
+        "license": "ONNX Runtime Web MIT with third-party notices; Leokani browser engine rights not independently established, staged locally only",
+        "files": [
+          {
+            "path": "dist/ort.wasm.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.wasm.min.mjs",
+            "bytes": 49856,
+            "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort.webgpu.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs",
+            "bytes": 66261,
+            "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.mjs",
+            "bytes": 20321,
+            "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.wasm",
+            "bytes": 11905541,
+            "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.mjs",
+            "bytes": 51913,
+            "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.wasm",
+            "bytes": 25499390,
+            "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "LICENSE",
+            "target": "licenses/onnxruntime-web-1.23.2/LICENSE",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/LICENSE",
+            "bytes": 1073,
+            "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          },
+          {
+            "path": "ThirdPartyNotices.txt",
+            "target": "licenses/onnxruntime-web-1.23.2/ThirdPartyNotices.txt",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/ThirdPartyNotices.txt",
+            "bytes": 326866,
+            "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "leokani-4-5m-model-int8",
+          "target": "models/leokani-4.5m-int8/model.onnx",
+          "url": "https://huggingface.co/milliwattlabs/leokani-tts-4.5M/resolve/d9eb742dfb6567872fe451d559674ec42c32e6c8/leokani-tts-int8.onnx",
+          "bytes": 5143956,
+          "sha256": "fafeea440bf4e38687bf32a88c320e8a6694d92eaa8f33a0750fc3207209f3e8",
+          "kind": "model-weights"
+        },
+        {
+          "id": "leokani-4-5m-config",
+          "target": "runtimes/leokani/config-4.5m.json",
+          "bytes": 2106,
+          "sha256": "fbeeaf4b1ed9ad84cb6a2cac577a0feb269fdf6bb81fa92a5536cd1ca1ae424d",
+          "kind": "model-config",
+          "sourcePath": "web/data/leokani/config-4.5m.json"
+        },
+        {
+          "id": "leokani-4-5m-g2p-leokani-g2p.json.gz",
+          "target": "models/leokani-g2p/leokani-g2p.json.gz",
+          "url": "https://milliwattlabs.com/vendor/leokani-g2p/leokani-g2p.json.gz?v=2d0da7653feb2f71",
+          "bytes": 4656918,
+          "sha256": "2d0da7653feb2f7174ecc313b5e30dea3c0e2fb6e58f9255816c7e06e9c9c962",
+          "kind": "g2p-data"
+        },
+        {
+          "id": "leokani-4-5m-g2p-oov-encoder.onnx",
+          "target": "models/leokani-g2p/oov-encoder.onnx",
+          "url": "https://milliwattlabs.com/vendor/leokani-g2p/oov-encoder.onnx?v=5ffcb175371b369c",
+          "bytes": 3868129,
+          "sha256": "5ffcb175371b369ca0f4a28d39e8d8a75abab796b46e63ed7d0a311cacf89307",
+          "kind": "g2p-data"
+        },
+        {
+          "id": "leokani-4-5m-g2p-oov-decoder.onnx",
+          "target": "models/leokani-g2p/oov-decoder.onnx",
+          "url": "https://milliwattlabs.com/vendor/leokani-g2p/oov-decoder.onnx?v=c188e599976bb820",
+          "bytes": 5105543,
+          "sha256": "c188e599976bb820209b1dd8747a8e3278aa7aa372e73ab5367809e406f25088",
+          "kind": "g2p-data"
+        },
+        {
+          "id": "leokani-4-5m-g2p-context.onnx",
+          "target": "models/leokani-g2p/context.onnx",
+          "url": "https://milliwattlabs.com/vendor/leokani-g2p/context.onnx?v=283f1122bbcb8cc5",
+          "bytes": 5371378,
+          "sha256": "283f1122bbcb8cc577c568d2b52e1a2e205c286cae528f0b7b9e3b9492c91409",
+          "kind": "g2p-data"
+        },
+        {
+          "id": "leokani-4-5m-runtime-frontend-mjs",
+          "target": "runtimes/leokani/frontend.mjs",
+          "url": "https://milliwattlabs.com/tts/frontend.mjs?v=6f666de59070ed04",
+          "bytes": 9655,
+          "sha256": "c61912a13a7f12abf26ede1f71fff75dad030be402cea5580efbd3c52779838d",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-4-5m-runtime-istft-mjs",
+          "target": "runtimes/leokani/istft.mjs",
+          "url": "https://milliwattlabs.com/tts/istft.mjs?v=6f666de59070ed04",
+          "bytes": 2758,
+          "sha256": "849a87e7a8f8a11f58a46420fcf101a4834aabd1a36c4b25798c81c5b35c666e",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-4-5m-runtime-load-mjs",
+          "target": "runtimes/leokani/load.mjs",
+          "url": "https://milliwattlabs.com/tts/load.mjs?v=6f666de59070ed04",
+          "bytes": 3275,
+          "sha256": "176d17834be79f840ca21b584fc898ced43a6050cddca3d4328caa8cf7fd0095",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-4-5m-runtime-g2p-mjs",
+          "target": "runtimes/leokani/g2p.mjs",
+          "url": "https://milliwattlabs.com/tts/g2p.mjs?v=6f666de59070ed04",
+          "bytes": 21333,
+          "sha256": "81a72da26ee2d87ed1ff476e406581ec1739bf386b6b62f2f0d3f57f171ee373",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-4-5m-runtime-models-mjs",
+          "target": "runtimes/leokani/models.mjs",
+          "url": "https://milliwattlabs.com/tts/models.mjs?v=6f666de59070ed04",
+          "bytes": 1427,
+          "sha256": "b7a7ac3c1ac0a2af33288bdc5a4841c519c2e1e6f65080d3b2c4eee9895cb260",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-4-5m-runtime-py-mjs",
+          "target": "runtimes/leokani/py.mjs",
+          "url": "https://milliwattlabs.com/tts/py.mjs?v=6f666de59070ed04",
+          "bytes": 6543,
+          "sha256": "9bb58e9a44e2e406fa62bc6a2d0c805b96a1a9245b4192fae6ac9f663e61a034",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-4-5m-runtime-normalize-mjs",
+          "target": "runtimes/leokani/normalize.mjs",
+          "url": "https://milliwattlabs.com/tts/normalize.mjs?v=6f666de59070ed04",
+          "bytes": 91457,
+          "sha256": "1265cac9ec17430e41933673afa62298558d7ef06daaf405829ce76eedbc5c77",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-4-5m-runtime-numbers-mjs",
+          "target": "runtimes/leokani/numbers.mjs",
+          "url": "https://milliwattlabs.com/tts/numbers.mjs?v=6f666de59070ed04",
+          "bytes": 7231,
+          "sha256": "2365343bf9ccd0bf554e0bf7ee17d0feb1a3066dacfa90fe4c57a87af379b8ae",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-4-5m-runtime-userlex-mjs",
+          "target": "runtimes/leokani/userlex.mjs",
+          "url": "https://milliwattlabs.com/tts/userlex.mjs?v=6f666de59070ed04",
+          "bytes": 7283,
+          "sha256": "897b6067bf3b139de85d01e2ac337c663c9b46b89019af7cb32cc3b2c4e695ea",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-4-5m-runtime-homographs-mjs",
+          "target": "runtimes/leokani/homographs.mjs",
+          "url": "https://milliwattlabs.com/tts/homographs.mjs?v=6f666de59070ed04",
+          "bytes": 36582,
+          "sha256": "dbc2021ceffdac26e0d54ac163d09e840819d7ba7cbb496dc13f42a32db51c44",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "leokani-4-5m-leokani-tts-license-txt",
+          "target": "licenses/leokani/4.5m/LICENSE.txt",
+          "url": "https://huggingface.co/milliwattlabs/leokani-tts-4.5M/raw/d9eb742dfb6567872fe451d559674ec42c32e6c8/LICENSE",
+          "bytes": 19347,
+          "sha256": "41003d4a74749c0220e33dd415042164b5a1093ed401f36277234f772d22d3d0",
+          "kind": "license"
+        },
+        {
+          "id": "leokani-4-5m-leokani-g2p-license-txt",
+          "target": "licenses/leokani/g2p/LICENSE.txt",
+          "url": "https://huggingface.co/milliwattlabs/leokani-tts-7M/raw/ba0beb24f7b124dc1eb297ffc28d01db892462bd/g2p/LICENSE",
+          "bytes": 1754,
+          "sha256": "ae56b97d2fbae3de90be62010e8e46afdfa627b0ce3360b858a38edfc5ca48e1",
+          "kind": "license"
+        },
+        {
+          "id": "leokani-4-5m-leokani-g2p-cc-by-4-txt",
+          "target": "licenses/leokani/g2p/LICENSE-CC-BY-4.0.txt",
+          "url": "https://huggingface.co/milliwattlabs/leokani-tts-7M/raw/ba0beb24f7b124dc1eb297ffc28d01db892462bd/g2p/LICENSE-CC-BY-4.0.txt",
+          "bytes": 18657,
+          "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+          "kind": "license"
+        },
+        {
+          "id": "leokani-4-5m-leokani-g2p-notice-txt",
+          "target": "licenses/leokani/g2p/NOTICE.txt",
+          "url": "https://huggingface.co/milliwattlabs/leokani-tts-7M/raw/ba0beb24f7b124dc1eb297ffc28d01db892462bd/g2p/NOTICE",
+          "bytes": 3010,
+          "sha256": "0b5b42fcbee3754e7731fbcc244072eea4b0735089f8b63318f899003926bfdf",
+          "kind": "license"
+        }
+      ],
+      "license": {
+        "model": "CC BY-NC 4.0",
+        "g2p": "MIT code; CC BY 4.0 data",
+        "runtime": "ONNX Runtime Web MIT; Milliwatt Labs browser engine terms not separately established",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "cpu",
+        "webgpu"
+      ]
+    },
+    "pivo-curated": {
+      "displayName": "PiVo 1.4M curated (Pi voice)",
+      "modelRevision": "515d84fc3420da6ae138f1b81017fcbc24d622a8",
+      "runtime": {
+        "package": "onnxruntime-web",
+        "version": "1.23.2",
+        "license": "MIT with third-party notices",
+        "files": [
+          {
+            "path": "dist/ort.wasm.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.wasm.min.mjs",
+            "bytes": 49856,
+            "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort.webgpu.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs",
+            "bytes": 66261,
+            "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort.webgl.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgl.min.mjs",
+            "bytes": 454343,
+            "sha256": "bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.mjs",
+            "bytes": 20321,
+            "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.wasm",
+            "bytes": 11905541,
+            "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.mjs",
+            "bytes": 51913,
+            "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.wasm",
+            "bytes": 25499390,
+            "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "LICENSE",
+            "target": "licenses/onnxruntime-web-1.23.2/LICENSE",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/LICENSE",
+            "bytes": 1073,
+            "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          },
+          {
+            "path": "ThirdPartyNotices.txt",
+            "target": "licenses/onnxruntime-web-1.23.2/ThirdPartyNotices.txt",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/ThirdPartyNotices.txt",
+            "bytes": 326866,
+            "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "pivo-pivo-resources-cmudict.dict",
+          "target": "models/pivo-1.4m/cmudict.dict",
+          "url": "https://huggingface.co/empero-ai/PiVo-1.4M/resolve/515d84fc3420da6ae138f1b81017fcbc24d622a8/pivo/resources/cmudict.dict",
+          "bytes": 3618488,
+          "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22",
+          "kind": "model-support"
+        },
+        {
+          "id": "pivo-pivo-resources-CMUDICT_LICENSE",
+          "target": "licenses/pivo-1.4m/CMUDICT_LICENSE.txt",
+          "url": "https://huggingface.co/empero-ai/PiVo-1.4M/resolve/515d84fc3420da6ae138f1b81017fcbc24d622a8/pivo/resources/CMUDICT_LICENSE",
+          "bytes": 1754,
+          "sha256": "bd4ce8e44170a5f9f481310ca85c51de3c4f851a65e679b40e603b143bd3542a",
+          "kind": "model-support"
+        },
+        {
+          "id": "pivo-model_manifest.json",
+          "target": "models/pivo-1.4m/model_manifest.json",
+          "url": "https://huggingface.co/empero-ai/PiVo-1.4M/resolve/515d84fc3420da6ae138f1b81017fcbc24d622a8/model_manifest.json",
+          "bytes": 933,
+          "sha256": "ef87c62cc79119ae5e8c3068acf78bfd8a86b40767ea90e8f7515c4616f8ecbf",
+          "kind": "model-support"
+        },
+        {
+          "id": "pivo-onnx-metadata.json",
+          "target": "models/pivo-1.4m/metadata.json",
+          "url": "https://huggingface.co/empero-ai/PiVo-1.4M/resolve/515d84fc3420da6ae138f1b81017fcbc24d622a8/onnx/metadata.json",
+          "bytes": 2462,
+          "sha256": "fe5a8f85f92ff402dc7c912fea68e04489badbe3b420ef691e527c56175c096a",
+          "kind": "model-support"
+        },
+        {
+          "id": "pivo-onnx-encoder.onnx",
+          "target": "models/pivo-1.4m/encoder.onnx",
+          "url": "https://huggingface.co/empero-ai/PiVo-1.4M/resolve/515d84fc3420da6ae138f1b81017fcbc24d622a8/onnx/encoder.onnx",
+          "bytes": 1808457,
+          "sha256": "1d483a8e23d158bc56692d9b9339015130a1db7b3341cd700595af6190a7ff34",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pivo-onnx-decoder.onnx",
+          "target": "models/pivo-1.4m/decoder.onnx",
+          "url": "https://huggingface.co/empero-ai/PiVo-1.4M/resolve/515d84fc3420da6ae138f1b81017fcbc24d622a8/onnx/decoder.onnx",
+          "bytes": 748901,
+          "sha256": "bc46ee8d64fc400115267a2185887b72842ca318761625c248469166c9ef19ac",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pivo-onnx-conditioning.onnx",
+          "target": "models/pivo-1.4m/conditioning.onnx",
+          "url": "https://huggingface.co/empero-ai/PiVo-1.4M/resolve/515d84fc3420da6ae138f1b81017fcbc24d622a8/onnx/conditioning.onnx",
+          "bytes": 282407,
+          "sha256": "b184d45ce06e6d9caec94430b6e07e5f7315ecd584c5c3980290a9b5286d2998",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pivo-onnx-vocoder_step.onnx",
+          "target": "models/pivo-1.4m/vocoder_step.onnx",
+          "url": "https://huggingface.co/empero-ai/PiVo-1.4M/resolve/515d84fc3420da6ae138f1b81017fcbc24d622a8/onnx/vocoder_step.onnx",
+          "bytes": 3001580,
+          "sha256": "6f8ea48ebadbc7b737e5999ce7393619d7aa33b5b643ff48c5ebbcc3bc62b611",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pivo-LICENSE",
+          "target": "licenses/pivo-1.4m/LICENSE",
+          "url": "https://huggingface.co/empero-ai/PiVo-1.4M/resolve/515d84fc3420da6ae138f1b81017fcbc24d622a8/LICENSE",
+          "bytes": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "kind": "model-support"
+        },
+        {
+          "id": "pivo-NOTICE",
+          "target": "licenses/pivo-1.4m/NOTICE",
+          "url": "https://huggingface.co/empero-ai/PiVo-1.4M/resolve/515d84fc3420da6ae138f1b81017fcbc24d622a8/NOTICE",
+          "bytes": 544,
+          "sha256": "d9dadef1822718ffa7b97d2706198f5b2f9e50ff1c4631a1b0bd254cb9c9d6de",
+          "kind": "model-support"
+        },
+        {
+          "id": "pivo-THIRD_PARTY.md",
+          "target": "licenses/pivo-1.4m/THIRD_PARTY.md",
+          "url": "https://huggingface.co/empero-ai/PiVo-1.4M/resolve/515d84fc3420da6ae138f1b81017fcbc24d622a8/THIRD_PARTY.md",
+          "bytes": 2795,
+          "sha256": "74fcfc6843f555ddb971128803ea9063a62b7cde5f2cae1c2035576bb44ae86b",
+          "kind": "model-support"
+        }
+      ],
+      "license": {
+        "model": "Apache-2.0",
+        "frontend": "Apache-2.0 adaptation with CMU dictionary and OPUS/FARGAN third-party notices",
+        "requiresAcceptance": false
+      },
+      "backends": [
+        "cpu",
+        "webgpu",
+        "webgl"
+      ],
+      "configuration": {
+        "variant": "pivo-curated-v1",
+        "fixture": "english-20k-v1"
+      }
+    },
+    "woof": {
+      "displayName": "Underdog Woof one-voice (Isla)",
+      "modelRevision": "be702960539777fc3f698e54335276a8391b00f9",
+      "runtime": {
+        "license": "Official Underdog browser JavaScript bundle; separate runtime terms are not stated",
+        "files": []
+      },
+      "assets": [
+        {
+          "id": "woof-config",
+          "target": "models/woof-one-voice/config.json",
+          "url": "https://underdog.ai/woof/model/config.json",
+          "bytes": 2919,
+          "sha256": "ef5865ee0f2c7f270009fdb9fa8e7b5f4dbfbf7b2af803569567c83eb07c1f3e",
+          "kind": "model-support"
+        },
+        {
+          "id": "woof-parts",
+          "target": "models/woof-one-voice/model_int8.parts.json",
+          "url": "https://underdog.ai/woof/model/model_int8.parts.json",
+          "bytes": 69,
+          "sha256": "7076f3ecd02c447d99421a7b66566f5f86f5a1df87884c1a85618f035b810bc1",
+          "kind": "model-support"
+        },
+        {
+          "id": "woof-engine",
+          "target": "runtimes/woof/woof.js",
+          "url": "https://underdog.ai/_next/static/chunks/woof-i_PIAt3K.js",
+          "bytes": 39848,
+          "sha256": "64ef4b3512212f323b9e8737120b5d2bcced8d698a8b587544aa709e07965bbe",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "woof-decoder",
+          "target": "runtimes/woof/decoder-0TmyPaji.js",
+          "url": "https://underdog.ai/_next/static/chunks/decoder-0TmyPaji.js",
+          "bytes": 43652,
+          "sha256": "a644593e04fa258b4fba634a415ec50f2e192ae934a6d841eeb656191b76643a",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "woof-license",
+          "target": "licenses/woof/LICENSE",
+          "url": "https://huggingface.co/ConwayResearch/Underdog-Woof/raw/be702960539777fc3f698e54335276a8391b00f9/LICENSE",
+          "bytes": 7612,
+          "sha256": "784c4a353d15f370ff387f74bde64f50a2041df9c6f2338c3d8a2f781b944de5",
+          "kind": "license"
+        },
+        {
+          "id": "woof-notice",
+          "target": "licenses/woof/NOTICE",
+          "url": "https://huggingface.co/ConwayResearch/Underdog-Woof/raw/be702960539777fc3f698e54335276a8391b00f9/NOTICE",
+          "bytes": 919,
+          "sha256": "0849de251c109869d24f8a0b520260afa10594334ae3d0c06b75e68be1e2c623",
+          "kind": "license"
+        },
+        {
+          "id": "woof-voice",
+          "target": "models/woof-one-voice/isla.safetensors",
+          "url": "https://underdog.ai/woof/model/isla.safetensors",
+          "bytes": 28752,
+          "sha256": "dfd2a4d1ee37886359ebdecd250688eaa8276a7df3f3b03e53bed522afa49a1d",
+          "kind": "voice"
+        },
+        {
+          "id": "woof-part0",
+          "target": "models/woof-one-voice/model_int8.part0",
+          "url": "https://underdog.ai/woof/model/model_int8.part0",
+          "bytes": 15854321,
+          "sha256": "40d58cc4f177833b771eb9722fcaa892b657d728c3805367d1b9aa597b5d706c",
+          "kind": "model-weights"
+        },
+        {
+          "id": "woof-part1",
+          "target": "models/woof-one-voice/model_int8.part1",
+          "url": "https://underdog.ai/woof/model/model_int8.part1",
+          "bytes": 15854321,
+          "sha256": "000b16b34a810bb6be7ecd4749912b024ee93f48b3edba775c662dd8cb12361b",
+          "kind": "model-weights"
+        }
+      ],
+      "license": {
+        "model": "Underdog Non-Commercial License 1.0; attribution required",
+        "runtime": "Official browser runtime; separate redistribution terms not established",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "webgpu"
+      ]
     }
   }
 }

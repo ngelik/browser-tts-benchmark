@@ -84,6 +84,13 @@ async function initialize({ backend, probe, probeText }) {
     }
     throw error;
   }
+  if (backend === 'webgpu') {
+    const actualDevice = await ort.env.webgpu.device;
+    const actualAdapter = ort.env.webgpu.adapter;
+    const actualInfo = actualDevice?.adapterInfo ?? actualAdapter?.info;
+    if (actualInfo?.isFallbackAdapter || actualAdapter?.isFallbackAdapter) return unsupported('ORT selected a software fallback GPU adapter');
+    gpu = actualInfo?.description || actualInfo?.vendor || 'ORT WebGPU device; description unavailable';
+  }
   let capability = { gpuDispatchVerified: backend === 'cpu' ? null : false,
     description: backend === 'cpu' ? 'Explicit single-thread ONNX WASM provider.' : 'WebGPU + WASM operator fallback configured; capability probe not requested.' };
   if (probe) {

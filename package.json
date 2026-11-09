@@ -20,6 +20,7 @@
     "assets": "node bin/bench.mjs assets",
     "validate": "node tools/validate.mjs",
     "report": "node tools/report.mjs",
+    "compare": "node tools/compare.mjs",
     "submit": "node tools/submit.mjs",
     "test": "node --test"
   },

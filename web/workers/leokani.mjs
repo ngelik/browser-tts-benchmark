@@ -86,6 +86,13 @@ async function initialize({ model, backend, probe, probeText }) {
     if (backend === 'webgl' && /int64|FLOAT16|not supported|unsupported|no available backend/i.test(String(error))) return unsupported('Pinned Leokani WebGL graph is incompatible: ' + String(error).slice(0, 500));
     throw error;
   }
+  if (backend === 'webgpu') {
+    const actualDevice = await ttsOrt.env.webgpu.device;
+    const actualAdapter = ttsOrt.env.webgpu.adapter;
+    const actualInfo = actualDevice?.adapterInfo ?? actualAdapter?.info;
+    if (actualInfo?.isFallbackAdapter || actualAdapter?.isFallbackAdapter) return unsupported('ORT selected a software fallback GPU adapter');
+    gpu = actualInfo?.description || actualInfo?.vendor || 'ORT WebGPU device; description unavailable';
+  }
   sampleRate = config.sample_rate ?? config.sampleRate ?? 24000;
   // Preserve the historical runtime's excluded short initialization synthesis.
   await generate({ id: 0, text: 'Hello there.' });

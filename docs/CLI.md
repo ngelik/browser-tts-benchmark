@@ -113,3 +113,21 @@ headed Chrome and a full workload. Inspect the bundle for personal information,
 then follow [CONTRIBUTING.md](../CONTRIBUTING.md) to open a pull request. No command
 uploads results automatically. CI validates evidence structure and arithmetic;
 it cannot certify contributor hardware or reproduce local GPU measurements.
+
+## Compare several published runs
+
+After submitting compatible full runs, generate a combined table and chart:
+
+```sh
+npm run compare -- --out comparisons/my-machine results/<cpu-id>/result.json results/<gpu-id>/result.json
+node tools/compare.mjs --check comparisons
+```
+
+Commit the comparison folder with its input result bundles. CI verifies input
+hashes and regenerates the table/chart exactly. The comparison command rejects
+historical imports, different timing protocols, source fingerprints, machines,
+Chrome versions and repeated model/backend cells. For one model, voice, precision
+and inference settings must match except for the selected execution providers.
+Different models retain their own voices/configurations; a resource comparison
+does not imply equal speech quality. Comparisons never pool repetitions from
+independent runs. Keep all run-specific power/thermal/order notes in the inputs.

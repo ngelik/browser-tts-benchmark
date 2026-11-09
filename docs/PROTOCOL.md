@@ -19,7 +19,8 @@ configuration is distinct from its strict frontend.
 
 1. Use installed **Google Chrome**, headed, in a dedicated disposable profile.
 2. Record the hardware label, OS, Chrome version, adapter/backend, source commit,
-   source fingerprint and actual asset hashes. Never submit hostnames or home paths.
+   source fingerprint and actual asset hashes. Recheck source and assets after
+   generation; a checkout changed during a run cannot be published as a clean run. Never submit hostnames or home paths.
 3. Verify the fixture and assets. Run a separate untimed capability synthesis.
    WebGPU results must demonstrate actual compute dispatch, not merely expose
    `navigator.gpu`. Record CPU preprocessing and allowed operator fallback.
