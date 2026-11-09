@@ -288,6 +288,14 @@
             "version": "1.23.2"
           },
           {
+            "path": "dist/ort.webgl.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgl.min.mjs",
+            "bytes": 454343,
+            "sha256": "bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
             "path": "dist/ort-wasm-simd-threaded.mjs",
             "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.mjs",
             "bytes": 20321,
@@ -535,6 +543,14 @@
             "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs",
             "bytes": 66261,
             "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort.webgl.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgl.min.mjs",
+            "bytes": 454343,
+            "sha256": "bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271",
             "package": "onnxruntime-web",
             "version": "1.23.2"
           },
