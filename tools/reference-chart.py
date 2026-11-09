@@ -52,6 +52,10 @@ fig.text(.045,.135,'READING THE RESULTS',fontsize=10,fontweight='bold')
 fig.text(.045,.111,'CPU generation includes local audio storage; GPU generation excludes it. Side-by-side values do not establish precise acceleration.',fontsize=10,color=muted)
 fig.text(.045,.090,'Resource panels use the original backend: CPU/WASM for five models, WebGPU for Woof. New GPU memory and download costs were not measured.',fontsize=10,color=muted)
 fig.text(.045,.069,'Memory includes the Chrome baseline, is sampled every 500 ms, and is not VRAM. Download estimates exclude network overhead and model initialization.',fontsize=10,color=muted)
-fig.text(.045,.048,'WebGL: no successful model path. GPU inference may include CPU operators. PiVo reflects its current custom browser adapter.',fontsize=10,color=muted)
+fig.text(.045,.048,'GPU inference may include CPU operators. PiVo reflects its current custom browser adapter.',fontsize=10,color=muted)
 fig.savefig(OUT/'reference-overview.svg',facecolor=paper,metadata={'Date':None})
 plt.close(fig)
+
+# Normalize generated XML for clean diffs without changing path coordinates.
+p = OUT/'reference-overview.svg'
+p.write_text('\n'.join(line.rstrip() for line in p.read_text().splitlines())+'\n')

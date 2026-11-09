@@ -383,8 +383,7 @@
         "backendRequested": {
           "enum": [
             "cpu",
-            "webgpu",
-            "webgl"
+            "webgpu"
           ]
         },
         "backendEffective": {
@@ -454,6 +453,66 @@
           "type": "array",
           "items": {
             "$ref": "#/$defs/trial"
+          }
+        },
+        "support": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "voiceCount",
+            "bundledVoiceCount",
+            "languageCount",
+            "languages",
+            "scope",
+            "sources",
+            "notes"
+          ],
+          "properties": {
+            "voiceCount": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 1
+            },
+            "bundledVoiceCount": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 1
+            },
+            "languageCount": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 1
+            },
+            "languages": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "scope": {
+              "type": "string"
+            },
+            "sources": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "notes": {
+              "type": "string"
+            }
           }
         }
       }

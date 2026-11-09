@@ -250,27 +250,13 @@
             "finitePcm": true,
             "chunkCount": 93,
             "nonemptyChunks": true
+          },
+          "audio": {
+            "sha256": "d52b91fef56eb6b78317b6de612593b4e21554ae0ffb6248e9e0ba0a045ccb86",
+            "bytes": 60165164
           }
         }
       ]
-    },
-    {
-      "model": "woof",
-      "backendRequested": "webgl",
-      "backendEffective": "none",
-      "status": "unsupported",
-      "reason": "No WebGL path in the pinned official runtime.",
-      "voice": "Isla",
-      "precision": "INT8",
-      "settings": {
-        "speed": 1
-      },
-      "capability": {
-        "gpuDispatchVerified": false,
-        "description": "No WebGL path in the pinned official runtime."
-      },
-      "warmup": [],
-      "trials": []
     },
     {
       "model": "phonon",
@@ -360,27 +346,13 @@
             "finitePcm": true,
             "chunkCount": 93,
             "nonemptyChunks": true
+          },
+          "audio": {
+            "sha256": "92c35633e1e6071d0f118841cdea4cb7d378dd37b91cd591d3915b86427dc4cd",
+            "bytes": 58529324
           }
         }
       ]
-    },
-    {
-      "model": "phonon",
-      "backendRequested": "webgl",
-      "backendEffective": "none",
-      "status": "unsupported",
-      "reason": "No WebGL path in the pinned official runtime.",
-      "voice": "default",
-      "precision": "q8 GGUF",
-      "settings": {
-        "speed": 1
-      },
-      "capability": {
-        "gpuDispatchVerified": false,
-        "description": "No WebGL path in the pinned official runtime."
-      },
-      "warmup": [],
-      "trials": []
     },
     {
       "model": "paradee",
@@ -470,27 +442,13 @@
             "finitePcm": true,
             "chunkCount": 93,
             "nonemptyChunks": true
+          },
+          "audio": {
+            "sha256": "050b4506be0a7264713db59aa8818b3442e9b52d7730651c1467fc0d5bf4ed3b",
+            "bytes": 61792844
           }
         }
       ]
-    },
-    {
-      "model": "paradee",
-      "backendRequested": "webgl",
-      "backendEffective": "none",
-      "status": "unsupported",
-      "reason": "Pinned WebGL model loader rejected FLOAT16.",
-      "voice": "af_heart",
-      "precision": "INT8",
-      "settings": {
-        "speed": 1
-      },
-      "capability": {
-        "gpuDispatchVerified": false,
-        "description": "Pinned WebGL model loader rejected FLOAT16."
-      },
-      "warmup": [],
-      "trials": []
     },
     {
       "model": "leokani-7m",
@@ -580,27 +538,13 @@
             "finitePcm": true,
             "chunkCount": 93,
             "nonemptyChunks": true
+          },
+          "audio": {
+            "sha256": "bc91dcfe493dab65202e60c7e70d6d8d140c14bfc2e1da5a5768aa6e7c679b79",
+            "bytes": 67249244
           }
         }
       ]
-    },
-    {
-      "model": "leokani-7m",
-      "backendRequested": "webgl",
-      "backendEffective": "none",
-      "status": "unsupported",
-      "reason": "Pinned WebGL model loader rejected int64.",
-      "voice": "default",
-      "precision": "INT8",
-      "settings": {
-        "speed": 1
-      },
-      "capability": {
-        "gpuDispatchVerified": false,
-        "description": "Pinned WebGL model loader rejected int64."
-      },
-      "warmup": [],
-      "trials": []
     },
     {
       "model": "pivo-curated",
@@ -690,27 +634,13 @@
             "finitePcm": true,
             "chunkCount": 93,
             "nonemptyChunks": true
+          },
+          "audio": {
+            "sha256": "964696fcb18b9866d558b4b16e9fc68a49602417010a49b53376c2fca9b780ec",
+            "bytes": 38065004
           }
         }
       ]
-    },
-    {
-      "model": "pivo-curated",
-      "backendRequested": "webgl",
-      "backendEffective": "none",
-      "status": "unsupported",
-      "reason": "Pinned WebGL model loader rejected int64.",
-      "voice": "Pi",
-      "precision": "FP32 ONNX",
-      "settings": {
-        "speed": 1
-      },
-      "capability": {
-        "gpuDispatchVerified": false,
-        "description": "Pinned WebGL model loader rejected int64."
-      },
-      "warmup": [],
-      "trials": []
     },
     {
       "model": "leokani-4.5m",
@@ -800,27 +730,13 @@
             "finitePcm": true,
             "chunkCount": 93,
             "nonemptyChunks": true
+          },
+          "audio": {
+            "sha256": "82e2e2ddbe34665144a2b0caedc7c1242e884b700f9b51c21f33ef260040c648",
+            "bytes": 67213244
           }
         }
       ]
-    },
-    {
-      "model": "leokani-4.5m",
-      "backendRequested": "webgl",
-      "backendEffective": "none",
-      "status": "unsupported",
-      "reason": "Pinned WebGL model loader rejected int64.",
-      "voice": "default",
-      "precision": "INT8",
-      "settings": {
-        "speed": 1
-      },
-      "capability": {
-        "gpuDispatchVerified": false,
-        "description": "Pinned WebGL model loader rejected int64."
-      },
-      "warmup": [],
-      "trials": []
     }
   ],
   "notes": [
@@ -829,6 +745,8 @@
     "PiVo used curated normalization and 12 pronunciation overrides. These are a distinct configuration, not the strict frontend.",
     "Times describe these implementations and this machine. Speech quality has not been ranked.",
     "ONNX GPU pipelines permit disclosed WASM fallback. Leokani G2P remains on CPU. Real GPU compute dispatch was verified in separate untimed synthesis probes.",
-    "PiVo retains sequential small graph invocations and CPU readbacks. Its GPU score does not establish the fastest possible implementation of that architecture."
+    "PiVo retains sequential small graph invocations and CPU readbacks. Its GPU score does not establish the fastest possible implementation of that architecture.",
+    "Presentation pruning removed retired backend rows and/or unused runtime inventory. CPU/WebGPU measurements are unchanged. Original unpruned receipt: commit 8dae4a37e61e662037fd73a58c7254e1dac9dd89, same result path.",
+    "Recovered last-scored-trial WAV digests from the original campaign summary matching source.manifestSha256; original timings and float-PCM digests are unchanged. See audio/historical-restoration.json."
   ]
 }

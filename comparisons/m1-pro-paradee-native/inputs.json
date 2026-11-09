@@ -3,11 +3,11 @@
   "inputs": [
     {
       "id": "2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f",
-      "sha256": "b687fd03dd230d76d21f2d6b86e9929546d655cb7112b22385ddd0c2a5c327e8"
+      "sha256": "e54f8b748116976e8104b5deaca8c6c7c319e98d0e643ab4e4d5a98a1fc759c5"
     },
     {
       "id": "2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0",
-      "sha256": "4ab4d7e37d10d9a6d59e16b4f749453ef4c0ff577834805bbb3ad5d5e89c6a8d"
+      "sha256": "a44e8d5ce09505f62d726867403f70b8d7365c6f90b840eff35117ac4a65f535"
     }
   ]
 }

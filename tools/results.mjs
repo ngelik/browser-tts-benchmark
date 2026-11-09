@@ -1,3 +1,4 @@
+import { validateSupport } from '../lib/model-support.mjs';
 import { createHash } from 'node:crypto';
 import { readFile, readdir } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
@@ -35,7 +36,6 @@ function validateNativeBackend(c) {
   const labels={
     cpu:/^(?:cpu|cpu\/wasm|wasm)$/i,
     webgpu:/^(?:webgpu|webgpu\+wasm)$/i,
-    webgl:/^webgl$/i,
   };
   check(labels[c.backendRequested].test(c.backendEffective),`Effective backend ${c.backendEffective} does not match requested ${c.backendRequested}`);
 }
@@ -71,8 +71,9 @@ export function validateResult(d, { publication = false } = {}) {
   check(Array.isArray(d.cells) && d.cells.length>0 && d.cells.length<=1000,'Cells required');
   const cellIds=new Set();
   for(const c of d.cells){
-    keys(c,['model','backendRequested','backendEffective','status','reason','voice','precision','settings','capability','warmup','trials'],'cell');
-    check(slug(c.model) && ['cpu','webgpu','webgl'].includes(c.backendRequested) && text(c.backendEffective,150),'Invalid model/backend');
+    keys(c,['model','support','backendRequested','backendEffective','status','reason','voice','precision','settings','capability','warmup','trials'],'cell');
+    check(slug(c.model) && ['cpu','webgpu'].includes(c.backendRequested) && text(c.backendEffective,150),'Invalid model/backend');
+    if(c.support!==undefined)validateSupport(c.support);
     const id=c.model+'/'+c.backendRequested;check(!cellIds.has(id),'Duplicate cell');cellIds.add(id);
     check(['measured','unsupported','error'].includes(c.status) && (c.reason===null || text(c.reason,2000)),'Invalid status/reason');
     check(text(c.voice,150)&&text(c.precision,100)&&object(c.settings),'Voice, precision and settings are required');

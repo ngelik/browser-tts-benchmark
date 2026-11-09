@@ -29,4 +29,6 @@ Raw WAV stays local and is not part of automatic submission.
 
 AC power verified before run. CPU then WebGPU sequential order; normal desktop background processes, no simultaneous benchmark inference. Timing-only protocol; thermal state not instrumented.
 
+Presentation pruning removed retired backend rows and/or unused runtime inventory. CPU/WebGPU measurements are unchanged. Original unpruned receipt: commit 8dae4a37e61e662037fd73a58c7254e1dac9dd89, same result path.
+
 Different protocols, fixtures, settings or machines must not be pooled into a speedup ranking. This report does not rate speech quality.

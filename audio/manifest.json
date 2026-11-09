@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "resultId": "historical-2026-11-08-m1pro-primary-warm",
+      "model": "leokani-4.5m",
+      "backend": "cpu",
+      "trialIndex": 1,
+      "voice": "default",
+      "language": "en",
+      "attribution": "Leokani by Milliwatt Labs; synthetic training speech from Kokoro-82M by hexgrad.",
+      "modelTerms": "CC BY-NC 4.0",
+      "sourceUrls": [
+        "https://huggingface.co/milliwattlabs/leokani-tts-4.5M/raw/d9eb742dfb6567872fe451d559674ec42c32e6c8/README.md"
+      ],
+      "clip": {
+        "path": "audio/samples/historical-2026-11-08-m1pro-primary-warm--leokani-4.5m--cpu.wav",
+        "sha256": "b95f4f800c5c10fac7e5cc64bd3a9f58fc18d7ef6a2a9d9f6768bb314696e49f",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--leokani-4.5m--cpu-full.wav",
+        "sha256": "16c4bc75452e2725d1f6177cfb9bb94c9033d57686a325bf70f159a5cd8a8dea",
+        "bytes": 67212044
+      }
+    },
+    {
+      "resultId": "historical-2026-11-08-m1pro-gpu-warm",
+      "model": "leokani-4.5m",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "default",
+      "language": "en",
+      "attribution": "Leokani by Milliwatt Labs; synthetic training speech from Kokoro-82M by hexgrad.",
+      "modelTerms": "CC BY-NC 4.0",
+      "sourceUrls": [
+        "https://huggingface.co/milliwattlabs/leokani-tts-4.5M/raw/d9eb742dfb6567872fe451d559674ec42c32e6c8/README.md"
+      ],
+      "clip": {
+        "path": "audio/samples/historical-2026-11-08-m1pro-gpu-warm--leokani-4.5m--webgpu.wav",
+        "sha256": "0d79c8469b951d2308f5dbd8d9f95c72f54075de43bcc9d14da4f86584e8126f",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--leokani-4.5m--webgpu-full.wav",
+        "sha256": "82e2e2ddbe34665144a2b0caedc7c1242e884b700f9b51c21f33ef260040c648",
+        "bytes": 67213244
+      }
+    },
+    {
+      "resultId": "historical-2026-11-08-m1pro-primary-warm",
+      "model": "leokani-7m",
+      "backend": "cpu",
+      "trialIndex": 1,
+      "voice": "default",
+      "language": "en",
+      "attribution": "Leokani by Milliwatt Labs; synthetic training speech from Kokoro-82M by hexgrad.",
+      "modelTerms": "CC BY-NC 4.0",
+      "sourceUrls": [
+        "https://huggingface.co/milliwattlabs/leokani-tts-7M/raw/ba0beb24f7b124dc1eb297ffc28d01db892462bd/README.md"
+      ],
+      "clip": {
+        "path": "audio/samples/historical-2026-11-08-m1pro-primary-warm--leokani-7m--cpu.wav",
+        "sha256": "27db04295e86f20118c8cd47d97a25e7af7bac2e8ec3869c1562bd6d8d8257b7",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--leokani-7m--cpu-full.wav",
+        "sha256": "c508b72aa6c37043978ff01fc4efbb1510538c3e83dbb068485828d0718a4d37",
+        "bytes": 67249244
+      }
+    },
+    {
+      "resultId": "historical-2026-11-08-m1pro-gpu-warm",
+      "model": "leokani-7m",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "default",
+      "language": "en",
+      "attribution": "Leokani by Milliwatt Labs; synthetic training speech from Kokoro-82M by hexgrad.",
+      "modelTerms": "CC BY-NC 4.0",
+      "sourceUrls": [
+        "https://huggingface.co/milliwattlabs/leokani-tts-7M/raw/ba0beb24f7b124dc1eb297ffc28d01db892462bd/README.md"
+      ],
+      "clip": {
+        "path": "audio/samples/historical-2026-11-08-m1pro-gpu-warm--leokani-7m--webgpu.wav",
+        "sha256": "f931b7594c09d1313f62a170eb20ab409c924d76981ad540a505ca753a33ea1f",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--leokani-7m--webgpu-full.wav",
+        "sha256": "bc91dcfe493dab65202e60c7e70d6d8d140c14bfc2e1da5a5768aa6e7c679b79",
+        "bytes": 67249244
+      }
+    },
+    {
+      "resultId": "2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f",
+      "model": "paradee",
+      "backend": "cpu",
+      "trialIndex": 5,
+      "voice": "af_heart",
+      "language": "en",
+      "attribution": "Paradee by Sahil Mahendrakar; distilled from Kokoro-82M by hexgrad.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/raw/ed2934d4df8a4fd891e29584c5e1104649409765/README.md",
+        "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/resolve/ed2934d4df8a4fd891e29584c5e1104649409765/config.json"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f--paradee--cpu.wav",
+        "sha256": "21b1c1dd18ed34752f6d447083894c90f14a9d69e8745d5da14a76caafc59fc1",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f--paradee--cpu-full.wav",
+        "sha256": "1df498a0845a45321663e327bba6818c547d13a5b2d4e6b3b112330c14595006",
+        "bytes": 61792844
+      }
+    },
+    {
+      "resultId": "2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0",
+      "model": "paradee",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "af_heart",
+      "language": "en",
+      "attribution": "Paradee by Sahil Mahendrakar; distilled from Kokoro-82M by hexgrad.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/raw/ed2934d4df8a4fd891e29584c5e1104649409765/README.md",
+        "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/resolve/ed2934d4df8a4fd891e29584c5e1104649409765/config.json"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0--paradee--webgpu.wav",
+        "sha256": "d3a9eca47a36a7af6b39600b5add48eba049d32fb1985252e6af38cab57c79f8",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0--paradee--webgpu-full.wav",
+        "sha256": "054611a9fd8ed930dbdb5d65be9b34090532e36c9d921ea5658277a66a65ebc2",
+        "bytes": 61792844
+      }
+    },
+    {
+      "resultId": "historical-2026-11-08-m1pro-primary-warm",
+      "model": "phonon",
+      "backend": "cpu",
+      "trialIndex": 1,
+      "voice": "default",
+      "language": "en",
+      "attribution": "Phonon by Gradium; based on Pocket TTS and Mimi by Kyutai.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/gradium/phonon-31m-en/raw/92741c5b07d085ff840e26fea8ce43110b87852f/README.md",
+        "https://huggingface.co/gradium/phonon-voices/resolve/0ee17205f254b5abc43b266c8a0f215565c352f7/voices.jsonl"
+      ],
+      "clip": {
+        "path": "audio/samples/historical-2026-11-08-m1pro-primary-warm--phonon--cpu.wav",
+        "sha256": "315843891ba3f918a2c29be71d3842b6055859e88e7fb91a75cf5cd2d8a05b79",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--phonon--cpu-full.wav",
+        "sha256": "0123690a35f51e13a4edcb72faa02fefe17be814ae865567d01afdb3796dc9f7",
+        "bytes": 58617644
+      }
+    },
+    {
+      "resultId": "historical-2026-11-08-m1pro-gpu-warm",
+      "model": "phonon",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "default",
+      "language": "en",
+      "attribution": "Phonon by Gradium; based on Pocket TTS and Mimi by Kyutai.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/gradium/phonon-31m-en/raw/92741c5b07d085ff840e26fea8ce43110b87852f/README.md",
+        "https://huggingface.co/gradium/phonon-voices/resolve/0ee17205f254b5abc43b266c8a0f215565c352f7/voices.jsonl"
+      ],
+      "clip": {
+        "path": "audio/samples/historical-2026-11-08-m1pro-gpu-warm--phonon--webgpu.wav",
+        "sha256": "4e9c5d8de9a594c142c9cdcfb7405e06ff1c6658d5a3e624bb5e36f6152f1444",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--phonon--webgpu-full.wav",
+        "sha256": "92c35633e1e6071d0f118841cdea4cb7d378dd37b91cd591d3915b86427dc4cd",
+        "bytes": 58529324
+      }
+    },
+    {
+      "resultId": "historical-2026-11-08-m1pro-primary-warm",
+      "model": "pivo-curated",
+      "backend": "cpu",
+      "trialIndex": 1,
+      "voice": "Pi",
+      "language": "en",
+      "attribution": "PiVo by Leon Lehmann, Empero Research; FARGAN-derived vocoder.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/empero-ai/PiVo-1.4M/raw/515d84fc3420da6ae138f1b81017fcbc24d622a8/README.md"
+      ],
+      "clip": {
+        "path": "audio/samples/historical-2026-11-08-m1pro-primary-warm--pivo-curated--cpu.wav",
+        "sha256": "9077eb1eee72a36a873743ead21d80fc49dbc6de7bea10488d881bc13d707d19",
+        "bytes": 960044,
+        "startSample": 0,
+        "sampleRate": 16000,
+        "samples": 480000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--pivo-curated--cpu-full.wav",
+        "sha256": "9c48cc897a5337d6f855104c7d90ab8d0a81ee330c5afbe0339e9d670b4e7d4a",
+        "bytes": 38065004
+      }
+    },
+    {
+      "resultId": "historical-2026-11-08-m1pro-gpu-warm",
+      "model": "pivo-curated",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "Pi",
+      "language": "en",
+      "attribution": "PiVo by Leon Lehmann, Empero Research; FARGAN-derived vocoder.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/empero-ai/PiVo-1.4M/raw/515d84fc3420da6ae138f1b81017fcbc24d622a8/README.md"
+      ],
+      "clip": {
+        "path": "audio/samples/historical-2026-11-08-m1pro-gpu-warm--pivo-curated--webgpu.wav",
+        "sha256": "1ffe8b82255427a9df06b43bde62f44d44af9b9b9030a007ab78f6b039eeb628",
+        "bytes": 960044,
+        "startSample": 0,
+        "sampleRate": 16000,
+        "samples": 480000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--pivo-curated--webgpu-full.wav",
+        "sha256": "964696fcb18b9866d558b4b16e9fc68a49602417010a49b53376c2fca9b780ec",
+        "bytes": 38065004
+      }
+    },
+    {
+      "resultId": "historical-2026-11-08-m1pro-gpu-warm",
+      "model": "woof",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "Isla",
+      "language": "en",
+      "attribution": "Voice by Underdog Woof. Non-commercial benchmark evaluation.",
+      "modelTerms": "Underdog Non-Commercial License 1.0; attribution required",
+      "sourceUrls": [
+        "https://huggingface.co/ConwayResearch/Underdog-Woof/raw/be702960539777fc3f698e54335276a8391b00f9/README.md",
+        "https://github.com/ngelik/browser-tts-benchmark/blob/8dae4a37e61e662037fd73a58c7254e1dac9dd89/web/workers/woof.mjs"
+      ],
+      "clip": {
+        "path": "audio/samples/historical-2026-11-08-m1pro-gpu-warm--woof--webgpu.wav",
+        "sha256": "53d31328fc253fd4aeb4cb9507918f15902dae613110d47c4f4798642bc86c0d",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--woof--webgpu-full.wav",
+        "sha256": "d52b91fef56eb6b78317b6de612593b4e21554ae0ffb6248e9e0ba0a045ccb86",
+        "bytes": 60165164
+      }
+    }
+  ]
+}

@@ -35,7 +35,6 @@ or output licensing; this trial is not commercial-use clearance.
 | Legacy voice JSON omits `phoneme_type` | Local parsed-response wrapper supplies `espeak`; original hash-pinned bytes stay unchanged. Explicit other types fail. |
 | eSpeak replaces the enclosing worker message handler | Restore the benchmark RPC handler after official `setVoice` initialization. Masking worker detection was tested and rejected because it selected Emscripten's shell loader. |
 | Official frontend silently skips unknown phonemes | Strict map wrapper throws instead; all 93 source chunks passed. |
-| Asset test required WebGL files for every ONNX model | Require the bundle only for ONNX models declaring WebGL probes. Piper stages its CPU runtime independently. |
 | Long model names overlap the SVG plot | Truncate only long visible labels and preserve their full accessible title; short historical chart output stays unchanged. |
 
 ## Correctness evidence before scoring
@@ -75,7 +74,7 @@ npm run bench -- run --model piper-en-gb-southern-english-female-low --backend c
 This generates one excluded full warm-up and five scored full articles. Keep
 source files unchanged while running. Follow the skill's report, submission and
 PR steps; only validated metadata, table, chart and checksums belong in Git.
-GPU/WebGL remain unvalidated for this adapter. The model graph has no validated
+At the time of this CPU-only trial, GPU execution remained unvalidated. The model graph has no validated
 seed input, so output duration and waveform can vary across repetitions.
 
 ## Completed scored result

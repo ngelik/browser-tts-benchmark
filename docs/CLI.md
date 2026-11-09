@@ -31,20 +31,18 @@ an already reviewed asset tree, preserving the lockfile's relative target paths:
 npm run assets -- import --model phonon --source /path/to/asset-tree
 ```
 
-Never commit this cache, downloaded weights, upstream bundles or recordings.
+Never commit this cache, downloaded weights or upstream bundles. Explicitly authorized recordings use the validated [audio publication workflow](../audio/README.md).
 
 ## Choose a backend and workload
 
 ```sh
 npm run bench -- run --model phonon --backend cpu --smoke
 npm run bench -- run --model phonon --backend webgpu --smoke
-npm run bench -- run --model phonon --backend webgl --smoke
 npm run bench -- run --model phonon --backend cpu --scenario warm --machine "My laptop"
 ```
 
-`cpu` requests CPU/WASM explicitly; `webgpu` requires a real dispatch probe;
-`webgl` records support or an explicit incompatibility. A software renderer or
-CPU-only fallback is not a GPU result. `--smoke` uses three canonical source
+`cpu` requests CPU/WASM explicitly; `webgpu` requires a real dispatch probe.
+A software renderer or CPU-only fallback is not a GPU result. `--smoke` uses three canonical source
 chunks, skips the full warm-up and defaults to one scored diagnostic repetition.
 It cannot be submitted as a benchmark score.
 

@@ -1,4 +1,5 @@
 import { normalizePiperConfig, strictPhonemeIdMap } from '../piper/config.mjs';
+import { observeComputeDispatches, requestHardwareWebGpuAdapter } from '../piper/webgpu.mjs';
 
 const MODEL_ROOT = '/models/piper-en-gb-southern-english-female-low/e7229f7d33a10e145e109b886d661984201ac3c4/';
 const MODEL_FILE = 'en_GB-southern_english_female-low.onnx';
@@ -16,6 +17,7 @@ let session = null;
 let voiceConfig = null;
 let restoreFetch = null;
 const pendingTensors = new Set();
+let activeExecutionProviders = ['wasm'];
 
 function baseInfo() {
   const inference = voiceConfig?.inference ?? {};
@@ -23,7 +25,7 @@ function baseInfo() {
     voice: VOICE,
     precision: PRECISION,
     settings: {
-      executionProviders: ['wasm'],
+      executionProviders: [...activeExecutionProviders],
       threads: 1,
       espeakVoice: 'en-gb-x-rp',
       speakerId: null,
@@ -118,18 +120,32 @@ async function synthesize(text) {
 }
 
 async function initialize({ backend, probe, probeText }) {
-  if (backend !== 'cpu') {
-    return unsupported('This adapter currently validates only explicit CPU/WASM execution; WebGPU and WebGL have no verified Piper result.');
+  activeExecutionProviders = ['wasm'];
+  if (backend === 'webgpu') activeExecutionProviders = ['webgpu', 'wasm'];
+  else if (backend !== 'cpu') return unsupported('Unsupported Piper backend');
+
+  let selectedAdapter = null;
+  let selectedAdapterInfo = null;
+  let gpu = null;
+  if (backend === 'webgpu') {
+    const selection = await requestHardwareWebGpuAdapter(globalThis.navigator?.gpu);
+    if (selection.reason) return unsupported(selection.reason);
+    selectedAdapter = selection.adapter;
+    selectedAdapterInfo = selection.info;
+    gpu = selection.description;
   }
 
-  ort = await import(ORT_ROOT + 'ort.wasm.min.mjs');
+  const bundle = backend === 'cpu' ? 'ort.wasm.min.mjs' : 'ort.webgpu.min.mjs';
+  ort = await import(ORT_ROOT + bundle);
   ort.env.logLevel = 'error';
   ort.env.wasm.numThreads = 1;
   ort.env.wasm.proxy = false;
+  const wasm = backend === 'webgpu' ? 'ort-wasm-simd-threaded.asyncify' : 'ort-wasm-simd-threaded';
   ort.env.wasm.wasmPaths = {
-    mjs: ORT_ROOT + 'ort-wasm-simd-threaded.mjs',
-    wasm: ORT_ROOT + 'ort-wasm-simd-threaded.wasm',
+    mjs: ORT_ROOT + wasm + '.mjs',
+    wasm: ORT_ROOT + wasm + '.wasm',
   };
+  if (backend === 'webgpu') ort.env.webgpu.adapter = selectedAdapter;
   globalThis.ort = ort;
 
   installLocalFetch();
@@ -139,7 +155,7 @@ async function initialize({ backend, probe, probeText }) {
     ort.InferenceSession.create = async function (model, options = {}) {
       const created = await create.call(this, model, {
         ...options,
-        executionProviders: ['wasm'],
+        executionProviders: activeExecutionProviders,
         graphOptimizationLevel: 'all',
       });
       if (session) {
@@ -168,15 +184,42 @@ async function initialize({ backend, probe, probeText }) {
   }
 
   if (!voiceConfig || !session) throw new Error('Official Piper runtime did not retain the expected voice and session.');
+  if (backend === 'webgpu') {
+    const actualDevice = await ort.env.webgpu.device;
+    const actualAdapter = ort.env.webgpu.adapter;
+    const actualInfo = actualDevice?.adapterInfo ?? actualAdapter?.info ?? selectedAdapterInfo;
+    if (actualAdapter?.isFallbackAdapter === true || actualInfo?.isFallbackAdapter === true) {
+      return unsupported('ONNX Runtime selected a software fallback WebGPU adapter');
+    }
+    gpu = actualInfo?.description || actualInfo?.vendor || gpu;
+  }
+
+  let capability = backend === 'cpu'
+    ? { gpuDispatchVerified: null, description: 'Explicit ONNX Runtime Web WASM provider with one thread; eSpeak preprocessing and synthesis run locally in the Chrome worker.' }
+    : { gpuDispatchVerified: false, description: 'WebGPU + WASM operator fallback configured; no dispatch probe was requested.' };
   if (probe) {
-    const pcm = await synthesize(probeText || 'A short browser speech check.');
-    if (pcm.length < 1) throw new Error('Piper capability synthesis returned no PCM.');
+    const hooks = backend === 'webgpu' ? observeComputeDispatches() : null;
+    let observed = 0;
+    try {
+      const pcm = await synthesize(probeText || 'A short browser speech check.');
+      if (pcm.length < 1 || !pcm.every(Number.isFinite)) throw new Error('Piper capability synthesis returned empty or nonfinite PCM.');
+    } finally {
+      observed = hooks?.stop() ?? 0;
+    }
+    if (backend === 'webgpu') {
+      if (observed === 0) return unsupported('No actual WebGPU compute dispatch was observed during Piper synthesis');
+      capability = {
+        gpuDispatchVerified: true,
+        description: `Observed ${observed} WebGPU compute dispatches during a separate untimed synthesis. WebGPU + WASM operator fallback; eSpeak preprocessing runs on CPU. Hooks were removed before timed generation.`,
+      };
+    }
   }
   return {
     ...baseInfo(),
     status: 'measured',
-    backendEffective: 'cpu/wasm',
-    capability: { gpuDispatchVerified: null, description: 'Explicit ONNX Runtime Web WASM provider with one thread; eSpeak preprocessing and synthesis run locally in the Chrome worker.' },
+    backendEffective: backend === 'cpu' ? 'cpu/wasm' : 'webgpu+wasm',
+    capability,
+    ...(backend === 'webgpu' ? { gpu } : {}),
   };
 }
 

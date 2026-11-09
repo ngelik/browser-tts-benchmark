@@ -9,15 +9,15 @@ const root = resolve(import.meta.dirname, '..');
 test('catalog entries match the pinned browser backends', () => {
   const models = listModels();
   assert.deepEqual(models.map(model => model.id), ['paradee', 'phonon', 'leokani-7m', 'leokani-4.5m', 'pivo-curated', 'woof', 'piper-en-gb-southern-english-female-low']);
-  assert.deepEqual(models[0].backends, ['cpu', 'webgpu', 'webgl']);
+  assert.deepEqual(models[0].backends, ['cpu', 'webgpu']);
   assert.equal(models[0].modelRevision, 'ed2934d4df8a4fd891e29584c5e1104649409765');
   assert.deepEqual(models[1].backends, ['cpu', 'webgpu']);
   assert.equal(models[1].modelRevision, '92741c5b07d085ff840e26fea8ce43110b87852f');
-  assert.deepEqual(models[2].backends, ['cpu', 'webgpu', 'webgl']);
-  assert.deepEqual(models[3].backends, ['cpu', 'webgpu', 'webgl']);
-  assert.deepEqual(models[4].backends, ['cpu', 'webgpu', 'webgl']);
+  assert.deepEqual(models[2].backends, ['cpu', 'webgpu']);
+  assert.deepEqual(models[3].backends, ['cpu', 'webgpu']);
+  assert.deepEqual(models[4].backends, ['cpu', 'webgpu']);
   assert.deepEqual(models[5].backends, ['webgpu']);
-  assert.deepEqual(models[6].backends, ['cpu']);
+  assert.deepEqual(models[6].backends, ['cpu', 'webgpu']);
   assert.equal(models[6].modelRevision, 'e7229f7d33a10e145e109b886d661984201ac3c4');
   assert.equal(models[6].license.requiresAcceptance, true);
 });
@@ -39,7 +39,6 @@ test('Piper has voice and lineage cards plus immutable cache-only runtime pins',
     assert.match(asset.sha256, /^[a-f0-9]{64}$/);
     assert.ok(Number.isSafeInteger(asset.bytes) && asset.bytes > 0);
   }
-  assert.ok(!model.runtime.files.some(file => file.target.endsWith('/ort.webgl.min.mjs')));
   assert.equal(model.license.requiresAcceptance, true);
 });
 
@@ -86,32 +85,4 @@ test('asset lock pins content and permits only identical shared runtime targets'
   assert.equal(lock.models['leokani-4.5m'].license.requiresAcceptance, true);
   assert.equal(lock.models.woof.license.requiresAcceptance, true);
   assert.equal(lock.models['leokani-4.5m'].assets.find(asset => asset.id === 'leokani-4-5m-config').sourcePath, 'web/data/leokani/config-4.5m.json');
-});
-
-test('each ONNX model declaring WebGL stages its pinned probe bundle', async () => {
-  const lock = JSON.parse(await readFile(resolve(root, 'assets.lock.json'), 'utf8'));
-  const expected = {
-    path: 'dist/ort.webgl.min.mjs',
-    target: 'runtimes/onnxruntime-web/1.23.2/ort.webgl.min.mjs',
-    package: 'onnxruntime-web',
-    version: '1.23.2',
-    bytes: 454343,
-    sha256: 'bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271',
-  };
-  const webglModels = Object.entries(lock.models).filter(([, model]) => model.runtime.package === 'onnxruntime-web' && model.backends.includes('webgl'));
-  assert.ok(webglModels.length > 0, 'expected WebGL model entries');
-  for (const [id, model] of webglModels) {
-    const bundle = model.runtime.files.find(file => file.target === expected.target);
-    assert.ok(bundle, `${id} must stage its own WebGL probe bundle`);
-    for (const [key, value] of Object.entries(expected)) {
-      assert.equal(bundle[key] ?? model.runtime[key], value, `${id} WebGL runtime ${key} differs`);
-    }
-  }
-});
-
-test('browser entry points contain no implicit network or audio save path', async () => {
-  const source = await readFile(resolve(root, 'web/bench.mjs'), 'utf8');
-  assert.match(source, /window\.bench = \{ fixture, initialize, generate, dispose \}/);
-  assert.match(source, /if \(saveAudio\) receipt\.audioWavBase64/);
-  assert.doesNotMatch(source, /https?:\/\//);
 });

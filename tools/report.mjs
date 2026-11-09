@@ -4,6 +4,7 @@ import { pathToFileURL } from 'node:url';
 import { readResult, summaries, median } from './results.mjs';
 const esc=x=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const md=x=>String(x??'').replaceAll('|','\\|').replaceAll('\n',' ');
+const plain=x=>md(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replace(/[\\`*_{}\[\]()!#]/g,'\\export function renderReport(d){');
 export function renderReport(d){
   const rows=summaries(d), max=Math.max(1,...rows.filter(r=>r.maxSeconds!==null).map(r=>r.maxSeconds)), min=Math.min(1,...rows.filter(r=>r.minSeconds!==null).map(r=>r.minSeconds));
   const left=230,right=850,width=1000,height=200+rows.length*66;
@@ -20,6 +21,12 @@ export function renderReport(d){
     const metrics=[];
     for(const c of d.cells)if(c.status==='measured')for(const [key,[label,unit]] of Object.entries(labels)){const values=c.trials.map(t=>t.metrics?.[key]).filter(v=>typeof v==='number'&&Number.isFinite(v));if(values.length)metrics.push([c.model,c.backendRequested,label,median(values),unit,values.length]);}
     if(metrics.length){markdown+='\nAdditional metrics (median of available observations; scopes are distinct):\n\n| Model | Backend | Metric | Median | Unit | n |\n|---|---|---|---:|---|---:|\n';for(const [model,backend,label,value,unit,n]of metrics)markdown+=`| ${md(model)} | ${md(backend)} | ${label} | ${value.toFixed(unit==='bytes'?0:3)} | ${unit} | ${n} |\n`;}
+  }
+  const supportCells=d.cells.filter(c=>c.support);
+  if(supportCells.length){
+    markdown+='\nModel support (catalog capability, not coverage of this run):\n\n| Model | Supported voices | Bundled voices | Languages | Tested voice |\n|---|---:|---:|---|---|\n';
+    for(const c of supportCells){const s=c.support;markdown+=`| ${md(c.model)} | ${s.voiceCount??'Unknown'} | ${s.bundledVoiceCount??'Unknown'} | ${s.languageCount??'Unknown'} (${md(s.languages?.join(', ')??'unknown')}) | ${md(c.voice)} |\n`;}
+    for(const c of supportCells){const s=c.support;markdown+=`\n${plain(s.scope)}. ${plain(s.notes)} Sources: ${s.sources.map((u,i)=>`[${i+1}](${encodeURI(u).replaceAll('(','%28').replaceAll(')','%29')})`).join(', ')}.\n\n`;}
   }
   markdown+='\n![Generation chart](chart.svg)\n\n';
   for(const c of d.cells)markdown+=`- **${md(c.model)} / ${md(c.backendRequested)}**: ${md(c.capability.description)}${c.reason?' '+md(c.reason):''}\n`;
