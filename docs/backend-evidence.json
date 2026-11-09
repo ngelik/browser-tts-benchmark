@@ -1,0 +1,403 @@
+{
+  "origin": "historical-import",
+  "note": "Allowlisted capability evidence from separate untimed probes. Timing workers were uninstrumented. CPU/GPU partitioning may remain; a nonzero GPU count does not prove GPU-exclusive execution.",
+  "cells": [
+    {
+      "caseId": "paradee",
+      "backend": "webgl",
+      "status": "unsupported",
+      "modelRevision": "ed2934d4df8a4fd891e29584c5e1104649409765",
+      "attemptedInference": true,
+      "error": {
+        "name": "Error",
+        "message": "{\"name\":\"Error\",\"message\":\"Failed to load model as ONNX format: Error: unsupported data type: FLOAT16\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\",\"stack\":\"Error: Failed to load model as ONNX format: Error: unsupported data type: FLOAT16\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\\n    at Sr.load (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1801:28277)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1858\\n    at Nn.event (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:6:23633)\\n    at Ar.initialize (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1736)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1560\"}",
+        "stack": "Error: {\"name\":\"Error\",\"message\":\"Failed to load model as ONNX format: Error: unsupported data type: FLOAT16\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\",\"stack\":\"Error: Failed to load model as ONNX format: Error: unsupported data type: FLOAT16\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\\n    at Sr.load (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1801:28277)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1858\\n    at Nn.event (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:6:23633)\\n    at Ar.initialize (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1736)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1560\"}\n    at Worker.message (http://127.0.0.1:4187/gpu-experiment/probe.js:179:23)",
+        "timeoutMs": null
+      },
+      "originalReceiptSha256": "3c5cbbd6169b801c241f163ef1a0670c1934ce0f096a9386ab4339880d3f73ef"
+    },
+    {
+      "caseId": "paradee",
+      "backend": "webgpu",
+      "status": "gpu-verified",
+      "runtime": "ONNX Runtime Web 1.23.2 + pinned Paradee browser frontend",
+      "modelRevision": "ed2934d4df8a4fd891e29584c5e1104649409765",
+      "precision": "INT8",
+      "voice": "af_heart",
+      "requestedExecutionProviders": [
+        "webgpu",
+        "wasm"
+      ],
+      "executionProviderDispatch": {
+        "webglDrawArrays": 0,
+        "webglDrawElements": 0,
+        "webglOtherDraws": 0,
+        "webgpuQueueSubmits": 120,
+        "webgpuDispatches": 1046,
+        "webgpuIndirectDispatches": 0
+      },
+      "availableWebgpuAdapter": {
+        "vendor": "apple",
+        "architecture": "metal-3",
+        "device": "",
+        "description": "",
+        "isFallbackAdapter": false
+      },
+      "runtimeWebgpuAdapterRequests": [
+        {
+          "options": {},
+          "adapter": {
+            "vendor": "apple",
+            "architecture": "metal-3",
+            "device": "",
+            "description": "",
+            "isFallbackAdapter": false
+          }
+        },
+        {
+          "options": {
+            "powerPreference": "high-performance",
+            "forceFallbackAdapter": false
+          },
+          "adapter": {
+            "vendor": "apple",
+            "architecture": "metal-3",
+            "device": "",
+            "description": "",
+            "isFallbackAdapter": false
+          }
+        }
+      ],
+      "frontendPlacement": "CPU",
+      "fallbackDisclosure": "A WASM fallback execution provider was supplied. The dispatch counters show whether this probe invoked GPU API work; CPU fallback and partial partitioning remain possible.",
+      "actualGpuDispatch": true,
+      "finitePcm": true,
+      "samples": 355800,
+      "sampleRate": 24000,
+      "pcmSha256": "9d0136fc1d2a3e5837cbb85272e77547037eb2d94c8d48319eda2f96bec58b11",
+      "originalReceiptSha256": "61092b0f99509f416c1981c9025a12d9b0e24ebe4fa924c18711e83ffc3bbec8"
+    },
+    {
+      "caseId": "leokani-7m",
+      "backend": "webgpu",
+      "status": "gpu-verified",
+      "runtime": "Pinned Leokani browser frontend + ONNX Runtime Web 1.23.2",
+      "modelRevision": "ba0beb24f7b124dc1eb297ffc28d01db892462bd",
+      "precision": "INT8",
+      "voice": "default",
+      "requestedExecutionProviders": [
+        "webgpu",
+        "wasm"
+      ],
+      "executionProviderDispatch": {
+        "webglDrawArrays": 0,
+        "webglDrawElements": 0,
+        "webglOtherDraws": 0,
+        "webgpuQueueSubmits": 1472,
+        "webgpuDispatches": 4568,
+        "webgpuIndirectDispatches": 0
+      },
+      "availableWebgpuAdapter": {
+        "vendor": "apple",
+        "architecture": "metal-3",
+        "device": "",
+        "description": "",
+        "isFallbackAdapter": false
+      },
+      "runtimeWebgpuAdapterRequests": [
+        {
+          "options": {},
+          "adapter": {
+            "vendor": "apple",
+            "architecture": "metal-3",
+            "device": "",
+            "description": "",
+            "isFallbackAdapter": false
+          }
+        },
+        {
+          "options": {
+            "powerPreference": "high-performance",
+            "forceFallbackAdapter": false
+          },
+          "adapter": {
+            "vendor": "apple",
+            "architecture": "metal-3",
+            "device": "",
+            "description": "",
+            "isFallbackAdapter": false
+          }
+        }
+      ],
+      "frontendPlacement": "CPU",
+      "fallbackDisclosure": "A WASM fallback execution provider was supplied. Dispatch counts are broken out by the three separate G2P sessions and the TTS session; CPU fallback and partial operator partitioning remain possible.",
+      "actualGpuDispatch": true,
+      "finitePcm": true,
+      "samples": 391800,
+      "sampleRate": 24000,
+      "pcmSha256": "50cd501e919c5b358ab612873cbe161c26f22ed7d4c46f92db3540a86d487c4a",
+      "originalReceiptSha256": "bae766786828372799d6291a781bb44448eed449a6cc0d1888bd54c6dc56d7b9"
+    },
+    {
+      "caseId": "leokani-7m",
+      "backend": "webgl",
+      "status": "unsupported",
+      "modelRevision": "ba0beb24f7b124dc1eb297ffc28d01db892462bd",
+      "attemptedInference": true,
+      "error": {
+        "name": "Error",
+        "message": "{\"name\":\"Error\",\"message\":\"Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\",\"stack\":\"Error: Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\\n    at Sr.load (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1801:28277)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1858\\n    at Nn.event (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:6:23633)\\n    at Ar.initialize (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1736)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1560\"}",
+        "stack": "Error: {\"name\":\"Error\",\"message\":\"Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\",\"stack\":\"Error: Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\\n    at Sr.load (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1801:28277)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1858\\n    at Nn.event (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:6:23633)\\n    at Ar.initialize (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1736)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1560\"}\n    at Worker.message (http://127.0.0.1:4187/gpu-experiment/probe.js:179:23)",
+        "timeoutMs": null
+      },
+      "originalReceiptSha256": "d67ada3aba6be75d1af89968e3336cace0272b72ca086c53c06288401376c8b0"
+    },
+    {
+      "caseId": "leokani-4.5m",
+      "backend": "webgl",
+      "status": "unsupported",
+      "modelRevision": "d9eb742dfb6567872fe451d559674ec42c32e6c8",
+      "attemptedInference": true,
+      "error": {
+        "name": "Error",
+        "message": "{\"name\":\"Error\",\"message\":\"Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\",\"stack\":\"Error: Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\\n    at Sr.load (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1801:28277)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1858\\n    at Nn.event (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:6:23633)\\n    at Ar.initialize (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1736)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1560\"}",
+        "stack": "Error: {\"name\":\"Error\",\"message\":\"Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\",\"stack\":\"Error: Failed to load model as ONNX format: TypeError: int64 is not supported\\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\\n    at Sr.load (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1801:28277)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1858\\n    at Nn.event (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:6:23633)\\n    at Ar.initialize (http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1736)\\n    at http://127.0.0.1:4187/gpu-experiment/assets/onnxruntime-web/1.23.2/ort.webgl.min.mjs:1802:1560\"}\n    at Worker.message (http://127.0.0.1:4187/gpu-experiment/probe.js:179:23)",
+        "timeoutMs": null
+      },
+      "originalReceiptSha256": "08b75692337156d4907e617819514f12a4f580c8ff3846a8eefabdab2ff2c8c7"
+    },
+    {
+      "caseId": "leokani-4.5m",
+      "backend": "webgpu",
+      "status": "gpu-verified",
+      "runtime": "Pinned Leokani browser frontend + ONNX Runtime Web 1.23.2",
+      "modelRevision": "d9eb742dfb6567872fe451d559674ec42c32e6c8",
+      "precision": "INT8",
+      "voice": "default",
+      "requestedExecutionProviders": [
+        "webgpu",
+        "wasm"
+      ],
+      "executionProviderDispatch": {
+        "webglDrawArrays": 0,
+        "webglDrawElements": 0,
+        "webglOtherDraws": 0,
+        "webgpuQueueSubmits": 1656,
+        "webgpuDispatches": 5028,
+        "webgpuIndirectDispatches": 0
+      },
+      "availableWebgpuAdapter": {
+        "vendor": "apple",
+        "architecture": "metal-3",
+        "device": "",
+        "description": "",
+        "isFallbackAdapter": false
+      },
+      "runtimeWebgpuAdapterRequests": [
+        {
+          "options": {},
+          "adapter": {
+            "vendor": "apple",
+            "architecture": "metal-3",
+            "device": "",
+            "description": "",
+            "isFallbackAdapter": false
+          }
+        },
+        {
+          "options": {
+            "powerPreference": "high-performance",
+            "forceFallbackAdapter": false
+          },
+          "adapter": {
+            "vendor": "apple",
+            "architecture": "metal-3",
+            "device": "",
+            "description": "",
+            "isFallbackAdapter": false
+          }
+        }
+      ],
+      "frontendPlacement": "CPU",
+      "fallbackDisclosure": "A WASM fallback execution provider was supplied. Dispatch counts are broken out by the three separate G2P sessions and the TTS session; CPU fallback and partial operator partitioning remain possible.",
+      "actualGpuDispatch": true,
+      "finitePcm": true,
+      "samples": 392400,
+      "sampleRate": 24000,
+      "pcmSha256": "04e9c93c4c0e35b125253d65eecc85dad07db2733e9c530be4dba4464f1ebb16",
+      "originalReceiptSha256": "eeecf73fbf2fc44c2f71e75b71f70ccc72706a38bda8694e45001d934d80b682"
+    },
+    {
+      "caseId": "pivo-curated",
+      "backend": "webgpu",
+      "status": "gpu-verified",
+      "runtime": "PiVo curated custom ONNX Runtime Web 1.23.2 adapter",
+      "modelRevision": "515d84fc3420da6ae138f1b81017fcbc24d622a8",
+      "precision": "float32 ONNX",
+      "voice": "Pi",
+      "requestedExecutionProviders": [
+        "webgpu",
+        "wasm"
+      ],
+      "availableWebgpuAdapter": {
+        "vendor": "apple",
+        "architecture": "metal-3",
+        "device": "",
+        "description": "",
+        "isFallbackAdapter": false
+      },
+      "runtimeWebgpuAdapterRequests": [
+        {
+          "options": {},
+          "adapter": {
+            "vendor": "apple",
+            "architecture": "metal-3",
+            "device": "",
+            "description": "",
+            "isFallbackAdapter": false
+          }
+        },
+        {
+          "options": {
+            "powerPreference": "high-performance",
+            "forceFallbackAdapter": false
+          },
+          "adapter": {
+            "vendor": "apple",
+            "architecture": "metal-3",
+            "device": "",
+            "description": "",
+            "isFallbackAdapter": false
+          }
+        }
+      ],
+      "fallbackDisclosure": "A WASM fallback execution provider was supplied; placement is reported separately for all four ONNX graphs. CPU fallback and partial partitioning remain possible.",
+      "actualGpuDispatch": true,
+      "finitePcm": true,
+      "samples": 213760,
+      "sampleRate": 16000,
+      "pcmSha256": "7c73f4aaf2e3024e3ed78a525d6bc2d5bf409d1a1688180316f2b3362fb3aa01",
+      "originalReceiptSha256": "8a1194736871bbbbbdeac34100e63fbac4b92b659cc3f1057fe60cbc38698868"
+    },
+    {
+      "caseId": "pivo-curated",
+      "backend": "webgl",
+      "status": "unsupported",
+      "modelRevision": "515d84fc3420da6ae138f1b81017fcbc24d622a8",
+      "attemptedInference": true,
+      "error": {
+        "name": "Error",
+        "message": "Failed to load model as ONNX format: TypeError: int64 is not supported\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')",
+        "stack": "Error: Failed to load model as ONNX format: TypeError: int64 is not supported\nas ORT format: TypeError: Cannot read properties of null (reading 'irVersion')\n    at Worker.onMessage (http://127.0.0.1:4187/gpu-experiment/probe.js:234:66)",
+        "timeoutMs": null
+      },
+      "originalReceiptSha256": "1877e65f865f634bb9a05f076df1779f1ac58321e7614d050c61fe3c1969965f"
+    },
+    {
+      "caseId": "phonon",
+      "backend": "webgpu",
+      "status": "gpu-verified",
+      "runtime": "official phonon-tts@0.6.0 WebGPU path",
+      "modelRevision": "92741c5b07d085ff840e26fea8ce43110b87852f",
+      "precision": "q8 GGUF",
+      "voice": "default",
+      "requestedExecutionProviders": [
+        "native-webgpu"
+      ],
+      "availableWebgpuAdapter": {
+        "vendor": "apple",
+        "architecture": "metal-3",
+        "device": "",
+        "description": "",
+        "isFallbackAdapter": false
+      },
+      "runtimeWebgpuAdapterRequests": [
+        {
+          "options": null,
+          "adapter": {
+            "vendor": "apple",
+            "architecture": "metal-3",
+            "device": "",
+            "description": "",
+            "isFallbackAdapter": false
+          }
+        },
+        {
+          "options": {
+            "powerPreference": "high-performance"
+          },
+          "adapter": {
+            "vendor": "apple",
+            "architecture": "metal-3",
+            "device": "",
+            "description": "",
+            "isFallbackAdapter": false
+          }
+        }
+      ],
+      "fallbackDisclosure": "The official runtime returned model.device(); this short synthesis also recorded WebGPU compute dispatches. Frontend tokenization remains CPU work.",
+      "actualGpuDispatch": true,
+      "finitePcm": true,
+      "samples": 370560,
+      "sampleRate": 24000,
+      "pcmSha256": "8d390f3f7bf36ff00283e7d8096559e8148a49a2b2d82b61d2fb8d22b1f3e487",
+      "originalReceiptSha256": "23ed6bad22a4775f1b4df195b5ba001498f565c2aa233352d834974502cd47b5"
+    },
+    {
+      "caseId": "phonon",
+      "backend": "webgl",
+      "status": "unsupported",
+      "modelRevision": "92741c5b07d085ff840e26fea8ce43110b87852f",
+      "attemptedInference": false,
+      "originalReceiptSha256": "4e545c3d231ead565ef9d5227d2a6ff86d8461c4e6e99bd4a4a63457ac23ba80"
+    },
+    {
+      "caseId": "woof",
+      "backend": "webgl",
+      "status": "unsupported",
+      "modelRevision": "local-one-voice-parts-sha256-pinned",
+      "attemptedInference": false,
+      "originalReceiptSha256": "b0627d94c9b3c593103203dcc6b87717b6059518921483339f1f59361c31ace4"
+    },
+    {
+      "caseId": "woof",
+      "backend": "webgpu",
+      "status": "gpu-verified",
+      "runtime": "official Woof WebGPU runtime + local worker shim",
+      "modelRevision": "local-one-voice-parts-sha256-pinned",
+      "precision": "INT8",
+      "voice": "Isla",
+      "requestedExecutionProviders": [
+        "native-webgpu"
+      ],
+      "availableWebgpuAdapter": {
+        "vendor": "apple",
+        "architecture": "metal-3",
+        "device": "",
+        "description": "",
+        "isFallbackAdapter": false
+      },
+      "runtimeWebgpuAdapterRequests": [
+        {
+          "options": {
+            "powerPreference": "high-performance"
+          },
+          "adapter": {
+            "vendor": "apple",
+            "architecture": "metal-3",
+            "device": "",
+            "description": "",
+            "isFallbackAdapter": false
+          }
+        }
+      ],
+      "fallbackDisclosure": "The official runtime reported WebGPU effective; this synthesis recorded compute dispatches. Tokenization and output audio conversion remain CPU work.",
+      "actualGpuDispatch": true,
+      "finitePcm": true,
+      "samples": 364800,
+      "sampleRate": 24000,
+      "pcmSha256": "8b8d82002205cc25a15d0ae9e4b1ae67c46b167f12ed93a3800a839613c0d540",
+      "originalReceiptSha256": "851c6892ade3e0aa53a0a66ea834c22bd2e1eae698787e1792b8d09ff8afef9a"
+    }
+  ]
+}

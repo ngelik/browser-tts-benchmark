@@ -1,0 +1,20 @@
+[
+  {
+    "file": "frontend.js",
+    "url": "https://raw.githubusercontent.com/hexgrad/kokoro/e0bf641def52db8471d4330d04948056e08e2248/kokoro.js/src/phonemize.js",
+    "upstreamSha256": "fc8f3c63edd56bdaa967b92274ad6df891a1926211fbc884675b7069f398a2d4",
+    "localSha256": "a1b6c239dc00fba52c07e3271c646ee603a608397007b45e3f3da1a8372a298b",
+    "change": "Local pinned phonemizer import only",
+    "licenseUrl": "https://raw.githubusercontent.com/hexgrad/kokoro/e0bf641def52db8471d4330d04948056e08e2248/LICENSE",
+    "license": "Apache-2.0"
+  },
+  {
+    "file": "misaki.js",
+    "url": "https://raw.githubusercontent.com/sahilmahendrakar/paradee/d37d2531dcc79d8824b75d18eb09f2fa67a544fc/web/misaki.js",
+    "upstreamSha256": "9b15f691cec3ccd8c015e16ce919c87a429cad9e34d4c09cdddcd6dd6eccb994",
+    "localSha256": "9b15f691cec3ccd8c015e16ce919c87a429cad9e34d4c09cdddcd6dd6eccb994",
+    "change": "Unmodified",
+    "licenseUrl": "https://raw.githubusercontent.com/sahilmahendrakar/paradee/d37d2531dcc79d8824b75d18eb09f2fa67a544fc/LICENSE",
+    "license": "Apache-2.0"
+  }
+]

@@ -1,0 +1,45 @@
+# Code, models and publication
+
+The MIT license applies to original harness code, benchmark result metadata,
+documentation and the original English fixture. Downloaded components retain
+their own licenses. A benchmark result is not a commercial-use clearance.
+
+| Component | Recorded license / publication boundary |
+|---|---|
+| Phonon 31M weights, tokenizer, default voice | Apache-2.0 at the pinned revision |
+| Official `phonon-tts` runtime | MIT OR Apache-2.0; compiled dependencies retain notices |
+| Paradee weights | Apache-2.0 |
+| Vendored Kokoro frontend / Paradee Misaki mapping | Apache-2.0; pinned sources, changes and full licenses in `web/paradee/` |
+| Paradee browser phonemizer | Package Apache-2.0; compiled eSpeak NG is GPL-3.0; do not treat the whole stack as MIT |
+| Leokani 7M / 4.5M weights | CC BY-NC 4.0; commercial use needs additional rights |
+| Leokani G2P | MIT code; CC BY 4.0 weights/lexicon |
+| Leokani browser engine | Grant for the exact historical engine was not separately established; do not vendor it under MIT |
+| PiVo | Apache-2.0 acoustic model/code, BSD/Opus FARGAN-derived component, CMU dictionary notices |
+| Woof historical one-voice assets | Underdog noncommercial terms; exact one-voice lineage is less explicit than newer releases; no assets or audio redistributed here |
+| ONNX Runtime Web | MIT, with third-party notices |
+
+The small Apache-2.0 frontend source files in `web/paradee/` retain separate
+license files and a source/change manifest. They are exceptions to the root MIT
+license. Restricted or unclear-license runtime files belong only in a local ignored cache.
+Use upstream download/import instructions and read their terms before running.
+Accepting an upstream license is a local decision, not a grant from this project.
+Do not upload weights, voices, minified upstream engines, browser profiles or
+generated audio in a result pull request. Audio can be shared separately only
+where the applicable model/output terms permit it; Woof additionally requires
+attribution where outputs are played.
+
+Changing a frontend to avoid a license obligation changes the implementation.
+Benchmark it as a new configuration and compare its outputs before substituting it.
+
+Primary sources:
+
+- [Phonon model](https://huggingface.co/gradium/phonon-31m-en)
+- [Phonon runtime](https://www.npmjs.com/package/phonon-tts/v/0.6.0)
+- [Paradee model](https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2)
+- [Phonemizer source](https://github.com/xenova/phonemizer.js)
+- [eSpeak NG license](https://github.com/espeak-ng/espeak-ng/blob/master/COPYING)
+- [Leokani 7M](https://huggingface.co/milliwattlabs/leokani-tts-7M)
+- [Leokani 4.5M](https://huggingface.co/milliwattlabs/leokani-tts-4.5M)
+- [PiVo](https://huggingface.co/empero-ai/PiVo-1.4M)
+- [Woof](https://underdog.ai/woof)
+- [ONNX Runtime](https://github.com/microsoft/onnxruntime/blob/v1.23.2/LICENSE)

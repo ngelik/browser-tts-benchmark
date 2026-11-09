@@ -1,0 +1,95 @@
+{
+  "rows": [
+    {
+      "caseId": "paradee",
+      "model": "Paradee",
+      "cpuWarmSeconds": 111.1535,
+      "gpuWarmSeconds": 18.721300000011922,
+      "gpuMinSeconds": 18.66439999997616,
+      "gpuMaxSeconds": 18.8115,
+      "originalBackend": "CPU/WASM",
+      "originalWarmFirstNonzeroSeconds": 1.521231689453125,
+      "originalWarmPeakBrowserRssMB": 1660.239872,
+      "originalDownloadMB": 21.08964,
+      "originalIdealTransferSecondsAt1Mbps": 168.71712
+    },
+    {
+      "caseId": "phonon",
+      "model": "Phonon",
+      "cpuWarmSeconds": 270.4094,
+      "gpuWarmSeconds": 51.72570000004768,
+      "gpuMinSeconds": 51.6885,
+      "gpuMaxSeconds": 51.8705,
+      "originalBackend": "CPU/WASM",
+      "originalWarmFirstNonzeroSeconds": 0.2082080078125,
+      "originalWarmPeakBrowserRssMB": 1533.231104,
+      "originalDownloadMB": 69.305781,
+      "originalIdealTransferSecondsAt1Mbps": 554.446248
+    },
+    {
+      "caseId": "leokani-7m",
+      "model": "Leokani 7M",
+      "cpuWarmSeconds": 75.19439999999999,
+      "gpuWarmSeconds": 58.11269999998808,
+      "gpuMinSeconds": 57.31440000003576,
+      "gpuMaxSeconds": 58.43080000001192,
+      "originalBackend": "CPU/WASM",
+      "originalWarmFirstNonzeroSeconds": 0.502818115234375,
+      "originalWarmPeakBrowserRssMB": 1535.328256,
+      "originalDownloadMB": 38.859917,
+      "originalIdealTransferSecondsAt1Mbps": 310.879336
+    },
+    {
+      "caseId": "leokani-4.5m",
+      "model": "Leokani 4.5M",
+      "cpuWarmSeconds": 55.9645,
+      "gpuWarmSeconds": 61.573,
+      "gpuMinSeconds": 61.45869999998808,
+      "gpuMaxSeconds": 62.455300000011924,
+      "originalBackend": "CPU/WASM",
+      "originalWarmFirstNonzeroSeconds": 0.444401123046875,
+      "originalWarmPeakBrowserRssMB": 1359.429632,
+      "originalDownloadMB": 36.165133,
+      "originalIdealTransferSecondsAt1Mbps": 289.321064
+    },
+    {
+      "caseId": "woof",
+      "model": "Woof",
+      "cpuWarmSeconds": null,
+      "gpuWarmSeconds": 181.81019999998807,
+      "gpuMinSeconds": 180.91990000003577,
+      "gpuMaxSeconds": 182.2035,
+      "originalBackend": "WebGPU",
+      "originalWarmFirstNonzeroSeconds": 0.304214111328125,
+      "originalWarmPeakBrowserRssMB": 1468.137472,
+      "originalDownloadMB": 31.795468,
+      "originalIdealTransferSecondsAt1Mbps": 254.363744
+    },
+    {
+      "caseId": "pivo-curated",
+      "model": "PiVo · curated",
+      "cpuWarmSeconds": 87.9194,
+      "gpuWarmSeconds": 2562.693899999976,
+      "gpuMinSeconds": 2541.7027000000476,
+      "gpuMaxSeconds": 2563.140600000024,
+      "originalBackend": "CPU/WASM",
+      "originalWarmFirstNonzeroSeconds": 0.12201318359375,
+      "originalWarmPeakBrowserRssMB": 1610.104832,
+      "originalDownloadMB": 21.4284,
+      "originalIdealTransferSecondsAt1Mbps": 171.4272
+    }
+  ],
+  "notes": [
+    "Same 20,000-character article; Chrome on Apple M1 Pro. Generation medians: five warm runs per available backend.",
+    "CPU timings are from the earlier campaign and include local audio storage; GPU timings exclude it. These are contextual comparisons, not controlled speedup estimates.",
+    "Woof has no CPU measurement: it already used WebGPU in the original experiment. All tested WebGL implementations were unavailable or unsupported.",
+    "Startup, memory and downloads are original-campaign values: CPU/WASM for five models, WebGPU for Woof. They were not remeasured for the new GPU paths.",
+    "First sound is the measured first nonzero output, not a human judgment of audible speech. Memory is sampled total Chrome-process-tree peak RSS from Play through WAV-ready, including browser baseline; not model RAM or GPU VRAM.",
+    "Downloads include unique HTTP bodies for models, runtime and supporting assets, in decimal MB. The 1 Mbps estimate is bytes / 125,000: ideal transfer only, excluding overhead, latency and initialization.",
+    "GPU-backed pipelines include CPU processing and possible WASM fallback. PiVo timings describe the current custom adapter with sequential graph calls and CPU readbacks."
+  ],
+  "sources": {
+    "outputs/campaign-summary.json": "0059199c8fa91726a3d95d8bc3f644321b8849bc90dc401990af3c1e3d304010",
+    "outputs/gpu-warm/evidence/campaign-summary.json": "d6b365d1b5d31bd3b1096d796aa2841708e9dab431faa3bd8198ca6c3f0e991f"
+  }
+}

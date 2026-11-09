@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Local Browser TTS Benchmark</title>
+    <style>
+      :root { color-scheme: light; font: 16px/1.5 system-ui, sans-serif; color: #243e37; background: #fffdf6; }
+      body { max-width: 48rem; margin: 4rem auto; padding: 0 1.25rem; }
+      h1 { font-size: 1.7rem; }
+      #status { padding: 1rem; border: 1px solid #d4d8cb; border-radius: .5rem; background: #fff; }
+      .note { color: #52635b; font-size: .92rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Local Browser TTS Benchmark</h1>
+      <p id="status" role="status" aria-live="polite">Loading the local benchmark harness…</p>
+      <p class="note">Inference and text processing run in this browser. This page makes no third-party requests. Audio is discarded unless the run explicitly asks to save it.</p>
+    </main>
+    <script type="module" src="/web/bench.mjs"></script>
+  </body>
+</html>

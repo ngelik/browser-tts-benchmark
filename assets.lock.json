@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "models": {
+    "paradee": {
+      "displayName": "Paradee 8M INT8",
+      "modelRevision": "ed2934d4df8a4fd891e29584c5e1104649409765",
+      "runtime": {
+        "package": "onnxruntime-web",
+        "version": "1.23.2",
+        "license": "MIT; bundled third-party notices apply",
+        "files": [
+          { "path": "dist/ort.wasm.min.mjs", "target": "runtimes/onnxruntime-web/1.23.2/ort.wasm.min.mjs", "bytes": 49856, "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7" },
+          { "path": "dist/ort.webgpu.min.mjs", "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs", "bytes": 66261, "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864" },
+          { "path": "dist/ort.webgl.min.mjs", "target": "runtimes/onnxruntime-web/1.23.2/ort.webgl.min.mjs", "bytes": 454343, "sha256": "bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271" },
+          { "path": "dist/ort-wasm-simd-threaded.mjs", "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.mjs", "bytes": 20321, "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e" },
+          { "path": "dist/ort-wasm-simd-threaded.wasm", "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.wasm", "bytes": 11905541, "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15" },
+          { "path": "dist/ort-wasm-simd-threaded.asyncify.mjs", "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.mjs", "bytes": 51913, "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff" },
+          { "path": "dist/ort-wasm-simd-threaded.asyncify.wasm", "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.wasm", "bytes": 25499390, "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada" },
+          { "package": "phonemizer", "version": "1.2.1", "path": "dist/phonemizer.js", "target": "runtimes/phonemizer/1.2.1/phonemizer.js", "bytes": 1322380, "sha256": "193481f474f7c1ea81df3195d18b45df8ef7254dbdccb3f193d60215c4897bec" },
+          { "package": "phonemizer", "version": "1.2.1", "path": "LICENSE", "target": "licenses/phonemizer-1.2.1/LICENSE", "bytes": 11357, "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4" }
+        ]
+      },
+      "assets": [
+        { "id": "paradee-config", "target": "models/paradee-8m-v1.2/config.json", "url": "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/resolve/ed2934d4df8a4fd891e29584c5e1104649409765/config.json", "bytes": 1827, "sha256": "002535cf8dd08a434cdddb13372da8a7b4844152bdf9b5b4e7342e12ec30bcfb", "kind": "model-support" },
+        { "id": "paradee-weights-int8", "target": "models/paradee-8m-v1.2/paradee_int8.onnx", "url": "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/resolve/ed2934d4df8a4fd891e29584c5e1104649409765/onnx/paradee_int8.onnx", "bytes": 8462119, "sha256": "a6989796692ac173597e15d405c971989202d5c73cfad65f22e90bd7b6c97da1", "kind": "model-weights" }
+      ],
+      "license": {
+        "model": "Apache-2.0",
+        "runtime": "MIT (ONNX Runtime Web); Apache-2.0 + GPL-3.0 eSpeak NG (phonemizer bundle)",
+        "requiresAcceptance": false
+      },
+      "backends": ["cpu", "webgpu", "webgl"]
+    },
+    "phonon": {
+      "displayName": "Phonon 31M q8",
+      "modelRevision": "92741c5b07d085ff840e26fea8ce43110b87852f",
+      "runtime": {
+        "package": "phonon-tts",
+        "version": "0.6.0",
+        "files": [
+          { "path": "index.js", "target": "runtimes/phonon-tts/0.6.0/index.js", "bytes": 17020, "sha256": "9a682b5d248222d2d6dcf010c0089390e419b83942b35fc2d6e5f149df14b448" },
+          { "path": "worker.js", "target": "runtimes/phonon-tts/0.6.0/worker.js", "bytes": 12663, "sha256": "9bfcf650f5d2af09b22268233993395a7182aa50f1d0eb9c01ffa60febb9b632" },
+          { "path": "fetch.js", "target": "runtimes/phonon-tts/0.6.0/fetch.js", "bytes": 4622, "sha256": "fe28ae73b476a1b014098843335141efad3a943c98939a72d2d907ee4596582c" },
+          { "path": "hub.js", "target": "runtimes/phonon-tts/0.6.0/hub.js", "bytes": 5366, "sha256": "f6efff9bb477527b4ecd4cf617a3f6473dcea58e37763d431f582c7262bb19c3" },
+          { "path": "wav.js", "target": "runtimes/phonon-tts/0.6.0/wav.js", "bytes": 1519, "sha256": "ffe180a940387cf3e5259e68b0a052934b9860034d2f9c82527c986e132d9ce1" },
+          { "path": "device.js", "target": "runtimes/phonon-tts/0.6.0/device.js", "bytes": 2249, "sha256": "b261780c034384efb013015012ba197738c06bf66ac54c909d7b67e2c26d446c" },
+          { "path": "threads.js", "target": "runtimes/phonon-tts/0.6.0/threads.js", "bytes": 1664, "sha256": "19782737d03b71e028b7924d80cd5d14820f23e28ca352e65975c1a0dfccea0f" },
+          { "path": "simd.js", "target": "runtimes/phonon-tts/0.6.0/simd.js", "bytes": 894, "sha256": "002ae86d173038fe83449b623510c2e697f3837e3a9f39c2c7445525efd9fb3b" },
+          { "path": "wasm/phonon_tts.js", "target": "runtimes/phonon-tts/0.6.0/wasm/phonon_tts.js", "bytes": 51129, "sha256": "22f81b4d51ef1f9b9b23cbde97d2a97bc530be9c429e522bbab55da72d3bac08" },
+          { "path": "wasm/phonon_tts_bg.wasm", "target": "runtimes/phonon-tts/0.6.0/wasm/phonon_tts_bg.wasm", "bytes": 4435037, "sha256": "0a3d53ca7432c740908745603ce1098de52d2c4cc129a3556142c9606acdb8d4" },
+          { "path": "wasm/phonon_tts_simd_bg.wasm", "target": "runtimes/phonon-tts/0.6.0/wasm/phonon_tts_simd_bg.wasm", "bytes": 4413972, "sha256": "be18f1187c1a395440a64251711878cd4793e10ce6669506046044364d9f570b" },
+          { "path": "LICENSE-MIT", "target": "licenses/phonon-tts-0.6.0/LICENSE-MIT", "bytes": 1023, "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3" },
+          { "path": "LICENSE-APACHE", "target": "licenses/phonon-tts-0.6.0/LICENSE-APACHE", "bytes": 11357, "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4" },
+          { "path": "THIRD_PARTY_LICENSES.md", "target": "licenses/phonon-tts-0.6.0/THIRD_PARTY_LICENSES.md", "bytes": 200374, "sha256": "3439b6914586279762dd0924c2991f49787f9c101d6ae77393f42f203fab0be7" }
+        ]
+      },
+      "assets": [
+        { "id": "phonon-config", "target": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/config.json", "url": "https://huggingface.co/gradium/phonon-31m-en/resolve/92741c5b07d085ff840e26fea8ce43110b87852f/config.json", "bytes": 4634, "sha256": "b5d0f88353638370d94035b7d73d7d6577c0554d78f8d7ecfd40490aae39ae85", "kind": "model-support" },
+        { "id": "phonon-tokenizer", "target": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/tokenizer.json", "url": "https://huggingface.co/gradium/phonon-31m-en/resolve/92741c5b07d085ff840e26fea8ce43110b87852f/tokenizer.json", "bytes": 277967, "sha256": "691a00068fa7b989f2f3e5ae5daa2d1a5bb319f2d5360deafcfb19a8bb6e7936", "kind": "model-support" },
+        { "id": "phonon-weights-q8", "target": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/model.q8.gguf", "url": "https://huggingface.co/gradium/phonon-31m-en/resolve/92741c5b07d085ff840e26fea8ce43110b87852f/model.q8.gguf", "bytes": 64512352, "sha256": "a7d9aad2cd6dc66473f24a08bc6d2939030ef4d751ef82349361fbef3272dbae", "kind": "model-weights" },
+        { "id": "phonon-voice-default", "target": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/default-voice.safetensors", "url": "https://huggingface.co/gradium/phonon-31m-en/resolve/92741c5b07d085ff840e26fea8ce43110b87852f/default-voice.safetensors", "bytes": 256136, "sha256": "dc537478eaadc1a5257fcda2e3501ab81e14c111a5d95a5838f350db2afd0f1a", "kind": "voice" }
+      ],
+      "license": {
+        "model": "Apache-2.0",
+        "runtime": "MIT OR Apache-2.0",
+        "requiresAcceptance": false
+      },
+      "backends": ["cpu", "webgpu"]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtemp, mkdir, writeFile, rm, symlink } from 'node:fs/promises';
+import os from 'node:os';
+import { join } from 'node:path';
+import { startServer } from '../lib/server.mjs';
+
+async function fixture(){const root=await mkdtemp(join(os.tmpdir(),'tts-server-test-'));await mkdir(join(root,'web'));await mkdir(join(root,'.cache/public'),{recursive:true});await writeFile(join(root,'web/index.html'),'local benchmark');await writeFile(join(root,'private.txt'),'must not serve');return root;}
+test('loopback server confines files and sets browser isolation headers',async()=>{const root=await fixture();const server=await startServer(root);try{const r=await fetch(server.url);assert.equal(await r.text(),'local benchmark');assert.equal(r.headers.get('cross-origin-opener-policy'),'same-origin');assert.equal(r.headers.get('cross-origin-embedder-policy'),'require-corp');assert.equal((await fetch(server.url+'private.txt')).status,404);assert.equal((await fetch(server.url+'web/%2e%2e%2fprivate.txt')).status,404);await symlink(join(root,'private.txt'),join(root,'.cache/public/escape.txt'));assert.equal((await fetch(server.url+'escape.txt')).status,404);}finally{await server.close();await rm(root,{recursive:true,force:true});}});
+test('bandwidth is shared across concurrent responses and body counts reconcile',async()=>{const root=await fixture();const n=32768;await writeFile(join(root,'.cache/public/a.bin'),Buffer.alloc(n,1));await writeFile(join(root,'.cache/public/b.bin'),Buffer.alloc(n,2));const server=await startServer(root,{mbps:1});try{const at=performance.now();const bodies=await Promise.all(['a.bin','b.bin'].map(async p=>new Uint8Array(await(await fetch(server.url+p)).arrayBuffer())));const elapsed=performance.now()-at;assert.equal(bodies[0].length+bodies[1].length,n*2);assert.ok(elapsed>=n*2/125000*1000-40,`Aggregate limit too fast: ${elapsed} ms`);assert.equal(server.snapshot().bytes,n*2);assert.equal(server.snapshot().uniqueBytes,n*2);}finally{await server.close();await rm(root,{recursive:true,force:true});}});

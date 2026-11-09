@@ -1,0 +1,1284 @@
+{
+  "schemaVersion": 1,
+  "id": "historical-2026-11-08-m1pro-primary-warm",
+  "createdAt": "2026-11-08T13:39:45.198Z",
+  "origin": "historical-import",
+  "protocol": {
+    "id": "legacy-storage-v0-primary-warm",
+    "scenario": "warm",
+    "timingBoundary": "Original browser generationMs through local PCM storage. Model initialization and WAV encoding are excluded; boundaries differ from the later GPU-only and native v1 protocols.",
+    "warmupRuns": 0,
+    "repetitions": 5,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "Apple M1 Pro reference machine",
+    "os": "macOS 26.6.2",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": null,
+    "chromeVersion": "Google Chrome 157.0.8103.39",
+    "gpu": "Apple M1 Pro / Metal",
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": null,
+    "dirty": false,
+    "manifestSha256": "0059199c8fa91726a3d95d8bc3f644321b8849bc90dc401990af3c1e3d304010"
+  },
+  "assets": [
+    {
+      "id": "models/leokani-4.5m-int8/model.onnx",
+      "sha256": "fafeea440bf4e38687bf32a88c320e8a6694d92eaa8f33a0750fc3207209f3e8",
+      "bytes": 5143956
+    },
+    {
+      "id": "models/leokani-7m-int8/model.onnx",
+      "sha256": "b68ebd5df4e2ac24ed8eddae9519db0b3766b1bf5999ddcff0779be036c14a54",
+      "bytes": 7838742
+    },
+    {
+      "id": "models/leokani-g2p/context.onnx",
+      "sha256": "283f1122bbcb8cc577c568d2b52e1a2e205c286cae528f0b7b9e3b9492c91409",
+      "bytes": 5371378
+    },
+    {
+      "id": "models/leokani-g2p/leokani-g2p.json.gz",
+      "sha256": "2d0da7653feb2f7174ecc313b5e30dea3c0e2fb6e58f9255816c7e06e9c9c962",
+      "bytes": 4656918
+    },
+    {
+      "id": "models/leokani-g2p/oov-decoder.onnx",
+      "sha256": "c188e599976bb820209b1dd8747a8e3278aa7aa372e73ab5367809e406f25088",
+      "bytes": 5105543
+    },
+    {
+      "id": "models/leokani-g2p/oov-encoder.onnx",
+      "sha256": "5ffcb175371b369ca0f4a28d39e8d8a75abab796b46e63ed7d0a311cacf89307",
+      "bytes": 3868129
+    },
+    {
+      "id": "models/paradee-8m-v1.2/config.json",
+      "sha256": "002535cf8dd08a434cdddb13372da8a7b4844152bdf9b5b4e7342e12ec30bcfb",
+      "bytes": 1827
+    },
+    {
+      "id": "models/paradee-8m-v1.2/paradee_int8.onnx",
+      "sha256": "a6989796692ac173597e15d405c971989202d5c73cfad65f22e90bd7b6c97da1",
+      "bytes": 8462119
+    },
+    {
+      "id": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/config.json",
+      "sha256": "b5d0f88353638370d94035b7d73d7d6577c0554d78f8d7ecfd40490aae39ae85",
+      "bytes": 4634
+    },
+    {
+      "id": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/default-voice.safetensors",
+      "sha256": "dc537478eaadc1a5257fcda2e3501ab81e14c111a5d95a5838f350db2afd0f1a",
+      "bytes": 256136
+    },
+    {
+      "id": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/model.q8.gguf",
+      "sha256": "a7d9aad2cd6dc66473f24a08bc6d2939030ef4d751ef82349361fbef3272dbae",
+      "bytes": 64512352
+    },
+    {
+      "id": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/tokenizer.json",
+      "sha256": "691a00068fa7b989f2f3e5ae5daa2d1a5bb319f2d5360deafcfb19a8bb6e7936",
+      "bytes": 277967
+    },
+    {
+      "id": "models/pivo-1.4m/article-variant-proposal.json",
+      "sha256": "ebc229bd0d0e1e09c76303e8de37b4d3860570a3a09ecf6b0f15c6028a80eda6",
+      "bytes": 10333
+    },
+    {
+      "id": "models/pivo-1.4m/cmudict.dict",
+      "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22",
+      "bytes": 3618488
+    },
+    {
+      "id": "models/pivo-1.4m/conditioning.onnx",
+      "sha256": "b184d45ce06e6d9caec94430b6e07e5f7315ecd584c5c3980290a9b5286d2998",
+      "bytes": 282407
+    },
+    {
+      "id": "models/pivo-1.4m/decoder.onnx",
+      "sha256": "bc46ee8d64fc400115267a2185887b72842ca318761625c248469166c9ef19ac",
+      "bytes": 748901
+    },
+    {
+      "id": "models/pivo-1.4m/encoder.onnx",
+      "sha256": "1d483a8e23d158bc56692d9b9339015130a1db7b3341cd700595af6190a7ff34",
+      "bytes": 1808457
+    },
+    {
+      "id": "models/pivo-1.4m/metadata.json",
+      "sha256": "fe5a8f85f92ff402dc7c912fea68e04489badbe3b420ef691e527c56175c096a",
+      "bytes": 2462
+    },
+    {
+      "id": "models/pivo-1.4m/model_manifest.json",
+      "sha256": "ef87c62cc79119ae5e8c3068acf78bfd8a86b40767ea90e8f7515c4616f8ecbf",
+      "bytes": 933
+    },
+    {
+      "id": "models/pivo-1.4m/vocoder_step.onnx",
+      "sha256": "6f8ea48ebadbc7b737e5999ce7393619d7aa33b5b643ff48c5ebbcc3bc62b611",
+      "bytes": 3001580
+    },
+    {
+      "id": "models/woof-one-voice/config.json",
+      "sha256": "ef5865ee0f2c7f270009fdb9fa8e7b5f4dbfbf7b2af803569567c83eb07c1f3e",
+      "bytes": 2919
+    },
+    {
+      "id": "models/woof-one-voice/isla.safetensors",
+      "sha256": "dfd2a4d1ee37886359ebdecd250688eaa8276a7df3f3b03e53bed522afa49a1d",
+      "bytes": 28752
+    },
+    {
+      "id": "models/woof-one-voice/model_int8.part0",
+      "sha256": "40d58cc4f177833b771eb9722fcaa892b657d728c3805367d1b9aa597b5d706c",
+      "bytes": 15854321
+    },
+    {
+      "id": "models/woof-one-voice/model_int8.part1",
+      "sha256": "000b16b34a810bb6be7ecd4749912b024ee93f48b3edba775c662dd8cb12361b",
+      "bytes": 15854321
+    },
+    {
+      "id": "models/woof-one-voice/model_int8.parts.json",
+      "sha256": "7076f3ecd02c447d99421a7b66566f5f86f5a1df87884c1a85618f035b810bc1",
+      "bytes": 69
+    }
+  ],
+  "cells": [
+    {
+      "model": "phonon",
+      "backendRequested": "cpu",
+      "backendEffective": "CPU / WASM, one inference thread",
+      "status": "measured",
+      "reason": null,
+      "voice": "default",
+      "precision": "q8 GGUF",
+      "settings": {
+        "speed": 1,
+        "originalScenario": "primary-warm"
+      },
+      "capability": {
+        "gpuDispatchVerified": false,
+        "description": "Pinned CPU-only execution provider in original experiment."
+      },
+      "warmup": [],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 270618,
+          "samples": 29308800,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "0123690a35f51e13a4edcb72faa02fefe17be814ae865567d01afdb3796dc9f7",
+            "bytes": 58617644
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 203.18994140625,
+            "firstPcmMs": 64.80000001192093,
+            "loadMs": 0,
+            "fileReadyMs": 272365.40000003576,
+            "synthesisCpuSeconds": 298.686340734461,
+            "baselineRssBytes": 1527382016,
+            "clickToReadyPeakRssBytes": 1572274176,
+            "synthesisPeakRssBytes": 1563148288,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 279176.1999511719,
+            "navToFirstNonzeroOutputMs": 279379.3898925781,
+            "navToWavReadyMs": 551541.6000976562,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 269823.1999999881,
+          "samples": 29308800,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "0123690a35f51e13a4edcb72faa02fefe17be814ae865567d01afdb3796dc9f7",
+            "bytes": 58617644
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 215.60595703125,
+            "firstPcmMs": 78.60000002384186,
+            "loadMs": 0,
+            "fileReadyMs": 271797.3000000119,
+            "synthesisCpuSeconds": 298.2730930369544,
+            "baselineRssBytes": 1580187648,
+            "clickToReadyPeakRssBytes": 1588674560,
+            "synthesisPeakRssBytes": 1583726592,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 553179.3000488281,
+            "navToFirstNonzeroOutputMs": 553394.9060058594,
+            "navToWavReadyMs": 824976.6000976562,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 270206.40000003576,
+          "samples": 29308800,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "0123690a35f51e13a4edcb72faa02fefe17be814ae865567d01afdb3796dc9f7",
+            "bytes": 58617644
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 208.2080078125,
+            "firstPcmMs": 75.89999997615814,
+            "loadMs": 0,
+            "fileReadyMs": 271959.5,
+            "synthesisCpuSeconds": 298.72896658703485,
+            "baselineRssBytes": 1518256128,
+            "clickToReadyPeakRssBytes": 1533231104,
+            "synthesisPeakRssBytes": 1533231104,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 826449.6000976562,
+            "navToFirstNonzeroOutputMs": 826657.8081054688,
+            "navToWavReadyMs": 1098409.1000976562,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 270477.3000000119,
+          "samples": 29308800,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "0123690a35f51e13a4edcb72faa02fefe17be814ae865567d01afdb3796dc9f7",
+            "bytes": 58617644
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 226.10986328125,
+            "firstPcmMs": 71,
+            "loadMs": 0,
+            "fileReadyMs": 272272.89999997616,
+            "synthesisCpuSeconds": 298.8398356862706,
+            "baselineRssBytes": 1459372032,
+            "clickToReadyPeakRssBytes": 1481932800,
+            "synthesisPeakRssBytes": 1474297856,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 1099930.3000488281,
+            "navToFirstNonzeroOutputMs": 1100156.4099121094,
+            "navToWavReadyMs": 1372203.1999511719,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 270409.39999997616,
+          "samples": 29308800,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "0123690a35f51e13a4edcb72faa02fefe17be814ae865567d01afdb3796dc9f7",
+            "bytes": 58617644
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 202.39013671875,
+            "firstPcmMs": 65.79999995231628,
+            "loadMs": 0,
+            "fileReadyMs": 272421.39999997616,
+            "synthesisCpuSeconds": 299.03661125230497,
+            "baselineRssBytes": 1464729600,
+            "clickToReadyPeakRssBytes": 1467236352,
+            "synthesisPeakRssBytes": 1467236352,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 1373633.8999023438,
+            "navToFirstNonzeroOutputMs": 1373836.2900390625,
+            "navToWavReadyMs": 1646055.3000488281,
+            "underrunSamples": 0
+          }
+        }
+      ]
+    },
+    {
+      "model": "paradee",
+      "backendRequested": "cpu",
+      "backendEffective": "CPU / WASM, one inference thread",
+      "status": "measured",
+      "reason": null,
+      "voice": "af_heart",
+      "precision": "INT8",
+      "settings": {
+        "speed": 1,
+        "originalScenario": "primary-warm"
+      },
+      "capability": {
+        "gpuDispatchVerified": false,
+        "description": "Pinned CPU-only execution provider in original experiment."
+      },
+      "warmup": [],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 110983.90000000596,
+          "samples": 30896400,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "a44a9b233cb43ac1bd4e24f30f18dbf7ad24807a6b88aaea6187cd0f6a42f2d0",
+            "bytes": 61792844
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 1521.231689453125,
+            "firstPcmMs": 1272.699999988079,
+            "loadMs": 0,
+            "fileReadyMs": 112929,
+            "synthesisCpuSeconds": 121.37688328920146,
+            "baselineRssBytes": 1711669248,
+            "clickToReadyPeakRssBytes": 1762033664,
+            "synthesisPeakRssBytes": 1762033664,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 118604.60009765625,
+            "navToFirstNonzeroOutputMs": 120125.83178710938,
+            "navToWavReadyMs": 231533.60009765625,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 111548.29999998212,
+          "samples": 30896400,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "7d173eeec1c42263a7b5ad1c25ce843aa58510e69c4df15de45aa1c5d9b6a6fb",
+            "bytes": 61792844
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 1518.625244140625,
+            "firstPcmMs": 1273.300000011921,
+            "loadMs": 0,
+            "fileReadyMs": 113545.5,
+            "synthesisCpuSeconds": 121.78517212164587,
+            "baselineRssBytes": 1741701120,
+            "clickToReadyPeakRssBytes": 1763934208,
+            "synthesisPeakRssBytes": 1763622912,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 232954,
+            "navToFirstNonzeroOutputMs": 234472.62524414062,
+            "navToWavReadyMs": 346499.5,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 111153.5,
+          "samples": 30896400,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "a39bf2aaf676c0d3a06255aef8b3b4477bff895a54e079a092d7cad36400da46",
+            "bytes": 61792844
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 1523.177734375,
+            "firstPcmMs": 1275.5,
+            "loadMs": 0,
+            "fileReadyMs": 113187.90000000596,
+            "synthesisCpuSeconds": 121.46361724669094,
+            "baselineRssBytes": 1641447424,
+            "clickToReadyPeakRssBytes": 1660239872,
+            "synthesisPeakRssBytes": 1655406592,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 347915.3000488281,
+            "navToFirstNonzeroOutputMs": 349438.4777832031,
+            "navToWavReadyMs": 461103.1999511719,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 111014.30000001192,
+          "samples": 30896400,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "382ee6feb585f131080690d1c420fd2e96dba7d2b021facc040555bb41be7291",
+            "bytes": 61792844
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 1516.308837890625,
+            "firstPcmMs": 1269.4000000059605,
+            "loadMs": 0,
+            "fileReadyMs": 112827.09999999404,
+            "synthesisCpuSeconds": 121.36132414421246,
+            "baselineRssBytes": 1472593920,
+            "clickToReadyPeakRssBytes": 1485160448,
+            "synthesisPeakRssBytes": 1485160448,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 462531.8000488281,
+            "navToFirstNonzeroOutputMs": 464048.10888671875,
+            "navToWavReadyMs": 575358.8999023438,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 111589.60000002384,
+          "samples": 30896400,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "994ae331cc07a9c7c626e3f9cae8241db4ecaf259d8c85448f48448331280bbd",
+            "bytes": 61792844
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 1523.910888671875,
+            "firstPcmMs": 1277.0999999940395,
+            "loadMs": 0,
+            "fileReadyMs": 113612.30000001192,
+            "synthesisCpuSeconds": 121.88390248366204,
+            "baselineRssBytes": 1460715520,
+            "clickToReadyPeakRssBytes": 1478754304,
+            "synthesisPeakRssBytes": 1478754304,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 576810.3999023438,
+            "navToFirstNonzeroOutputMs": 578334.3107910156,
+            "navToWavReadyMs": 690422.6999511719,
+            "underrunSamples": 0
+          }
+        }
+      ]
+    },
+    {
+      "model": "leokani-7m",
+      "backendRequested": "cpu",
+      "backendEffective": "CPU / WASM, one inference thread",
+      "status": "measured",
+      "reason": null,
+      "voice": "default",
+      "precision": "INT8",
+      "settings": {
+        "speed": 1,
+        "originalScenario": "primary-warm"
+      },
+      "capability": {
+        "gpuDispatchVerified": false,
+        "description": "Pinned CPU-only execution provider in original experiment."
+      },
+      "warmup": [],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 75475.09999996424,
+          "samples": 33624600,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "c508b72aa6c37043978ff01fc4efbb1510538c3e83dbb068485828d0718a4d37",
+            "bytes": 67249244
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 499.418212890625,
+            "firstPcmMs": 262.5,
+            "loadMs": 0,
+            "fileReadyMs": 77615.80000001192,
+            "synthesisCpuSeconds": 88.18740842748377,
+            "baselineRssBytes": 1823735808,
+            "clickToReadyPeakRssBytes": 1827946496,
+            "synthesisPeakRssBytes": 1827946496,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 83478.5,
+            "navToFirstNonzeroOutputMs": 83977.91821289062,
+            "navToWavReadyMs": 161094.30004882812,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 74912.69999998808,
+          "samples": 33624600,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "c508b72aa6c37043978ff01fc4efbb1510538c3e83dbb068485828d0718a4d37",
+            "bytes": 67249244
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 502.818115234375,
+            "firstPcmMs": 263.69999998807907,
+            "loadMs": 0,
+            "fileReadyMs": 77083.40000003576,
+            "synthesisCpuSeconds": 87.6526355582121,
+            "baselineRssBytes": 1577369600,
+            "clickToReadyPeakRssBytes": 1665875968,
+            "synthesisPeakRssBytes": 1665875968,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 162692.69995117188,
+            "navToFirstNonzeroOutputMs": 163195.51806640625,
+            "navToWavReadyMs": 239776.10009765625,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 75194.40000003576,
+          "samples": 33624600,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "c508b72aa6c37043978ff01fc4efbb1510538c3e83dbb068485828d0718a4d37",
+            "bytes": 67249244
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 504.900146484375,
+            "firstPcmMs": 266.19999998807907,
+            "loadMs": 0,
+            "fileReadyMs": 77456.5,
+            "synthesisCpuSeconds": 87.6606855016214,
+            "baselineRssBytes": 1472348160,
+            "clickToReadyPeakRssBytes": 1535328256,
+            "synthesisPeakRssBytes": 1519878144,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 241400.80004882812,
+            "navToFirstNonzeroOutputMs": 241905.7001953125,
+            "navToWavReadyMs": 318857.3000488281,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 75357.60000002384,
+          "samples": 33624600,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "c508b72aa6c37043978ff01fc4efbb1510538c3e83dbb068485828d0718a4d37",
+            "bytes": 67249244
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 506.726318359375,
+            "firstPcmMs": 266.80000001192093,
+            "loadMs": 0,
+            "fileReadyMs": 77524.60000002384,
+            "synthesisCpuSeconds": 87.899723963388,
+            "baselineRssBytes": 1356644352,
+            "clickToReadyPeakRssBytes": 1407533056,
+            "synthesisPeakRssBytes": 1407533056,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 320458.39990234375,
+            "navToFirstNonzeroOutputMs": 320965.1262207031,
+            "navToWavReadyMs": 397983,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 75164.5,
+          "samples": 33624600,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "c508b72aa6c37043978ff01fc4efbb1510538c3e83dbb068485828d0718a4d37",
+            "bytes": 67249244
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 498.0771484375,
+            "firstPcmMs": 262,
+            "loadMs": 0,
+            "fileReadyMs": 77156.69999998808,
+            "synthesisCpuSeconds": 87.61807367637238,
+            "baselineRssBytes": 1360281600,
+            "clickToReadyPeakRssBytes": 1384366080,
+            "synthesisPeakRssBytes": 1384366080,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 399457.3000488281,
+            "navToFirstNonzeroOutputMs": 399955.3771972656,
+            "navToWavReadyMs": 476614,
+            "underrunSamples": 0
+          }
+        }
+      ]
+    },
+    {
+      "model": "leokani-4.5m",
+      "backendRequested": "cpu",
+      "backendEffective": "CPU / WASM, one inference thread",
+      "status": "measured",
+      "reason": null,
+      "voice": "default",
+      "precision": "INT8",
+      "settings": {
+        "speed": 1,
+        "originalScenario": "primary-warm"
+      },
+      "capability": {
+        "gpuDispatchVerified": false,
+        "description": "Pinned CPU-only execution provider in original experiment."
+      },
+      "warmup": [],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 55964.5,
+          "samples": 33606000,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "16c4bc75452e2725d1f6177cfb9bb94c9033d57686a325bf70f159a5cd8a8dea",
+            "bytes": 67212044
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 443.900146484375,
+            "firstPcmMs": 203.5,
+            "loadMs": 0,
+            "fileReadyMs": 58192.30000001192,
+            "synthesisCpuSeconds": 68.58733412317102,
+            "baselineRssBytes": 1501167616,
+            "clickToReadyPeakRssBytes": 1518567424,
+            "synthesisPeakRssBytes": 1518567424,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 63803.10009765625,
+            "navToFirstNonzeroOutputMs": 64247.000244140625,
+            "navToWavReadyMs": 121995.39990234375,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 56156.30000001192,
+          "samples": 33606000,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "16c4bc75452e2725d1f6177cfb9bb94c9033d57686a325bf70f159a5cd8a8dea",
+            "bytes": 67212044
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 446.79931640625,
+            "firstPcmMs": 207.5999999642372,
+            "loadMs": 0,
+            "fileReadyMs": 58411.09999996424,
+            "synthesisCpuSeconds": 67.78997293432604,
+            "baselineRssBytes": 1298710528,
+            "clickToReadyPeakRssBytes": 1359429632,
+            "synthesisPeakRssBytes": 1338130432,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 123611.89990234375,
+            "navToFirstNonzeroOutputMs": 124058.69921875,
+            "navToWavReadyMs": 182023,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 55943.5,
+          "samples": 33606000,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "16c4bc75452e2725d1f6177cfb9bb94c9033d57686a325bf70f159a5cd8a8dea",
+            "bytes": 67212044
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 444.205078125,
+            "firstPcmMs": 207.10000002384186,
+            "loadMs": 0,
+            "fileReadyMs": 58285.80000001192,
+            "synthesisCpuSeconds": 67.78279394833933,
+            "baselineRssBytes": 1304297472,
+            "clickToReadyPeakRssBytes": 1321893888,
+            "synthesisPeakRssBytes": 1321893888,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 183619.30004882812,
+            "navToFirstNonzeroOutputMs": 184063.50512695312,
+            "navToWavReadyMs": 241905.10009765625,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 55717.39999997616,
+          "samples": 33606000,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "16c4bc75452e2725d1f6177cfb9bb94c9033d57686a325bf70f159a5cd8a8dea",
+            "bytes": 67212044
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 444.524169921875,
+            "firstPcmMs": 205.69999998807907,
+            "loadMs": 0,
+            "fileReadyMs": 57791.30000001192,
+            "synthesisCpuSeconds": 67.4794447428061,
+            "baselineRssBytes": 1327300608,
+            "clickToReadyPeakRssBytes": 1349844992,
+            "synthesisPeakRssBytes": 1349844992,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 243540.10009765625,
+            "navToFirstNonzeroOutputMs": 243984.62426757812,
+            "navToWavReadyMs": 301331.39990234375,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 56419,
+          "samples": 33606000,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "16c4bc75452e2725d1f6177cfb9bb94c9033d57686a325bf70f159a5cd8a8dea",
+            "bytes": 67212044
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 444.401123046875,
+            "firstPcmMs": 204.9000000357628,
+            "loadMs": 0,
+            "fileReadyMs": 58529.60000002384,
+            "synthesisCpuSeconds": 69.94601110459638,
+            "baselineRssBytes": 1341505536,
+            "clickToReadyPeakRssBytes": 1385496576,
+            "synthesisPeakRssBytes": 1385496576,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 302889.5,
+            "navToFirstNonzeroOutputMs": 303333.9011230469,
+            "navToWavReadyMs": 361419.10009765625,
+            "underrunSamples": 0
+          }
+        }
+      ]
+    },
+    {
+      "model": "pivo-curated",
+      "backendRequested": "cpu",
+      "backendEffective": "CPU / WASM, one inference thread",
+      "status": "measured",
+      "reason": null,
+      "voice": "Pi",
+      "precision": "FP32 ONNX",
+      "settings": {
+        "speed": 1,
+        "originalScenario": "primary-warm"
+      },
+      "capability": {
+        "gpuDispatchVerified": false,
+        "description": "Pinned CPU-only execution provider in original experiment."
+      },
+      "warmup": [],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 87934.10000002384,
+          "samples": 19032480,
+          "sampleRate": 16000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "9c48cc897a5337d6f855104c7d90ab8d0a81ee330c5afbe0339e9d670b4e7d4a",
+            "bytes": 38065004
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 122.01318359375,
+            "firstPcmMs": 56.099999994039536,
+            "loadMs": 0,
+            "fileReadyMs": 89600.90000000596,
+            "synthesisCpuSeconds": 105.5297643761778,
+            "baselineRssBytes": 1527627776,
+            "clickToReadyPeakRssBytes": 1612251136,
+            "synthesisPeakRssBytes": 1612251136,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 93803.39990234375,
+            "navToFirstNonzeroOutputMs": 93925.4130859375,
+            "navToWavReadyMs": 183404.30004882812,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 87919.39999997616,
+          "samples": 19032480,
+          "sampleRate": 16000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "9c48cc897a5337d6f855104c7d90ab8d0a81ee330c5afbe0339e9d670b4e7d4a",
+            "bytes": 38065004
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 127.066650390625,
+            "firstPcmMs": 59,
+            "loadMs": 0,
+            "fileReadyMs": 89628.59999999404,
+            "synthesisCpuSeconds": 105.55884398287543,
+            "baselineRssBytes": 1561624576,
+            "clickToReadyPeakRssBytes": 1573044224,
+            "synthesisPeakRssBytes": 1566932992,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 184718.5,
+            "navToFirstNonzeroOutputMs": 184845.56665039062,
+            "navToWavReadyMs": 274347.10009765625,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 87848.79999998212,
+          "samples": 19032480,
+          "sampleRate": 16000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "9c48cc897a5337d6f855104c7d90ab8d0a81ee330c5afbe0339e9d670b4e7d4a",
+            "bytes": 38065004
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 114.533447265625,
+            "firstPcmMs": 57,
+            "loadMs": 0,
+            "fileReadyMs": 89554.69999998808,
+            "synthesisCpuSeconds": 105.44606354571522,
+            "baselineRssBytes": 1577828352,
+            "clickToReadyPeakRssBytes": 1590509568,
+            "synthesisPeakRssBytes": 1582497792,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 275632.39990234375,
+            "navToFirstNonzeroOutputMs": 275746.9333496094,
+            "navToWavReadyMs": 365187.10009765625,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 87434,
+          "samples": 19032480,
+          "sampleRate": 16000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "9c48cc897a5337d6f855104c7d90ab8d0a81ee330c5afbe0339e9d670b4e7d4a",
+            "bytes": 38065004
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 119.86669921875,
+            "firstPcmMs": 58.400000005960464,
+            "loadMs": 0,
+            "fileReadyMs": 89116.59999999404,
+            "synthesisCpuSeconds": 105.1550265261684,
+            "baselineRssBytes": 1593901056,
+            "clickToReadyPeakRssBytes": 1610104832,
+            "synthesisPeakRssBytes": 1601339392,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 366496.89990234375,
+            "navToFirstNonzeroOutputMs": 366616.7666015625,
+            "navToWavReadyMs": 455613.5,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 88011.09999999404,
+          "samples": 19032480,
+          "sampleRate": 16000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "9c48cc897a5337d6f855104c7d90ab8d0a81ee330c5afbe0339e9d670b4e7d4a",
+            "bytes": 38065004
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 122.066650390625,
+            "firstPcmMs": 59.400000005960464,
+            "loadMs": 0,
+            "fileReadyMs": 89675.30000001192,
+            "synthesisCpuSeconds": 105.5902991329367,
+            "baselineRssBytes": 1611546624,
+            "clickToReadyPeakRssBytes": 1621393408,
+            "synthesisPeakRssBytes": 1616003072,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 456963.60009765625,
+            "navToFirstNonzeroOutputMs": 457085.6667480469,
+            "navToWavReadyMs": 546638.8999023438,
+            "underrunSamples": 0
+          }
+        }
+      ]
+    },
+    {
+      "model": "woof",
+      "backendRequested": "webgpu",
+      "backendEffective": "native WebGPU with CPU frontend",
+      "status": "measured",
+      "reason": null,
+      "voice": "Isla",
+      "precision": "INT8",
+      "settings": {
+        "speed": 1,
+        "originalScenario": "primary-warm"
+      },
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Official WebGPU-only runtime; hardware dispatch separately verified in same-asset GPU capability probes."
+      },
+      "warmup": [],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 192117.59999999404,
+          "samples": 30082560,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "9ad419603a1d4b1a961406aeacddbfe6d988c95a5589b3a00f4be62b55eab628",
+            "bytes": 60165164
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 271.31298828125,
+            "firstPcmMs": 202.2000000178814,
+            "loadMs": 0,
+            "fileReadyMs": 193867.70000001788,
+            "synthesisCpuSeconds": 60.99218352787079,
+            "baselineRssBytes": 1390166016,
+            "clickToReadyPeakRssBytes": 1444364288,
+            "synthesisPeakRssBytes": 1436647424,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 199501.89990234375,
+            "navToFirstNonzeroOutputMs": 199773.212890625,
+            "navToWavReadyMs": 393369.60009765625,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 192219.79999998212,
+          "samples": 30082560,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "9ad419603a1d4b1a961406aeacddbfe6d988c95a5589b3a00f4be62b55eab628",
+            "bytes": 60165164
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 318.991943359375,
+            "firstPcmMs": 227.30000001192093,
+            "loadMs": 0,
+            "fileReadyMs": 193991.5,
+            "synthesisCpuSeconds": 60.999215572721766,
+            "baselineRssBytes": 1448820736,
+            "clickToReadyPeakRssBytes": 1458569216,
+            "synthesisPeakRssBytes": 1454571520,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 394752.1999511719,
+            "navToFirstNonzeroOutputMs": 395071.19189453125,
+            "navToWavReadyMs": 588743.6999511719,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 192047.69999998808,
+          "samples": 30082560,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "9ad419603a1d4b1a961406aeacddbfe6d988c95a5589b3a00f4be62b55eab628",
+            "bytes": 60165164
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 300.416015625,
+            "firstPcmMs": 229.5,
+            "loadMs": 0,
+            "fileReadyMs": 193805.59999999404,
+            "synthesisCpuSeconds": 61.471731019310596,
+            "baselineRssBytes": 1466597376,
+            "clickToReadyPeakRssBytes": 1468137472,
+            "synthesisPeakRssBytes": 1468137472,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 590158.1999511719,
+            "navToFirstNonzeroOutputMs": 590458.6159667969,
+            "navToWavReadyMs": 783963.8000488281,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 192020.59999999404,
+          "samples": 30082560,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "9ad419603a1d4b1a961406aeacddbfe6d988c95a5589b3a00f4be62b55eab628",
+            "bytes": 60165164
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 306.822021484375,
+            "firstPcmMs": 234.39999997615814,
+            "loadMs": 0,
+            "fileReadyMs": 193775.39999997616,
+            "synthesisCpuSeconds": 61.63762472398412,
+            "baselineRssBytes": 1464254464,
+            "clickToReadyPeakRssBytes": 1473396736,
+            "synthesisPeakRssBytes": 1473396736,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 785583,
+            "navToFirstNonzeroOutputMs": 785889.8220214844,
+            "navToWavReadyMs": 979358.3999023438,
+            "underrunSamples": 0
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 191820.90000000596,
+          "samples": 30082560,
+          "sampleRate": 24000,
+          "pcmSha256": null,
+          "audio": {
+            "sha256": "9ad419603a1d4b1a961406aeacddbfe6d988c95a5589b3a00f4be62b55eab628",
+            "bytes": 60165164
+          },
+          "validation": {
+            "finitePcm": null,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstNonzeroOutputMs": 304.214111328125,
+            "firstPcmMs": 225.39999997615814,
+            "loadMs": 0,
+            "fileReadyMs": 193871.39999997616,
+            "synthesisCpuSeconds": 60.803554589380724,
+            "baselineRssBytes": 1470726144,
+            "clickToReadyPeakRssBytes": 1510572032,
+            "synthesisPeakRssBytes": 1510572032,
+            "httpActualBodyBytes": 0,
+            "httpUniqueSuccessfulBodyBytes": 0,
+            "httpIdealSecondsAt1MbpsUniqueAssets": 0,
+            "navToModelReadyMs": 980781.5,
+            "navToFirstNonzeroOutputMs": 981085.7141113281,
+            "navToWavReadyMs": 1174652.8999023438,
+            "underrunSamples": 0
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Historical import; original private filesystem paths, browser profiles and logs are omitted. Source summary SHA-256 anchors the imported evidence.",
+    "No audio, model weights or restricted upstream runtime code are redistributed in this result. Output SHA-256 digests refer to locally retained recordings.",
+    "PiVo used curated normalization and 12 pronunciation overrides. These are a distinct configuration, not the strict frontend.",
+    "Times describe these implementations and this machine. Speech quality has not been ranked.",
+    "Original warmup/cached setup differs from native v1: full-article excluded warm-up receipts are not represented here.",
+    "Original process-tree RSS is sampled total Chrome memory, including baseline and possible shared-page double counting; not model RAM or VRAM. 1 Mbps ideal transfer is body bytes / 125,000, excluding overhead and initialization."
+  ]
+}

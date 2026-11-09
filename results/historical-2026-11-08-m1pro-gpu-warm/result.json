@@ -1,0 +1,834 @@
+{
+  "schemaVersion": 1,
+  "id": "historical-2026-11-08-m1pro-gpu-warm",
+  "createdAt": "2026-11-08T22:08:06.135Z",
+  "origin": "historical-import",
+  "protocol": {
+    "id": "legacy-gpu-pcm-v0",
+    "scenario": "warm",
+    "timingBoundary": "First of 93 source-chunk requests through final CPU-readable PCM delivery. Loading, warm-up, PCM validation/hash, WAV encoding and saving are outside the timer.",
+    "warmupRuns": 1,
+    "repetitions": 5,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "Apple M1 Pro reference machine",
+    "os": "macOS 26.6.2",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": null,
+    "chromeVersion": "Google Chrome 157.0.8103.39",
+    "gpu": "Apple M1 Pro / Metal",
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": null,
+    "dirty": false,
+    "manifestSha256": "d6b365d1b5d31bd3b1096d796aa2841708e9dab431faa3bd8198ca6c3f0e991f"
+  },
+  "assets": [
+    {
+      "id": "models/leokani-4.5m-int8/model.onnx",
+      "sha256": "fafeea440bf4e38687bf32a88c320e8a6694d92eaa8f33a0750fc3207209f3e8",
+      "bytes": 5143956
+    },
+    {
+      "id": "models/leokani-7m-int8/model.onnx",
+      "sha256": "b68ebd5df4e2ac24ed8eddae9519db0b3766b1bf5999ddcff0779be036c14a54",
+      "bytes": 7838742
+    },
+    {
+      "id": "models/leokani-g2p/context.onnx",
+      "sha256": "283f1122bbcb8cc577c568d2b52e1a2e205c286cae528f0b7b9e3b9492c91409",
+      "bytes": 5371378
+    },
+    {
+      "id": "models/leokani-g2p/leokani-g2p.json.gz",
+      "sha256": "2d0da7653feb2f7174ecc313b5e30dea3c0e2fb6e58f9255816c7e06e9c9c962",
+      "bytes": 4656918
+    },
+    {
+      "id": "models/leokani-g2p/oov-decoder.onnx",
+      "sha256": "c188e599976bb820209b1dd8747a8e3278aa7aa372e73ab5367809e406f25088",
+      "bytes": 5105543
+    },
+    {
+      "id": "models/leokani-g2p/oov-encoder.onnx",
+      "sha256": "5ffcb175371b369ca0f4a28d39e8d8a75abab796b46e63ed7d0a311cacf89307",
+      "bytes": 3868129
+    },
+    {
+      "id": "models/paradee-8m-v1.2/config.json",
+      "sha256": "002535cf8dd08a434cdddb13372da8a7b4844152bdf9b5b4e7342e12ec30bcfb",
+      "bytes": 1827
+    },
+    {
+      "id": "models/paradee-8m-v1.2/paradee_int8.onnx",
+      "sha256": "a6989796692ac173597e15d405c971989202d5c73cfad65f22e90bd7b6c97da1",
+      "bytes": 8462119
+    },
+    {
+      "id": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/config.json",
+      "sha256": "b5d0f88353638370d94035b7d73d7d6577c0554d78f8d7ecfd40490aae39ae85",
+      "bytes": 4634
+    },
+    {
+      "id": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/default-voice.safetensors",
+      "sha256": "dc537478eaadc1a5257fcda2e3501ab81e14c111a5d95a5838f350db2afd0f1a",
+      "bytes": 256136
+    },
+    {
+      "id": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/model.q8.gguf",
+      "sha256": "a7d9aad2cd6dc66473f24a08bc6d2939030ef4d751ef82349361fbef3272dbae",
+      "bytes": 64512352
+    },
+    {
+      "id": "models/phonon-31m-en/92741c5b07d085ff840e26fea8ce43110b87852f/tokenizer.json",
+      "sha256": "691a00068fa7b989f2f3e5ae5daa2d1a5bb319f2d5360deafcfb19a8bb6e7936",
+      "bytes": 277967
+    },
+    {
+      "id": "models/pivo-1.4m/article-variant-proposal.json",
+      "sha256": "ebc229bd0d0e1e09c76303e8de37b4d3860570a3a09ecf6b0f15c6028a80eda6",
+      "bytes": 10333
+    },
+    {
+      "id": "models/pivo-1.4m/cmudict.dict",
+      "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22",
+      "bytes": 3618488
+    },
+    {
+      "id": "models/pivo-1.4m/conditioning.onnx",
+      "sha256": "b184d45ce06e6d9caec94430b6e07e5f7315ecd584c5c3980290a9b5286d2998",
+      "bytes": 282407
+    },
+    {
+      "id": "models/pivo-1.4m/decoder.onnx",
+      "sha256": "bc46ee8d64fc400115267a2185887b72842ca318761625c248469166c9ef19ac",
+      "bytes": 748901
+    },
+    {
+      "id": "models/pivo-1.4m/encoder.onnx",
+      "sha256": "1d483a8e23d158bc56692d9b9339015130a1db7b3341cd700595af6190a7ff34",
+      "bytes": 1808457
+    },
+    {
+      "id": "models/pivo-1.4m/metadata.json",
+      "sha256": "fe5a8f85f92ff402dc7c912fea68e04489badbe3b420ef691e527c56175c096a",
+      "bytes": 2462
+    },
+    {
+      "id": "models/pivo-1.4m/model_manifest.json",
+      "sha256": "ef87c62cc79119ae5e8c3068acf78bfd8a86b40767ea90e8f7515c4616f8ecbf",
+      "bytes": 933
+    },
+    {
+      "id": "models/pivo-1.4m/vocoder_step.onnx",
+      "sha256": "6f8ea48ebadbc7b737e5999ce7393619d7aa33b5b643ff48c5ebbcc3bc62b611",
+      "bytes": 3001580
+    },
+    {
+      "id": "models/woof-one-voice/config.json",
+      "sha256": "ef5865ee0f2c7f270009fdb9fa8e7b5f4dbfbf7b2af803569567c83eb07c1f3e",
+      "bytes": 2919
+    },
+    {
+      "id": "models/woof-one-voice/isla.safetensors",
+      "sha256": "dfd2a4d1ee37886359ebdecd250688eaa8276a7df3f3b03e53bed522afa49a1d",
+      "bytes": 28752
+    },
+    {
+      "id": "models/woof-one-voice/model_int8.part0",
+      "sha256": "40d58cc4f177833b771eb9722fcaa892b657d728c3805367d1b9aa597b5d706c",
+      "bytes": 15854321
+    },
+    {
+      "id": "models/woof-one-voice/model_int8.part1",
+      "sha256": "000b16b34a810bb6be7ecd4749912b024ee93f48b3edba775c662dd8cb12361b",
+      "bytes": 15854321
+    },
+    {
+      "id": "models/woof-one-voice/model_int8.parts.json",
+      "sha256": "7076f3ecd02c447d99421a7b66566f5f86f5a1df87884c1a85618f035b810bc1",
+      "bytes": 69
+    }
+  ],
+  "cells": [
+    {
+      "model": "woof",
+      "backendRequested": "webgpu",
+      "backendEffective": "WebGPU with disclosed CPU processing and optional WASM operator fallback",
+      "status": "measured",
+      "reason": null,
+      "voice": "Isla",
+      "precision": "INT8",
+      "settings": {
+        "speed": 1
+      },
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Actual GPU dispatch and finite PCM verified in a separate untimed synthesis probe. Timed workers have no dispatch instrumentation."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 181237.39999997616,
+          "samples": 30082560,
+          "sampleRate": 24000,
+          "pcmSha256": "c4b6699b157f8e3cd8c1d2edadd7491a85603368c9a475b71c92f2d37f726859",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 182060,
+          "samples": 30082560,
+          "sampleRate": 24000,
+          "pcmSha256": "c4b6699b157f8e3cd8c1d2edadd7491a85603368c9a475b71c92f2d37f726859",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 180919.90000003576,
+          "samples": 30082560,
+          "sampleRate": 24000,
+          "pcmSha256": "c4b6699b157f8e3cd8c1d2edadd7491a85603368c9a475b71c92f2d37f726859",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 182203.5,
+          "samples": 30082560,
+          "sampleRate": 24000,
+          "pcmSha256": "c4b6699b157f8e3cd8c1d2edadd7491a85603368c9a475b71c92f2d37f726859",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 181497.80000001192,
+          "samples": 30082560,
+          "sampleRate": 24000,
+          "pcmSha256": "c4b6699b157f8e3cd8c1d2edadd7491a85603368c9a475b71c92f2d37f726859",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 181810.19999998808,
+          "samples": 30082560,
+          "sampleRate": 24000,
+          "pcmSha256": "c4b6699b157f8e3cd8c1d2edadd7491a85603368c9a475b71c92f2d37f726859",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        }
+      ]
+    },
+    {
+      "model": "woof",
+      "backendRequested": "webgl",
+      "backendEffective": "none",
+      "status": "unsupported",
+      "reason": "No WebGL path in the pinned official runtime.",
+      "voice": "Isla",
+      "precision": "INT8",
+      "settings": {
+        "speed": 1
+      },
+      "capability": {
+        "gpuDispatchVerified": false,
+        "description": "No WebGL path in the pinned official runtime."
+      },
+      "warmup": [],
+      "trials": []
+    },
+    {
+      "model": "phonon",
+      "backendRequested": "webgpu",
+      "backendEffective": "WebGPU with disclosed CPU processing and optional WASM operator fallback",
+      "status": "measured",
+      "reason": null,
+      "voice": "default",
+      "precision": "q8 GGUF",
+      "settings": {
+        "speed": 1
+      },
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Actual GPU dispatch and finite PCM verified in a separate untimed synthesis probe. Timed workers have no dispatch instrumentation."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 51588.90000003576,
+          "samples": 29264640,
+          "sampleRate": 24000,
+          "pcmSha256": "f9120f9a49b0ed2039078c9e9b1ce93cbcfe8cc4dec3246ad143ab07b74b697e",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 51691.80000001192,
+          "samples": 29264640,
+          "sampleRate": 24000,
+          "pcmSha256": "f9120f9a49b0ed2039078c9e9b1ce93cbcfe8cc4dec3246ad143ab07b74b697e",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 51688.5,
+          "samples": 29264640,
+          "sampleRate": 24000,
+          "pcmSha256": "f9120f9a49b0ed2039078c9e9b1ce93cbcfe8cc4dec3246ad143ab07b74b697e",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 51730.5,
+          "samples": 29264640,
+          "sampleRate": 24000,
+          "pcmSha256": "f9120f9a49b0ed2039078c9e9b1ce93cbcfe8cc4dec3246ad143ab07b74b697e",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 51870.5,
+          "samples": 29264640,
+          "sampleRate": 24000,
+          "pcmSha256": "f9120f9a49b0ed2039078c9e9b1ce93cbcfe8cc4dec3246ad143ab07b74b697e",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 51725.700000047684,
+          "samples": 29264640,
+          "sampleRate": 24000,
+          "pcmSha256": "f9120f9a49b0ed2039078c9e9b1ce93cbcfe8cc4dec3246ad143ab07b74b697e",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        }
+      ]
+    },
+    {
+      "model": "phonon",
+      "backendRequested": "webgl",
+      "backendEffective": "none",
+      "status": "unsupported",
+      "reason": "No WebGL path in the pinned official runtime.",
+      "voice": "default",
+      "precision": "q8 GGUF",
+      "settings": {
+        "speed": 1
+      },
+      "capability": {
+        "gpuDispatchVerified": false,
+        "description": "No WebGL path in the pinned official runtime."
+      },
+      "warmup": [],
+      "trials": []
+    },
+    {
+      "model": "paradee",
+      "backendRequested": "webgpu",
+      "backendEffective": "WebGPU with disclosed CPU processing and optional WASM operator fallback",
+      "status": "measured",
+      "reason": null,
+      "voice": "af_heart",
+      "precision": "INT8",
+      "settings": {
+        "speed": 1
+      },
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Actual GPU dispatch and finite PCM verified in a separate untimed synthesis probe. Timed workers have no dispatch instrumentation."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 20093.30000001192,
+          "samples": 30896400,
+          "sampleRate": 24000,
+          "pcmSha256": "7a63a193f3cd86224f74904faafe13e6f36c483d3f31faee0da469cff4a94ef9",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 18811.5,
+          "samples": 30896400,
+          "sampleRate": 24000,
+          "pcmSha256": "2618a17d51b6cee742c69a1c1fdefe3ef7439f23dc1f817d6c9213f3afad3e79",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 18739.30000001192,
+          "samples": 30896400,
+          "sampleRate": 24000,
+          "pcmSha256": "f2820fb078e3c1a4f9530b1caf3435bbc2466b3e334100bda18179852efd924f",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 18666.30000001192,
+          "samples": 30896400,
+          "sampleRate": 24000,
+          "pcmSha256": "7e51e147cceb0a5d0f7576aaeb4f12a547a28788c06bf08a330021fc2650aafb",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 18721.30000001192,
+          "samples": 30896400,
+          "sampleRate": 24000,
+          "pcmSha256": "b28e9636d7f378662e285211ebbfd4175707c847344561650b8d52c6700a36f1",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 18664.399999976158,
+          "samples": 30896400,
+          "sampleRate": 24000,
+          "pcmSha256": "71a80ba340b4603d9242cb3b7eeb342c741cec18482de7fdf7bbf3ee6710a036",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        }
+      ]
+    },
+    {
+      "model": "paradee",
+      "backendRequested": "webgl",
+      "backendEffective": "none",
+      "status": "unsupported",
+      "reason": "Pinned WebGL model loader rejected FLOAT16.",
+      "voice": "af_heart",
+      "precision": "INT8",
+      "settings": {
+        "speed": 1
+      },
+      "capability": {
+        "gpuDispatchVerified": false,
+        "description": "Pinned WebGL model loader rejected FLOAT16."
+      },
+      "warmup": [],
+      "trials": []
+    },
+    {
+      "model": "leokani-7m",
+      "backendRequested": "webgpu",
+      "backendEffective": "WebGPU with disclosed CPU processing and optional WASM operator fallback",
+      "status": "measured",
+      "reason": null,
+      "voice": "default",
+      "precision": "INT8",
+      "settings": {
+        "speed": 1
+      },
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Actual GPU dispatch and finite PCM verified in a separate untimed synthesis probe. Timed workers have no dispatch instrumentation."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 59124.60000002384,
+          "samples": 33624600,
+          "sampleRate": 24000,
+          "pcmSha256": "6bed5dc03efbcd9e3e53705e2940cc8ac010d81f4562475341f6c7e2f88ff85b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 58112.69999998808,
+          "samples": 33624600,
+          "sampleRate": 24000,
+          "pcmSha256": "6bed5dc03efbcd9e3e53705e2940cc8ac010d81f4562475341f6c7e2f88ff85b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 58430.80000001192,
+          "samples": 33624600,
+          "sampleRate": 24000,
+          "pcmSha256": "6bed5dc03efbcd9e3e53705e2940cc8ac010d81f4562475341f6c7e2f88ff85b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 58169.09999996424,
+          "samples": 33624600,
+          "sampleRate": 24000,
+          "pcmSha256": "6bed5dc03efbcd9e3e53705e2940cc8ac010d81f4562475341f6c7e2f88ff85b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 57314.40000003576,
+          "samples": 33624600,
+          "sampleRate": 24000,
+          "pcmSha256": "6bed5dc03efbcd9e3e53705e2940cc8ac010d81f4562475341f6c7e2f88ff85b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 57651.89999997616,
+          "samples": 33624600,
+          "sampleRate": 24000,
+          "pcmSha256": "6bed5dc03efbcd9e3e53705e2940cc8ac010d81f4562475341f6c7e2f88ff85b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        }
+      ]
+    },
+    {
+      "model": "leokani-7m",
+      "backendRequested": "webgl",
+      "backendEffective": "none",
+      "status": "unsupported",
+      "reason": "Pinned WebGL model loader rejected int64.",
+      "voice": "default",
+      "precision": "INT8",
+      "settings": {
+        "speed": 1
+      },
+      "capability": {
+        "gpuDispatchVerified": false,
+        "description": "Pinned WebGL model loader rejected int64."
+      },
+      "warmup": [],
+      "trials": []
+    },
+    {
+      "model": "pivo-curated",
+      "backendRequested": "webgpu",
+      "backendEffective": "WebGPU with disclosed CPU processing and optional WASM operator fallback",
+      "status": "measured",
+      "reason": null,
+      "voice": "Pi",
+      "precision": "FP32 ONNX",
+      "settings": {
+        "speed": 1
+      },
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Actual GPU dispatch and finite PCM verified in a separate untimed synthesis probe. Timed workers have no dispatch instrumentation."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 2561589.399999976,
+          "samples": 19032480,
+          "sampleRate": 16000,
+          "pcmSha256": "498b7b6820e9ea56310d5bdbbf0f2ee9e3c3801a0db269979982cfec63b37658",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 2541702.7000000477,
+          "samples": 19032480,
+          "sampleRate": 16000,
+          "pcmSha256": "498b7b6820e9ea56310d5bdbbf0f2ee9e3c3801a0db269979982cfec63b37658",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 2562693.899999976,
+          "samples": 19032480,
+          "sampleRate": 16000,
+          "pcmSha256": "498b7b6820e9ea56310d5bdbbf0f2ee9e3c3801a0db269979982cfec63b37658",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 2563140.600000024,
+          "samples": 19032480,
+          "sampleRate": 16000,
+          "pcmSha256": "498b7b6820e9ea56310d5bdbbf0f2ee9e3c3801a0db269979982cfec63b37658",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 2562362.199999988,
+          "samples": 19032480,
+          "sampleRate": 16000,
+          "pcmSha256": "498b7b6820e9ea56310d5bdbbf0f2ee9e3c3801a0db269979982cfec63b37658",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 2563046.5,
+          "samples": 19032480,
+          "sampleRate": 16000,
+          "pcmSha256": "498b7b6820e9ea56310d5bdbbf0f2ee9e3c3801a0db269979982cfec63b37658",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        }
+      ]
+    },
+    {
+      "model": "pivo-curated",
+      "backendRequested": "webgl",
+      "backendEffective": "none",
+      "status": "unsupported",
+      "reason": "Pinned WebGL model loader rejected int64.",
+      "voice": "Pi",
+      "precision": "FP32 ONNX",
+      "settings": {
+        "speed": 1
+      },
+      "capability": {
+        "gpuDispatchVerified": false,
+        "description": "Pinned WebGL model loader rejected int64."
+      },
+      "warmup": [],
+      "trials": []
+    },
+    {
+      "model": "leokani-4.5m",
+      "backendRequested": "webgpu",
+      "backendEffective": "WebGPU with disclosed CPU processing and optional WASM operator fallback",
+      "status": "measured",
+      "reason": null,
+      "voice": "default",
+      "precision": "INT8",
+      "settings": {
+        "speed": 1
+      },
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Actual GPU dispatch and finite PCM verified in a separate untimed synthesis probe. Timed workers have no dispatch instrumentation."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 62381.39999997616,
+          "samples": 33606600,
+          "sampleRate": 24000,
+          "pcmSha256": "f01d5dfa7becb5af3d418a7498aeb0d5db3a4d82ed316dd06cf98a25e172ecb2",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 62455.30000001192,
+          "samples": 33606600,
+          "sampleRate": 24000,
+          "pcmSha256": "f01d5dfa7becb5af3d418a7498aeb0d5db3a4d82ed316dd06cf98a25e172ecb2",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 61458.69999998808,
+          "samples": 33606600,
+          "sampleRate": 24000,
+          "pcmSha256": "f01d5dfa7becb5af3d418a7498aeb0d5db3a4d82ed316dd06cf98a25e172ecb2",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 61573,
+          "samples": 33606600,
+          "sampleRate": 24000,
+          "pcmSha256": "f01d5dfa7becb5af3d418a7498aeb0d5db3a4d82ed316dd06cf98a25e172ecb2",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 61682,
+          "samples": 33606600,
+          "sampleRate": 24000,
+          "pcmSha256": "f01d5dfa7becb5af3d418a7498aeb0d5db3a4d82ed316dd06cf98a25e172ecb2",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 61558.60000002384,
+          "samples": 33606600,
+          "sampleRate": 24000,
+          "pcmSha256": "f01d5dfa7becb5af3d418a7498aeb0d5db3a4d82ed316dd06cf98a25e172ecb2",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          }
+        }
+      ]
+    },
+    {
+      "model": "leokani-4.5m",
+      "backendRequested": "webgl",
+      "backendEffective": "none",
+      "status": "unsupported",
+      "reason": "Pinned WebGL model loader rejected int64.",
+      "voice": "default",
+      "precision": "INT8",
+      "settings": {
+        "speed": 1
+      },
+      "capability": {
+        "gpuDispatchVerified": false,
+        "description": "Pinned WebGL model loader rejected int64."
+      },
+      "warmup": [],
+      "trials": []
+    }
+  ],
+  "notes": [
+    "Historical import; original private filesystem paths, browser profiles and logs are omitted. Source summary SHA-256 anchors the imported evidence.",
+    "No audio, model weights or restricted upstream runtime code are redistributed in this result. Output SHA-256 digests refer to locally retained recordings.",
+    "PiVo used curated normalization and 12 pronunciation overrides. These are a distinct configuration, not the strict frontend.",
+    "Times describe these implementations and this machine. Speech quality has not been ranked.",
+    "ONNX GPU pipelines permit disclosed WASM fallback. Leokani G2P remains on CPU. Real GPU compute dispatch was verified in separate untimed synthesis probes.",
+    "PiVo retains sequential small graph invocations and CPU readbacks. Its GPU score does not establish the fastest possible implementation of that architecture."
+  ]
+}

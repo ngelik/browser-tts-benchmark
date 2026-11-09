@@ -1,0 +1,19 @@
+{
+  "corpusVersion": "gull-point-archive-v1",
+  "file": "en-20000.txt",
+  "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+  "utf8Bytes": 20000,
+  "unicodeCodePoints": 20000,
+  "javascriptStringLength": 20000,
+  "terminalNewline": "one LF included in 20,000-character total",
+  "wordCount": 3573,
+  "paragraphCount": 27,
+  "chunkCount": 93,
+  "chunkCharacters": {
+    "min": 181,
+    "max": 250
+  },
+  "fixtureId": "english-20k-v1",
+  "creator": "Original AI-assisted benchmark fixture, created for Browser TTS Benchmark, 2026",
+  "license": "MIT"
+}
