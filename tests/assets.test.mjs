@@ -64,6 +64,27 @@ test('asset lock pins content and permits only identical shared runtime targets'
   assert.equal(lock.models['leokani-4.5m'].assets.find(asset => asset.id === 'leokani-4-5m-config').sourcePath, 'web/data/leokani/config-4.5m.json');
 });
 
+test('each ONNX runtime stages its pinned WebGL probe bundle', async () => {
+  const lock = JSON.parse(await readFile(resolve(root, 'assets.lock.json'), 'utf8'));
+  const expected = {
+    path: 'dist/ort.webgl.min.mjs',
+    target: 'runtimes/onnxruntime-web/1.23.2/ort.webgl.min.mjs',
+    package: 'onnxruntime-web',
+    version: '1.23.2',
+    bytes: 454343,
+    sha256: 'bd8fc0cc9a621bb9fb850b7991c6207bc6f27f159b40163d1b5d2ec120c08271',
+  };
+  const onnxModels = Object.entries(lock.models).filter(([, model]) => model.runtime.package === 'onnxruntime-web');
+  assert.ok(onnxModels.length > 0, 'expected ONNX model entries');
+  for (const [id, model] of onnxModels) {
+    const bundle = model.runtime.files.find(file => file.target === expected.target);
+    assert.ok(bundle, `${id} must stage its own WebGL probe bundle`);
+    for (const [key, value] of Object.entries(expected)) {
+      assert.equal(bundle[key] ?? model.runtime[key], value, `${id} WebGL runtime ${key} differs`);
+    }
+  }
+});
+
 test('browser entry points contain no implicit network or audio save path', async () => {
   const source = await readFile(resolve(root, 'web/bench.mjs'), 'utf8');
   assert.match(source, /window\.bench = \{ fixture, initialize, generate, dispose \}/);

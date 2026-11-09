@@ -10,6 +10,26 @@ All inference happens in the browser. A local Node process serves static assets
 and controls Chrome; it never performs speech synthesis. Results are not uploaded
 automatically. Model assets are pinned, verified and kept outside Git.
 
+## Standardized native results
+
+The packaged protocol was independently exercised from a clean checkout on an
+Apple M1 Pro (8 cores, 16 GiB), headed Chrome 157. One full article warm-up and
+five scored full articles per backend use the same CPU-readable PCM timer.
+
+| Model | Backend | Median | Observed min–max | Scored runs |
+|---|---|---:|---:|---:|
+| Paradee 8M | CPU/WASM | 103.92 s | 103.69–103.99 s | 5 |
+| Paradee 8M | WebGPU + WASM operators | 18.74 s | 18.61–18.80 s | 5 |
+
+![Standardized Paradee CPU and GPU comparison](comparisons/m1-pro-paradee-native/chart.svg)
+
+The median ratio is **5.55×** for this configuration and machine. It is not a
+universal hardware claim. CPU ran before GPU, on mains power; desktop background
+processes were present and thermal state was not instrumented. These new native
+scores must not be pooled with the historical reference campaign below.
+
+[Full table, additional metrics and input receipts](comparisons/m1-pro-paradee-native/summary.md).
+
 ## Reference results
 
 Apple M1 Pro · Chrome 157 · five warm repetitions · same 93 article chunks.
