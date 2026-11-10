@@ -343,6 +343,61 @@
             }
           }
         },
+        "memory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scope",
+            "generationStartedAtEpochMs",
+            "finalPcmAtEpochMs",
+            "samplingIntervalMs",
+            "availability",
+            "samples"
+          ],
+          "properties": {
+            "scope": {
+              "const": "owned-chrome-process-tree-rss-including-browser-baseline"
+            },
+            "generationStartedAtEpochMs": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "finalPcmAtEpochMs": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "samplingIntervalMs": {
+              "const": 500
+            },
+            "availability": {
+              "enum": [
+                "measured",
+                "insufficient-samples",
+                "insufficient-coverage"
+              ]
+            },
+            "samples": {
+              "type": "array",
+              "maxItems": 100000,
+              "items": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  {
+                    "type": "integer",
+                    "minimum": 1
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        },
         "metrics": {
           "type": "object",
           "additionalProperties": {

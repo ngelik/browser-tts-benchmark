@@ -174,7 +174,7 @@ function encodeWavBase64(pcm, sampleRate) {
   return btoa(binary);
 }
 
-export async function generate({ index = 1, smoke = state.smoke, saveAudio = false } = {}) {
+export async function generate({ index = 1, smoke = state.smoke, saveAudio = false, recordMemory = false } = {}) {
   if (!state.engine) throw new Error('Initialize a model before generation.');
   const loaded = await canonicalFixture(Boolean(smoke));
   const chunks = loaded.chunks;
@@ -187,8 +187,11 @@ export async function generate({ index = 1, smoke = state.smoke, saveAudio = fal
   let firstChunkMs = null;
   let firstPcmMs = null;
   let started = 0;
+  let generationStartedAtEpochMs = null;
+  let finalPcmAtEpochMs = null;
   setStatus('Generating ' + loaded.fixture.characters.toLocaleString() + ' characters in ' + chunks.length + ' ordered chunks…');
   started = performance.now();
+  if (recordMemory) generationStartedAtEpochMs = performance.timeOrigin + started;
   for (let i = 0; i < chunks.length; i++) {
     const response = await state.engine.generateChunk(chunks[i], {
       onFirstPcm: () => { firstPcmMs ??= performance.now() - started; },
@@ -202,6 +205,7 @@ export async function generate({ index = 1, smoke = state.smoke, saveAudio = fal
     completedIds.push(response.completedChunkId);
   }
   const ended = performance.now();
+  if (recordMemory) finalPcmAtEpochMs = performance.timeOrigin + ended;
   const generationMs = ended - started;
   for (let i = 0; i < chunks.length; i++) {
     if (sampleCounts[i] < 1) throw new Error('Source chunk ' + i + ' returned no PCM samples.');
@@ -231,6 +235,7 @@ export async function generate({ index = 1, smoke = state.smoke, saveAudio = fal
       maxSamplesPerChunk: Math.max(...sampleCounts),
     },
   };
+  if (recordMemory) receipt.memoryWindow = { generationStartedAtEpochMs, finalPcmAtEpochMs };
   if (saveAudio) receipt.audioWavBase64 = encodeWavBase64(pcm, sampleRate);
   state.chunks = null;
   setStatus('Generated ' + receipt.samples.toLocaleString() + ' samples in ' + (generationMs / 1000).toFixed(2) + ' seconds.');

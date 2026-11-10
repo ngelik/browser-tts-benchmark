@@ -26,6 +26,10 @@ All timings are positive finite numbers. Medians and min–max ranges are calcul
 from recorded trials, never entered by hand. Only `measured` cells receive scores;
 an `error` may retain partial trial evidence, and `unsupported` has no scores.
 
+Optional trial `memory` preserves the sampled Chrome process-tree RSS and browser
+generation boundaries for resource diagnostics. Its numeric mean/count metrics
+must reconcile with the raw in-window observations; see [memory methodology](MEMORY.md).
+
 Optional numeric `metrics` fields use unit suffixes: `Ms`, `Seconds`, `Bytes`.
 `underrunSamples` counts playback samples. `null` means unavailable, never zero.
 Metrics with different sampling windows or instruments require separate protocol

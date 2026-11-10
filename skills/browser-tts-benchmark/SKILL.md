@@ -105,6 +105,7 @@ npm test
 npm run validate
 npm run reference
 git add results/RUN_ID README.md
+# For memory diagnostics, also stage the generated docs/reference-memory.svg.
 node tools/publication-check.mjs
 ```
 
@@ -112,7 +113,15 @@ Every result PR must refresh the generated **README → Reference results** sect
 with `npm run reference` (submission does this automatically), including failed
 or unsupported full attempts. Keep all previous run links; never bury a new model
 in a separate section or delete older measurements. Run `npm run reference -- --check`;
-CI rejects missing or stale entries. Include comparison tables/charts in that same
+CI rejects missing or stale entries. Keep model-weight sizes tied to the pinned
+assets and displayed receipts. Only publish average generation memory from
+matching sampled evidence; never relabel peaks or reuse another run’s memory.
+When RAM is requested, run separate full-article `--scenario cached --resources
+--repetitions 1` diagnostics for each supported model/backend and publish them
+through the same Reference results PR. Report the actual sampled Chrome process
+tree including workers/baseline, with n=1 and its own source/environment; do not
+label it as tab-only, model RAM or GPU VRAM. Preserve unsupported statuses. See
+`docs/MEMORY.md` for generation-window evidence and reproduction. Include comparison tables/charts in that same
 section through the generator.
 
 Review the four public result files and stage them before the tracked-file

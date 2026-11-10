@@ -87,7 +87,10 @@ npm run bench -- run --model paradee --backend cpu --scenario switch --predecess
 Append `--resources` for 500 ms samples of the owned Chrome process-tree RSS on
 macOS/Linux. This changes the protocol ID. RSS includes browser baseline and the
 entire generation call, including validation/export after the synthesis timer;
-it is not GPU VRAM. Unavailable values remain null. Prefer timing-only runs for
+it is not GPU VRAM. Generation-window sample averages and raw observations are
+also retained for ordinary Chrome RAM comparison; use separate full-article
+`--scenario cached --resources --repetitions 1` diagnostics for this purpose.
+See [memory methodology](MEMORY.md). Unavailable values remain null. Prefer timing-only runs for
 small performance differences. Windows resource sampling is unavailable.
 
 ## Inspect and contribute
