@@ -51,9 +51,9 @@ export function ramChart(results,models){
    svg+=`<text x="32" y="${y+10}" font-size="14" font-weight="600">${xml(models[r.model]?.displayName??r.model)}</text>`;
    for(const [offset,backend,color]of [[0,'cpu','#276bdb'],[27,'webgpu','#9b4fc4']]){
     const value=average(r[backend]),top=y+offset;
-    svg+=`<text x="205" y="${top+13}" font-size="11">${backend==='cpu'?'CPU':'WebGPU'}</text>`;
-    if(value!==null){const w=value/max*620;svg+=`<rect x="270" y="${top}" width="${w.toFixed(2)}" height="19" rx="5" fill="${color}"/><text x="${(280+w).toFixed(2)}" y="${top+14}" font-size="12">${value.toFixed(2)} MB</text>`;}
-    else svg+=`<text x="270" y="${top+13}" font-size="12" fill="#6c7686">${xml(r[backend]?.c.status??'—')}</text>`;
+    svg+=`<text x="330" y="${top+13}" font-size="11">${backend==='cpu'?'CPU':'WebGPU'}</text>`;
+    if(value!==null){const w=value/max*520;svg+=`<rect x="400" y="${top}" width="${w.toFixed(2)}" height="19" rx="5" fill="${color}"/><text x="${(410+w).toFixed(2)}" y="${top+14}" font-size="12">${value.toFixed(2)} MB</text>`;}
+    else svg+=`<text x="400" y="${top+13}" font-size="12" fill="#6c7686">${xml(r[backend]?.c.status??'—')}</text>`;
    }y+=76;
   }y+=62;
  }
