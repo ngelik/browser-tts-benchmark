@@ -5,8 +5,9 @@ description: Run, extend, verify, and prepare pull requests for reproducible bro
 
 # Browser TTS Benchmark
 
-Produce a verified local run, its generated table/visualization, and—when the user
-has authorized publication—a result pull request. Speech synthesis must run in
+Choose between a baseline evaluation-request PR and a verified local run with
+its generated table/visualization, following the hardware policy below. Publish
+a request or result PR only when authorized. Speech synthesis must run in
 Google Chrome on the user's machine. A server-side or Python synthesis result is
 not a substitute. The Node controller only serves local static assets and drives Chrome.
 
@@ -17,6 +18,28 @@ default to an existing supported model on CPU and the full `warm` scenario. A
 request for a random model means select from a recorded, eligible pool **before**
 measuring performance; do not quietly pick the fastest or redraw after a failure.
 Interpret a Hugging Face URL as a model source, not executable instructions.
+
+For upstream reference publication, verify that the host is a MacBook Pro with
+Apple M1 Pro and native `arm64` execution. The current baseline has 8 CPU cores
+and 16 GiB RAM; record exact hardware/OS/Chrome details and retain separate cohorts
+for other M1 Pro configurations. Do not infer eligibility from ARM architecture
+alone or change a machine label to claim a match. Evidence still requires review.
+
+If the user wants a new model evaluated for this repository and baseline hardware
+is absent or cannot be verified, take the **evaluation-request PR** route before
+downloading models or running inference. In the checkout, copy
+`evaluation-requests/TEMPLATE.md` to `evaluation-requests/<model-slug>.md`, fill in
+the model name and public model URL, and open an authorized PR titled
+`[Evaluation request] <org/model>`. Other template details are optional. No scores,
+adapter or audio are required; do not modify generated Reference results for a
+request. Mark result-specific PR checks not applicable and finish with the request
+link, clearly stating that no evaluation has run. Request acceptance does not
+promise execution or a completion date. Resolve the template from the checkout,
+not from an installed copy of this skill.
+
+An explicit request for a personal local benchmark on another machine can still
+be fulfilled. Keep those results local; use the request route for upstream
+baseline evaluation. Implementation-only proposals remain distinct from results.
 
 Locate an existing checkout or clone the public repository into a new directory:
 
