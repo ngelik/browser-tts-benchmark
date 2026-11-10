@@ -6,6 +6,14 @@ import { createWoofAdapter } from './adapters/woof.mjs';
 import { createPiperAdapter } from './adapters/piper.mjs';
 import { createSupertonicAdapter } from './adapters/supertonic.mjs';
 
+import { createKokoroAdapter } from './adapters/kokoro.mjs';
+import { createMMSAdapter } from './adapters/mms.mjs';
+import { createKittenAdapter } from './adapters/kitten.mjs';
+
+import { createSanoAdapter } from './adapters/sano.mjs';
+
+import { createInflectAdapter } from './adapters/inflect.mjs';
+
 const statusNode = document.querySelector('#status');
 const state = { fixture: null, chunks: null, engine: null, model: null, backend: null, smoke: false };
 const FACTORIES = {
@@ -17,6 +25,11 @@ const FACTORIES = {
   woof: createWoofAdapter,
   'piper-en-gb-southern-english-female-low': createPiperAdapter,
   'supertonic-3': createSupertonicAdapter,
+  'kokoro-82m': createKokoroAdapter,
+  'mms-english': createMMSAdapter,
+  'kitten-nano-0.8': createKittenAdapter,
+  'sano-amy': createSanoAdapter,
+  'inflect-micro-v2': createInflectAdapter,
 };
 let canonical = null;
 

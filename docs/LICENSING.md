@@ -58,3 +58,33 @@ Primary sources:
 
 - [Supertonic 3 model license](https://huggingface.co/Supertone/supertonic-3/blob/3cadd1ee6394adea1bd021217a0e650ede09a323/LICENSE)
 - [Official Supertonic browser source](https://github.com/supertone-oss-archive/supertonic/tree/1e9799e964ea4c0dad7cde993b65c3c813a7b373/web)
+
+## 2026-11-10 discovery cohort
+
+| Component | Terms and source |
+| --- | --- |
+| Kokoro 82M v1 model and voice styles | [Apache-2.0 model card](https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/README.md). Weights/styles remain in ignored cache. |
+| Kokoro official browser helper | Apache-2.0, hexgrad/Xenova. Readable adapted source, full license and change notice retained in `web/kokoro/`. |
+| Kitten Nano 0.8 FP32 and voice archive | [Apache-2.0 model card](https://huggingface.co/KittenML/kitten-tts-nano-0.8-fp32/blob/e73cfb095bd949c786ccdcf3b8ab04eb36c47442/README.md). Weights/styles remain in ignored cache. |
+| Kitten ONNX frontend port | Apache-2.0 upstream contract/token mapping; attribution and license retained in `web/kitten/`. Browser integration is original benchmark code. |
+| MMS English | [CC BY-NC 4.0 model card](https://huggingface.co/facebook/mms-tts-eng/blob/c71de0fe7204c83f1c10820a7d696d0b450048ba/README.md). Noncommercial evaluation; Facebook/Meta MMS attribution retained. [Pinned ONNX export](https://huggingface.co/Xenova/mms-tts-eng/tree/3f8955a2adbd6487ce57420620d4916de22b9dac). |
+| Transformers.js 3.5.1 | Apache-2.0. Its embedded ONNX Runtime is pinned separately from the existing benchmark's ORT 1.23.2; exact runtime MIT license and third-party notices are staged with its assets. |
+
+The new recordings are authorized benchmark outputs with model/source attribution;
+listing a model license does not claim it settles every output or voice right.
+The small Apache-2.0 adapted source files are exceptions to the repository's root
+MIT license. No model weights or bundled upstream engines are committed.
+
+Sano Amy's pinned [model card](https://huggingface.co/ampixa/sanoTTS/blob/4a8194aa1dd958033ee449b3ad30c37e536b216e/README.md)
+lists GPL-3.0; the official `sanotts-web@0.3.0` browser runtime is
+GPL-3.0-or-later. Runtime and model bytes stay in ignored cache with the GPL
+text staged separately. The project's MCU/mobile MIT carve-outs do not cover
+this browser runtime. The root MIT license does not relicense those components;
+any redistribution of a combined browser application must respect their terms.
+
+Inflect Micro v2's [official package](https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/tree/91b1ab6432323064ec0e8e9704d92fcecd24855f)
+is Apache-2.0; the VITS/Tacotron-derived symbol inventory retains its MIT notice.
+The browser frontend port retains notices under `web/inflect/`. The fixed voice
+is described upstream as synthetic, with no reference recording required.
+The model's private training recipe/data are not fully released; open model
+weights do not imply an open training corpus. Weights remain in ignored cache.

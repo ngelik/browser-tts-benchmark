@@ -1475,7 +1475,783 @@
           "https://huggingface.co/Supertone/supertonic-3/tree/3cadd1ee6394adea1bd021217a0e650ede09a323/voice_styles",
           "https://huggingface.co/spaces/Supertone/supertonic-3/blob/4402acca094e2ff2b3dff446e0bf915f3fccc462/script.js"
         ],
-        "notes": "Ten supplied presets F1–F5 and M1–M5; only M3 (Robert) is staged and tested in English. Language-agnostic mode na is not an additional language. Custom voice profiles are outside this preset count. Eight denoising steps and effective speed 1.05 match the linked demo defaults (UI speed 1.0)."
+        "notes": "Ten supplied presets F1\u2013F5 and M1\u2013M5; only M3 (Robert) is staged and tested in English. Language-agnostic mode na is not an additional language. Custom voice profiles are outside this preset count. Eight denoising steps and effective speed 1.05 match the linked demo defaults (UI speed 1.0)."
+      }
+    },
+    "kokoro-82m": {
+      "displayName": "Kokoro 82M FP32",
+      "modelRevision": "1939ad2a8e416c0acfeecc08a694d14ef25f2231",
+      "runtime": {
+        "package": "@huggingface/transformers",
+        "version": "3.5.1",
+        "license": "Apache-2.0; embedded ONNX Runtime MIT and third-party notices",
+        "files": [
+          {
+            "package": "@huggingface/transformers",
+            "version": "3.5.1",
+            "path": "dist/transformers.min.js",
+            "target": "runtimes/transformers/3.5.1/transformers.min.js",
+            "bytes": 849451,
+            "sha256": "79fad8c1c2fd165bf1e77ace20ce023fab4dc13b6621f0e586c9b8c59c4d09d8"
+          },
+          {
+            "package": "@huggingface/transformers",
+            "version": "3.5.1",
+            "path": "dist/ort-wasm-simd-threaded.jsep.mjs",
+            "target": "runtimes/transformers/3.5.1/ort-wasm-simd-threaded.jsep.mjs",
+            "bytes": 44484,
+            "sha256": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9"
+          },
+          {
+            "package": "@huggingface/transformers",
+            "version": "3.5.1",
+            "path": "dist/ort-wasm-simd-threaded.jsep.wasm",
+            "target": "runtimes/transformers/3.5.1/ort-wasm-simd-threaded.jsep.wasm",
+            "bytes": 21596019,
+            "sha256": "c46655e8a94afc45338d4cb2b840475f88e5012d524509916e505079c00bfa39"
+          },
+          {
+            "package": "@huggingface/transformers",
+            "version": "3.5.1",
+            "path": "LICENSE",
+            "target": "licenses/transformers-3.5.1/LICENSE",
+            "bytes": 11358,
+            "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+          },
+          {
+            "package": "phonemizer",
+            "version": "1.2.1",
+            "path": "dist/phonemizer.js",
+            "target": "runtimes/phonemizer/1.2.1/phonemizer.js",
+            "bytes": 1322380,
+            "sha256": "193481f474f7c1ea81df3195d18b45df8ef7254dbdccb3f193d60215c4897bec"
+          },
+          {
+            "package": "phonemizer",
+            "version": "1.2.1",
+            "path": "LICENSE",
+            "target": "licenses/phonemizer-1.2.1/LICENSE",
+            "bytes": 11357,
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          },
+          {
+            "package": "@huggingface/transformers/node_modules/onnxruntime-web",
+            "version": "1.22.0-dev.20250409-89f8206ba4",
+            "path": "LICENSE",
+            "target": "licenses/onnxruntime-web-1.22.0-dev.20250409-89f8206ba4/LICENSE",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/89f8206ba4f1c22c39e0297fb55272e8ce8cd7d0/LICENSE",
+            "bytes": 1073,
+            "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+            "kind": "license"
+          },
+          {
+            "package": "@huggingface/transformers/node_modules/onnxruntime-web",
+            "version": "1.22.0-dev.20250409-89f8206ba4",
+            "path": "ThirdPartyNotices.txt",
+            "target": "licenses/onnxruntime-web-1.22.0-dev.20250409-89f8206ba4/ThirdPartyNotices.txt",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/89f8206ba4f1c22c39e0297fb55272e8ce8cd7d0/ThirdPartyNotices.txt",
+            "bytes": 326866,
+            "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+            "kind": "license"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "kokoro-82m-config.json",
+          "target": "models/kokoro-82m/config.json",
+          "url": "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/1939ad2a8e416c0acfeecc08a694d14ef25f2231/config.json",
+          "bytes": 44,
+          "sha256": "df34b4f930b23447cd4dc410fabfb42eb3f24e803e6c3f97d618fb359380a36f",
+          "kind": "config"
+        },
+        {
+          "id": "kokoro-82m-tokenizer.json",
+          "target": "models/kokoro-82m/tokenizer.json",
+          "url": "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/1939ad2a8e416c0acfeecc08a694d14ef25f2231/tokenizer.json",
+          "bytes": 3497,
+          "sha256": "77a02c8e164413299b4b4c403b14f8e0e1c1b727db4d46a09d6327b861060a34",
+          "kind": "config"
+        },
+        {
+          "id": "kokoro-82m-tokenizer_config.json",
+          "target": "models/kokoro-82m/tokenizer_config.json",
+          "url": "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/1939ad2a8e416c0acfeecc08a694d14ef25f2231/tokenizer_config.json",
+          "bytes": 113,
+          "sha256": "be1cb066d6ef6b074b3f15e6a6dd21ac88ff3cdaedf325f0aaed686c70f75d20",
+          "kind": "config"
+        },
+        {
+          "id": "kokoro-82m-onnx-model.onnx",
+          "target": "models/kokoro-82m/onnx/model.onnx",
+          "url": "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/1939ad2a8e416c0acfeecc08a694d14ef25f2231/onnx/model.onnx",
+          "bytes": 325532232,
+          "sha256": "8fbea51ea711f2af382e88c833d9e288c6dc82ce5e98421ea61c058ce21a34cb",
+          "kind": "model-weights"
+        },
+        {
+          "id": "kokoro-82m-voices-af_heart.bin",
+          "target": "models/kokoro-82m/voices/af_heart.bin",
+          "url": "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/1939ad2a8e416c0acfeecc08a694d14ef25f2231/voices/af_heart.bin",
+          "bytes": 522240,
+          "sha256": "d583ccff3cdca2f7fae535cb998ac07e9fcb90f09737b9a41fa2734ec44a8f0b",
+          "kind": "voice"
+        },
+        {
+          "id": "kokoro-82m-espeak-license",
+          "target": "licenses/espeak-ng/COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "kind": "license",
+          "sourcePath": "web/licenses/ESPEAK-NG-COPYING.txt"
+        }
+      ],
+      "license": {
+        "model": "Apache-2.0",
+        "runtime": "Apache-2.0 JavaScript frontend; ONNX Runtime MIT; eSpeak-ng GPL-3.0-or-later",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "cpu",
+        "webgpu"
+      ],
+      "support": {
+        "voiceCount": 54,
+        "bundledVoiceCount": 1,
+        "languageCount": 8,
+        "languages": [
+          "en",
+          "es",
+          "fr",
+          "hi",
+          "it",
+          "ja",
+          "pt",
+          "zh"
+        ],
+        "scope": "Kokoro v1.0 model catalog; English browser runtime exercised",
+        "notes": "54 named preset voices across 8 languages (English has US/GB accents). The export also contains a legacy af.bin alias, not a distinct named catalog voice. Official JS 1.2.1 exposes 28 English voices; only af_heart is staged and tested.",
+        "sources": [
+          "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/VOICES.md"
+        ]
+      }
+    },
+    "mms-english": {
+      "displayName": "MMS English FP32",
+      "modelRevision": "3f8955a2adbd6487ce57420620d4916de22b9dac",
+      "runtime": {
+        "package": "@huggingface/transformers",
+        "version": "3.5.1",
+        "license": "Apache-2.0; embedded ONNX Runtime MIT and third-party notices",
+        "files": [
+          {
+            "package": "@huggingface/transformers",
+            "version": "3.5.1",
+            "path": "dist/transformers.min.js",
+            "target": "runtimes/transformers/3.5.1/transformers.min.js",
+            "bytes": 849451,
+            "sha256": "79fad8c1c2fd165bf1e77ace20ce023fab4dc13b6621f0e586c9b8c59c4d09d8"
+          },
+          {
+            "package": "@huggingface/transformers",
+            "version": "3.5.1",
+            "path": "LICENSE",
+            "target": "licenses/transformers-3.5.1/LICENSE",
+            "bytes": 11358,
+            "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+          },
+          {
+            "package": "@huggingface/transformers/node_modules/onnxruntime-web",
+            "version": "1.22.0-dev.20250409-89f8206ba4",
+            "path": "LICENSE",
+            "target": "licenses/onnxruntime-web-1.22.0-dev.20250409-89f8206ba4/LICENSE",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/89f8206ba4f1c22c39e0297fb55272e8ce8cd7d0/LICENSE",
+            "bytes": 1073,
+            "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+            "kind": "license"
+          },
+          {
+            "package": "@huggingface/transformers/node_modules/onnxruntime-web",
+            "version": "1.22.0-dev.20250409-89f8206ba4",
+            "path": "ThirdPartyNotices.txt",
+            "target": "licenses/onnxruntime-web-1.22.0-dev.20250409-89f8206ba4/ThirdPartyNotices.txt",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/89f8206ba4f1c22c39e0297fb55272e8ce8cd7d0/ThirdPartyNotices.txt",
+            "bytes": 326866,
+            "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+            "kind": "license"
+          },
+          {
+            "path": "dist/ort.wasm.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.wasm.min.mjs",
+            "bytes": 49856,
+            "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort.webgpu.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs",
+            "bytes": 66261,
+            "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.mjs",
+            "bytes": 20321,
+            "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.wasm",
+            "bytes": 11905541,
+            "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.mjs",
+            "bytes": 51913,
+            "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.wasm",
+            "bytes": 25499390,
+            "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada",
+            "package": "onnxruntime-web",
+            "version": "1.23.2"
+          },
+          {
+            "path": "LICENSE",
+            "target": "licenses/onnxruntime-web-1.23.2/LICENSE",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/LICENSE",
+            "bytes": 1073,
+            "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          },
+          {
+            "path": "ThirdPartyNotices.txt",
+            "target": "licenses/onnxruntime-web-1.23.2/ThirdPartyNotices.txt",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/ThirdPartyNotices.txt",
+            "bytes": 326866,
+            "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "mms-english-config.json",
+          "target": "models/mms-english/config.json",
+          "url": "https://huggingface.co/Xenova/mms-tts-eng/resolve/3f8955a2adbd6487ce57420620d4916de22b9dac/config.json",
+          "bytes": 1656,
+          "sha256": "57ec08764d2b37808462757cffc38125abdcc60ffc253aac30a36cc9ae63372e",
+          "kind": "config"
+        },
+        {
+          "id": "mms-english-tokenizer.json",
+          "target": "models/mms-english/tokenizer.json",
+          "url": "https://huggingface.co/Xenova/mms-tts-eng/resolve/3f8955a2adbd6487ce57420620d4916de22b9dac/tokenizer.json",
+          "bytes": 2107,
+          "sha256": "c97490f8dab9b14d9a17a9a05411f42d1345360d7672fb666b26862ca612b5a4",
+          "kind": "config"
+        },
+        {
+          "id": "mms-english-tokenizer_config.json",
+          "target": "models/mms-english/tokenizer_config.json",
+          "url": "https://huggingface.co/Xenova/mms-tts-eng/resolve/3f8955a2adbd6487ce57420620d4916de22b9dac/tokenizer_config.json",
+          "bytes": 623,
+          "sha256": "f0b81ebfd014d109e4467fc3cfa15adab2bf1c09052313ad1b2d2771b3ddf287",
+          "kind": "config"
+        },
+        {
+          "id": "mms-english-vocab.json",
+          "target": "models/mms-english/vocab.json",
+          "url": "https://huggingface.co/Xenova/mms-tts-eng/resolve/3f8955a2adbd6487ce57420620d4916de22b9dac/vocab.json",
+          "bytes": 413,
+          "sha256": "304f7e71c40d601f9b89d81904609512eebe96b2a941f0a251fc0c9f397bcc45",
+          "kind": "config"
+        },
+        {
+          "id": "mms-english-onnx-model.onnx",
+          "target": "models/mms-english/onnx/model.onnx",
+          "url": "https://huggingface.co/Xenova/mms-tts-eng/resolve/3f8955a2adbd6487ce57420620d4916de22b9dac/onnx/model.onnx",
+          "bytes": 114258806,
+          "sha256": "cbfd1e634a7bd1fce6690176ab3bfdb2aeb3b3ed756591f85f654a6669cadd3d",
+          "kind": "model-weights"
+        }
+      ],
+      "license": {
+        "model": "CC-BY-NC-4.0",
+        "runtime": "Apache-2.0 JavaScript frontend; ONNX Runtime MIT; Transformers.js Apache-2.0",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "cpu",
+        "webgpu"
+      ],
+      "support": {
+        "voiceCount": 1,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned English checkpoint, not the wider multilingual MMS family",
+        "notes": "Single English speaker. Official Xenova ONNX export removes training-only weights. Benchmark spells out numeric tokens before the official grapheme tokenizer to avoid dropping digits absent from its vocabulary.",
+        "sources": [
+          "https://huggingface.co/facebook/mms-tts-eng/blob/c71de0fe7204c83f1c10820a7d696d0b450048ba/README.md"
+        ]
+      }
+    },
+    "kitten-nano-0.8": {
+      "displayName": "Kitten Nano 0.8 FP32",
+      "modelRevision": "e73cfb095bd949c786ccdcf3b8ab04eb36c47442",
+      "runtime": {
+        "package": "onnxruntime-web",
+        "version": "1.23.2",
+        "license": "MIT; bundled third-party notices apply",
+        "files": [
+          {
+            "path": "dist/ort.wasm.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.wasm.min.mjs",
+            "bytes": 49856,
+            "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7"
+          },
+          {
+            "path": "dist/ort.webgpu.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs",
+            "bytes": 66261,
+            "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.mjs",
+            "bytes": 20321,
+            "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.wasm",
+            "bytes": 11905541,
+            "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.mjs",
+            "bytes": 51913,
+            "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.wasm",
+            "bytes": 25499390,
+            "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada"
+          },
+          {
+            "package": "phonemizer",
+            "version": "1.2.1",
+            "path": "dist/phonemizer.js",
+            "target": "runtimes/phonemizer/1.2.1/phonemizer.js",
+            "bytes": 1322380,
+            "sha256": "193481f474f7c1ea81df3195d18b45df8ef7254dbdccb3f193d60215c4897bec"
+          },
+          {
+            "package": "phonemizer",
+            "version": "1.2.1",
+            "path": "LICENSE",
+            "target": "licenses/phonemizer-1.2.1/LICENSE",
+            "bytes": 11357,
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          },
+          {
+            "path": "LICENSE",
+            "target": "licenses/onnxruntime-web-1.23.2/LICENSE",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/LICENSE",
+            "bytes": 1073,
+            "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          },
+          {
+            "path": "ThirdPartyNotices.txt",
+            "target": "licenses/onnxruntime-web-1.23.2/ThirdPartyNotices.txt",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/ThirdPartyNotices.txt",
+            "bytes": 326866,
+            "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "kitten-nano-0.8-config.json",
+          "target": "models/kitten-nano-0.8/config.json",
+          "url": "https://huggingface.co/KittenML/kitten-tts-nano-0.8-fp32/resolve/e73cfb095bd949c786ccdcf3b8ab04eb36c47442/config.json",
+          "bytes": 688,
+          "sha256": "b66006ccbeccd4de5fc3c9272059c47f5725df7215fd889785c03602652fab64",
+          "kind": "config"
+        },
+        {
+          "id": "kitten-nano-0.8-kitten_tts_nano_v0_8.onnx",
+          "target": "models/kitten-nano-0.8/kitten_tts_nano_v0_8.onnx",
+          "url": "https://huggingface.co/KittenML/kitten-tts-nano-0.8-fp32/resolve/e73cfb095bd949c786ccdcf3b8ab04eb36c47442/kitten_tts_nano_v0_8.onnx",
+          "bytes": 56767095,
+          "sha256": "320564d2615f235de972ca27a7f39551c94185cfa24ca85b07a29084135f1e5e",
+          "kind": "model-weights"
+        },
+        {
+          "id": "kitten-nano-0.8-voices.npz",
+          "target": "models/kitten-nano-0.8/voices.npz",
+          "url": "https://huggingface.co/KittenML/kitten-tts-nano-0.8-fp32/resolve/e73cfb095bd949c786ccdcf3b8ab04eb36c47442/voices.npz",
+          "bytes": 3278902,
+          "sha256": "8aa7cee235abb0739cb51e6559685f65a4dacd95568833d05699b1633f519b3f",
+          "kind": "voice"
+        },
+        {
+          "id": "kitten-nano-0.8-espeak-license",
+          "target": "licenses/espeak-ng/COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "kind": "license",
+          "sourcePath": "web/licenses/ESPEAK-NG-COPYING.txt"
+        }
+      ],
+      "license": {
+        "model": "Apache-2.0",
+        "runtime": "Apache-2.0 JavaScript frontend; ONNX Runtime MIT; eSpeak-ng GPL-3.0-or-later",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "cpu",
+        "webgpu"
+      ],
+      "support": {
+        "voiceCount": 8,
+        "bundledVoiceCount": 8,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned Kitten Nano 0.8 checkpoint and supplied voice archive",
+        "notes": "Eight preset voices; all styles bundled in voices.npz. Only Bella is tested. Official clean_text=false path with browser eSpeak and strict token mapping; no silent unknown-symbol skips.",
+        "sources": [
+          "https://huggingface.co/KittenML/kitten-tts-nano-0.8-fp32/blob/e73cfb095bd949c786ccdcf3b8ab04eb36c47442/config.json"
+        ]
+      }
+    },
+    "sano-amy": {
+      "displayName": "Sano Amy 1.46M (English)",
+      "modelRevision": "4a8194aa1dd958033ee449b3ad30c37e536b216e",
+      "runtime": {
+        "package": "sanotts-web",
+        "version": "0.3.0",
+        "license": "GPL-3.0-or-later",
+        "files": [
+          {
+            "path": "dist/index.js",
+            "target": "runtimes/sanotts-web/0.3.0/dist/index.js",
+            "bytes": 21528,
+            "sha256": "0f52b0e87337f5fbcc075b30f2ffb7130b1f319d35995f5ac01d2003c2d9a3e6"
+          },
+          {
+            "path": "dist/snt_g2p.js",
+            "target": "runtimes/sanotts-web/0.3.0/dist/snt_g2p.js",
+            "bytes": 70136,
+            "sha256": "16c09da27d88404fc312fa84ed2b1e1b2584f24fd41337f34a8293a25146b7ab"
+          },
+          {
+            "path": "dist/snt_g2p.wasm",
+            "target": "runtimes/sanotts-web/0.3.0/dist/snt_g2p.wasm",
+            "bytes": 322974,
+            "sha256": "31da95f157c942c17078f9fa87a0f981cc8d199669b28f8f0d4b61f9e8a9301e"
+          },
+          {
+            "path": "dist/snt_g2p.data",
+            "target": "runtimes/sanotts-web/0.3.0/dist/snt_g2p.data",
+            "bytes": 2132172,
+            "sha256": "7f999dfd6efa655018fa19a7c32a1ed889a7576751fbdbec61053f6b8a0cc827"
+          },
+          {
+            "path": "dist/snt_voice.js",
+            "target": "runtimes/sanotts-web/0.3.0/dist/snt_voice.js",
+            "bytes": 10406,
+            "sha256": "73745db50516d6052802994a02dd8d0e3e27fcd26efa8cbe7e849d7ee5634266"
+          },
+          {
+            "path": "dist/snt_voice.wasm",
+            "target": "runtimes/sanotts-web/0.3.0/dist/snt_voice.wasm",
+            "bytes": 40787,
+            "sha256": "cdcfa5bf3ec162797d8556be7b90ce334f88666141956a1650846bdff9517d1c"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "sano-amy-meta-json",
+          "target": "models/sano-amy/4a8194aa1dd958033ee449b3ad30c37e536b216e/web/voices/amy/meta.json",
+          "url": "https://huggingface.co/ampixa/sanoTTS/resolve/4a8194aa1dd958033ee449b3ad30c37e536b216e/web/voices/amy/meta.json",
+          "bytes": 1197,
+          "sha256": "1c211821b231991138b4b383d2fcdc621c3ea72f9302297ffccbc398cded68f4",
+          "kind": "model-support"
+        },
+        {
+          "id": "sano-amy-front_f32-bin",
+          "target": "models/sano-amy/4a8194aa1dd958033ee449b3ad30c37e536b216e/web/voices/amy/front_f32.bin",
+          "url": "https://huggingface.co/ampixa/sanoTTS/resolve/4a8194aa1dd958033ee449b3ad30c37e536b216e/web/voices/amy/front_f32.bin",
+          "bytes": 1816420,
+          "sha256": "9bc304dd1db30b17a2efb751795137c6d26f25aaf9c96f05bc1dec7c86e0ce23",
+          "kind": "model-weights"
+        },
+        {
+          "id": "sano-amy-dec_f32-bin",
+          "target": "models/sano-amy/4a8194aa1dd958033ee449b3ad30c37e536b216e/web/voices/amy/dec_f32.bin",
+          "url": "https://huggingface.co/ampixa/sanoTTS/resolve/4a8194aa1dd958033ee449b3ad30c37e536b216e/web/voices/amy/dec_f32.bin",
+          "bytes": 4001700,
+          "sha256": "f520bcbf278607343e68170a06619a465a333d2d67476c6823d130e91580281b",
+          "kind": "model-weights"
+        },
+        {
+          "id": "sano-amy-README-md",
+          "target": "models/sano-amy/4a8194aa1dd958033ee449b3ad30c37e536b216e/README.md",
+          "url": "https://huggingface.co/ampixa/sanoTTS/resolve/4a8194aa1dd958033ee449b3ad30c37e536b216e/README.md",
+          "bytes": 13163,
+          "sha256": "ed743cc1f9ca8a1246c03579b5ec22fda8252e8d6f8ed3264603376a8f9d34db",
+          "kind": "model-terms"
+        },
+        {
+          "id": "sano-amy-amy-en-1p46m-README-md",
+          "target": "models/sano-amy/4a8194aa1dd958033ee449b3ad30c37e536b216e/amy-en-1p46m/README.md",
+          "url": "https://huggingface.co/ampixa/sanoTTS/resolve/4a8194aa1dd958033ee449b3ad30c37e536b216e/amy-en-1p46m/README.md",
+          "bytes": 569,
+          "sha256": "70159bc8a786fd16b10e7e4c6cf86760fb62cfba2c58467108ffdd004cf71a92",
+          "kind": "model-terms"
+        },
+        {
+          "id": "sano-amy-amy-en-1p46m-manifest-json",
+          "target": "models/sano-amy/4a8194aa1dd958033ee449b3ad30c37e536b216e/amy-en-1p46m/manifest.json",
+          "url": "https://huggingface.co/ampixa/sanoTTS/resolve/4a8194aa1dd958033ee449b3ad30c37e536b216e/amy-en-1p46m/manifest.json",
+          "bytes": 41659,
+          "sha256": "5c6b782b0b418758e4dfd8b877a5d34f361c94e5917b2a3ec82542c35b6677b7",
+          "kind": "model-support"
+        },
+        {
+          "id": "sanoTTS-gpl3-license",
+          "target": "licenses/sanoTTS/c1fc3589ecb9bce72e90648321e594747f997c87/LICENSE",
+          "url": "https://raw.githubusercontent.com/Ampixa/sanoTTS/c1fc3589ecb9bce72e90648321e594747f997c87/LICENSE",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "kind": "license"
+        }
+      ],
+      "license": {
+        "model": "GPL-3.0",
+        "runtime": "GPL-3.0-or-later",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "cpu"
+      ],
+      "support": {
+        "voiceCount": 1,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned Sano Amy 1.46M checkpoint and FP32 browser bundle only",
+        "notes": "Amy browser bundle uses the official en-us eSpeak frontend and synthesizes at 22,050 Hz. The broader Sano family supports additional voices and languages; they are outside this pinned checkpoint.",
+        "sources": [
+          "https://huggingface.co/ampixa/sanoTTS/blob/4a8194aa1dd958033ee449b3ad30c37e536b216e/amy-en-1p46m/README.md",
+          "https://huggingface.co/ampixa/sanoTTS/blob/4a8194aa1dd958033ee449b3ad30c37e536b216e/web/voices/amy/meta.json"
+        ]
+      }
+    },
+    "inflect-micro-v2": {
+      "displayName": "Inflect Micro v2 FP32",
+      "modelRevision": "91b1ab6432323064ec0e8e9704d92fcecd24855f",
+      "runtime": {
+        "package": "onnxruntime-web",
+        "version": "1.23.2",
+        "license": "MIT; bundled third-party notices apply",
+        "files": [
+          {
+            "path": "dist/ort.wasm.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.wasm.min.mjs",
+            "bytes": 49856,
+            "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7"
+          },
+          {
+            "path": "dist/ort.webgpu.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort.webgpu.min.mjs",
+            "bytes": 66261,
+            "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.mjs",
+            "bytes": 20321,
+            "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.wasm",
+            "bytes": 11905541,
+            "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.mjs",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.mjs",
+            "bytes": 51913,
+            "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.wasm",
+            "target": "runtimes/onnxruntime-web/1.23.2/ort-wasm-simd-threaded.asyncify.wasm",
+            "bytes": 25499390,
+            "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada"
+          },
+          {
+            "package": "phonemizer",
+            "version": "1.2.1",
+            "path": "dist/phonemizer.js",
+            "target": "runtimes/phonemizer/1.2.1/phonemizer.js",
+            "bytes": 1322380,
+            "sha256": "193481f474f7c1ea81df3195d18b45df8ef7254dbdccb3f193d60215c4897bec"
+          },
+          {
+            "package": "phonemizer",
+            "version": "1.2.1",
+            "path": "LICENSE",
+            "target": "licenses/phonemizer-1.2.1/LICENSE",
+            "bytes": 11357,
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          },
+          {
+            "path": "LICENSE",
+            "target": "licenses/onnxruntime-web-1.23.2/LICENSE",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/LICENSE",
+            "bytes": 1073,
+            "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          },
+          {
+            "path": "ThirdPartyNotices.txt",
+            "target": "licenses/onnxruntime-web-1.23.2/ThirdPartyNotices.txt",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/ThirdPartyNotices.txt",
+            "bytes": 326866,
+            "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+            "package": "onnxruntime-web",
+            "version": "1.23.2",
+            "kind": "license"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "inflect-micro-v2-config.json",
+          "target": "models/inflect-micro-v2/config.json",
+          "url": "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/resolve/91b1ab6432323064ec0e8e9704d92fcecd24855f/config.json",
+          "bytes": 1210,
+          "sha256": "91ba9652f743f65e6be48eaa1aacea1db3d2941f5138ce309f359d4ce14f34e4",
+          "kind": "config"
+        },
+        {
+          "id": "inflect-micro-v2-onnx-duration.onnx",
+          "target": "models/inflect-micro-v2/onnx/duration.onnx",
+          "url": "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/resolve/91b1ab6432323064ec0e8e9704d92fcecd24855f/onnx/duration.onnx",
+          "bytes": 7322687,
+          "sha256": "b728ca2564b9e5b7d6cf5e446f65e02a6fe2f1880ba281466fec93a667dd2388",
+          "kind": "model-weights"
+        },
+        {
+          "id": "inflect-micro-v2-onnx-decode.onnx",
+          "target": "models/inflect-micro-v2/onnx/decode.onnx",
+          "url": "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/resolve/91b1ab6432323064ec0e8e9704d92fcecd24855f/onnx/decode.onnx",
+          "bytes": 30427790,
+          "sha256": "7940923add86f76e7fa78d910b0632ca1779f8cc9a2ca2b49236381a9ca77183",
+          "kind": "model-weights"
+        },
+        {
+          "id": "inflect-micro-v2-runtime-text-symbols.py",
+          "target": "models/inflect-micro-v2/runtime/text/symbols.py",
+          "url": "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/resolve/91b1ab6432323064ec0e8e9704d92fcecd24855f/runtime/text/symbols.py",
+          "bytes": 642,
+          "sha256": "e8871acbc37bd79f61ed063a2b3aa20e20555ddec15c6b9f29e1ab05e7f8b776",
+          "kind": "config"
+        },
+        {
+          "id": "inflect-micro-v2-onnx-SOURCE.json",
+          "target": "models/inflect-micro-v2/onnx/SOURCE.json",
+          "url": "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/resolve/91b1ab6432323064ec0e8e9704d92fcecd24855f/onnx/SOURCE.json",
+          "bytes": 633,
+          "sha256": "e950bf44034b011a64bba3773b388e386418ef952c3cd17ceefda5bfa94a3aaa",
+          "kind": "provenance"
+        },
+        {
+          "id": "inflect-micro-v2-LICENSE",
+          "target": "models/inflect-micro-v2/LICENSE",
+          "url": "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/resolve/91b1ab6432323064ec0e8e9704d92fcecd24855f/LICENSE",
+          "bytes": 10455,
+          "sha256": "12c48c640d1d0baf158d45175a4238b9227c71c77f50b0d15791b8efc08cd793",
+          "kind": "license"
+        },
+        {
+          "id": "inflect-micro-v2-runtime-text-LICENSE",
+          "target": "models/inflect-micro-v2/runtime/text/LICENSE",
+          "url": "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/resolve/91b1ab6432323064ec0e8e9704d92fcecd24855f/runtime/text/LICENSE",
+          "bytes": 1053,
+          "sha256": "f89accd9d66f6a011f19997d7a21cf71a35ffe2e2d0911b5460cbd0cab52a581",
+          "kind": "license"
+        },
+        {
+          "id": "inflect-micro-v2-espeak-license",
+          "target": "licenses/espeak-ng/COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "kind": "license",
+          "sourcePath": "web/licenses/ESPEAK-NG-COPYING.txt"
+        }
+      ],
+      "license": {
+        "model": "Apache-2.0",
+        "runtime": "Apache-2.0 frontend port; MIT VITS symbol inventory; ONNX Runtime MIT and third-party notices; eSpeak-ng GPL-3.0-or-later",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "cpu",
+        "webgpu"
+      ],
+      "support": {
+        "voiceCount": 1,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned Inflect Micro v2 complete English checkpoint and official FP32 ONNX export",
+        "notes": "One fixed synthetic English voice; no reference recording or voice-cloning model required. 9,356,513 deployable parameters including waveform decoder. Browser port uses a disclosed seeded JavaScript normal-noise generator rather than NumPy bitwise parity.",
+        "sources": [
+          "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/blob/91b1ab6432323064ec0e8e9704d92fcecd24855f/README.md",
+          "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/blob/91b1ab6432323064ec0e8e9704d92fcecd24855f/onnx/SOURCE.json",
+          "https://huggingface.co/owensong/Inflect-Micro-v2/blob/9d862840734dcc53afb5d27ef468459daad020fa/README.md"
+        ]
       }
     }
   }

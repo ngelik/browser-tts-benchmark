@@ -29,9 +29,14 @@
     "listen:build": "node tools/build-listening-site.mjs"
   },
   "dependencies": {
+    "@huggingface/transformers": "3.5.1",
     "onnxruntime-web": "1.23.2",
     "phonemizer": "1.2.1",
     "phonon-tts": "0.6.0",
-    "playwright-core": "1.65.0"
+    "playwright-core": "1.65.0",
+    "sanotts-web": "0.3.0"
+  },
+  "overrides": {
+    "sharp": "0.35.5"
   }
 }

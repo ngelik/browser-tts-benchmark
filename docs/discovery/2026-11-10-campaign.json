@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "seed": "3c2aa2dacc0e937d7a27e5304c414f2449b074c648ea03c1ec9fef08e3dc7eaf",
+  "orderMethod": "Warm cells sorted lexicographically by SHA256(seed/model/backend); RAM uses reverse order; cold CPU uses listed model order.",
+  "machineLabel": "MacBook Pro (Apple M1 Pro, 16 GB)",
+  "conditions": "AC attached; native arm64; 8 CPU cores and 16 GiB RAM. Headed Chrome, disposable profiles, sequential inference. Ordinary user applications remain open; owned caffeinate -di assertion for campaign lifetime; no persistent system power settings changed; temperature not instrumented.",
+  "cells": [
+    {
+      "model": "kitten-nano-0.8",
+      "backend": "cpu",
+      "scenario": "warm",
+      "repetitions": 5
+    },
+    {
+      "model": "sano-amy",
+      "backend": "webgpu",
+      "scenario": "warm",
+      "repetitions": 5
+    },
+    {
+      "model": "sano-amy",
+      "backend": "cpu",
+      "scenario": "warm",
+      "repetitions": 5
+    },
+    {
+      "model": "mms-english",
+      "backend": "webgpu",
+      "scenario": "warm",
+      "repetitions": 5
+    },
+    {
+      "model": "inflect-micro-v2",
+      "backend": "cpu",
+      "scenario": "warm",
+      "repetitions": 5
+    },
+    {
+      "model": "kitten-nano-0.8",
+      "backend": "webgpu",
+      "scenario": "warm",
+      "repetitions": 5
+    },
+    {
+      "model": "mms-english",
+      "backend": "cpu",
+      "scenario": "warm",
+      "repetitions": 5
+    },
+    {
+      "model": "kokoro-82m",
+      "backend": "cpu",
+      "scenario": "warm",
+      "repetitions": 5
+    },
+    {
+      "model": "kokoro-82m",
+      "backend": "webgpu",
+      "scenario": "warm",
+      "repetitions": 5
+    },
+    {
+      "model": "inflect-micro-v2",
+      "backend": "webgpu",
+      "scenario": "warm",
+      "repetitions": 5
+    },
+    {
+      "model": "inflect-micro-v2",
+      "backend": "webgpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "resources": true
+    },
+    {
+      "model": "kokoro-82m",
+      "backend": "webgpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "resources": true
+    },
+    {
+      "model": "kokoro-82m",
+      "backend": "cpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "resources": true
+    },
+    {
+      "model": "mms-english",
+      "backend": "cpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "resources": true
+    },
+    {
+      "model": "kitten-nano-0.8",
+      "backend": "webgpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "resources": true
+    },
+    {
+      "model": "inflect-micro-v2",
+      "backend": "cpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "resources": true
+    },
+    {
+      "model": "mms-english",
+      "backend": "webgpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "resources": true
+    },
+    {
+      "model": "sano-amy",
+      "backend": "cpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "resources": true
+    },
+    {
+      "model": "sano-amy",
+      "backend": "webgpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "resources": true
+    },
+    {
+      "model": "kitten-nano-0.8",
+      "backend": "cpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "resources": true
+    },
+    {
+      "model": "kokoro-82m",
+      "backend": "cpu",
+      "scenario": "cold",
+      "repetitions": 1
+    },
+    {
+      "model": "kitten-nano-0.8",
+      "backend": "cpu",
+      "scenario": "cold",
+      "repetitions": 1
+    },
+    {
+      "model": "sano-amy",
+      "backend": "cpu",
+      "scenario": "cold",
+      "repetitions": 1
+    },
+    {
+      "model": "inflect-micro-v2",
+      "backend": "cpu",
+      "scenario": "cold",
+      "repetitions": 1
+    },
+    {
+      "model": "mms-english",
+      "backend": "cpu",
+      "scenario": "cold",
+      "repetitions": 1
+    }
+  ]
+}
