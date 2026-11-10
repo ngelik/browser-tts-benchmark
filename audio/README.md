@@ -66,5 +66,12 @@ commercial-use clearance or a grant of rights in upstream voices.
 - Supertonic 3: Supertone Inc., M3 preset voice. OpenRAIL-M model terms include use-based restrictions and output responsibilities; the code license is separate.
 - Piper: rhasspy/Piper Southern English Female low. The card names CC BY-SA 4.0 training data and Ryan low ancestry (whose card names CC BY-NC-SA 4.0 data). Neither card supplies a separate output license. These notices are retained without treating the code's MIT license as an output license.
 
+
+- Kokoro 82M: hexgrad, `af_heart` English voice; Apache-2.0 model terms, with official JavaScript source attribution retained.
+- Kitten Nano 0.8: KittenML, Bella preset; Apache-2.0 model terms, with the pinned frontend implementation attributed.
+- Sano Amy: ampixa, Amy English checkpoint; GPL-3.0 model card and GPL-3.0-or-later browser runtime terms are documented separately.
+- Inflect Micro v2: Owen Song, fixed synthetic English voice; Apache-2.0 model/export terms and MIT symbol-inventory attribution.
+- MMS English: Meta, English single-speaker checkpoint; CC BY-NC 4.0 model terms. Broader MMS language coverage is not claimed for this checkpoint.
+
 See [component licensing](../docs/LICENSING.md) and the linked primary sources.
 No listening quality score is inferred from speed, waveform hashes or file size.

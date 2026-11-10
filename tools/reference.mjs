@@ -60,7 +60,7 @@ export function ramChart(results,models){
  svg+=`<text x="32" y="${height-24}" font-size="12" fill="#6c7686">Sample means, not model-only RAM or GPU VRAM. RSS may double-count shared pages. Timing scores are reported separately.</text></g></svg>\n`;return svg;
 }
 
-export function referenceBlock(results, models, comparisons=[], audio=[]){
+export function referenceBlock(results, models, comparisons=[], audio=[], campaigns=[]){
   const ordered=[...results].sort((a,b)=>a.createdAt.localeCompare(b.createdAt)||a.id.localeCompare(b.id));
   const envs=new Map();for(const d of ordered)if(d.protocol.scenario==='warm'&&!envs.has(envKey(d)))envs.set(envKey(d),{id:'E'+(envs.size+1),value:d.environment});
   const groups=new Map();
@@ -80,6 +80,7 @@ export function referenceBlock(results, models, comparisons=[], audio=[]){
   out+='### Voice and language support\n\nCounts describe the pinned model/catalog, not the number of voices or languages benchmarked. All current measurements use English and one selected voice per model. Other checkpoints in a family are excluded.\n\n| Model | Supported voices | Bundled voices | Supported languages | Scope / source |\n|---|---:|---:|---|---|\n';
   for(const [id,m]of Object.entries(models)){const s=m.support;if(!s)throw new Error('Missing support metadata: '+id);out+=`| ${md(m.displayName??id)} | ${s.voiceCount??'Unknown'} | ${s.bundledVoiceCount??'Unknown'} | ${s.languageCount??'Unknown'}${s.languages?.length>5?'':' ('+md(s.languages?.join(', ')??'unknown')+')'} | [Details](docs/MODEL_SUPPORT.md#${id}) |\n`;}
   if(comparisons.length){out+='\n### Controlled native comparisons\n\nOnly compatible receipts enter these comparisons; source, settings, fixture and environment checks must pass.\n';for(const name of comparisons){out+=`\n[${md(name)} — table and input receipts](comparisons/${name}/summary.md)\n\n![${md(name)}](comparisons/${name}/chart.svg)\n`;}}
+  if(campaigns.length){out+='\n### Campaign overviews\n\nWarm speed, separately sampled RAM, model sizes and cold transfer costs retain their own measurement boundaries.\n';for(const name of campaigns){out+=`\n[${md(name)} — all-metrics table and source receipts](reports/${name}/overview.md)\n\n![${md(name)} — campaign metrics](reports/${name}/overview.svg)\n`;}}
   out+='\n### Historical resource measurements\n\nStartup, memory and download figures below belong to the original campaign. They were not remeasured in subsequent warm-only runs. CPU and later GPU timer boundaries differ; do not calculate a speedup ratio across them.\n\n![Historical generation, startup, memory and transfer](docs/reference-overview.svg)\n\n';
   out+='### Listening samples\n\n[▶ Open the listening room]('+LISTENING_URL+') — play and compare recordings in your browser, without cloning. GitHub README previews do not embed audio controls; each Listen link opens the matching player.\n\nSynthetic speech from the actual recorded runs. [Listening instructions and attribution](audio/README.md). Compact clips stay in Git; full recordings are repository release assets.\n\n';
   if(audio.length){out+='| Model | Backend | Source run | 30-second clip | Full article WAV |\n|---|---|---|---|---|\n';for(const a of audio)out+=`| ${md(models[a.model]?.displayName??a.model)} | ${a.backend} | [Receipt](results/${a.resultId}/summary.md) | [▶ Listen](${recordingUrl(a)}) | [Download / listen](${a.full.url}) |\n`;}
@@ -92,10 +93,12 @@ export function replaceReference(readme,block){const a=readme.indexOf(START),b=r
 export async function updateReference({check=false}={}){
   const results=await Promise.all((await resultPaths('results')).map(p=>readResult(p,{publication:true})));
   const comparisons=(await readdir('comparisons',{withFileTypes:true})).filter(e=>e.isDirectory()).map(e=>e.name).sort();
+  let campaigns=[];try{campaigns=(await readdir('reports',{withFileTypes:true})).filter(e=>e.isDirectory()).map(e=>e.name).sort();}catch(error){if(error.code!=='ENOENT')throw error;}
+  if(campaigns.some(name=>!/^[a-z0-9][a-z0-9._-]{0,119}$/.test(name)))throw new Error('Invalid campaign report directory');
   let audio=[];try{audio=JSON.parse(await readFile('audio/manifest.json','utf8')).entries;}catch(e){if(e.code!=='ENOENT')throw e;}
   const memorySvg=ramChart([...results].sort((a,b)=>a.createdAt.localeCompare(b.createdAt)||a.id.localeCompare(b.id)),getAssetLock().models);
   if(memorySvg){if(check){if(await readFile('docs/reference-memory.svg','utf8')!==memorySvg)throw new Error('Stale RAM chart; run npm run reference');}else await writeFile('docs/reference-memory.svg',memorySvg);}
-  const file='README.md',old=await readFile(file,'utf8');const next=replaceReference(old,referenceBlock(results,getAssetLock().models,comparisons,audio));
+  const file='README.md',old=await readFile(file,'utf8');const next=replaceReference(old,referenceBlock(results,getAssetLock().models,comparisons,audio,campaigns));
   if(check&&next!==old)throw new Error('Stale/missing Reference results; run npm run reference and include README.md in the result PR');
   if(!check)await writeFile(file,next);return {results:results.length,audio:audio.length};
 }
