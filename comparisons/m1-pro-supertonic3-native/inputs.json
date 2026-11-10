@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "inputs": [
+    {
+      "id": "2026-11-10t07-43-34-755z-supertonic-3-cpu-warm-a07fded0",
+      "sha256": "0e77225418628b29ac90ddfc043c2a81712cd3fb4de8e513b2396c8616877f17"
+    },
+    {
+      "id": "2026-11-10t09-58-29-882z-supertonic-3-webgpu-warm-97865808",
+      "sha256": "d4313887b51a9f54e7ca3d32dc208c8c801b985fb3fdf20fc81435d6d2632ab6"
+    }
+  ]
+}
