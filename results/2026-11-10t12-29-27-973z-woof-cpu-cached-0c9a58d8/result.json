@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-10t12-29-27-973z-woof-cpu-cached-0c9a58d8",
+  "createdAt": "2026-11-10T12:29:28.921Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-cached-v1-resources",
+    "scenario": "cached",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export. Generation RSS uses timestamped samples inside browser generation start/end boundaries; it includes the owned Chrome process tree and browser baseline.",
+    "warmupRuns": 0,
+    "repetitions": 1,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro (Apple M1 Pro, 16 GB)",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.39",
+    "gpu": null,
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "fb3290e1fca0c3a416e1352a1cb7fc8232ea826c",
+    "dirty": false,
+    "manifestSha256": "7ac5275ed21d6bb32d0e78e67c92f6c013f6a7e95dd20aed958cd0898c11d00e"
+  },
+  "assets": [
+    {
+      "id": "woof-config",
+      "sha256": "ef5865ee0f2c7f270009fdb9fa8e7b5f4dbfbf7b2af803569567c83eb07c1f3e",
+      "bytes": 2919
+    },
+    {
+      "id": "woof-parts",
+      "sha256": "7076f3ecd02c447d99421a7b66566f5f86f5a1df87884c1a85618f035b810bc1",
+      "bytes": 69
+    },
+    {
+      "id": "woof-engine",
+      "sha256": "64ef4b3512212f323b9e8737120b5d2bcced8d698a8b587544aa709e07965bbe",
+      "bytes": 39848
+    },
+    {
+      "id": "woof-decoder",
+      "sha256": "a644593e04fa258b4fba634a415ec50f2e192ae934a6d841eeb656191b76643a",
+      "bytes": 43652
+    },
+    {
+      "id": "woof-license",
+      "sha256": "784c4a353d15f370ff387f74bde64f50a2041df9c6f2338c3d8a2f781b944de5",
+      "bytes": 7612
+    },
+    {
+      "id": "woof-notice",
+      "sha256": "0849de251c109869d24f8a0b520260afa10594334ae3d0c06b75e68be1e2c623",
+      "bytes": 919
+    },
+    {
+      "id": "woof-voice",
+      "sha256": "dfd2a4d1ee37886359ebdecd250688eaa8276a7df3f3b03e53bed522afa49a1d",
+      "bytes": 28752
+    },
+    {
+      "id": "woof-part0",
+      "sha256": "40d58cc4f177833b771eb9722fcaa892b657d728c3805367d1b9aa597b5d706c",
+      "bytes": 15854321
+    },
+    {
+      "id": "woof-part1",
+      "sha256": "000b16b34a810bb6be7ecd4749912b024ee93f48b3edba775c662dd8cb12361b",
+      "bytes": 15854321
+    }
+  ],
+  "cells": [
+    {
+      "model": "woof",
+      "support": {
+        "voiceCount": 1,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned benchmark checkpoint",
+        "sources": [
+          "https://huggingface.co/ConwayResearch/Underdog-Woof/raw/be702960539777fc3f698e54335276a8391b00f9/README.md",
+          "https://github.com/ngelik/browser-tts-benchmark/blob/8dae4a37e61e662037fd73a58c7254e1dac9dd89/web/workers/woof.mjs"
+        ],
+        "notes": "The pinned browser one-voice case uses Isla. The separate two-voice Juno/Mira release is not this measured case."
+      },
+      "backendRequested": "cpu",
+      "backendEffective": "none",
+      "status": "unsupported",
+      "reason": "Woof is pinned to its WebGPU execution path.",
+      "voice": "Isla",
+      "precision": "INT8",
+      "settings": {
+        "voice": "Isla",
+        "precision": "INT8",
+        "sampleRate": 24000,
+        "batchSamples": 6000
+      },
+      "capability": {
+        "gpuDispatchVerified": false,
+        "description": "Woof is pinned to its WebGPU execution path."
+      },
+      "warmup": [],
+      "trials": []
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "Dedicated one-tab Chrome RAM diagnostic; AC power; sequential run; normal user background apps remain; no thermal instrumentation; timings are resource diagnostics, not warm scores.",
+    "RSS is sampled every 500 ms across the owned Chrome process tree, including the Chrome baseline and inference workers. Whole-call peak spans post-timer validation/export; generation mean uses only in-window samples from browser generation start through final CPU-readable PCM."
+  ]
+}

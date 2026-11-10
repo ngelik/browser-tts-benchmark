@@ -31,6 +31,11 @@ If `npm ci` fails because the shared npm cache contains root-owned files, retry
 with an ignored checkout-local cache: `npm ci --cache .cache/npm`. Do not use
 `sudo` or change ownership of the shared cache.
 
+In a fresh worktree, fetch assets there or copy the verified `.cache/public`
+directory into that checkout. Do not symlink its public cache outside the checkout:
+the static server intentionally rejects files whose real paths escape its root.
+A cache-path failure is setup evidence, not model/backend incompatibility.
+
 Read `docs/CLI.md`, `docs/PROTOCOL.md` and the selected model's `docs/LICENSING.md`
 entry **in that checkout**. Installed copies of this skill may be outside the
 repository: resolve those documents from the checkout, not the skill directory.
@@ -120,7 +125,11 @@ When RAM is requested, run separate full-article `--scenario cached --resources
 --repetitions 1` diagnostics for each supported model/backend and publish them
 through the same Reference results PR. Report the actual sampled Chrome process
 tree including workers/baseline, with n=1 and its own source/environment; do not
-label it as tab-only, model RAM or GPU VRAM. Preserve unsupported statuses. See
+label it as tab-only, model RAM or GPU VRAM. Check `trial.memory.availability`
+is `measured` before claiming a completed RAM measurement. If sampling is
+insufficient, preserve the evidence, diagnose permissions/coverage, and rerun only
+after correcting the cause. Never replace it with a guessed average. Preserve
+unsupported statuses. See
 `docs/MEMORY.md` for generation-window evidence and reproduction. Include comparison tables/charts in that same
 section through the generator.
 

@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-10t12-35-36-473z-piper-en-gb-southern-english-female-low-webgpu-cached-b3f670b8",
+  "createdAt": "2026-11-10T12:35:56.055Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-cached-v1-resources",
+    "scenario": "cached",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export. Generation RSS uses timestamped samples inside browser generation start/end boundaries; it includes the owned Chrome process tree and browser baseline.",
+    "warmupRuns": 0,
+    "repetitions": 1,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro (Apple M1 Pro, 16 GB)",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.39",
+    "gpu": "apple",
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "fb3290e1fca0c3a416e1352a1cb7fc8232ea826c",
+    "dirty": false,
+    "manifestSha256": "7ac5275ed21d6bb32d0e78e67c92f6c013f6a7e95dd20aed958cd0898c11d00e"
+  },
+  "assets": [
+    {
+      "id": "runtime:piper-en-gb-southern-english-female-low:onnxruntime-web:dist/ort.wasm.min.mjs",
+      "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7",
+      "bytes": 49856
+    },
+    {
+      "id": "runtime:piper-en-gb-southern-english-female-low:onnxruntime-web:dist/ort.webgpu.min.mjs",
+      "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
+      "bytes": 66261
+    },
+    {
+      "id": "runtime:piper-en-gb-southern-english-female-low:onnxruntime-web:dist/ort-wasm-simd-threaded.mjs",
+      "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e",
+      "bytes": 20321
+    },
+    {
+      "id": "runtime:piper-en-gb-southern-english-female-low:onnxruntime-web:dist/ort-wasm-simd-threaded.wasm",
+      "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15",
+      "bytes": 11905541
+    },
+    {
+      "id": "runtime:piper-en-gb-southern-english-female-low:onnxruntime-web:dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff",
+      "bytes": 51913
+    },
+    {
+      "id": "runtime:piper-en-gb-southern-english-female-low:onnxruntime-web:dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada",
+      "bytes": 25499390
+    },
+    {
+      "id": "runtime:piper-en-gb-southern-english-female-low:onnxruntime-web:LICENSE",
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "bytes": 1073
+    },
+    {
+      "id": "runtime:piper-en-gb-southern-english-female-low:onnxruntime-web:ThirdPartyNotices.txt",
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+      "bytes": 326866
+    },
+    {
+      "id": "piper-southern-english-female-low-voice",
+      "sha256": "f2f37aed1b3a093476f719d1379ba0c0b1b1cf6f1ef99288e2ebf502971a07c3",
+      "bytes": 63104526
+    },
+    {
+      "id": "piper-southern-english-female-low-config",
+      "sha256": "a1af43310f8756161506e849a2863d342a98b0853af9e2437581d39e9922d0e5",
+      "bytes": 4189
+    },
+    {
+      "id": "piper-southern-english-female-low-model-card",
+      "sha256": "41a64585a49d46362042b1a01b0a4b54127518eb50063c45846e2703e5790260",
+      "bytes": 296
+    },
+    {
+      "id": "piper-southern-english-female-low-ryan-ancestry-card",
+      "sha256": "82409c9c68863650e407a89dcebfc946afd992203593f0e4af234bce83c4144d",
+      "bytes": 263
+    },
+    {
+      "id": "piper-browser-frontend",
+      "sha256": "eae618bad024a1c68c5516a5f5025e167b7dca0e33a7fc2ee1e5aea18a0d8c9c",
+      "bytes": 8177
+    },
+    {
+      "id": "piper-espeak-module",
+      "sha256": "141236dc04b79b13a417ffd10c25a9b25f93dd7cc978448dad58b9b95d2ac210",
+      "bytes": 134698
+    },
+    {
+      "id": "piper-espeak-wasm",
+      "sha256": "eb0ea920003d62ed0a97f6d51a0903ff0cb6553d8d5e02eb5dce4c26e055f33f",
+      "bytes": 361999
+    },
+    {
+      "id": "piper-espeak-data",
+      "sha256": "07263c3a96e26dcea39e0d7e5001d2121f0f4fccbb8110c2ad9285e527d77e97",
+      "bytes": 24183288
+    },
+    {
+      "id": "piper-espeak-ng-license",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "bytes": 35147
+    }
+  ],
+  "cells": [
+    {
+      "model": "piper-en-gb-southern-english-female-low",
+      "support": {
+        "voiceCount": 1,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned benchmark checkpoint",
+        "sources": [
+          "https://huggingface.co/rhasspy/piper-voices/resolve/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low/en_GB-southern_english_female-low.onnx.json",
+          "https://huggingface.co/rhasspy/piper-voices/raw/e7229f7d33a10e145e109b886d661984201ac3c4/en/en_GB/southern_english_female/low/MODEL_CARD"
+        ],
+        "notes": "One British English speaker in this checkpoint. The broader Piper voice repository contains other independent models and languages; they are not included in this count."
+      },
+      "backendRequested": "webgpu",
+      "backendEffective": "webgpu+wasm",
+      "status": "measured",
+      "reason": null,
+      "voice": "en_GB-southern_english_female-low (single speaker)",
+      "precision": "FP32 ONNX",
+      "settings": {
+        "executionProviders": [
+          "webgpu",
+          "wasm"
+        ],
+        "threads": 1,
+        "espeakVoice": "en-gb-x-rp",
+        "speakerId": null,
+        "sampleRate": 16000,
+        "phonemeType": "espeak",
+        "lengthScale": 1,
+        "noiseScale": 0.667,
+        "noiseWScale": 0.8,
+        "sentenceHandling": "Official Piper frontend converts each source chunk to eSpeak IPA and concatenates sentence IDs for one ONNX call.",
+        "unknownPhonemes": "Error; unknown symbols are not silently dropped.",
+        "configCompatibility": "Pinned voice JSON omits phoneme_type; the local response wrapper supplies espeak so the official frontend initializes its eSpeak module. Hashed source bytes remain unchanged.",
+        "workerIsolation": "The official eSpeak module assigns global onmessage when it detects WorkerGlobalScope. The adapter restores the benchmark RPC handler after setVoice initialization.",
+        "randomSeed": "The pinned Piper graph/runtime exposes no validated seed input."
+      },
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Observed 1585 WebGPU compute dispatches during a separate untimed synthesis. WebGPU + WASM operator fallback; eSpeak preprocessing runs on CPU. Hooks were removed before timed generation."
+      },
+      "warmup": [],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 12153.050000011921,
+          "samples": 16878592,
+          "sampleRate": 16000,
+          "pcmSha256": "e2b3b8902d6df7dcd1666bc3b2281df04cafcca09f806781c66df17730de8673",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 282.2950000166893,
+            "firstSourceChunkCompletedMs": 282.30500000715256,
+            "audioSeconds": 1054.912,
+            "realTimeFactor": 0.011520439619619382,
+            "minSamplesPerChunk": 137984,
+            "maxSamplesPerChunk": 238592,
+            "articleCallPeakRssBytes": 2186051584,
+            "generationMeanRssBytes": 1909317632,
+            "generationRssSampleCount": 24,
+            "loadMs": 1535.5675,
+            "controllerTrialElapsedMs": 16105.839667000002,
+            "downloadBytes": 38404,
+            "idealDownloadSecondsAt1Mbps": 0.307232
+          },
+          "memory": {
+            "scope": "owned-chrome-process-tree-rss-including-browser-baseline",
+            "generationStartedAtEpochMs": 1794314141794.37,
+            "finalPcmAtEpochMs": 1794314153947.4202,
+            "samplingIntervalMs": 500,
+            "samples": [
+              [
+                1794314142353,
+                1528872960
+              ],
+              [
+                1794314142867,
+                1733492736
+              ],
+              [
+                1794314143344,
+                1769668608
+              ],
+              [
+                1794314143846,
+                1775157248
+              ],
+              [
+                1794314144348,
+                1808367616
+              ],
+              [
+                1794314144859,
+                1832255488
+              ],
+              [
+                1794314145355,
+                1932328960
+              ],
+              [
+                1794314145858,
+                1940750336
+              ],
+              [
+                1794314146356,
+                1951940608
+              ],
+              [
+                1794314146856,
+                1972961280
+              ],
+              [
+                1794314147358,
+                1969111040
+              ],
+              [
+                1794314147859,
+                1974206464
+              ],
+              [
+                1794314148364,
+                1974648832
+              ],
+              [
+                1794314148875,
+                1970569216
+              ],
+              [
+                1794314149368,
+                1981448192
+              ],
+              [
+                1794314149866,
+                1943142400
+              ],
+              [
+                1794314150368,
+                1949204480
+              ],
+              [
+                1794314150870,
+                1961918464
+              ],
+              [
+                1794314151372,
+                1958215680
+              ],
+              [
+                1794314151873,
+                1971814400
+              ],
+              [
+                1794314152373,
+                1976532992
+              ],
+              [
+                1794314152876,
+                1978155008
+              ],
+              [
+                1794314153381,
+                1983545344
+              ],
+              [
+                1794314153879,
+                1985314816
+              ]
+            ],
+            "availability": "measured"
+          },
+          "audio": {
+            "sha256": "98a910eaf013990d39e8f891baae851542f5be2d5b6cdcd0159b01bb24708a1a",
+            "bytes": 33757228
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "Dedicated one-tab Chrome RAM diagnostic; AC power; sequential run; normal user background apps remain; no thermal instrumentation; timings are resource diagnostics, not warm scores.",
+    "RSS is sampled every 500 ms across the owned Chrome process tree, including the Chrome baseline and inference workers. Whole-call peak spans post-timer validation/export; generation mean uses only in-window samples from browser generation start through final CPU-readable PCM."
+  ]
+}

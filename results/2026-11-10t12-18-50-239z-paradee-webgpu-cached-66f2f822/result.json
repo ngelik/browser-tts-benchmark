@@ -1,0 +1,346 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-10t12-18-50-239z-paradee-webgpu-cached-66f2f822",
+  "createdAt": "2026-11-10T12:19:17.362Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-cached-v1-resources",
+    "scenario": "cached",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export. Generation RSS uses timestamped samples inside browser generation start/end boundaries; it includes the owned Chrome process tree and browser baseline.",
+    "warmupRuns": 0,
+    "repetitions": 1,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro (Apple M1 Pro, 16 GB)",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.39",
+    "gpu": "apple",
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "fb3290e1fca0c3a416e1352a1cb7fc8232ea826c",
+    "dirty": false,
+    "manifestSha256": "7ac5275ed21d6bb32d0e78e67c92f6c013f6a7e95dd20aed958cd0898c11d00e"
+  },
+  "assets": [
+    {
+      "id": "runtime:paradee:onnxruntime-web:dist/ort.wasm.min.mjs",
+      "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7",
+      "bytes": 49856
+    },
+    {
+      "id": "runtime:paradee:onnxruntime-web:dist/ort.webgpu.min.mjs",
+      "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
+      "bytes": 66261
+    },
+    {
+      "id": "runtime:paradee:onnxruntime-web:dist/ort-wasm-simd-threaded.mjs",
+      "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e",
+      "bytes": 20321
+    },
+    {
+      "id": "runtime:paradee:onnxruntime-web:dist/ort-wasm-simd-threaded.wasm",
+      "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15",
+      "bytes": 11905541
+    },
+    {
+      "id": "runtime:paradee:onnxruntime-web:dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff",
+      "bytes": 51913
+    },
+    {
+      "id": "runtime:paradee:onnxruntime-web:dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada",
+      "bytes": 25499390
+    },
+    {
+      "id": "runtime:paradee:phonemizer:dist/phonemizer.js",
+      "sha256": "193481f474f7c1ea81df3195d18b45df8ef7254dbdccb3f193d60215c4897bec",
+      "bytes": 1322380
+    },
+    {
+      "id": "runtime:paradee:phonemizer:LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "id": "runtime:paradee:onnxruntime-web:LICENSE",
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "bytes": 1073
+    },
+    {
+      "id": "runtime:paradee:onnxruntime-web:ThirdPartyNotices.txt",
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+      "bytes": 326866
+    },
+    {
+      "id": "paradee-config",
+      "sha256": "002535cf8dd08a434cdddb13372da8a7b4844152bdf9b5b4e7342e12ec30bcfb",
+      "bytes": 1827
+    },
+    {
+      "id": "paradee-weights-int8",
+      "sha256": "a6989796692ac173597e15d405c971989202d5c73cfad65f22e90bd7b6c97da1",
+      "bytes": 8462119
+    },
+    {
+      "id": "paradee-espeak-ng-license",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "bytes": 35147
+    }
+  ],
+  "cells": [
+    {
+      "model": "paradee",
+      "support": {
+        "voiceCount": 4,
+        "bundledVoiceCount": 4,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned benchmark checkpoint",
+        "sources": [
+          "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/raw/ed2934d4df8a4fd891e29584c5e1104649409765/README.md",
+          "https://huggingface.co/sahilmahendrakar/Paradee-8M-v1.2/resolve/ed2934d4df8a4fd891e29584c5e1104649409765/config.json"
+        ],
+        "notes": "Four embedded voices: af_heart, bf_isabella, am_puck, bm_fable. Only af_heart is benchmarked. Accents are not separate languages."
+      },
+      "backendRequested": "webgpu",
+      "backendEffective": "webgpu+wasm",
+      "status": "measured",
+      "reason": null,
+      "voice": "af_heart",
+      "precision": "INT8",
+      "settings": {
+        "threads": 1,
+        "speed": 1,
+        "voiceIndex": 0,
+        "sampleRate": 24000,
+        "frontend": "Kokoro eSpeak en-us normalization + Paradee Misaki conversion",
+        "noise": "Internal graph random noise; no validated public seed input",
+        "executionProviders": [
+          "webgpu",
+          "wasm"
+        ]
+      },
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Observed 1046 compute dispatches in a separate untimed utterance. WebGPU + WASM operator fallback; CPU text preprocessing. Hooks removed before timing."
+      },
+      "warmup": [],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 19520.089999973774,
+          "samples": 30896400,
+          "sampleRate": 24000,
+          "pcmSha256": "dd8e928e8045f466ac36b226a728365141655c4798c80afa10272f6cf75f46a9",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 574.8849999904633,
+            "firstSourceChunkCompletedMs": 574.910000026226,
+            "audioSeconds": 1287.35,
+            "realTimeFactor": 0.015163001514719209,
+            "minSamplesPerChunk": 263400,
+            "maxSamplesPerChunk": 411600,
+            "articleCallPeakRssBytes": 2163539968,
+            "generationMeanRssBytes": 1864654417,
+            "generationRssSampleCount": 38,
+            "loadMs": 761.9894169999998,
+            "controllerTrialElapsedMs": 24212.789333,
+            "downloadBytes": 38404,
+            "idealDownloadSecondsAt1Mbps": 0.307232
+          },
+          "memory": {
+            "scope": "owned-chrome-process-tree-rss-including-browser-baseline",
+            "generationStartedAtEpochMs": 1794313134298.73,
+            "finalPcmAtEpochMs": 1794313153818.8198,
+            "samplingIntervalMs": 500,
+            "samples": [
+              [
+                1794313134937,
+                1810333696
+              ],
+              [
+                1794313135348,
+                1670184960
+              ],
+              [
+                1794313135837,
+                1737834496
+              ],
+              [
+                1794313136339,
+                1749630976
+              ],
+              [
+                1794313136839,
+                1761853440
+              ],
+              [
+                1794313137344,
+                1767030784
+              ],
+              [
+                1794313137844,
+                1774895104
+              ],
+              [
+                1794313138352,
+                1784184832
+              ],
+              [
+                1794313138850,
+                1839136768
+              ],
+              [
+                1794313139349,
+                1846394880
+              ],
+              [
+                1794313139858,
+                1843363840
+              ],
+              [
+                1794313140355,
+                1843462144
+              ],
+              [
+                1794313140859,
+                1849868288
+              ],
+              [
+                1794313141358,
+                1851867136
+              ],
+              [
+                1794313141862,
+                1857388544
+              ],
+              [
+                1794313142360,
+                1859387392
+              ],
+              [
+                1794313142867,
+                1864302592
+              ],
+              [
+                1794313143364,
+                1867186176
+              ],
+              [
+                1794313143868,
+                1872412672
+              ],
+              [
+                1794313144370,
+                1882243072
+              ],
+              [
+                1794313144872,
+                1886142464
+              ],
+              [
+                1794313145375,
+                1887846400
+              ],
+              [
+                1794313145871,
+                1887600640
+              ],
+              [
+                1794313146376,
+                1893515264
+              ],
+              [
+                1794313146878,
+                1901707264
+              ],
+              [
+                1794313147380,
+                1907605504
+              ],
+              [
+                1794313147882,
+                1914241024
+              ],
+              [
+                1794313148382,
+                1915305984
+              ],
+              [
+                1794313148887,
+                1923301376
+              ],
+              [
+                1794313149386,
+                1921433600
+              ],
+              [
+                1794313149892,
+                1930199040
+              ],
+              [
+                1794313150389,
+                1939030016
+              ],
+              [
+                1794313150890,
+                1940193280
+              ],
+              [
+                1794313151394,
+                1936801792
+              ],
+              [
+                1794313151895,
+                1932771328
+              ],
+              [
+                1794313152397,
+                1939505152
+              ],
+              [
+                1794313152898,
+                1935147008
+              ],
+              [
+                1794313153403,
+                1931558912
+              ]
+            ],
+            "availability": "measured"
+          },
+          "audio": {
+            "sha256": "df336e8f7bce159275d08a58e4a667a8d7ccc483564e696f9b8f9b512cfb205a",
+            "bytes": 61792844
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "Dedicated one-tab Chrome RAM diagnostic; AC power; sequential run; normal user background apps remain; no thermal instrumentation; timings are resource diagnostics, not warm scores.",
+    "RSS is sampled every 500 ms across the owned Chrome process tree, including the Chrome baseline and inference workers. Whole-call peak spans post-timer validation/export; generation mean uses only in-window samples from browser generation start through final CPU-readable PCM."
+  ]
+}
