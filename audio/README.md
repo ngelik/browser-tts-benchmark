@@ -4,7 +4,9 @@ These recordings are synthetic speech from the benchmark's original 20,000-chara
 English article. They are actual scored outputs, not upstream demo recordings.
 All model/backend samples are linked in the root README **Reference results** section.
 
-For an interactive listening room, clone the repository, run `npm ci`, then:
+[**Open the listening room**](https://ngelik.github.io/browser-tts-benchmark/audio/) to play all published clips directly in your browser. Each README **Listen** link selects its exact recording. GitHub strips audio controls from README previews, so the players live on GitHub Pages. No installation or sign-in is needed; clips load only when played. The hosted page serves existing recordings and performs no synthesis.
+
+For local playback, clone the repository, run `npm ci`, then:
 
 ```sh
 npm run listen
@@ -16,6 +18,15 @@ or audio to an external service. Playback does not enter timing measurements.
 The clips can also be opened directly from `audio/samples/` after cloning.
 Full article WAV files are attached to this repository's `benchmark-audio-v1`
 GitHub release and linked beside each clip.
+
+## Publishing the listening page
+
+`npm run listen:build` verifies every recording and prepares only the player,
+manifest and approved clips in the ignored `.cache/listening-site/` directory.
+The Pages workflow deploys this directory after changes reach `main` through a
+reviewed PR. No model weights, browser profiles or raw runs enter the site.
+New result PRs must include their clip, manifest and regenerated README; deployment
+then includes the new recording automatically. Full recordings remain release assets.
 
 ## Provenance and reproduction
 

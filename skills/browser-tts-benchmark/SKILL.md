@@ -129,7 +129,9 @@ results/RUN_ID/result.json --wav PATH --model MODEL --backend BACKEND`, then
 model/output terms, and upload the exact full WAV to the uniquely named repository
 release asset from the manifest. Verify the uploaded digest. Commit only the
 verified small clip and manifest to Git, refresh `npm run reference`, and include
-them in the result PR. Never substitute a demo, regenerate audio outside the scored
+them in the result PR. Run `npm run listen:build` to verify the hosted listening
+site bundle. README Listen links must target the exact recording in the player;
+the Pages workflow publishes approved clips after merge to main. Never substitute a demo, regenerate audio outside the scored
 run, silently normalize the recording, or claim the code license covers the voice.
 Prior explicit audio approval persists; do not ask again.
 
