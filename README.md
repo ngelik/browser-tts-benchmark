@@ -4,13 +4,14 @@
 
 Repeatable, local text-to-speech benchmarks in **Google Chrome**: CPU/WASM,
 and WebGPU. Select a model, run a fixed
-20,000-character English article, then contribute a result through a pull request.
+20,000-character English article, then contribute baseline results or request a
+new model evaluation through a pull request.
 
 All inference happens in the browser. A local Node process serves static assets
 and controls Chrome; it never performs speech synthesis. Results are not uploaded
 automatically. Model assets are pinned, verified and kept outside Git.
 
-[▶ Listen to the benchmark samples](https://ngelik.github.io/browser-tts-benchmark/audio/) · [Run a benchmark](#run-a-benchmark)
+[▶ Listen to the benchmark samples](https://ngelik.github.io/browser-tts-benchmark/audio/) · [Run a benchmark](#run-a-benchmark) · [Request a model evaluation](#request-a-model-evaluation)
 
 ## Reference results
 
@@ -180,12 +181,15 @@ Synthetic speech from the actual recorded runs. [Listening instructions and attr
 Give your agent this instruction:
 
 > Use the [browser-tts-benchmark skill](skills/browser-tts-benchmark/SKILL.md).
-> Benchmark MODEL in Google Chrome on CPU (and WebGPU if requested), verify the
-> full article and audio, then prepare a table, chart and result pull request.
-> I authorize publishing the reviewed source and result metadata to my fork.
+> Evaluate MODEL for this benchmark. If this machine is an Apple M1 Pro MacBook
+> running natively as arm64, follow the baseline result workflow. Otherwise,
+> prepare an evaluation-request PR containing the model link, without running it.
+> I authorize publishing the reviewed source, results or request to my fork.
 
-Replace MODEL with a catalog ID or Hugging Face model URL. A new model goes through
-runtime/asset/license verification and a code PR before scored results. For a
+Replace MODEL with a catalog ID or Hugging Face model URL. Follow the
+[contribution routes](#contribute-a-new-model-for-evaluation) below. For measured
+submissions, a new model goes through runtime/asset/license verification and a
+code PR before scored results. For a
 random model, the skill records the eligible pool, seed and selection before any
 timing. It never treats smoke tests, native Python inference or CPU fallback as
 successful browser GPU measurements.
@@ -208,7 +212,8 @@ All submitted runs, including Piper, appear in [Reference results](#reference-re
 
 Requirements: Node.js 22 or newer, npm, installed Google Chrome, enough free disk
 space for selected assets, and a desktop session for headed Chrome. A hardware
-WebGPU adapter is required for GPU measurements. Start with one model.
+WebGPU adapter is required for GPU measurements. Local runs can use other hardware;
+reference-result PRs require the M1 Pro baseline described below. Start with one model.
 
 ```sh
 git clone https://github.com/ngelik/browser-tts-benchmark.git
@@ -246,7 +251,62 @@ Model loading is excluded. One full article warm-up is followed by five scored
 articles with the model resident. The historical PiVo GPU configuration can take
 over four hours for this sequence.
 
+## Contribute a new model for evaluation
+
+Choose the pull-request route that matches your hardware:
+
+| Your machine | What to submit |
+|---|---|
+| MacBook Pro with **Apple M1 Pro**, running natively as **arm64** | A measured baseline result PR, using the protocol and evidence requirements below. |
+| Any other machine, or baseline hardware cannot be verified | An **evaluation-request PR** with the TTS model link. Maintainers can evaluate it on baseline hardware. |
+
+The current baseline is an Apple M1 Pro MacBook Pro with **8 CPU cores and 16 GiB
+RAM**, using headed Google Chrome. M1 Pro result submissions are eligible for
+acceptance after evidence and protocol review; hardware alone does not guarantee
+acceptance. Record the actual CPU configuration, RAM, architecture, OS and Chrome
+version. Different configurations, versions or protocols remain separate cohorts.
+A different Apple Silicon chip, generic ARM machine, or Rosetta/x64 run does not
+qualify as an M1 Pro baseline result. Existing published evidence is retained.
+
+### Request a model evaluation
+
+You only need the model name and a public TTS model URL, such as a Hugging Face
+model card. No benchmark run, adapter implementation, model download or audio is
+required for this request.
+
+1. Fork this repository and create a branch such as `request/org-model`.
+2. Copy [the request template](evaluation-requests/TEMPLATE.md) to
+   `evaluation-requests/org-model.md`, replacing `org-model` with a unique model slug.
+3. Add the model name and URL. Upstream code/browser runtime, license and preferred
+   voice are optional details if known.
+4. Commit that request file and open a PR titled **`[Evaluation request] org/model`**.
+   Select the evaluation-request type in the PR template. Leave result-specific
+   checks as not applicable.
+
+For example, the new file can contain:
+
+```markdown
+# Evaluate org/model
+
+Model URL: https://huggingface.co/org/model
+
+Requested evaluation: English, CPU/WASM and WebGPU where supported,
+using the repository's fixed article and M1 Pro baseline.
+```
+
+Maintainers review browser feasibility, upstream terms and the requested model.
+An accepted request records a proposal for evaluation; it does not automatically
+run code or guarantee a completion date. When evaluated, the implementation and
+measured results follow the normal PR workflow, with results added to this same
+[Reference results](#reference-results) section. Keep requests out of `results/`
+and do not add placeholder scores to the generated tables.
+
 ## Publish your result through a pull request
+
+Use this route for a verified **Apple M1 Pro / native arm64** run. If you do not
+have that baseline hardware, use an [evaluation request](#request-a-model-evaluation).
+For a new model, first follow [model onboarding](docs/ADDING_MODELS.md) and publish
+the reviewed implementation before scoring from its clean source commit.
 
 Fork this repository on GitHub first. Replace `YOUR_USERNAME` below with your
 account; keep the original `origin` remote pointing to upstream.
@@ -257,8 +317,9 @@ npm run submit -- runs/<run-id>/result.json
 npm run validate
 npm test
 git switch -c results/my-machine
-git add results/<run-id>
-git commit -m "Add benchmark results for my machine"
+git add results/<run-id> README.md
+# Also stage generated comparison/RAM charts and authorized audio, when included.
+git commit -m "Add M1 Pro benchmark results"
 git remote add fork https://github.com/YOUR_USERNAME/browser-tts-benchmark.git
 git push -u fork results/my-machine
 ```
