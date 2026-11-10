@@ -58,6 +58,11 @@ parameter count or model weights alone. At 1 Mbps, ideal transfer seconds are
 `encoded body bytes / 125000`; this excludes protocol overhead, latency, cache reads
 and initialization. Label arithmetic estimates separately from throttled observations.
 
+Dedicated RAM diagnostics use a full cached-assets article with `--resources`
+and explicitly recorded repetition count (initial comparison: one). Their timings
+are not warm speed scores. Raw observations and generation-window averages follow
+[the memory methodology](MEMORY.md).
+
 Memory measurements must name their scope. Sampled Chrome process-tree RSS includes
 browser baseline and can double-count shared pages; it is neither model RAM nor
 GPU VRAM. Page heap and process RSS must not be summed. State sampling interval,

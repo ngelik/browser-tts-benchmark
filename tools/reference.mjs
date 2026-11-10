@@ -1,4 +1,3 @@
-import {loadMemoryEvidence,averageRssBytes} from './memory-evidence.mjs';
 import {LISTENING_URL,recordingUrl} from '../audio/links.mjs';
 import { readFile, writeFile, readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
@@ -9,7 +8,59 @@ export const START='<!-- benchmark-results:start -->', END='<!-- benchmark-resul
 const md=x=>String(x).replaceAll('|','\\|').replaceAll('\n',' ');
 const envKey=d=>JSON.stringify(['machineLabel','os','arch','cpu','logicalCores','ramBytes','chromeVersion'].map(k=>d.environment[k]));
 const report=d=>`results/${d.id}/summary.md`;
-export function referenceBlock(results, models, comparisons=[], audio=[], memory=[]){
+
+function ramCohorts(results){
+ const cohorts=new Map();
+ for(const d of results){
+  if(d.origin!=='native'||d.protocol.smoke||!d.protocol.id.endsWith('-resources'))continue;
+  const eligible=d.cells.filter(c=>c.status!=='measured'||c.trials.length&&c.trials.every(t=>Number.isFinite(t.metrics?.generationMeanRssBytes)&&t.memory));
+  if(!eligible.length)continue;
+  const key=envKey(d)+'/'+JSON.stringify(d.protocol)+'/'+d.source.manifestSha256;
+  const group=cohorts.get(key)??{base:d,rows:new Map()};
+  for(const c of eligible){const row=group.rows.get(c.model)??{model:c.model};row[c.backendRequested]={d,c};group.rows.set(c.model,row);}cohorts.set(key,group);
+ }
+ return [...cohorts.values()];
+}
+export function ramReferenceBlock(results,models){
+ const cohorts=ramCohorts(results);
+ let out='### Chrome RAM during generation\n\nDedicated full-article memory runs measure an isolated Chrome instance with one benchmark tab, including inference workers and browser baseline. These are separate resource diagnostics; their timings do not replace the warm speed measurements above. RSS may double-count shared pages and is not model-only RAM or GPU VRAM. Values are the mean of generation-window samples, averaged equally across recorded articles. [Method and reproduction](docs/MEMORY.md).\n\n';
+ if(!cohorts.length)return out+'Memory results are published here after their full-article diagnostics pass validation.\n\n';
+ let i=0;
+ for(const {base:d,rows}of cohorts){
+  out+='**RAM '+(++i)+'** · '+md(d.environment.machineLabel)+' · '+md(d.environment.chromeVersion)+' · '+md(d.environment.os)+' · '+md(d.protocol.id)+' · '+d.protocol.repetitions+' full article(s) per measured cell · source [`'+d.source.gitCommit.slice(0,8)+'`](https://github.com/ngelik/browser-tts-benchmark/commit/'+d.source.gitCommit+').\n\n';
+  out+='| Model | Model weights (MB) | CPU avg Chrome RAM (MB) | WebGPU avg Chrome RAM (MB) |\n|---|---:|---:|---:|\n';
+  const metric=v=>{if(!v)return '—';if(v.c.status!=='measured')return '['+md(v.c.status)+']('+report(v.d)+')';const means=v.c.trials.map(t=>t.metrics.generationMeanRssBytes);return '['+(means.reduce((a,b)=>a+b,0)/means.length/1e6).toFixed(2)+']('+report(v.d)+')';};
+  for(const row of [...rows.values()].sort((a,b)=>a.model.localeCompare(b.model))){const pair=[row.cpu,row.webgpu].filter(Boolean),weights=models[row.model]?.assets?.filter(a=>a.kind==='model-weights')??[];const verified=weights.length&&pair.every(v=>weights.every(w=>v.d.assets.some(a=>a.sha256===w.sha256&&a.bytes===w.bytes)));const size=verified?(weights.reduce((n,a)=>n+a.bytes,0)/1e6).toFixed(2):'Unknown';out+='| '+md(models[row.model]?.displayName??row.model)+' | '+size+' | '+metric(row.cpu)+' | '+metric(row.webgpu)+' |\n';}
+  out+='\n';
+ }
+ return out+'![Average Chrome RAM during generation](docs/reference-memory.svg)\n\n';
+}
+
+const xml=x=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+export function ramChart(results,models){
+ const cohorts=ramCohorts(results);if(!cohorts.length)return null;
+ const height=100+cohorts.reduce((n,g)=>n+120+g.rows.size*76,0);
+ let svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="${height}" viewBox="0 0 1080 ${height}" role="img" aria-labelledby="title desc"><title id="title">Average Chrome RAM during speech generation</title><desc id="desc">Separate full-article diagnostics. Owned Chrome process-tree RSS includes browser baseline and workers. Decimal megabytes; lower uses less memory. Unsupported backends have no bar.</desc><rect width="100%" height="100%" fill="#f7f9fc"/><g font-family="system-ui,sans-serif" fill="#192b47"><text x="32" y="42" font-size="25" font-weight="700">Chrome RAM · full article diagnostics</text><text x="32" y="68" font-size="13">One isolated Chrome instance · includes workers and browser baseline · excludes loading and audio export</text>`;
+ let y=100;
+ for(const [index,{base:d,rows}]of cohorts.entries()){
+  const sorted=[...rows.values()].sort((a,b)=>a.model.localeCompare(b.model));
+  const average=v=>v?.c.status==='measured'?v.c.trials.reduce((n,t)=>n+t.metrics.generationMeanRssBytes,0)/v.c.trials.length/1e6:null;
+  const max=Math.max(1,...sorted.flatMap(r=>[average(r.cpu),average(r.webgpu)].filter(v=>v!==null)))*1.15;
+  svg+=`<text x="32" y="${y}" font-size="14" font-weight="700">RAM ${index+1} · ${xml(d.environment.machineLabel)} · n=${d.protocol.repetitions} article(s)</text><text x="32" y="${y+22}" font-size="11">${xml(d.environment.chromeVersion)} · ${xml(d.protocol.id)} · source ${xml(d.source.gitCommit.slice(0,8))}</text>`;y+=58;
+  for(const r of sorted){
+   svg+=`<text x="32" y="${y+10}" font-size="14" font-weight="600">${xml(models[r.model]?.displayName??r.model)}</text>`;
+   for(const [offset,backend,color]of [[0,'cpu','#276bdb'],[27,'webgpu','#9b4fc4']]){
+    const value=average(r[backend]),top=y+offset;
+    svg+=`<text x="205" y="${top+13}" font-size="11">${backend==='cpu'?'CPU':'WebGPU'}</text>`;
+    if(value!==null){const w=value/max*620;svg+=`<rect x="270" y="${top}" width="${w.toFixed(2)}" height="19" rx="5" fill="${color}"/><text x="${(280+w).toFixed(2)}" y="${top+14}" font-size="12">${value.toFixed(2)} MB</text>`;}
+    else svg+=`<text x="270" y="${top+13}" font-size="12" fill="#6c7686">${xml(r[backend]?.c.status??'—')}</text>`;
+   }y+=76;
+  }y+=62;
+ }
+ svg+=`<text x="32" y="${height-24}" font-size="12" fill="#6c7686">Sample means, not model-only RAM or GPU VRAM. RSS may double-count shared pages. Timing scores are reported separately.</text></g></svg>\n`;return svg;
+}
+
+export function referenceBlock(results, models, comparisons=[], audio=[]){
   const ordered=[...results].sort((a,b)=>a.createdAt.localeCompare(b.createdAt)||a.id.localeCompare(b.id));
   const envs=new Map();for(const d of ordered)if(d.protocol.scenario==='warm'&&!envs.has(envKey(d)))envs.set(envKey(d),{id:'E'+(envs.size+1),value:d.environment});
   const groups=new Map();
@@ -19,13 +70,13 @@ export function referenceBlock(results, models, comparisons=[], audio=[], memory
   }
   let out=START+'\n\nGenerated from every submitted result. Latest warm attempt per model/backend and exact environment is shown; errors are retained. No cross-machine or cross-protocol speedup is implied.\n\n';
   for(const {id,value:e}of envs.values())out+=`- **${id}**: ${md(e.machineLabel)} · ${md(e.chromeVersion)} · ${md(e.os)}.\n`;
-  out+='\n| Model | Environment | Model weights (MB) | CPU warm median | WebGPU warm median | CPU avg memory (MB) | WebGPU avg memory (MB) | Evidence scope |\n|---|---|---:|---:|---:|---:|---:|---|\n';
+  out+='\n| Model | Environment | Model weights (MB) | CPU warm median | WebGPU warm median | Evidence scope |\n|---|---|---:|---:|---:|---|\n';
   const score=v=>!v?'—':`[${v.c.medianSeconds===null?md(v.c.status):v.c.medianSeconds.toFixed(2)+' s'}](${report(v.d)})`;
-  const memoryCell=v=>{if(!v||v.c.status!=='measured')return '—';const e=memory.find(e=>e.resultId===v.d.id&&e.model===v.c.model&&e.backend===v.c.backend);return e?'['+(averageRssBytes(e)/1e6).toFixed(2)+']('+e.path+')':'Not measured';};
   const modelSize=(id,pair)=>{const weights=models[id]?.assets?.filter(a=>a.kind==='model-weights')??[];const measured=pair;if(!weights.length||!measured.length||measured.some(v=>weights.some(w=>!v.d.assets.some(a=>a.sha256===w.sha256&&a.bytes===w.bytes))))return 'Unknown';return (weights.reduce((n,a)=>n+a.bytes,0)/1e6).toFixed(2);};
-  for(const row of [...groups.values()].sort((a,b)=>a.environment.localeCompare(b.environment)||a.model.localeCompare(b.model))){const pair=[row.cpu,row.webgpu].filter(Boolean);const hist=pair.some(v=>v.d.origin!=='native');const scope=hist?'Historical; distinct timing protocols':pair.length===2&&pair[0].d.source.manifestSha256===pair[1].d.source.manifestSha256?'Native; matched source':'Native; separate configuration';out+=`| ${md(models[row.model]?.displayName??row.model)} | ${row.environment} | ${modelSize(row.model,pair)} | ${score(row.cpu)} | ${score(row.webgpu)} | ${memoryCell(row.cpu)} | ${memoryCell(row.webgpu)} | ${scope} |\n`;}
+  for(const row of [...groups.values()].sort((a,b)=>a.environment.localeCompare(b.environment)||a.model.localeCompare(b.model))){const pair=[row.cpu,row.webgpu].filter(Boolean);const hist=pair.some(v=>v.d.origin!=='native');const scope=hist?'Historical; distinct timing protocols':pair.length===2&&pair[0].d.source.manifestSha256===pair[1].d.source.manifestSha256?'Native; matched source':'Native; separate configuration';out+=`| ${md(models[row.model]?.displayName??row.model)} | ${row.environment} | ${modelSize(row.model,pair)} | ${score(row.cpu)} | ${score(row.webgpu)} | ${scope} |\n`;}
   out+='\nEach measured warm cell uses five scored full 20,000-character articles. Missing values are not zero. Open receipts for voice, precision, timing boundaries, power conditions and observed min–max.\n\n';
-  out+='MB = 1,000,000 bytes. Model size counts pinned core model-weight files (including the vocoder), verified against the displayed run receipts; it excludes runtime, G2P, voice/config files and transfer overhead. Average memory is sampled total Chrome process-tree RSS during synthesis, averaged within each scored trial and then across trials. It includes browser baseline and may double-count shared pages; it is not model-only RAM or GPU VRAM. **Not measured** means the displayed run has no average-memory evidence; peaks and other runs are not substituted. [Memory method and evidence](docs/MEMORY.md).\n\n';
+  out+='MB = 1,000,000 bytes. Model size counts pinned core model-weight files (including the vocoder), verified against the displayed run receipts; it excludes runtime, G2P, voice/config files and transfer overhead.\n\n';
+  out+=ramReferenceBlock(ordered,models);
   out+='### Voice and language support\n\nCounts describe the pinned model/catalog, not the number of voices or languages benchmarked. All current measurements use English and one selected voice per model. Other checkpoints in a family are excluded.\n\n| Model | Supported voices | Bundled voices | Supported languages | Scope / source |\n|---|---:|---:|---|---|\n';
   for(const [id,m]of Object.entries(models)){const s=m.support;if(!s)throw new Error('Missing support metadata: '+id);out+=`| ${md(m.displayName??id)} | ${s.voiceCount??'Unknown'} | ${s.bundledVoiceCount??'Unknown'} | ${s.languageCount??'Unknown'}${s.languages?.length>5?'':' ('+md(s.languages?.join(', ')??'unknown')+')'} | [Details](docs/MODEL_SUPPORT.md#${id}) |\n`;}
   if(comparisons.length){out+='\n### Controlled native comparisons\n\nOnly compatible receipts enter these comparisons; source, settings, fixture and environment checks must pass.\n';for(const name of comparisons){out+=`\n[${md(name)} — table and input receipts](comparisons/${name}/summary.md)\n\n![${md(name)}](comparisons/${name}/chart.svg)\n`;}}
@@ -42,7 +93,9 @@ export async function updateReference({check=false}={}){
   const results=await Promise.all((await resultPaths('results')).map(p=>readResult(p,{publication:true})));
   const comparisons=(await readdir('comparisons',{withFileTypes:true})).filter(e=>e.isDirectory()).map(e=>e.name).sort();
   let audio=[];try{audio=JSON.parse(await readFile('audio/manifest.json','utf8')).entries;}catch(e){if(e.code!=='ENOENT')throw e;}
-  const file='README.md',old=await readFile(file,'utf8');const next=replaceReference(old,referenceBlock(results,getAssetLock().models,comparisons,audio,await loadMemoryEvidence()));
+  const memorySvg=ramChart([...results].sort((a,b)=>a.createdAt.localeCompare(b.createdAt)||a.id.localeCompare(b.id)),getAssetLock().models);
+  if(memorySvg){if(check){if(await readFile('docs/reference-memory.svg','utf8')!==memorySvg)throw new Error('Stale RAM chart; run npm run reference');}else await writeFile('docs/reference-memory.svg',memorySvg);}
+  const file='README.md',old=await readFile(file,'utf8');const next=replaceReference(old,referenceBlock(results,getAssetLock().models,comparisons,audio));
   if(check&&next!==old)throw new Error('Stale/missing Reference results; run npm run reference and include README.md in the result PR');
   if(!check)await writeFile(file,next);return {results:results.length,audio:audio.length};
 }

@@ -22,21 +22,27 @@ Generated from every submitted result. Latest warm attempt per model/backend and
 - **E2**: Apple M1 Pro / 16 GiB · Google Chrome 157.0.8103.39 · Darwin 25.6.0.
 - **E3**: MacBook Pro (Apple M1 Pro, 16 GB) · Google Chrome 157.0.8103.39 · Darwin 25.6.0.
 
-| Model | Environment | Model weights (MB) | CPU warm median | WebGPU warm median | CPU avg memory (MB) | WebGPU avg memory (MB) | Evidence scope |
-|---|---|---:|---:|---:|---:|---:|---|
-| Leokani 4.5M INT8 | E1 | 5.14 | [55.96 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [61.57 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | [1366.54](memory-evidence/historical-2026-11-08-m1pro-primary-warm/leokani-4.5m-cpu.json) | Not measured | Historical; distinct timing protocols |
-| Leokani 7M INT8 | E1 | 7.84 | [75.19 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [58.11 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | [1526.79](memory-evidence/historical-2026-11-08-m1pro-primary-warm/leokani-7m-cpu.json) | Not measured | Historical; distinct timing protocols |
-| Paradee 8M INT8 | E1 | 8.46 | [111.15 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [18.72 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | [1601.49](memory-evidence/historical-2026-11-08-m1pro-primary-warm/paradee-cpu.json) | Not measured | Historical; distinct timing protocols |
-| Phonon 31M q8 | E1 | 64.51 | [270.41 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [51.73 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | [1475.50](memory-evidence/historical-2026-11-08-m1pro-primary-warm/phonon-cpu.json) | Not measured | Historical; distinct timing protocols |
-| PiVo 1.4M curated (Pi voice) | E1 | 5.84 | [87.92 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [2562.69 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | [1579.21](memory-evidence/historical-2026-11-08-m1pro-primary-warm/pivo-curated-cpu.json) | Not measured | Historical; distinct timing protocols |
-| Underdog Woof one-voice (Isla) | E1 | 31.71 | — | [181.81 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | — | Not measured | Historical; distinct timing protocols |
-| Paradee 8M INT8 | E2 | 8.46 | [103.92 s](results/2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f/summary.md) | [18.74 s](results/2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0/summary.md) | Not measured | Not measured | Native; matched source |
-| Piper en-GB Southern English Female low | E2 | 63.10 | [170.64 s](results/2026-11-09t20-33-26-966z-piper-en-gb-southern-english-female-low-cpu-warm-9a0ba981/summary.md) | [12.07 s](results/2026-11-09t20-52-18-629z-piper-en-gb-southern-english-female-low-webgpu-warm-d8fb8392/summary.md) | Not measured | Not measured | Native; matched source |
-| Supertonic 3 FP32 (M3) | E3 | 398.08 | [1332.06 s](results/2026-11-10t07-43-34-755z-supertonic-3-cpu-warm-a07fded0/summary.md) | [67.09 s](results/2026-11-10t09-58-29-882z-supertonic-3-webgpu-warm-97865808/summary.md) | Not measured | Not measured | Native; matched source |
+| Model | Environment | Model weights (MB) | CPU warm median | WebGPU warm median | Evidence scope |
+|---|---|---:|---:|---:|---|
+| Leokani 4.5M INT8 | E1 | 5.14 | [55.96 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [61.57 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | Historical; distinct timing protocols |
+| Leokani 7M INT8 | E1 | 7.84 | [75.19 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [58.11 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | Historical; distinct timing protocols |
+| Paradee 8M INT8 | E1 | 8.46 | [111.15 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [18.72 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | Historical; distinct timing protocols |
+| Phonon 31M q8 | E1 | 64.51 | [270.41 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [51.73 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | Historical; distinct timing protocols |
+| PiVo 1.4M curated (Pi voice) | E1 | 5.84 | [87.92 s](results/historical-2026-11-08-m1pro-primary-warm/summary.md) | [2562.69 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | Historical; distinct timing protocols |
+| Underdog Woof one-voice (Isla) | E1 | 31.71 | — | [181.81 s](results/historical-2026-11-08-m1pro-gpu-warm/summary.md) | Historical; distinct timing protocols |
+| Paradee 8M INT8 | E2 | 8.46 | [103.92 s](results/2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f/summary.md) | [18.74 s](results/2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0/summary.md) | Native; matched source |
+| Piper en-GB Southern English Female low | E2 | 63.10 | [170.64 s](results/2026-11-09t20-33-26-966z-piper-en-gb-southern-english-female-low-cpu-warm-9a0ba981/summary.md) | [12.07 s](results/2026-11-09t20-52-18-629z-piper-en-gb-southern-english-female-low-webgpu-warm-d8fb8392/summary.md) | Native; matched source |
+| Supertonic 3 FP32 (M3) | E3 | 398.08 | [1332.06 s](results/2026-11-10t07-43-34-755z-supertonic-3-cpu-warm-a07fded0/summary.md) | [67.09 s](results/2026-11-10t09-58-29-882z-supertonic-3-webgpu-warm-97865808/summary.md) | Native; matched source |
 
 Each measured warm cell uses five scored full 20,000-character articles. Missing values are not zero. Open receipts for voice, precision, timing boundaries, power conditions and observed min–max.
 
-MB = 1,000,000 bytes. Model size counts pinned core model-weight files (including the vocoder), verified against the displayed run receipts; it excludes runtime, G2P, voice/config files and transfer overhead. Average memory is sampled total Chrome process-tree RSS during synthesis, averaged within each scored trial and then across trials. It includes browser baseline and may double-count shared pages; it is not model-only RAM or GPU VRAM. **Not measured** means the displayed run has no average-memory evidence; peaks and other runs are not substituted. [Memory method and evidence](docs/MEMORY.md).
+MB = 1,000,000 bytes. Model size counts pinned core model-weight files (including the vocoder), verified against the displayed run receipts; it excludes runtime, G2P, voice/config files and transfer overhead.
+
+### Chrome RAM during generation
+
+Dedicated full-article memory runs measure an isolated Chrome instance with one benchmark tab, including inference workers and browser baseline. These are separate resource diagnostics; their timings do not replace the warm speed measurements above. RSS may double-count shared pages and is not model-only RAM or GPU VRAM. Values are the mean of generation-window samples, averaged equally across recorded articles. [Method and reproduction](docs/MEMORY.md).
+
+Memory results are published here after their full-article diagnostics pass validation.
 
 ### Voice and language support
 

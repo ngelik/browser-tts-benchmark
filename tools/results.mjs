@@ -32,6 +32,52 @@ function validateNativeMetrics(t) {
   }
 }
 
+const GENERATION_RSS_SCOPE='owned-chrome-process-tree-rss-including-browser-baseline';
+export function summarizeGenerationMemory(memory) {
+  const samples=memory.samples;
+  const count=samples.length;
+  if(count<2)return {availability:'insufficient-samples',count,mean:null};
+  const start=memory.generationStartedAtEpochMs,end=memory.finalPcmAtEpochMs,interval=memory.samplingIntervalMs,edgeToleranceMs=2000,maxGapMs=5000;
+  const first=samples[0][0],last=samples.at(-1)[0];
+  const largestGap=samples.slice(1).reduce((max,sample,i)=>Math.max(max,sample[0]-samples[i][0]),0);
+  const expectedSamples=Math.max(2,Math.floor((end-start)/interval));
+  const covered=count>=Math.ceil(expectedSamples*0.8)&&first-start<=edgeToleranceMs&&end-last<=edgeToleranceMs&&largestGap<=maxGapMs;
+  if(!covered)return {availability:'insufficient-coverage',count,mean:null};
+  const mean=Math.round(samples.reduce((sum,sample)=>sum+sample[1],0)/count);
+  return {availability:'measured',count,mean};
+}
+
+function validateGenerationMemory(t,generationMs) {
+  const memory=t.memory;
+  keys(memory,['scope','generationStartedAtEpochMs','finalPcmAtEpochMs','samplingIntervalMs','availability','samples'],'trial.memory');
+  check(memory.scope===GENERATION_RSS_SCOPE,'Invalid generation memory scope');
+  const start=memory.generationStartedAtEpochMs,end=memory.finalPcmAtEpochMs;
+  check(finite(start)&&start>0&&finite(end)&&end>start,'Invalid generation memory time window');
+  check(Math.abs((end-start)-generationMs)<=Math.max(0.01,generationMs*1e-6),'Generation memory window must match generationMs');
+  check(memory.samplingIntervalMs===500,'Generation RSS sampling interval must be 500 ms');
+  check(Array.isArray(memory.samples)&&memory.samples.length<=100000,'Invalid generation RSS samples');
+  let previous=-Infinity;
+  for(const [i,sample] of memory.samples.entries()){
+    check(Array.isArray(sample)&&sample.length===2,'Generation RSS samples must be [epochMs, rssBytes] pairs');
+    const [at,rss]=sample;
+    check(finite(at)&&at>=start&&at<=end&&at>previous,'Generation RSS timestamps must be ordered and inside the PCM window');
+    check(int(rss,1),'Generation RSS values must be positive integer bytes');
+    previous=at;
+  }
+  const summary=summarizeGenerationMemory(memory);
+  check(memory.availability===summary.availability,'Generation RSS availability does not match sample coverage');
+  const metrics=t.metrics;
+  check(object(metrics),'Resource-enabled trials require memory metrics');
+  check(metrics.generationRssSampleCount===summary.count,'Generation RSS sample count does not match raw samples');
+  check(metrics.generationMeanRssBytes===summary.mean,'Generation mean RSS does not match raw in-window samples');
+  const peak=metrics.articleCallPeakRssBytes;
+  if(memory.samples.length){
+    const observedPeak=memory.samples.reduce((max,sample)=>Math.max(max,sample[1]),0);
+    check(int(peak,observedPeak),'Whole-call Chrome RSS peak must include every in-window RSS observation');
+  } else check(peak===null||int(peak,1),'Whole-call Chrome RSS peak must be positive integer bytes or null');
+  return summary;
+}
+
 function validateNativeBackend(c) {
   const labels={
     cpu:/^(?:cpu|cpu\/wasm|wasm)$/i,
@@ -88,7 +134,7 @@ export function validateResult(d, { publication = false } = {}) {
     if(c.status==='unsupported')check(c.trials.length===0,'Unsupported cell cannot contain scores');
     check(c.trials.length<=p.repetitions && c.warmup.length<=p.warmupRuns,'Too many trials');
     for(const [group, trials] of [['warmup',c.warmup],['trials',c.trials]]) for(const [i,t] of trials.entries()){
-      keys(t,['index','generationMs','samples','sampleRate','pcmSha256','validation','audio','metrics'],'trial');
+      keys(t,['index','generationMs','samples','sampleRate','pcmSha256','validation','audio','metrics','memory'],'trial');
       check(t.index===i+1 && finite(t.generationMs)&&t.generationMs>0&&int(t.samples,1)&&int(t.sampleRate,8000,192000)&&(hash(t.pcmSha256)||(d.origin==='historical-import'&&t.pcmSha256===null)),'Invalid trial/index/PCM');
       keys(t.validation,['finitePcm','chunkCount','nonemptyChunks'],'validation');
       check((t.validation.finitePcm===true||(d.origin==='historical-import'&&t.validation.finitePcm===null)) && t.validation.nonemptyChunks===true && t.validation.chunkCount===d.fixture.chunks,`${group}: invalid PCM/chunk coverage`);
@@ -96,6 +142,9 @@ export function validateResult(d, { publication = false } = {}) {
       if(t.audio!==undefined){keys(t.audio,['sha256','bytes'],'audio');check(hash(t.audio.sha256)&&int(t.audio.bytes,1),'Invalid audio digest');}
       if(t.metrics!==undefined){check(object(t.metrics),'Invalid metrics');for(const [k,v] of Object.entries(t.metrics))check(/^[a-zA-Z][a-zA-Z0-9]{0,79}$/.test(k)&&(v===null||finite(v)&&v>=0),'Metrics must be finite, nonnegative or null');}
       if(d.origin==='native'&&t.metrics!==undefined)validateNativeMetrics(t);
+      const resourceRun=d.origin==='native'&&p.id.endsWith('-resources');
+      if(resourceRun)validateGenerationMemory(t,t.generationMs);
+      else check(t.memory===undefined&&t.metrics?.generationMeanRssBytes===undefined&&t.metrics?.generationRssSampleCount===undefined,'Generation memory evidence is only valid in native --resources runs');
     }
   }
   if(d.notes!==undefined)check(Array.isArray(d.notes)&&d.notes.length<=50&&d.notes.every(n=>text(n,2000)),'Invalid notes');

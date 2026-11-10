@@ -1,26 +1,56 @@
-# Reference-table memory and model size
+# Model size and Chrome RAM
 
 All table sizes use decimal MB (1 MB = 1,000,000 bytes).
 
-## Average memory during generation
+## Ordinary Chrome RAM during speech generation
 
-The table uses only evidence belonging to the exact displayed result, model and
-backend. Native warm-only runs did not collect memory samples. They show **Not
-measured**. A peak, an average of peaks, JavaScript heap size, or another run's
-memory is never substituted for average generation memory.
+The Reference results section includes a dedicated Chrome RAM table alongside the
+warm speed table. Every memory value links to its own full-article diagnostic.
+Groups retain exact hardware, Chrome, protocol, source and repetition counts.
+A new memory run is never presented as memory sampled during an older timing run.
 
-The original campaign retained Chrome process-tree RSS observations, sampled
-nominally every 500 ms. For each scored article we select samples whose observation
-timestamp is within its recorded `synthesisStartedAt` through `finalPcmAt` interval (cross-checked against the corresponding browser events).
-Loading, warm-up, WAV assembly/export and subsequent playback are excluded. We
-calculate the arithmetic mean of valid RSS observations within each trial, then
-the arithmetic mean of the five trial means. This is a sample average, not an
-exact time-weighted integral. Sampling intervals may vary.
+`--resources` samples the owned process tree of a fresh, isolated Chrome instance
+with one benchmark tab at a nominal 500 ms interval. This includes the tab,
+inference workers, GPU process and browser baseline. It is ordinary process RSS,
+not JavaScript heap, model-only RAM, per-tab-only memory, or GPU VRAM. Shared pages
+can be counted more than once; sampling itself can affect speed.
 
-RSS includes the entire owned Chrome process tree and browser baseline. Shared
-pages may be counted more than once. It is not model-only RAM, GPU VRAM, or a
-baseline-subtracted estimate. Sampling can affect execution time. Historical
-memory applies only to its historical protocol and machine.
+Only observations within the browser's recorded first source-chunk request through
+final CPU-readable PCM window enter the generation average. Loading, validation,
+hashing, WAV encoding and saving are excluded. Raw timestamp/RSS pairs are kept
+in each trial's `memory` object. `generationMeanRssBytes` is their arithmetic
+mean rounded to the nearest byte; `generationRssSampleCount` is the observation
+count. A valid average requires at least two observations, at least 80% of the
+nominal observation count (rounded up from `max(2, floor(windowMs / 500))`),
+first/last observations within 2,000 ms of the boundaries, and no internal gap
+longer than 5,000 ms. Insufficient sampling retains its explicit availability
+state and raw observations; it never receives an invented average. Across repetitions,
+the table uses the arithmetic mean of these trial means, giving each article equal
+weight. It is a sample mean, not an exact time-weighted integral.
+
+The initial memory comparison uses **one full 20,000-character article per cell**,
+in the cached-assets scenario with a fresh engine. It is not a five-repeat warm
+speed score. Reproduce sequentially for each model/backend:
+
+```sh
+npm run assets -- fetch --model MODEL --accept-license
+npm run bench -- run --model MODEL --backend cpu --scenario cached --resources --repetitions 1 --accept-license --machine "Hardware / RAM" --note "Dedicated memory diagnostic; power and background conditions"
+npm run bench -- run --model MODEL --backend webgpu --scenario cached --resources --repetitions 1 --accept-license --machine "Hardware / RAM" --note "Dedicated memory diagnostic; power and background conditions"
+npm run submit -- runs/RUN_ID/result.json
+npm run validate
+npm run reference
+```
+
+Actual unsupported backends retain their status and never receive an invented RAM
+number. Do not substitute a peak or reuse another model/backend's observation.
+The older `articleCallPeakRssBytes` metric keeps its broader whole-call window,
+including post-timer export, and is distinct from the generation mean.
+
+## Historical sample recovery
+
+The original campaign also retained 500 ms process samples. Its sanitized
+`memory-evidence/` appendix preserves six original warm cells independently of
+new diagnostics. Those observations are not used to fill the current RAM table.
 
 ## Reproducible evidence
 
@@ -39,13 +69,6 @@ node tools/import-historical-memory.mjs /path/to/original/archive
 npm run validate
 npm run reference
 ```
-
-The six original warm model/backend cells have retained samples. The latest
-reference row for Woof uses a later GPU timing-only run, so that row still says
-Not measured. Earlier Woof memory remains in the evidence directory. Later native
-Paradee, Piper and Supertonic runs also remain Not measured. Fresh measurements
-require a separately disclosed resource run; the existing `--resources` flag
-records a whole-call **peak**, not the synthesis-window average described here.
 
 ## Model size
 
