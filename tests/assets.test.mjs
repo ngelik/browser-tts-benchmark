@@ -8,7 +8,7 @@ const root = resolve(import.meta.dirname, '..');
 
 test('catalog entries match the pinned browser backends', () => {
   const models = listModels();
-  assert.deepEqual(models.map(model => model.id), ['paradee', 'phonon', 'leokani-7m', 'leokani-4.5m', 'pivo-curated', 'woof', 'piper-en-gb-southern-english-female-low']);
+  assert.deepEqual(models.map(model => model.id), ['paradee', 'phonon', 'leokani-7m', 'leokani-4.5m', 'pivo-curated', 'woof', 'piper-en-gb-southern-english-female-low', 'supertonic-3']);
   assert.deepEqual(models[0].backends, ['cpu', 'webgpu']);
   assert.equal(models[0].modelRevision, 'ed2934d4df8a4fd891e29584c5e1104649409765');
   assert.deepEqual(models[1].backends, ['cpu', 'webgpu']);
@@ -20,6 +20,10 @@ test('catalog entries match the pinned browser backends', () => {
   assert.deepEqual(models[6].backends, ['cpu', 'webgpu']);
   assert.equal(models[6].modelRevision, 'e7229f7d33a10e145e109b886d661984201ac3c4');
   assert.equal(models[6].license.requiresAcceptance, true);
+  assert.deepEqual(models[7].backends,['cpu','webgpu']);
+  assert.equal(models[7].support.voiceCount,10);
+  assert.equal(models[7].support.languageCount,31);
+  assert.equal(models[7].support.bundledVoiceCount,1);
 });
 
 test('Piper has voice and lineage cards plus immutable cache-only runtime pins', async () => {

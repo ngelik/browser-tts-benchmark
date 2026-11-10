@@ -6,3 +6,12 @@ test('source links reject embedded credentials and unsafe Markdown characters',(
 
 import {readFile} from 'node:fs/promises';import {renderReport} from '../tools/report.mjs';
 test('support prose is rendered as plain text, not injected markup',async()=>{const d=JSON.parse(await readFile('results/2026-11-09t07-33-26-519z-piper-en-gb-southern-english-female-low-cpu-warm-810f85a3/result.json'));d.cells[0].support={...listModels()[0].support,scope:'[fake](https://example.com)',notes:'<a href="https://example.com">fake</a>'};const text=renderReport(d).markdown;assert.ok(!text.includes('[fake](https://example.com)'));assert.ok(!text.includes('<a href='));assert.ok(text.includes('&lt;a href='));});
+
+test('support prose escaping preserves parentheses, brackets, pipes and literal words',async()=>{
+ const d=JSON.parse(await readFile('results/2026-11-09t07-33-26-519z-piper-en-gb-southern-english-female-low-cpu-warm-810f85a3/result.json'));
+ d.cells[0].support={...listModels()[0].support,scope:'[fake](https://example.com)',notes:'M3 (Robert) | English & more.'};
+ const text=renderReport(d).markdown;
+ assert.ok(text.includes('\\[fake\\]\\(https://example.com\\)'));
+ assert.ok(text.includes('M3 \\(Robert\\) \\| English &amp; more.'));
+ assert.ok(!text.includes('export function renderReport'));
+});

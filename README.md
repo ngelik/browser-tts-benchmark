@@ -45,6 +45,7 @@ Counts describe the pinned model/catalog, not the number of voices or languages 
 | PiVo 1.4M curated (Pi voice) | 2 | 2 | 1 (en) | [Details](docs/MODEL_SUPPORT.md#pivo-curated) |
 | Underdog Woof one-voice (Isla) | 1 | 1 | 1 (en) | [Details](docs/MODEL_SUPPORT.md#woof) |
 | Piper en-GB Southern English Female low | 1 | 1 | 1 (en) | [Details](docs/MODEL_SUPPORT.md#piper-en-gb-southern-english-female-low) |
+| Supertonic 3 FP32 (M3) | 10 | 1 | 31 | [Details](docs/MODEL_SUPPORT.md#supertonic-3) |
 
 ### Controlled native comparisons
 
@@ -167,8 +168,9 @@ Pinned model IDs (use these with `--model`):
 | `pivo-curated` | Yes | Yes, current adapter is slow | No |
 | `woof` | Unavailable in pinned runtime | Yes | `--accept-license` |
 | `piper-en-gb-southern-english-female-low` | Yes | Yes, mixed operators | `--accept-license` |
+| `supertonic-3` | Yes | Yes, mixed operators | `--accept-license` |
 
-Phonon, Woof and Piper use official browser runtimes. Model-specific adapters
+Phonon, Woof and Piper use official browser runtimes. Supertonic 3 reuses its official MIT browser helper with documented module/lifecycle integration. Model-specific adapters
 record their preprocessing, voice and allowed CPU operator fallback.
 
 New native warm runs use one common CPU/GPU timing boundary: first chunk request

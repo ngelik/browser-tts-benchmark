@@ -4,6 +4,7 @@ import { createLeokaniAdapter } from './adapters/leokani.mjs';
 import { createPivoAdapter } from './adapters/pivo.mjs';
 import { createWoofAdapter } from './adapters/woof.mjs';
 import { createPiperAdapter } from './adapters/piper.mjs';
+import { createSupertonicAdapter } from './adapters/supertonic.mjs';
 
 const statusNode = document.querySelector('#status');
 const state = { fixture: null, chunks: null, engine: null, model: null, backend: null, smoke: false };
@@ -15,6 +16,7 @@ const FACTORIES = {
   'pivo-curated': createPivoAdapter,
   woof: createWoofAdapter,
   'piper-en-gb-southern-english-female-low': createPiperAdapter,
+  'supertonic-3': createSupertonicAdapter,
 };
 let canonical = null;
 

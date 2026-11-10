@@ -6,6 +6,7 @@ import {getModel} from '../lib/catalog.mjs';
 import {verifySource} from './provenance.mjs';
 const sourceCache=new Map();
 export function verifyAudioAttribution(a){const m=getModel(a.model);if(a.modelTerms!==m.license.model||a.attribution!==(attribution[a.model]??m.displayName)||JSON.stringify(a.sourceUrls)!==JSON.stringify(m.support.sources))throw new Error('Audio attribution differs from verified model catalog');}
+export const MAX_CLIP_BYTES=3000000; // 30 seconds of mono PCM16 at up to 48 kHz.
 const BASE='https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/';
 export function wavInfo(b){
  if(b.length<44||b.toString('ascii',0,4)!=='RIFF'||b.toString('ascii',8,12)!=='WAVE'||b.toString('ascii',12,16)!=='fmt '||b.readUInt32LE(16)!==16||b.readUInt16LE(20)!==1||b.readUInt16LE(22)!==1||b.readUInt16LE(34)!==16||b.toString('ascii',36,40)!=='data'||b.readUInt32LE(4)!==b.length-8||b.readUInt32LE(40)!==b.length-44||(b.length-44)%2)throw new Error('Expected canonical mono PCM16 WAV');
@@ -14,7 +15,7 @@ export function wavInfo(b){
 }
 export function makeClip(b){const w=wavInfo(b);const samples=Math.min(w.samples,w.sampleRate*30);const clip=Buffer.from(b.subarray(0,44+samples*2));clip.writeUInt32LE(clip.length-8,4);clip.writeUInt32LE(clip.length-44,40);return clip;}
 async function manifest(){try{return JSON.parse(await readFile('audio/manifest.json','utf8'));}catch(e){if(e.code==='ENOENT')return {schemaVersion:1,entries:[]};throw e;}}
-const attribution={paradee:'Paradee by Sahil Mahendrakar; distilled from Kokoro-82M by hexgrad.',phonon:'Phonon by Gradium; based on Pocket TTS and Mimi by Kyutai.','leokani-7m':'Leokani by Milliwatt Labs; synthetic training speech from Kokoro-82M by hexgrad.','leokani-4.5m':'Leokani by Milliwatt Labs; synthetic training speech from Kokoro-82M by hexgrad.','pivo-curated':'PiVo by Leon Lehmann, Empero Research; FARGAN-derived vocoder.','woof':'Voice by Underdog Woof. Non-commercial benchmark evaluation.','piper-en-gb-southern-english-female-low':'Piper / rhasspy Southern English Female low; OpenSLR 83 dataset; Ryan low checkpoint ancestry.'};
+const attribution={'supertonic-3':'Supertonic 3 by Supertone Inc.; M3 preset voice. OpenRAIL-M model terms and use-based restrictions apply.',paradee:'Paradee by Sahil Mahendrakar; distilled from Kokoro-82M by hexgrad.',phonon:'Phonon by Gradium; based on Pocket TTS and Mimi by Kyutai.','leokani-7m':'Leokani by Milliwatt Labs; synthetic training speech from Kokoro-82M by hexgrad.','leokani-4.5m':'Leokani by Milliwatt Labs; synthetic training speech from Kokoro-82M by hexgrad.','pivo-curated':'PiVo by Leon Lehmann, Empero Research; FARGAN-derived vocoder.','woof':'Voice by Underdog Woof. Non-commercial benchmark evaluation.','piper-en-gb-southern-english-female-low':'Piper / rhasspy Southern English Female low; OpenSLR 83 dataset; Ryan low checkpoint ancestry.'};
 export async function addAudio({result,wav,model,backend}){
  const d=await readResult(resolve(result),{publication:true});verifySource(d,process.cwd(),sourceCache);const c=d.cells.find(c=>c.model===model&&c.backendRequested===backend&&c.status==='measured');if(!c)throw new Error('No measured source cell');
  const b=await readFile(wav),digest=sha256(b),w=wavInfo(b);const t=c.trials.find(t=>t.audio?.sha256===digest&&t.audio.bytes===b.length);if(!t||t.samples!==w.samples||t.sampleRate!==w.sampleRate)throw new Error('Full audio does not match a scored receipt');
@@ -34,7 +35,7 @@ export async function checkAudio(){
   verifyAudioAttribution(a);
   const result=await readResult(`results/${a.resultId}/result.json`,{publication:true});verifySource(result,process.cwd(),sourceCache);const c=result.cells.find(c=>c.model===a.model&&c.backendRequested===a.backend&&c.status==='measured');const t=c?.trials.find(t=>t.index===a.trialIndex);if(!t||a.full.sha256!==t.audio?.sha256||a.full.bytes!==t.audio.bytes||a.voice!==c.voice||a.language!=='en')throw new Error('Audio provenance does not match scored receipt');
   if(a.full.url!==BASE+`${a.resultId}--${a.model}--${a.backend}-full.wav`)throw new Error('Unexpected audio release URL');
-  const b=await readFile(a.clip.path),w=wavInfo(b);if(b.length>2000000||b.length!==a.clip.bytes||sha256(b)!==a.clip.sha256||a.clip.startSample!==0||w.samples!==Math.min(t.samples,t.sampleRate*30)||w.sampleRate!==t.sampleRate||['samples','sampleRate','seconds'].some(k=>a.clip[k]!==w[k]))throw new Error('Invalid audio clip or digest');
+  const b=await readFile(a.clip.path),w=wavInfo(b);if(b.length>MAX_CLIP_BYTES||b.length!==a.clip.bytes||sha256(b)!==a.clip.sha256||a.clip.startSample!==0||w.samples!==Math.min(t.samples,t.sampleRate*30)||w.sampleRate!==t.sampleRate||['samples','sampleRate','seconds'].some(k=>a.clip[k]!==w[k]))throw new Error('Invalid audio clip or digest');
  }
  for(const f of await readdir('audio/samples'))if(!paths.has('audio/samples/'+f))throw new Error('Unregistered audio sample: '+f);
  return paths;
