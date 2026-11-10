@@ -1,3 +1,4 @@
+import {loadMemoryEvidence,averageRssBytes} from './memory-evidence.mjs';
 import {LISTENING_URL,recordingUrl} from '../audio/links.mjs';
 import { readFile, writeFile, readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
@@ -8,7 +9,7 @@ export const START='<!-- benchmark-results:start -->', END='<!-- benchmark-resul
 const md=x=>String(x).replaceAll('|','\\|').replaceAll('\n',' ');
 const envKey=d=>JSON.stringify(['machineLabel','os','arch','cpu','logicalCores','ramBytes','chromeVersion'].map(k=>d.environment[k]));
 const report=d=>`results/${d.id}/summary.md`;
-export function referenceBlock(results, models, comparisons=[], audio=[]){
+export function referenceBlock(results, models, comparisons=[], audio=[], memory=[]){
   const ordered=[...results].sort((a,b)=>a.createdAt.localeCompare(b.createdAt)||a.id.localeCompare(b.id));
   const envs=new Map();for(const d of ordered)if(d.protocol.scenario==='warm'&&!envs.has(envKey(d)))envs.set(envKey(d),{id:'E'+(envs.size+1),value:d.environment});
   const groups=new Map();
@@ -18,10 +19,13 @@ export function referenceBlock(results, models, comparisons=[], audio=[]){
   }
   let out=START+'\n\nGenerated from every submitted result. Latest warm attempt per model/backend and exact environment is shown; errors are retained. No cross-machine or cross-protocol speedup is implied.\n\n';
   for(const {id,value:e}of envs.values())out+=`- **${id}**: ${md(e.machineLabel)} · ${md(e.chromeVersion)} · ${md(e.os)}.\n`;
-  out+='\n| Model | Environment | CPU warm median | WebGPU warm median | Evidence scope |\n|---|---|---:|---:|---|\n';
+  out+='\n| Model | Environment | Model weights (MB) | CPU warm median | WebGPU warm median | CPU avg memory (MB) | WebGPU avg memory (MB) | Evidence scope |\n|---|---|---:|---:|---:|---:|---:|---|\n';
   const score=v=>!v?'—':`[${v.c.medianSeconds===null?md(v.c.status):v.c.medianSeconds.toFixed(2)+' s'}](${report(v.d)})`;
-  for(const row of [...groups.values()].sort((a,b)=>a.environment.localeCompare(b.environment)||a.model.localeCompare(b.model))){const pair=[row.cpu,row.webgpu].filter(Boolean);const hist=pair.some(v=>v.d.origin!=='native');const scope=hist?'Historical; distinct timing protocols':pair.length===2&&pair[0].d.source.manifestSha256===pair[1].d.source.manifestSha256?'Native; matched source':'Native; separate configuration';out+=`| ${md(models[row.model]?.displayName??row.model)} | ${row.environment} | ${score(row.cpu)} | ${score(row.webgpu)} | ${scope} |\n`;}
+  const memoryCell=v=>{if(!v||v.c.status!=='measured')return '—';const e=memory.find(e=>e.resultId===v.d.id&&e.model===v.c.model&&e.backend===v.c.backend);return e?'['+(averageRssBytes(e)/1e6).toFixed(2)+']('+e.path+')':'Not measured';};
+  const modelSize=(id,pair)=>{const weights=models[id]?.assets?.filter(a=>a.kind==='model-weights')??[];const measured=pair;if(!weights.length||!measured.length||measured.some(v=>weights.some(w=>!v.d.assets.some(a=>a.sha256===w.sha256&&a.bytes===w.bytes))))return 'Unknown';return (weights.reduce((n,a)=>n+a.bytes,0)/1e6).toFixed(2);};
+  for(const row of [...groups.values()].sort((a,b)=>a.environment.localeCompare(b.environment)||a.model.localeCompare(b.model))){const pair=[row.cpu,row.webgpu].filter(Boolean);const hist=pair.some(v=>v.d.origin!=='native');const scope=hist?'Historical; distinct timing protocols':pair.length===2&&pair[0].d.source.manifestSha256===pair[1].d.source.manifestSha256?'Native; matched source':'Native; separate configuration';out+=`| ${md(models[row.model]?.displayName??row.model)} | ${row.environment} | ${modelSize(row.model,pair)} | ${score(row.cpu)} | ${score(row.webgpu)} | ${memoryCell(row.cpu)} | ${memoryCell(row.webgpu)} | ${scope} |\n`;}
   out+='\nEach measured warm cell uses five scored full 20,000-character articles. Missing values are not zero. Open receipts for voice, precision, timing boundaries, power conditions and observed min–max.\n\n';
+  out+='MB = 1,000,000 bytes. Model size counts pinned core model-weight files (including the vocoder), verified against the displayed run receipts; it excludes runtime, G2P, voice/config files and transfer overhead. Average memory is sampled total Chrome process-tree RSS during synthesis, averaged within each scored trial and then across trials. It includes browser baseline and may double-count shared pages; it is not model-only RAM or GPU VRAM. **Not measured** means the displayed run has no average-memory evidence; peaks and other runs are not substituted. [Memory method and evidence](docs/MEMORY.md).\n\n';
   out+='### Voice and language support\n\nCounts describe the pinned model/catalog, not the number of voices or languages benchmarked. All current measurements use English and one selected voice per model. Other checkpoints in a family are excluded.\n\n| Model | Supported voices | Bundled voices | Supported languages | Scope / source |\n|---|---:|---:|---|---|\n';
   for(const [id,m]of Object.entries(models)){const s=m.support;if(!s)throw new Error('Missing support metadata: '+id);out+=`| ${md(m.displayName??id)} | ${s.voiceCount??'Unknown'} | ${s.bundledVoiceCount??'Unknown'} | ${s.languageCount??'Unknown'}${s.languages?.length>5?'':' ('+md(s.languages?.join(', ')??'unknown')+')'} | [Details](docs/MODEL_SUPPORT.md#${id}) |\n`;}
   if(comparisons.length){out+='\n### Controlled native comparisons\n\nOnly compatible receipts enter these comparisons; source, settings, fixture and environment checks must pass.\n';for(const name of comparisons){out+=`\n[${md(name)} — table and input receipts](comparisons/${name}/summary.md)\n\n![${md(name)}](comparisons/${name}/chart.svg)\n`;}}
@@ -38,7 +42,7 @@ export async function updateReference({check=false}={}){
   const results=await Promise.all((await resultPaths('results')).map(p=>readResult(p,{publication:true})));
   const comparisons=(await readdir('comparisons',{withFileTypes:true})).filter(e=>e.isDirectory()).map(e=>e.name).sort();
   let audio=[];try{audio=JSON.parse(await readFile('audio/manifest.json','utf8')).entries;}catch(e){if(e.code!=='ENOENT')throw e;}
-  const file='README.md',old=await readFile(file,'utf8');const next=replaceReference(old,referenceBlock(results,getAssetLock().models,comparisons,audio));
+  const file='README.md',old=await readFile(file,'utf8');const next=replaceReference(old,referenceBlock(results,getAssetLock().models,comparisons,audio,await loadMemoryEvidence()));
   if(check&&next!==old)throw new Error('Stale/missing Reference results; run npm run reference and include README.md in the result PR');
   if(!check)await writeFile(file,next);return {results:results.length,audio:audio.length};
 }

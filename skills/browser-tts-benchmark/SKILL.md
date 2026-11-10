@@ -112,7 +112,10 @@ Every result PR must refresh the generated **README → Reference results** sect
 with `npm run reference` (submission does this automatically), including failed
 or unsupported full attempts. Keep all previous run links; never bury a new model
 in a separate section or delete older measurements. Run `npm run reference -- --check`;
-CI rejects missing or stale entries. Include comparison tables/charts in that same
+CI rejects missing or stale entries. Keep model-weight sizes tied to the pinned
+assets and displayed receipts. Only publish average generation memory from
+matching sampled evidence; never relabel peaks or reuse another run’s memory.
+See `docs/MEMORY.md`; timing-only runs must retain Not measured. Include comparison tables/charts in that same
 section through the generator.
 
 Review the four public result files and stage them before the tracked-file
