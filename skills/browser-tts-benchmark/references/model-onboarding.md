@@ -56,3 +56,17 @@ runtime bundles. Download those to the ignored cache when terms permit. Include
 source/license URLs and attributions in the manifest and documentation. If an
 upstream dependency cannot be used, record the specific blocker without replacing
 its output with another model's audio.
+
+For popularity-based shortlists, freeze the search date, candidate pool, repository
+revision, monthly downloads and likes before timing. State the small-model size
+bound including required neural decoders/frontends; distinguish checkpoint counts
+from family popularity and document exclusions. A curated shortlist is not an
+objective global ranking or a speech-quality score.
+
+Audit the entire canonical article through each new frontend before full runs.
+Some official tokenizers silently drop digits, unknown phonemes or long inputs.
+Preserve source words, reject truncation, and document any numeric/phonetic
+normalization as a new configuration. `node tools/check-text-frontends.mjs`
+checks the Kokoro, Kitten, MMS and Inflect integrations after staging their assets.
+Runtime compatibility fixes must be tested with identical precision/settings
+on both backends, and the exact runtime version must be recorded.

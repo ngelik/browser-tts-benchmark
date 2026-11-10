@@ -1,0 +1,85 @@
+{
+  "selectedBeforePerformanceTesting": true,
+  "retrievedDate": "2026-11-10",
+  "method": "Curated five new English small-model families, balancing HF monthly downloads and likes; not a global objective top-five ranking. Search top 100 text-to-speech repos sorted by downloads and likes plus supplemental named-family checks. Tiny/small bound: no more than 100M required neural synthesis parameters including decoder; public weights, English, one case per family, exclude existing benchmark models. Download counts are repository-level activity, not unique users or quality scores.",
+  "queries": [
+    "https://huggingface.co/api/models?pipeline_tag=text-to-speech&sort=downloads&direction=-1&limit=100",
+    "https://huggingface.co/api/models?pipeline_tag=text-to-speech&sort=likes&direction=-1&limit=100"
+  ],
+  "selected": [
+    {
+      "model": "hexgrad/Kokoro-82M",
+      "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "downloadsLastMonth": 12522206,
+      "likes": 7392,
+      "reason": "Very high download adoption and likes; established official JavaScript runtime.",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M"
+    },
+    {
+      "model": "KittenML/kitten-tts-nano-0.8-fp32",
+      "revision": "e73cfb095bd949c786ccdcf3b8ab04eb36c47442",
+      "downloadsLastMonth": 304480,
+      "likes": 40,
+      "reason": "High-download 15M English checkpoint; FP32 for common CPU/GPU configuration.",
+      "url": "https://huggingface.co/KittenML/kitten-tts-nano-0.8-fp32"
+    },
+    {
+      "model": "ampixa/sanoTTS",
+      "revision": "4a8194aa1dd958033ee449b3ad30c37e536b216e",
+      "downloadsLastMonth": 558240,
+      "likes": 77,
+      "reason": "High-download sub-3M family and official browser WASM runtime; Amy selected as English checkpoint.",
+      "url": "https://huggingface.co/ampixa/sanoTTS"
+    },
+    {
+      "model": "owensong/Inflect-Micro-v2",
+      "revision": "9d862840734dcc53afb5d27ef468459daad020fa",
+      "downloadsLastMonth": 414,
+      "likes": 454,
+      "reason": "454 likes for a complete 9.36M English stack with official ONNX export.",
+      "url": "https://huggingface.co/owensong/Inflect-Micro-v2"
+    },
+    {
+      "model": "facebook/mms-tts-eng",
+      "revision": "c71de0fe7204c83f1c10820a7d696d0b450048ba",
+      "downloadsLastMonth": 47474,
+      "likes": 184,
+      "reason": "Established 36M English model with substantial downloads and official Transformers.js support.",
+      "url": "https://huggingface.co/facebook/mms-tts-eng"
+    }
+  ],
+  "exclusions": [
+    {
+      "model": "kyutai/pocket-tts October tiny 1.9M/6.9M",
+      "reason": "Exact tiny weights gated; no verified browser runtime for these new architectures. Older 100M community ports do not establish tiny-checkpoint support."
+    },
+    {
+      "model": "pnnbao-ump/VieNeu-TTS-v3-Turbo",
+      "reason": "130,907,520 backbone parameters before codec exceed the selected complete-stack 100M bound."
+    },
+    {
+      "model": "pnnbao-ump/VieNeu-TTS-v3-Nano",
+      "reason": "Vietnamese-only checkpoint; English required."
+    },
+    {
+      "model": "OpenMOSS-Team/MOSS-TTS-Nano-100M",
+      "reason": "100M language model plus required ~22M audio tokenizer exceeds complete-stack bound."
+    },
+    {
+      "model": "myshell-ai/MeloTTS-English",
+      "reason": "Requires BERT-base-uncased frontend in addition to synthesis model; complete neural stack exceeds bound."
+    },
+    {
+      "model": "ekwek/Soprano-1.1-80M",
+      "reason": "80M backbone plus separate 121MB decoder; lower monthly downloads than selected established families. Deferred, not judged inferior."
+    },
+    {
+      "model": "canberkkkkkk/ema-lightning",
+      "reason": "Turkish-only; English required."
+    },
+    {
+      "model": "Existing eight benchmark cases",
+      "reason": "User requested additional models; no duplicate cases."
+    }
+  ]
+}
