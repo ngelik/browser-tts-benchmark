@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-10t07-43-34-755z-supertonic-3-cpu-warm-a07fded0",
+  "createdAt": "2026-11-10T09:57:11.901Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-warm-v1",
+    "scenario": "warm",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export.",
+    "warmupRuns": 1,
+    "repetitions": 5,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro (Apple M1 Pro, 16 GB)",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.39",
+    "gpu": null,
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "c453db68535a66ba24d580a19dab1fc9ed9ba4d8",
+    "dirty": false,
+    "manifestSha256": "e576705c08ef80eec35829b91247b95755f531607888867ebb1276a8293fc1af"
+  },
+  "assets": [
+    {
+      "id": "runtime:supertonic-3:onnxruntime-web:dist/ort.wasm.min.mjs",
+      "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7",
+      "bytes": 49856
+    },
+    {
+      "id": "runtime:supertonic-3:onnxruntime-web:dist/ort.webgpu.min.mjs",
+      "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
+      "bytes": 66261
+    },
+    {
+      "id": "runtime:supertonic-3:onnxruntime-web:dist/ort-wasm-simd-threaded.mjs",
+      "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e",
+      "bytes": 20321
+    },
+    {
+      "id": "runtime:supertonic-3:onnxruntime-web:dist/ort-wasm-simd-threaded.wasm",
+      "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15",
+      "bytes": 11905541
+    },
+    {
+      "id": "runtime:supertonic-3:onnxruntime-web:dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff",
+      "bytes": 51913
+    },
+    {
+      "id": "runtime:supertonic-3:onnxruntime-web:dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada",
+      "bytes": 25499390
+    },
+    {
+      "id": "runtime:supertonic-3:onnxruntime-web:LICENSE",
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "bytes": 1073
+    },
+    {
+      "id": "runtime:supertonic-3:onnxruntime-web:ThirdPartyNotices.txt",
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+      "bytes": 326866
+    },
+    {
+      "id": "supertonic-3-onnx-duration_predictor-onnx",
+      "sha256": "c3eb91414d5ff8a7a239b7fe9e34e7e2bf8a8140d8375ffb14718b1c639325db",
+      "bytes": 3700147
+    },
+    {
+      "id": "supertonic-3-onnx-text_encoder-onnx",
+      "sha256": "c7befd5ea8c3119769e8a6c1486c4edc6a3bc8365c67621c881bbb774b9902ff",
+      "bytes": 36416150
+    },
+    {
+      "id": "supertonic-3-onnx-vector_estimator-onnx",
+      "sha256": "883ac868ea0275ef0e991524dc64f16b3c0376efd7c320af6b53f5b780d7c61c",
+      "bytes": 256534781
+    },
+    {
+      "id": "supertonic-3-onnx-vocoder-onnx",
+      "sha256": "085de76dd8e8d5836d6ca66826601f615939218f90e519f70ee8a36ed2a4c4ba",
+      "bytes": 101424195
+    },
+    {
+      "id": "supertonic-3-onnx-tts-json",
+      "sha256": "42078d3aef1cd43ab43021f3c54f47d2d75ceb4e75f627f118890128b06a0d09",
+      "bytes": 8253
+    },
+    {
+      "id": "supertonic-3-onnx-unicode_indexer-json",
+      "sha256": "9bf7346e43883a81f8645c81224f786d43c5b57f3641f6e7671a7d6c493cb24f",
+      "bytes": 277676
+    },
+    {
+      "id": "supertonic-3-voice_styles-m3-json",
+      "sha256": "ea1ac35ccb91b0d7ecad533a2fbd0eec10c91513d8951e3b25fbba99954e159b",
+      "bytes": 290198
+    },
+    {
+      "id": "supertonic-3-readme-md",
+      "sha256": "d414e4b085fb9989ebfd2b64f868ff861694022b4bdb805b09e702386dbdc7d5",
+      "bytes": 9189
+    },
+    {
+      "id": "supertonic-3-license",
+      "sha256": "0d944a9110fed9a9602d60e0423a272903e7bd21ab060490774efc77c2275e9f",
+      "bytes": 15007
+    },
+    {
+      "id": "supertonic-3-config-json",
+      "sha256": "4099082b107a9d4029849ac76b89eca65e03732660969c2babe5bf308c7357f2",
+      "bytes": 174
+    }
+  ],
+  "cells": [
+    {
+      "model": "supertonic-3",
+      "support": {
+        "voiceCount": 10,
+        "bundledVoiceCount": 1,
+        "languageCount": 31,
+        "languages": [
+          "en",
+          "ko",
+          "ja",
+          "ar",
+          "bg",
+          "cs",
+          "da",
+          "de",
+          "el",
+          "es",
+          "et",
+          "fi",
+          "fr",
+          "hi",
+          "hr",
+          "hu",
+          "id",
+          "it",
+          "lt",
+          "lv",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sk",
+          "sl",
+          "sv",
+          "tr",
+          "uk",
+          "vi"
+        ],
+        "scope": "Pinned Supertonic 3 checkpoint and ten supplied preset voice styles",
+        "sources": [
+          "https://huggingface.co/Supertone/supertonic-3/blob/3cadd1ee6394adea1bd021217a0e650ede09a323/README.md",
+          "https://huggingface.co/Supertone/supertonic-3/tree/3cadd1ee6394adea1bd021217a0e650ede09a323/voice_styles",
+          "https://huggingface.co/spaces/Supertone/supertonic-3/blob/4402acca094e2ff2b3dff446e0bf915f3fccc462/script.js"
+        ],
+        "notes": "Ten supplied presets F1–F5 and M1–M5; only M3 (Robert) is staged and tested in English. Language-agnostic mode na is not an additional language. Custom voice profiles are outside this preset count. Eight denoising steps and effective speed 1.05 match the linked demo defaults (UI speed 1.0)."
+      },
+      "backendRequested": "cpu",
+      "backendEffective": "cpu/wasm",
+      "status": "measured",
+      "reason": null,
+      "voice": "M3 (Robert)",
+      "precision": "FP32 ONNX models and FP32 preset style",
+      "settings": {
+        "executionProviders": [
+          "wasm"
+        ],
+        "threads": 1,
+        "language": "en",
+        "voiceStyle": "M3 (Robert)",
+        "totalSteps": 8,
+        "speed": 1.05,
+        "demoUiSpeedEquivalent": 1,
+        "silenceDurationSeconds": 0.3,
+        "sampleRate": 44100,
+        "frontend": "Official Supertonic browser helper: NFKD normalization, emoji/symbol cleanup, whitespace compaction, terminal punctuation and <en> tags. It splits each source span at paragraph/sentence boundaries (max 300 characters); the 93-span canonical fixture yields 111 internal utterances and 18 intra-span 0.3-second silences.",
+        "outputTrim": "Matches the official browser demo: trim waveform to floor(sampleRate × predicted duration) before returning Float32 PCM.",
+        "randomSeed": "The official helper samples Box-Muller latent noise with Math.random; it exposes no validated seed input.",
+        "outputLocation": "ONNX Runtime Web default CPU output; every session.run is awaited before the helper reads output .data."
+      },
+      "capability": {
+        "gpuDispatchVerified": null,
+        "description": "Explicit one-thread ONNX Runtime Web WASM provider; model text processing runs in the Chrome worker."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 1332881.949999988,
+          "samples": 49688384,
+          "sampleRate": 44100,
+          "pcmSha256": "0d02f14656c07804ec9600e9ce0ec5aecc87f08a923a7b863534d405c4891f2b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 13914.909999966621,
+            "firstSourceChunkCompletedMs": 13914.930000007153,
+            "audioSeconds": 1126.7207256235827,
+            "realTimeFactor": 1.1829745558841172,
+            "minSamplesPerChunk": 402005,
+            "maxSamplesPerChunk": 658016
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 1332063.7700000405,
+          "samples": 49688384,
+          "sampleRate": 44100,
+          "pcmSha256": "8eabf3359adfd999bd063cb924ae5daef57149a9e3b5120336208b0dd9d29427",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 13909.760000050068,
+            "firstSourceChunkCompletedMs": 13909.780000030994,
+            "audioSeconds": 1126.7207256235827,
+            "realTimeFactor": 1.1822483954600291,
+            "minSamplesPerChunk": 402005,
+            "maxSamplesPerChunk": 658016
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 1330802.9099999666,
+          "samples": 49688384,
+          "sampleRate": 44100,
+          "pcmSha256": "d7b9e016253ecffbe077b5f262780bd2be9af2af39fee1788e1875d176eb8b10",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 14024.269999980927,
+            "firstSourceChunkCompletedMs": 14024.274999976158,
+            "audioSeconds": 1126.7207256235827,
+            "realTimeFactor": 1.1811293426447222,
+            "minSamplesPerChunk": 402005,
+            "maxSamplesPerChunk": 658016
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 1332060.8599999547,
+          "samples": 49688384,
+          "sampleRate": 44100,
+          "pcmSha256": "7abd0e2d7aadc9d968a609a66b5338daccfaa669e754490eaaa6a5f7379cfb4c",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 13885.164999961853,
+            "firstSourceChunkCompletedMs": 13885.164999961853,
+            "audioSeconds": 1126.7207256235827,
+            "realTimeFactor": 1.1822458127436386,
+            "minSamplesPerChunk": 402005,
+            "maxSamplesPerChunk": 658016
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 1331706.7650000453,
+          "samples": 49688384,
+          "sampleRate": 44100,
+          "pcmSha256": "d9f92c621cc2acdd9c2ce6b61d1be9dd88d236a1c13bc0635542fb535eedcfd7",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 14000.040000021458,
+            "firstSourceChunkCompletedMs": 14000.055000007153,
+            "audioSeconds": 1126.7207256235827,
+            "realTimeFactor": 1.181931542319871,
+            "minSamplesPerChunk": 402005,
+            "maxSamplesPerChunk": 658016
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 1332169.6049999595,
+          "samples": 49688384,
+          "sampleRate": 44100,
+          "pcmSha256": "afd560248ff47a8dfff1c3ad619a3f59521b2223668c3fc0a64908a6bca49309",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 13963.810000002384,
+            "firstSourceChunkCompletedMs": 13963.814999997616,
+            "audioSeconds": 1126.7207256235827,
+            "realTimeFactor": 1.1823423273435139,
+            "minSamplesPerChunk": 402005,
+            "maxSamplesPerChunk": 658016
+          },
+          "audio": {
+            "sha256": "2c75f50384f5d383133d67dfaaceca548f1264f6552ba43e96aa5ff537b909cb",
+            "bytes": 99376812
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "AC power; CPU first, then WebGPU; pre-run load average 1.05/1.37/1.52 with aggregate sampled process CPU 14.1%; ambient temperature and thermal state not instrumented; power settings unchanged."
+  ]
+}
