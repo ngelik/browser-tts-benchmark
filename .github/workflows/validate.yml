@@ -28,4 +28,5 @@ jobs:
       - run: node tools/compare.mjs --check comparisons
       - run: npm run reference -- --check
       - run: npm run audio -- check
+      - run: npm run listen:build
       - run: node tools/publication-check.mjs

@@ -25,7 +25,8 @@
     "test": "node --test",
     "reference": "node tools/reference.mjs",
     "audio": "node tools/audio.mjs",
-    "listen": "node tools/listen.mjs"
+    "listen": "node tools/listen.mjs",
+    "listen:build": "node tools/build-listening-site.mjs"
   },
   "dependencies": {
     "onnxruntime-web": "1.23.2",

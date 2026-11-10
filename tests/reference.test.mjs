@@ -3,3 +3,12 @@ const base=JSON.parse(await readFile(new URL('../results/2026-11-09t07-33-26-519
 test('reference index includes new models, all runs and explicit failure instead of stale success',()=>{const old=structuredClone(base),latest=structuredClone(base);latest.id='new-attempt';latest.createdAt='2030-01-01T00:00:00Z';latest.cells[0].status='error';latest.cells[0].reason='Device lost';const block=referenceBlock([old,latest],getAssetLock().models);assert.ok(block.includes('[error](results/new-attempt/summary.md)'));assert.ok(block.includes('results/'+old.id+'/summary.md'));assert.ok(block.includes('Southern'));assert.ok(block.includes('102'));assert.ok(block.includes('Unknown')===false);});
 test('reference refresh changes only its own section and requires a unique anchored range',()=>{const text='# Repo\n\n## Reference results\n\n'+START+'\nold\n'+END+'\n\n## Other\nKeep me';const updated=replaceReference(text,START+'\nnew\n'+END);assert.ok(updated.endsWith('## Other\nKeep me'));assert.ok(updated.includes('\nnew\n'));assert.throws(()=>replaceReference(text.replace('## Reference results','## Elsewhere'),'x'));assert.throws(()=>replaceReference(text+START,'x'));});
 test('reference separates different hardware instead of pooling the latest score globally',()=>{const other=structuredClone(base);other.id='different-hardware';other.environment.machineLabel='Other computer';const block=referenceBlock([base,other],getAssetLock().models);assert.ok(block.includes('**E1**'));assert.ok(block.includes('**E2**'));assert.ok(block.includes('results/'+base.id+'/summary.md'));assert.ok(block.includes('results/'+other.id+'/summary.md'));});
+
+test('each README Listen link opens its exact hosted recording while retaining full WAV links',async()=>{
+ const {entries}=JSON.parse(await readFile(new URL('../audio/manifest.json',import.meta.url)));
+ const block=referenceBlock([base],getAssetLock().models,[],entries);
+ const urls=[...block.matchAll(/\[▶ Listen\]\(([^)]+)\)/g)].map(m=>new URL(m[1]));
+ assert.equal(urls.length,entries.length);
+ entries.forEach((entry,i)=>{assert.equal(urls[i].origin,'https://ngelik.github.io');assert.equal(urls[i].pathname,'/browser-tts-benchmark/audio/');assert.equal(urls[i].searchParams.get('sample'),entry.clip.path.split('/').at(-1));assert.ok(block.includes(entry.full.url));});
+ assert.ok(block.includes('Open the listening room'));
+});
