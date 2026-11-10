@@ -89,3 +89,11 @@ worker environment, saves the benchmark RPC handler before the official
 `setVoice` initialization, and restores that handler in `finally` before
 receiving another benchmark request. The eSpeak `ready` message is ignored by the
 RPC bridge because it has no request ID.
+
+## Supertonic 3 adapter
+
+The pinned official MIT browser helper supplies normalization, duration prediction, text encoding, eight-step latent denoising and waveform decoding. The benchmark selects M3 (Robert), English and effective speed 1.05, matching the linked Space's UI defaults (8 steps, speed 1.0 converted to 1.05). Only the ORT execution provider differs between CPU/WASM and WebGPU. The official helper splits paragraphs inside source spans: this fixture has 93 benchmark spans but 111 internal utterances, with 18 internal 0.3-second gaps. This behavior and the official final-duration trim are preserved for both backends. See the adapter source/change notice for lifecycle integration. All four FP32 ONNX graphs and M3 voice style match the linked Space's asset object hashes. The public catalog includes ten preset voices and 31 languages; this benchmark exercises one voice in English.
+
+The sample-code repository was archived upstream; its pinned source remains available under MIT. Model revision and source revision are recorded separately. The model keeps its OpenRAIL-M terms. Smoke checks and genuine GPU dispatch are required before scored measurements; published scores do not inherit upstream speed claims.
+
+Pinned demo control evidence: [default controls](https://huggingface.co/spaces/Supertone/supertonic-3/blob/4402acca094e2ff2b3dff446e0bf915f3fccc462/index.html) and [voice/speed mapping](https://huggingface.co/spaces/Supertone/supertonic-3/blob/4402acca094e2ff2b3dff446e0bf915f3fccc462/script.js). The benchmark retains the official helper's stochastic latent sampling; it does not claim bit-identical outputs across runs.

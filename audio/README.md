@@ -22,7 +22,7 @@ GitHub release and linked beside each clip.
 `manifest.json` binds every clip to a published result, scored trial index, voice,
 full WAV hash and byte count. A clip contains the first 30 seconds (or the entire
 recording if shorter), copied as PCM16 with no normalization, editing, transcoding
-or re-synthesis. Only its RIFF size fields change. The source full WAV must match
+or re-synthesis. Only its RIFF size fields change. The clip limit is 3 MB, sufficient for 30 seconds of mono PCM16 up to 48 kHz. The source full WAV must match
 an actual scored receipt before the tool will create the clip.
 
 ```sh
@@ -52,6 +52,7 @@ commercial-use clearance or a grant of rights in upstream voices.
 - Leokani: Milliwatt Labs; Kokoro-generated synthetic training speech. CC BY-NC 4.0 model terms; synthetic outputs retain the model's watermark.
 - PiVo: Leon Lehmann / Empero Research; Apache-2.0 acoustic component and BSD FARGAN-derived vocoder.
 - **Voice by Underdog Woof.** Non-commercial terms and output attribution apply; see the pinned license/notice links in the asset manifest.
+- Supertonic 3: Supertone Inc., M3 preset voice. OpenRAIL-M model terms include use-based restrictions and output responsibilities; the code license is separate.
 - Piper: rhasspy/Piper Southern English Female low. The card names CC BY-SA 4.0 training data and Ryan low ancestry (whose card names CC BY-NC-SA 4.0 data). Neither card supplies a separate output license. These notices are retained without treating the code's MIT license as an output license.
 
 See [component licensing](../docs/LICENSING.md) and the linked primary sources.

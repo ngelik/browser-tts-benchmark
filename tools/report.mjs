@@ -4,7 +4,7 @@ import { pathToFileURL } from 'node:url';
 import { readResult, summaries, median } from './results.mjs';
 const esc=x=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const md=x=>String(x??'').replaceAll('|','\\|').replaceAll('\n',' ');
-const plain=x=>md(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replace(/[\\`*_{}\[\]()!#]/g,'\\export function renderReport(d){');
+const plain=x=>String(x??'').replaceAll('\n',' ').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replace(/[\\`*_{}\[\]()!#|]/g,c=>'\\'+c);
 export function renderReport(d){
   const rows=summaries(d), max=Math.max(1,...rows.filter(r=>r.maxSeconds!==null).map(r=>r.maxSeconds)), min=Math.min(1,...rows.filter(r=>r.minSeconds!==null).map(r=>r.minSeconds));
   const left=230,right=850,width=1000,height=200+rows.length*66;
@@ -25,7 +25,7 @@ export function renderReport(d){
   const supportCells=d.cells.filter(c=>c.support);
   if(supportCells.length){
     markdown+='\nModel support (catalog capability, not coverage of this run):\n\n| Model | Supported voices | Bundled voices | Languages | Tested voice |\n|---|---:|---:|---|---|\n';
-    for(const c of supportCells){const s=c.support;markdown+=`| ${md(c.model)} | ${s.voiceCount??'Unknown'} | ${s.bundledVoiceCount??'Unknown'} | ${s.languageCount??'Unknown'} (${md(s.languages?.join(', ')??'unknown')}) | ${md(c.voice)} |\n`;}
+    for(const c of supportCells){const s=c.support;markdown+=`| ${md(c.model)} | ${s.voiceCount??'Unknown'} | ${s.bundledVoiceCount??'Unknown'} | ${s.languageCount??'Unknown'}${s.languages?.length>5?'':' ('+md(s.languages?.join(', ')??'unknown')+')'} | ${md(c.voice)} |\n`;}
     for(const c of supportCells){const s=c.support;markdown+=`\n${plain(s.scope)}. ${plain(s.notes)} Sources: ${s.sources.map((u,i)=>`[${i+1}](${encodeURI(u).replaceAll('(','%28').replaceAll(')','%29')})`).join(', ')}.\n\n`;}
   }
   markdown+='\n![Generation chart](chart.svg)\n\n';
