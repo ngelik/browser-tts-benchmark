@@ -3621,6 +3621,482 @@
         ],
         "notes": "18 spoken languages; English has US and UK locales. Male/female prompt controls do not establish a fixed-voice count. Only American English female is tested. Six-thread Fusor WASM q7 configuration; different weights/runtime/sampling from the official WebGPU GGUF configuration."
       }
+    },
+    "mach-boom": {
+      "displayName": "Mach Boom 3.5-bit (browser WASM port)",
+      "modelRevision": "01860b06bdf8498761255ad1c64b99980b96486d",
+      "runtime": {
+        "package": "@huggingface/transformers",
+        "version": "3.5.1",
+        "license": "MIT browser glue/SIMD; Apache-2.0 upstream C/Python; MPL-2.0 Pyodide; PSF Python; BSD-3-Clause NumPy; component notices apply",
+        "files": [
+          {
+            "package": "@huggingface/transformers",
+            "version": "3.5.1",
+            "path": "dist/transformers.min.js",
+            "target": "runtimes/transformers/3.5.1/transformers.min.js",
+            "bytes": 849451,
+            "sha256": "79fad8c1c2fd165bf1e77ace20ce023fab4dc13b6621f0e586c9b8c59c4d09d8"
+          },
+          {
+            "package": "@huggingface/transformers",
+            "version": "3.5.1",
+            "path": "LICENSE",
+            "target": "licenses/transformers-3.5.1/LICENSE",
+            "bytes": 11358,
+            "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "mach-boom-mach-py",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/mach.py",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/mach.py",
+          "bytes": 37725,
+          "sha256": "baf7e538dd40d4b132e29a4153fcc6d31a508fb68a695694e189824472366e68",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-packfmt-py",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/packfmt.py",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/packfmt.py",
+          "bytes": 5542,
+          "sha256": "1e467938d715c51806280567432bd6626193ad198fd4001f47831a756009fea0",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-frontend_en-py",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/frontend_en.py",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/frontend_en.py",
+          "bytes": 19067,
+          "sha256": "51c65d91ecbcdbb42e93ea80202fa81d1103edb8313500fb965c93d366ab7607",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-tmk-c",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/tmk.c",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/tmk.c",
+          "bytes": 18463,
+          "sha256": "f81a8bcdc069fa3dad82b4cd5d5a5a5e806642b6870c680f3b6f63760b256402",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-tmk_act-c",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/tmk_act.c",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/tmk_act.c",
+          "bytes": 1170,
+          "sha256": "e62d3b6ef784349047ca0d210de2b7a978ba2be9e64134e0bc8e4f9ad6d566bf",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-tmk_model-c",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/tmk_model.c",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/tmk_model.c",
+          "bytes": 5966,
+          "sha256": "d44bba43c112e12fefc03ecebade530de7fea9b0f2992f741c4f3cc5038f3b12",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-tmk_amx-c",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/tmk_amx.c",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/tmk_amx.c",
+          "bytes": 21869,
+          "sha256": "3c3122780bd160cbdb66739385707d5af3796061bae06ca4e4b4f48a6f81cb84",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-tokenizer-json",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/tokenizer.json",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/tokenizer.json",
+          "bytes": 302879,
+          "sha256": "28161547feed30fa70e9ce6da0b791835db9c9720683d87f17e0327f01687cc5",
+          "kind": "model-support"
+        },
+        {
+          "id": "mach-boom-voices-voices-jsonl",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/voices/voices.jsonl",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/voices/voices.jsonl",
+          "bytes": 1175,
+          "sha256": "e981491585ea92c9867e9dc1085c685dba0d9346a345696e5cd4dc103611cfac",
+          "kind": "model-support"
+        },
+        {
+          "id": "mach-boom-LICENSE",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/LICENSE",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/LICENSE",
+          "bytes": 10174,
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "kind": "license"
+        },
+        {
+          "id": "mach-boom-NOTICE",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/NOTICE",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/NOTICE",
+          "bytes": 722,
+          "sha256": "4eecdf98075519be0ce7ccf56882b8d0be3c3471adb3f19a8c469be506f50dea",
+          "kind": "license"
+        },
+        {
+          "id": "mach-boom-MANIFEST-json",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/MANIFEST.json",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/MANIFEST.json",
+          "bytes": 3046,
+          "sha256": "8682cd6fc5bfa4b5b6f98a5febca70f43b3370f75d5c524dcc23711df6e460c4",
+          "kind": "model-support"
+        },
+        {
+          "id": "mach-boom-mach-boom-bin",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/mach-boom.bin",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/mach-boom.bin",
+          "bytes": 18155776,
+          "sha256": "c5076b20ab44bf9421ced5b5c96fdad2283c94984d275441fbf4783d0fc7322e",
+          "kind": "model-weights"
+        },
+        {
+          "id": "mach-boom-voices-NbpkqMVS3CJeq2j8-safetensors",
+          "target": "models/mach-boom/01860b06bdf8498761255ad1c64b99980b96486d/voices/NbpkqMVS3CJeq2j8.safetensors",
+          "url": "https://huggingface.co/SyzygyResearch/Mach-Boom/resolve/01860b06bdf8498761255ad1c64b99980b96486d/voices/NbpkqMVS3CJeq2j8.safetensors",
+          "bytes": 256136,
+          "sha256": "97c7f8c253413574406ab80dd23f49c3ebb2517163b00a9bf86b9c4cf43e7e23",
+          "kind": "voice"
+        },
+        {
+          "id": "mach-boom-pyodide-pyodide-mjs",
+          "target": "runtimes/mach-boom/pyodide-0.29.3/pyodide.mjs",
+          "url": "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.mjs",
+          "bytes": 17616,
+          "sha256": "23213d27e9dacbda6f25f955fb38dabfc40ada082c04ee253047ea5dddcaa3b5",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-pyodide-pyodide-asm-js",
+          "target": "runtimes/mach-boom/pyodide-0.29.3/pyodide.asm.js",
+          "url": "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.asm.js",
+          "bytes": 1074322,
+          "sha256": "1263f02b5b26099b96112378156f242dd98b39a8201ba7765e5fe3d455c5ce91",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-pyodide-pyodide-asm-wasm",
+          "target": "runtimes/mach-boom/pyodide-0.29.3/pyodide.asm.wasm",
+          "url": "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.asm.wasm",
+          "bytes": 8647684,
+          "sha256": "e2f4ee75b325e35eb31bfb8c613d4dd5098f5502c156a97847686875b5025480",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-pyodide-python_stdlib-zip",
+          "target": "runtimes/mach-boom/pyodide-0.29.3/python_stdlib.zip",
+          "url": "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/python_stdlib.zip",
+          "bytes": 2423989,
+          "sha256": "4298b6ee445cb724c3973437da47789752b9e6ff4e26619026b283ec801fc46b",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-pyodide-pyodide-lock-json",
+          "target": "runtimes/mach-boom/pyodide-0.29.3/pyodide-lock.json",
+          "url": "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide-lock.json",
+          "bytes": 120010,
+          "sha256": "3256ffc76388de0e37f4b34d42ab484268d1afc675179ff97b2a5bb14f84ccac",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-pyodide-numpy-2-2-5-cp313-cp313-pyodide_2025_0_wasm32-whl",
+          "target": "runtimes/mach-boom/pyodide-0.29.3/numpy-2.2.5-cp313-cp313-pyodide_2025_0_wasm32.whl",
+          "url": "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/numpy-2.2.5-cp313-cp313-pyodide_2025_0_wasm32.whl",
+          "bytes": 3103966,
+          "sha256": "6eaab6a7bb658d71ebe702911a3deab715323642462eb41b65565ca6a7cc23f1",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-wasm-kernels",
+          "target": "runtimes/mach-boom/tmk-wasm-v1.so",
+          "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/mach-boom-wasm-v1/tmk-wasm-v1.so",
+          "bytes": 21841,
+          "sha256": "2e8da30890c335472b6de243eae23147a328d8a90c02930f180afbcb50ea1cf0",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "mach-boom-pyodide-license",
+          "target": "licenses/mach-boom/pyodide-LICENSE",
+          "url": "https://raw.githubusercontent.com/pyodide/pyodide/0.29.3/LICENSE",
+          "bytes": 16725,
+          "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+          "kind": "license"
+        },
+        {
+          "id": "mach-boom-python-license",
+          "target": "licenses/mach-boom/python-LICENSE",
+          "url": "https://raw.githubusercontent.com/python/cpython/v3.13.2/LICENSE",
+          "bytes": 13809,
+          "sha256": "78b12c3a81360b357002334f0e70ea0e92eebf7a9b358805c03c48484945f3bb",
+          "kind": "license"
+        },
+        {
+          "id": "mach-boom-numpy-license",
+          "target": "licenses/mach-boom/numpy-LICENSE",
+          "url": "https://raw.githubusercontent.com/numpy/numpy/v2.2.5/LICENSE.txt",
+          "bytes": 1543,
+          "sha256": "01fb016849aa427edb1bbbbd55f91c26ca6cadb32a5b20e7f000655dd05b0760",
+          "kind": "license"
+        }
+      ],
+      "license": {
+        "model": "Apache-2.0",
+        "runtime": "MIT / Apache-2.0 / MPL-2.0 / PSF / BSD-3-Clause; component notices apply",
+        "requiresAcceptance": false
+      },
+      "backends": [
+        "cpu"
+      ],
+      "support": {
+        "voiceCount": 4,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Four named voices bundled upstream with this English checkpoint; Zoey staged for the benchmark",
+        "sources": [
+          "https://huggingface.co/SyzygyResearch/Mach-Boom/blob/01860b06bdf8498761255ad1c64b99980b96486d/README.md",
+          "https://huggingface.co/SyzygyResearch/Mach-Boom/blob/01860b06bdf8498761255ad1c64b99980b96486d/voices/voices.jsonl"
+        ],
+        "notes": "Zoey, Juniper, Everly and Harper are supplied upstream. Additional compatible Phonon voices are not counted here. Only Zoey in English is measured. Browser port uses CPU WebAssembly, not native x86 AMX/AVX."
+      }
+    },
+    "pocket-tts-100m-english-int8": {
+      "displayName": "Pocket TTS 100M English (INT8/FP32)",
+      "modelRevision": "58a6d00cf13d239b6748cb0769f35c580a8f606c",
+      "runtime": {
+        "package": "onnxruntime-web-pocket",
+        "version": "1.31.1",
+        "license": "MIT ONNX Runtime Web; Apache-2.0 community frontend and Transformers.js; component notices apply",
+        "files": [
+          {
+            "path": "dist/ort.wasm.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.31.1/ort.wasm.min.mjs",
+            "bytes": 53725,
+            "sha256": "c21d9c326d453a4a61398270c804d5979e118540597cb0c07f7b3d64e6098234",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1"
+          },
+          {
+            "path": "dist/ort.webgpu.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.31.1/ort.webgpu.min.mjs",
+            "bytes": 70742,
+            "sha256": "329cd956772397a1aedd668e911195d39afefb182f6fc14aafa4f08ac8d8f379",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.mjs",
+            "target": "runtimes/onnxruntime-web/1.31.1/ort-wasm-simd-threaded.mjs",
+            "bytes": 24738,
+            "sha256": "30ed0b5cd1182ede931fea448afb567d4dc705ec957af09f108a2be5f770dac3",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.wasm",
+            "target": "runtimes/onnxruntime-web/1.31.1/ort-wasm-simd-threaded.wasm",
+            "bytes": 14848852,
+            "sha256": "4b884c203b0fa48d057be3332c65513ff85aa3c5bddd6946acc0fab7ecda001d",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.mjs",
+            "target": "runtimes/onnxruntime-web/1.31.1/ort-wasm-simd-threaded.asyncify.mjs",
+            "bytes": 53457,
+            "sha256": "59cf781530e1a16df2a291d78798e3ec1152467edaec402d6f9599d85047c302",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.wasm",
+            "target": "runtimes/onnxruntime-web/1.31.1/ort-wasm-simd-threaded.asyncify.wasm",
+            "bytes": 28747738,
+            "sha256": "ca319e9539cd0f1e291cf56074760121eaf39650f5dbf84b6e52c07f4b2944ec",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1"
+          },
+          {
+            "path": "LICENSE",
+            "target": "licenses/onnxruntime-web-1.31.1/LICENSE",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/6af1a932e2286d5c58166085d24c68783033edee/LICENSE",
+            "bytes": 1073,
+            "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1",
+            "kind": "license"
+          },
+          {
+            "path": "ThirdPartyNotices.txt",
+            "target": "licenses/onnxruntime-web-1.31.1/ThirdPartyNotices.txt",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/6af1a932e2286d5c58166085d24c68783033edee/ThirdPartyNotices.txt",
+            "bytes": 338088,
+            "sha256": "143764b952fdb1a7c69ce653bfba74a7744d6a8a573bfb73e235fba356c83de3",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1",
+            "kind": "license"
+          },
+          {
+            "package": "@huggingface/transformers",
+            "version": "3.5.1",
+            "path": "dist/transformers.min.js",
+            "target": "runtimes/transformers/3.5.1/transformers.min.js",
+            "bytes": 849451,
+            "sha256": "79fad8c1c2fd165bf1e77ace20ce023fab4dc13b6621f0e586c9b8c59c4d09d8"
+          },
+          {
+            "package": "@huggingface/transformers",
+            "version": "3.5.1",
+            "path": "LICENSE",
+            "target": "licenses/transformers-3.5.1/LICENSE",
+            "bytes": 11358,
+            "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "pocket-tts-flow_lm_flow_int8-onnx",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/flow_lm_flow_int8.onnx",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/flow_lm_flow_int8.onnx",
+          "bytes": 9962530,
+          "sha256": "3dd781ee5abee9e195320bf0106bebd6372a852b3b36352524ee78b40554635d",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pocket-tts-flow_lm_main_int8-onnx",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/flow_lm_main_int8.onnx",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/flow_lm_main_int8.onnx",
+          "bytes": 76341079,
+          "sha256": "f9bd8106b79a0192c1c43399ab938fb24900a95c1c599870d75a884e99000116",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pocket-tts-mimi_decoder_int8-onnx",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/mimi_decoder_int8.onnx",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/mimi_decoder_int8.onnx",
+          "bytes": 22684077,
+          "sha256": "3630450a3297a101792a6ac66619ebc70ab916b265e6220c2afaef8b1673f925",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pocket-tts-mimi_encoder_int8-onnx",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/mimi_encoder_int8.onnx",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/mimi_encoder_int8.onnx",
+          "bytes": 20779616,
+          "sha256": "abb46f1ad0b83c3840fe38c3652ab0eda7d1d97a63f1953bbbff5d04d8f4c855",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pocket-tts-text_conditioner_int8-onnx",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/text_conditioner_int8.onnx",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/text_conditioner_int8.onnx",
+          "bytes": 16388384,
+          "sha256": "24c0642bff11a4e1435c004d0c2aa6c68e093fadfa35f0f0dba849ac67f25ac3",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pocket-tts-bundle-json",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bundle.json",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bundle.json",
+          "bytes": 24381,
+          "sha256": "bab643150f437f37df080a710520ff39ed9ebd9a339f8ebdc739f7eddfc28b3f",
+          "kind": "model-support"
+        },
+        {
+          "id": "pocket-tts-bos_before_voice-npy",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bos_before_voice.npy",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bos_before_voice.npy",
+          "bytes": 4224,
+          "sha256": "f46edf4f7007b7ba4ea58831f49d003e59e167b4641c44bb3addfe9231a780b1",
+          "kind": "model-support"
+        },
+        {
+          "id": "pocket-tts-tokenizer-model",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/tokenizer.model",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/tokenizer.model",
+          "bytes": 59339,
+          "sha256": "d461765ae179566678c93091c5fa6f2984c31bbe990bf1aa62d92c64d91bc3f6",
+          "kind": "model-support"
+        },
+        {
+          "id": "pocket-tts-voices-bin",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/voices.bin",
+          "url": "https://huggingface.co/spaces/KevinAHM/pocket-tts-web/resolve/d0c0c79b7712256a32d691c67f20b8ae2e020d00/onnx/english_2026-04/voices.bin",
+          "bytes": 52401928,
+          "sha256": "044364b05514d99f72c63830b0675951137c36f836e1e71bb2546e59b8c6d625",
+          "kind": "voice"
+        },
+        {
+          "id": "pocket-tts-code-license",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/CODE-LICENSE",
+          "url": "https://huggingface.co/spaces/KevinAHM/pocket-tts-web/resolve/d0c0c79b7712256a32d691c67f20b8ae2e020d00/CODE-LICENSE",
+          "bytes": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "kind": "license"
+        },
+        {
+          "id": "pocket-tts-model-readme-md",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/MODEL-README.md",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/README.md",
+          "bytes": 8057,
+          "sha256": "05ed0a614d1b512918aa02062624407040680c9a8e8fd6f437e4b59519f0bbff",
+          "kind": "model-terms"
+        },
+        {
+          "id": "pocket-tts-readme-md",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/README.md",
+          "url": "https://huggingface.co/spaces/KevinAHM/pocket-tts-web/resolve/d0c0c79b7712256a32d691c67f20b8ae2e020d00/README.md",
+          "bytes": 2306,
+          "sha256": "cffacb28e5a913bdfd88fb4f52f3636f8eb09f4532a6d5cace76aee8b61b617d",
+          "kind": "model-support"
+        },
+        {
+          "id": "pocket-tts-upstream-worker",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/upstream-inference-worker.js",
+          "url": "https://huggingface.co/spaces/KevinAHM/pocket-tts-web/resolve/d0c0c79b7712256a32d691c67f20b8ae2e020d00/inference-worker.js",
+          "bytes": 33984,
+          "sha256": "dace0a022e17dffcf60fdb7b86e49facf093f709b352fb306c1d6641ae0f5366",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "pocket-tts-browser-tokenizer-json",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/tokenizer.json",
+          "sourcePath": "web/pocket/tokenizer.json",
+          "bytes": 116539,
+          "sha256": "5a2d7403d2e64e23fa3e7624da48fa222fa64f43257a1baad94155deeb308876",
+          "kind": "model-support"
+        }
+      ],
+      "license": {
+        "model": "CC-BY-4.0 + upstream prohibited-use conditions",
+        "runtime": "Apache-2.0 frontend/Transformers.js / MIT ONNX Runtime Web",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "cpu",
+        "webgpu"
+      ],
+      "support": {
+        "voiceCount": 8,
+        "bundledVoiceCount": 8,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Selected english_2026-04 checkpoint with eight bundled preset voices; not the broader multilingual family",
+        "sources": [
+          "https://huggingface.co/KevinAHM/pocket-tts-onnx/tree/58a6d00cf13d239b6748cb0769f35c580a8f606c",
+          "https://huggingface.co/spaces/KevinAHM/pocket-tts-web/tree/d0c0c79b7712256a32d691c67f20b8ae2e020d00",
+          "https://huggingface.co/KevinAHM/pocket-tts-onnx/blob/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bundle.json"
+        ],
+        "notes": "Alba, Azelma, Cosette, Eponine, Fantine, Javert, Jean and Marius are bundled; only alba in English is measured. This is the original approximately 100M Pocket family, not the newer 18.2M model. A pinned community ONNX/browser implementation is used."
+      }
     }
   }
 }
