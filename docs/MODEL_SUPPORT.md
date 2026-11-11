@@ -151,3 +151,23 @@ Supported languages: **18** (en, ar, da, de, el, fi, fr, he, it, ja, ko, nl, pl,
 18 spoken languages (English has US and UK locales). Female/male prompt controls do not establish a count of fixed voices. Benchmark selects American English female. Weight size includes complete pinned GGUF files, including modality components not exercised by TTS.
 
 [Official checkpoint](https://huggingface.co/LiquidAI/LFM3-Omni-2B) · [Configuration](LIQUID_LFM3.md).
+
+<a id="lfm3-audio-2b-fusor-q7-cpu"></a>
+
+## LFM3-Audio-2B (Fusor q7 / CPU 6 threads)
+
+Supported spoken languages: **18**. Fixed voice count: **unknown**. Male/female style controls are not fixed voice IDs. Only American English female is tested. The pinned q7 bundle runs on six CPU threads; no other language, voice or backend is implied by this measurement.
+
+18 spoken languages; English has US and UK locales. Male/female prompt controls do not establish a fixed-voice count. Only American English female is tested. Six-thread Fusor WASM q7 configuration; different weights/runtime/sampling from the official WebGPU GGUF configuration.
+
+[Bundle manifest](https://huggingface.co/fusorlabs/lfm3-audio-2b-web/blob/e273326dda2bb26870549ed7b39324ae086e5fe7/manifest.json) · [Runtime and configuration](LIQUID_LFM3_CPU.md).
+
+<a id="lfm3-omni-2b-fusor-q7-cpu"></a>
+
+## LFM3-Omni-2B (Fusor q7 / CPU 6 threads)
+
+Supported spoken languages: **18**. Fixed voice count: **unknown**. Male/female style controls are not fixed voice IDs. Only American English female is tested. The pinned q7 bundle runs on six CPU threads; no other language, voice or backend is implied by this measurement.
+
+18 spoken languages; English has US and UK locales. Male/female prompt controls do not establish a fixed-voice count. Only American English female is tested. Six-thread Fusor WASM q7 configuration; different weights/runtime/sampling from the official WebGPU GGUF configuration.
+
+[Bundle manifest](https://huggingface.co/fusorlabs/lfm3-omni-2b-web/blob/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/manifest.json) · [Runtime and configuration](LIQUID_LFM3_CPU.md).

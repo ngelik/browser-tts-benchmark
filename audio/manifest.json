@@ -384,6 +384,62 @@
       }
     },
     {
+      "resultId": "2026-11-11t07-33-16-967z-lfm3-audio-2b-gguf-webgpu-warm-b42e4073",
+      "model": "lfm3-audio-2b-gguf",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "American English female (prompted style; no fixed voice identifier)",
+      "language": "en",
+      "attribution": "LFM3-Audio-2B by Liquid AI; official GGUF WebGPU runtime. American English female prompted style. LFM Open License v1.0; noncommercial benchmark evaluation.",
+      "modelTerms": "LFM Open License v1.0 ($10M revenue threshold)",
+      "sourceUrls": [
+        "https://huggingface.co/LiquidAI/LFM3-Audio-2B",
+        "https://www.liquid.ai/blog/lfm3"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-11t07-33-16-967z-lfm3-audio-2b-gguf-webgpu-warm-b42e4073--lfm3-audio-2b-gguf--webgpu.wav",
+        "sha256": "020520254f0f7db784cb6a07aa3c7fdab46c1cd2912ee1122c9e5979b6013893",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-11t07-33-16-967z-lfm3-audio-2b-gguf-webgpu-warm-b42e4073--lfm3-audio-2b-gguf--webgpu-full.wav",
+        "sha256": "75412d0501803058be9680bd7b23a6883b569592c51dab7e609ecf3bae5ff909",
+        "bytes": 63436844
+      }
+    },
+    {
+      "resultId": "2026-11-11t08-11-31-864z-lfm3-omni-2b-gguf-webgpu-warm-0e07e4f7",
+      "model": "lfm3-omni-2b-gguf",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "American English female (prompted style; no fixed voice identifier)",
+      "language": "en",
+      "attribution": "LFM3-Omni-2B by Liquid AI; official GGUF WebGPU runtime. American English female prompted style. LFM Open License v1.0; noncommercial benchmark evaluation.",
+      "modelTerms": "LFM Open License v1.0 ($10M revenue threshold)",
+      "sourceUrls": [
+        "https://huggingface.co/LiquidAI/LFM3-Omni-2B",
+        "https://www.liquid.ai/blog/lfm3"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-11t08-11-31-864z-lfm3-omni-2b-gguf-webgpu-warm-0e07e4f7--lfm3-omni-2b-gguf--webgpu.wav",
+        "sha256": "4b62cb708e05c89d3ae5ea670f9020a7653f080539fb0f03a7a09656d5ff5314",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-11t08-11-31-864z-lfm3-omni-2b-gguf-webgpu-warm-0e07e4f7--lfm3-omni-2b-gguf--webgpu-full.wav",
+        "sha256": "47bf0c2426f8a03d24da25e053d8e653dce80162beb8d886c3d8310deae2d226",
+        "bytes": 65306924
+      }
+    },
+    {
       "resultId": "2026-11-10t19-31-08-081z-mms-english-cpu-warm-b81daec2",
       "model": "mms-english",
       "backend": "cpu",

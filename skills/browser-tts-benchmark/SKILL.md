@@ -111,13 +111,18 @@ meaningful progress. If interrupted or a runtime fails, inspect the failure and
 fix its cause. Keep failed evidence. Do not repeatedly rerun an unchanged failure
 or launch a second benchmark while the first still owns Chrome.
 
+If the adapter's final receipt violates the schema, preserve `invalid-result.json`
+and the `error.json` diagnostic with phase `result-validation` under `runs/`.
+Fix the reporting contract before rerunning; do not submit or hand-edit the invalid
+candidate into a publishable score.
+
 If Chrome exits before the canonical fixture loads, keep the CLI's
 `runs/<id>/error.json` browser-setup diagnostic and distinguish host permissions
 from a model/backend incompatibility. Retry only in an already approved Chrome
 execution context; do not disable Chrome's sandbox or use a personal profile.
 
 Inspect the final JSON and locally saved WAV. Check RIFF/sample rate/sample count,
-file digest, all source chunks and finite/nonempty PCM. These checks do not prove
+file digest, all source chunks and finite/nonempty PCM. Inspect source-span output lengths as well: unusually short spans must be disclosed with the result and full recording, even when the runtime returns a normal stop. Preserve all repetitions; do not rerun merely to obtain a better-sounding recording. PCM checks and stop tokens do not establish transcript fidelity. These checks do not prove
 pronunciation or quality; listen when audio playback is available and label any
 listening review not performed. Report generation time, output duration/RTF and
 backend proof; include other metrics only when actually measured. Never infer

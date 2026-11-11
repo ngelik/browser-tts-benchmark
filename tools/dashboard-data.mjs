@@ -3,6 +3,7 @@ import { getAssetLock } from '../lib/catalog.mjs';
 import { readResult, resultPaths, sha256, median } from './results.mjs';
 import { verifySource } from './provenance.mjs';
 import { checkAudio } from './audio.mjs';
+import { outputLengthNotes } from './output-notes.mjs';
 
 const BACKENDS = ['cpu', 'webgpu'];
 const ENVIRONMENT_COHORT_FIELDS = ['machineLabel', 'os', 'arch', 'cpu', 'logicalCores', 'ramBytes', 'chromeVersion', 'headless'];
@@ -96,8 +97,10 @@ function createWarmMetric(candidate) {
   const firstPcm = trials.map(trial => trial.metrics?.firstPcmMs).filter(finite);
   const rtfs = trials.map(trial => trial.generationMs / (trial.samples / trial.sampleRate * 1000));
   const durations = trials.map(trial => trial.samples / trial.sampleRate);
+  const outputNotes = outputLengthNotes(cell);
   return {
     ...base,
+    ...(outputNotes ? { outputNotes } : {}),
     medianSeconds: median(generationMs) / 1000,
     minSeconds: Math.min(...generationMs) / 1000,
     maxSeconds: Math.max(...generationMs) / 1000,

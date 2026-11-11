@@ -4,10 +4,29 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { resultPaths, readResult, summaries } from './results.mjs';
 import { getAssetLock } from '../lib/catalog.mjs';
+import { outputLengthNotes } from './output-notes.mjs';
 export const START='<!-- benchmark-results:start -->', END='<!-- benchmark-results:end -->';
 const md=x=>String(x).replaceAll('|','\\|').replaceAll('\n',' ');
 const envKey=d=>JSON.stringify(['machineLabel','os','arch','cpu','logicalCores','ramBytes','chromeVersion'].map(k=>d.environment[k]));
 const report=d=>`results/${d.id}/summary.md`;
+
+function outputLengthReferenceBlock(groups, models){
+ const observations=[];
+ for(const row of groups.values())for(const backend of ['cpu','webgpu']){
+  const selected=row[backend];if(!selected)continue;
+  const cell=selected.d.cells.find(value=>value.model===row.model&&value.backendRequested===backend);
+  const notes=outputLengthNotes(cell);if(!notes)continue;
+  if(notes.scored)observations.push({row,backend,kind:'Scored output',note:notes.scored.text,result:selected.d});
+  if(notes.warmup)observations.push({row,backend,kind:'Excluded warm-up',note:notes.warmup.text,result:selected.d});
+ }
+ if(!observations.length)return '';
+ let out='### Output-length observations\n\nThese notes report the shortest measured PCM output per source chunk. A sub-second output alone does not establish truncation or transcript fidelity. Warm-up audio is not archived. Any published clip belongs to the scored trial listed by `trialIndex` in the audio manifest and may not match the trial with the shortest source chunk. Excluded warm-up observations are listed separately from scored trials.\n\n| Model | Backend | Evidence | Observation | Receipt |\n|---|---|---|---|---|\n';
+ for(const item of observations){
+  const name=models[item.row.model]?.displayName??item.row.model;
+  out+=`| ${md(name)} | ${item.backend==='cpu'?'CPU':'WebGPU'} | ${item.kind} | ${md(item.note)} | [${item.result.id}](${report(item.result)}) |\n`;
+ }
+ return out+'\n';
+}
 
 function ramCohorts(results){
  const cohorts=new Map();
@@ -75,6 +94,7 @@ export function referenceBlock(results, models, comparisons=[], audio=[], campai
   const modelSize=(id,pair)=>{const weights=models[id]?.assets?.filter(a=>a.kind==='model-weights')??[];const measured=pair;if(!weights.length||!measured.length||measured.some(v=>weights.some(w=>!v.d.assets.some(a=>a.sha256===w.sha256&&a.bytes===w.bytes))))return 'Unknown';return (weights.reduce((n,a)=>n+a.bytes,0)/1e6).toFixed(2);};
   for(const row of [...groups.values()].sort((a,b)=>a.environment.localeCompare(b.environment)||a.model.localeCompare(b.model))){const pair=[row.cpu,row.webgpu].filter(Boolean);const hist=pair.some(v=>v.d.origin!=='native');const scope=hist?'Historical; distinct timing protocols':pair.length===2&&pair[0].d.source.manifestSha256===pair[1].d.source.manifestSha256?'Native; matched source':'Native; separate configuration';out+=`| ${md(models[row.model]?.displayName??row.model)} | ${row.environment} | ${modelSize(row.model,pair)} | ${score(row.cpu)} | ${score(row.webgpu)} | ${scope} |\n`;}
   out+='\nEach measured warm cell uses five scored full 20,000-character articles. Missing values are not zero. Open receipts for voice, precision, timing boundaries, power conditions and observed min–max.\n\n';
+  out+=outputLengthReferenceBlock(groups,models);
   out+='MB = 1,000,000 bytes. Model size counts pinned core model-weight files (including the vocoder), verified against the displayed run receipts; it excludes runtime, G2P, voice/config files and transfer overhead.\n\n';
   out+=ramReferenceBlock(ordered,models);
   out+='### Voice and language support\n\nCounts describe the pinned model/catalog, not the number of voices or languages benchmarked. All current measurements use English and one selected voice per model. Other checkpoints in a family are excluded.\n\n| Model | Supported voices | Bundled voices | Supported languages | Scope / source |\n|---|---:|---:|---|---|\n';

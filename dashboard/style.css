@@ -456,6 +456,30 @@ td:last-child {
   border-color:#dfd8c8;
   background:#f2eee3
 }
+.evidence-tag.output-warning {
+  appearance:none;
+  color:#8b451d;
+  border-color:#d8a485;
+  background:#fff0e7;
+  text-transform:none;
+  cursor:pointer
+}
+.evidence-tag.output-warning:focus-visible {
+  outline:2px solid #8b451d;
+  outline-offset:2px
+}
+.evidence-tag.output-warmup {
+  appearance:none;
+  color:#665a38;
+  border-color:#c8bb98;
+  background:#f6f1e3;
+  text-transform:none;
+  cursor:pointer
+}
+.evidence-tag.output-warmup:focus-visible {
+  outline:2px solid #665a38;
+  outline-offset:2px
+}
 .value {
   font:12px var(--mono);
   font-variant-numeric:tabular-nums;
@@ -941,6 +965,15 @@ dialog h3 {
   font-size:11px;
   color:var(--muted);
   line-height:1.7
+}
+.detail-note.output-warning-text {
+  color:#743b1d;
+  border-left:3px solid #d18a5c;
+  padding-left:9px
+}
+.detail-note.output-warmup-text {
+  border-left:3px solid #b8a77d;
+  padding-left:9px
 }
 .detail-grid {
   display:grid;
