@@ -11,7 +11,30 @@ All inference happens in the browser. A local Node process serves static assets
 and controls Chrome; it never performs speech synthesis. Results are not uploaded
 automatically. Model assets are pinned, verified and kept outside Git.
 
-[▶ Listen to the benchmark samples](https://ngelik.github.io/browser-tts-benchmark/audio/) · [Run a benchmark](#run-a-benchmark) · [Request a model evaluation](#request-a-model-evaluation)
+[**Explore the interactive dashboard →**](https://ngelik.github.io/browser-tts-benchmark/) · [▶ Listen to the benchmark samples](https://ngelik.github.io/browser-tts-benchmark/audio/) · [Run a benchmark](#run-a-benchmark) · [Request a model evaluation](#request-a-model-evaluation)
+
+## Interactive dashboard
+
+[**Open the benchmark dashboard**](https://ngelik.github.io/browser-tts-benchmark/)
+for searchable, sortable results, CPU/GPU charts, average Chrome RAM, model
+weights and licenses, and inline audio playback. Open any model for memory peaks,
+voice/language support, exact source receipts and recording attribution.
+Historical protocols and native source cohorts remain distinct; this is an
+explorer of published evidence, not a cross-cohort quality ranking.
+
+The site is static and hosted on GitHub Pages. Its data is built from validated
+result receipts, the pinned model catalog and the verified audio manifest.
+No inference, analytics or external font services run on the dashboard. Audio
+loads when you press play. Existing `/audio/` sample links continue to work.
+
+```sh
+npm run dashboard:build
+npm run dashboard:preview
+# Open the loopback URL printed by the preview server.
+```
+
+See [dashboard development and publication](docs/DASHBOARD.md) for the data
+selection rules, local checks and deployment workflow.
 
 ## Reference results
 

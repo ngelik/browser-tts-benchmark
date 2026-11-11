@@ -26,7 +26,10 @@
     "reference": "node tools/reference.mjs",
     "audio": "node tools/audio.mjs",
     "listen": "node tools/listen.mjs",
-    "listen:build": "node tools/build-listening-site.mjs"
+    "listen:build": "node tools/build-listening-site.mjs",
+    "dashboard:build": "node tools/build-listening-site.mjs",
+    "dashboard:preview": "node tools/serve-dashboard.mjs",
+    "dashboard:check": "node tools/check-dashboard.mjs"
   },
   "dependencies": {
     "@huggingface/transformers": "3.5.1",

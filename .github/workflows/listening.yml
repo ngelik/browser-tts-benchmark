@@ -1,9 +1,11 @@
-name: Publish listening room
+name: Publish benchmark dashboard
 on:
   push:
     branches: [main]
     paths:
       - 'audio/**'
+      - 'dashboard/**'
+      - 'results/**'
       - 'tools/**'
       - 'lib/**'
       - 'assets.lock.json'
@@ -42,6 +44,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy listening room
+      - name: Deploy benchmark dashboard
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
