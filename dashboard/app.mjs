@@ -74,7 +74,7 @@ function renderCharts(models) {
 function render() {
   if (!state.data) return;
   const models = visibleModels();
-  $('#visible-count').textContent = `${models.length} of ${state.data.models.length} models`;
+  $('#visible-count').textContent = `${models.length} of ${state.data.models.length} configurations`;
   $('#table-view').hidden = state.view !== 'table' || models.length === 0;
   $('#charts-view').hidden = state.view !== 'charts' || models.length === 0;
   $('#no-results').hidden = models.length > 0;
@@ -159,6 +159,12 @@ try {
   $('#model-count').textContent = state.data.models.length;
   $('#recording-count').textContent = state.data.models.reduce((sum, m) => sum + m.audio.length, 0);
   $('#updated').textContent = `Latest receipt ${state.data.updatedAt.slice(0, 10)} UTC`;
+  const params = new URL(location.href).searchParams;
+  $('#search').value = params.get('q') ?? '';
+  if (['table', 'charts'].includes(params.get('view'))) state.view = params.get('view');
+  if (['generation', 'memory', 'size'].includes(params.get('metric'))) state.metric = params.get('metric');
+  $$('[data-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.view === state.view)));
+  $$('[data-metric]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.metric === state.metric)));
   render();
-  const requestedModel = new URL(location.href).searchParams.get('model'); if (requestedModel) openDetails(requestedModel);
+  const requestedModel = params.get('model'); if (requestedModel) openDetails(requestedModel);
 } catch (error) { $('#load-error').hidden = false; $('#table-view').hidden = true; $('#updated').textContent = 'Results unavailable'; console.error('Dashboard failed:', error); }

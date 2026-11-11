@@ -9,7 +9,7 @@ The CPU configurations use the community [Fusor browser implementation](https://
 
 The [Audio](https://huggingface.co/fusorlabs/lfm3-audio-2b-web/blob/e273326dda2bb26870549ed7b39324ae086e5fe7/manifest.json) and [Omni](https://huggingface.co/fusorlabs/lfm3-omni-2b-web/blob/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/manifest.json) manifests name those base checkpoints. These are q7 bundles, with upstream exceptions such as FP32 subsampling weights; “q7” does not mean every value is seven-bit.
 
-Prebuilt WASM and JavaScript are fetched from the [pinned browser Space](https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/tree/572fc51e58808d3536bc8a8bea9d74a11b4b88bc). Its Fusor source submodule is pinned to `67bbe1ebeb140f11262f15996b79825bbe1cf461`. The CLI verifies SHA-256 and byte counts; the official loader additionally verifies each model part's BLAKE3 digest. No model binaries or neural runtime are committed here.
+Prebuilt WASM and JavaScript are fetched from the [pinned browser Space](https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/tree/572fc51e58808d3536bc8a8bea9d74a11b4b88bc). Its Fusor source submodule is pinned to `67bbe1ebeb140f11262f15996b79825bbe1cf461`. The CLI verifies SHA-256 and byte counts; the pinned neural runtime additionally verifies each model part's BLAKE3 digest through both loading paths. No model binaries or neural runtime are committed here.
 
 ## Loading policy and observed setup failures
 
