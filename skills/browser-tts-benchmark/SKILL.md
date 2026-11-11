@@ -162,7 +162,13 @@ out of Git. Authorized recordings follow the audio workflow below. Read `CONTRIB
 SVG/table are derived from JSON; fix the generator or evidence instead of hand
 editing numbers. Use `npm run compare -- --out comparisons/NAME ...` only for
 compatible native input bundles; never combine historical CPU/GPU protocols into
-speedup ratios or pool different machines. Read all run-specific notes.
+speedup ratios or pool different machines. Read all run-specific notes. For a multi-scenario campaign, generate an overview
+with `node tools/campaign-report.mjs --out reports/NAME results/RUN/result.json ...`,
+include all attempted cells, and run `node tools/campaign-report.mjs --check-all
+reports`. See `docs/RESULTS.md` for the four report artifacts. Refresh
+`npm run reference` so the table/chart appears in the same Reference results
+section, and include it in the result PR. Keep partial campaigns visibly incomplete;
+never infer a missing score from another scenario.
 
 When audio publication is authorized, use `npm run audio -- add --result
 results/RUN_ID/result.json --wav PATH --model MODEL --backend BACKEND`, then

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "results": [
+    {
+      "id": "2026-11-10t15-16-09-599z-kitten-nano-0.8-cpu-warm-624ea636",
+      "sha256": "1f15f6f293bb7b4a52841e663b085184f7419efc1abe86e1f017426dcb1ef1d8"
+    },
+    {
+      "id": "2026-11-10t16-32-02-384z-sano-amy-webgpu-warm-24afcdc7",
+      "sha256": "071f72738768ac62c09eefe8c0085410c004cc47b45cc412bfbf0f34e3eb598f"
+    },
+    {
+      "id": "2026-11-10t16-32-03-827z-sano-amy-cpu-warm-0a4ec2a0",
+      "sha256": "d08d9ecde430b56103185b4dd3e613d9557eac9db4be0f4c7910d3b9a0724091"
+    },
+    {
+      "id": "2026-11-10t17-46-17-830z-mms-english-webgpu-warm-3eb8b06a",
+      "sha256": "b28311ccf12f40ef1c9ec055db5b77b59dd8355c9b07ec5e2172b8b561900656"
+    },
+    {
+      "id": "2026-11-10t17-52-21-838z-inflect-micro-v2-cpu-warm-c57a83a6",
+      "sha256": "a50bd024e2914bee8f947fa5dd315660e614e1bb8033fab006d3a894cf5be5ad"
+    },
+    {
+      "id": "2026-11-10t19-24-19-116z-kitten-nano-0.8-webgpu-warm-cef85ae4",
+      "sha256": "80281aba29e57f240e94d467f2fecb1fc3b714a41fce28a961090aa24cb03ac0"
+    },
+    {
+      "id": "2026-11-10t19-31-08-081z-mms-english-cpu-warm-b81daec2",
+      "sha256": "42425ea0a3963fe036c51176cec1f3b93936170bcc2564430b3f1106825c24b9"
+    },
+    {
+      "id": "2026-11-10t22-06-51-166z-kokoro-82m-cpu-warm-a9cc8d21",
+      "sha256": "417696910317fe707083b8f1848bed16f93cf414e77266eef8736b5fb353b898"
+    },
+    {
+      "id": "2026-11-11t02-22-33-290z-kokoro-82m-webgpu-warm-58b6b9b7",
+      "sha256": "97f57aeaf9ece15890334bcebaa612cc0a4e5137f8c1c777efec9b436d978a84"
+    },
+    {
+      "id": "2026-11-11t02-50-06-191z-inflect-micro-v2-webgpu-warm-e21ef201",
+      "sha256": "4b4e45318471cde543217bdadf5fe2fab43410e62401d3cde501e5a51ed27f58"
+    },
+    {
+      "id": "2026-11-11t02-55-05-893z-inflect-micro-v2-webgpu-cached-51e2acf0",
+      "sha256": "a13f3f299ad37ff1ef3db5adc4b16972386d99bf243c121af9a101fcef7963a6"
+    },
+    {
+      "id": "2026-11-11t02-56-02-596z-kokoro-82m-webgpu-cached-b4638a41",
+      "sha256": "cb2c6776b0a1c728a3fb7241a835d72d669723765c809310549e18333bfb9ddd"
+    },
+    {
+      "id": "2026-11-11t03-00-52-961z-kokoro-82m-cpu-cached-9b2283f1",
+      "sha256": "53c546b0882cff4d99e21b7eb540aa8ace3e6467db7e3462860c519c574ff1d2"
+    },
+    {
+      "id": "2026-11-11t03-44-05-639z-mms-english-cpu-cached-446def8a",
+      "sha256": "7b0da46e74891457e3db369bd76fdd804f2454f5ca5e4d4c68ab2e64d05e3efd"
+    },
+    {
+      "id": "2026-11-11t04-10-31-407z-kitten-nano-0.8-webgpu-cached-25f950b4",
+      "sha256": "a5de8dba0473aba1aee89f4e9b68d915a623e8a450b21908f182ea99fc5fb2d7"
+    },
+    {
+      "id": "2026-11-11t04-11-48-039z-inflect-micro-v2-cpu-cached-d7106d59",
+      "sha256": "3f19a1e7963bc442018f247e89239a33bd784bf51a1167ce8f9c8a298307af1c"
+    },
+    {
+      "id": "2026-11-11t04-27-23-653z-mms-english-webgpu-cached-6aa1e983",
+      "sha256": "f33dc84c293d9c564a619ee85239074f5bc0cf469e8930e3112b2edb51d74fcb"
+    },
+    {
+      "id": "2026-11-11t04-28-31-035z-sano-amy-cpu-cached-c0371d1a",
+      "sha256": "4046378410b6664c85b60a7c753a7a5e797bcd8d6f813131b45f244cc520c347"
+    },
+    {
+      "id": "2026-11-11t04-41-18-742z-sano-amy-webgpu-cached-78dfb9fa",
+      "sha256": "885158cd88b9a66f430981ae8ca2cf938950b62e744a54a53f30499800e366f8"
+    },
+    {
+      "id": "2026-11-11t04-41-26-026z-kitten-nano-0.8-cpu-cached-5dc541fc",
+      "sha256": "af0cefc27c82471f2528141f27b32927dc4fdf39578cb9fd1bc41c83a292eecd"
+    }
+  ]
+}

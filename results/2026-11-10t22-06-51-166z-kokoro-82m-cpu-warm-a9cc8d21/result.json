@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-10t22-06-51-166z-kokoro-82m-cpu-warm-a9cc8d21",
+  "createdAt": "2026-11-11T02:22:32.580Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-warm-v1",
+    "scenario": "warm",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export.",
+    "warmupRuns": 1,
+    "repetitions": 5,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro (Apple M1 Pro, 16 GB)",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.40",
+    "gpu": null,
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "955a87683c0c899cc299161a7b8b127fb75617be",
+    "dirty": false,
+    "manifestSha256": "d692498775b06e716e111b7d122f5995ec8d8046febc2d2aebfd2c33a542379f"
+  },
+  "assets": [
+    {
+      "id": "runtime:kokoro-82m:@huggingface/transformers:dist/transformers.min.js",
+      "sha256": "79fad8c1c2fd165bf1e77ace20ce023fab4dc13b6621f0e586c9b8c59c4d09d8",
+      "bytes": 849451
+    },
+    {
+      "id": "runtime:kokoro-82m:@huggingface/transformers:dist/ort-wasm-simd-threaded.jsep.mjs",
+      "sha256": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9",
+      "bytes": 44484
+    },
+    {
+      "id": "runtime:kokoro-82m:@huggingface/transformers:dist/ort-wasm-simd-threaded.jsep.wasm",
+      "sha256": "c46655e8a94afc45338d4cb2b840475f88e5012d524509916e505079c00bfa39",
+      "bytes": 21596019
+    },
+    {
+      "id": "runtime:kokoro-82m:@huggingface/transformers:LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "id": "runtime:kokoro-82m:phonemizer:dist/phonemizer.js",
+      "sha256": "193481f474f7c1ea81df3195d18b45df8ef7254dbdccb3f193d60215c4897bec",
+      "bytes": 1322380
+    },
+    {
+      "id": "runtime:kokoro-82m:phonemizer:LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "id": "runtime:kokoro-82m:@huggingface/transformers/node_modules/onnxruntime-web:LICENSE",
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "bytes": 1073
+    },
+    {
+      "id": "runtime:kokoro-82m:@huggingface/transformers/node_modules/onnxruntime-web:ThirdPartyNotices.txt",
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+      "bytes": 326866
+    },
+    {
+      "id": "kokoro-82m-config.json",
+      "sha256": "df34b4f930b23447cd4dc410fabfb42eb3f24e803e6c3f97d618fb359380a36f",
+      "bytes": 44
+    },
+    {
+      "id": "kokoro-82m-tokenizer.json",
+      "sha256": "77a02c8e164413299b4b4c403b14f8e0e1c1b727db4d46a09d6327b861060a34",
+      "bytes": 3497
+    },
+    {
+      "id": "kokoro-82m-tokenizer_config.json",
+      "sha256": "be1cb066d6ef6b074b3f15e6a6dd21ac88ff3cdaedf325f0aaed686c70f75d20",
+      "bytes": 113
+    },
+    {
+      "id": "kokoro-82m-onnx-model.onnx",
+      "sha256": "8fbea51ea711f2af382e88c833d9e288c6dc82ce5e98421ea61c058ce21a34cb",
+      "bytes": 325532232
+    },
+    {
+      "id": "kokoro-82m-voices-af_heart.bin",
+      "sha256": "d583ccff3cdca2f7fae535cb998ac07e9fcb90f09737b9a41fa2734ec44a8f0b",
+      "bytes": 522240
+    },
+    {
+      "id": "kokoro-82m-espeak-license",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "bytes": 35147
+    }
+  ],
+  "cells": [
+    {
+      "model": "kokoro-82m",
+      "support": {
+        "voiceCount": 54,
+        "bundledVoiceCount": 1,
+        "languageCount": 8,
+        "languages": [
+          "en",
+          "es",
+          "fr",
+          "hi",
+          "it",
+          "ja",
+          "pt",
+          "zh"
+        ],
+        "scope": "Kokoro v1.0 model catalog; English browser runtime exercised",
+        "notes": "54 named preset voices across 8 languages (English has US/GB accents). The export also contains a legacy af.bin alias, not a distinct named catalog voice. Official JS 1.2.1 exposes 28 English voices; only af_heart is staged and tested.",
+        "sources": [
+          "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/VOICES.md"
+        ]
+      },
+      "backendRequested": "cpu",
+      "backendEffective": "cpu/wasm",
+      "status": "measured",
+      "reason": null,
+      "voice": "af_heart",
+      "precision": "FP32",
+      "settings": {
+        "threads": 1,
+        "speed": 1,
+        "sampleRate": 24000,
+        "runtime": "kokoro-js 1.2.1 / Transformers.js 3.5.1",
+        "frontend": "Official Kokoro eSpeak normalization; collapse source whitespace; expand syllabic l/n/m to schwa+consonant; strict 512-token limit; no truncation",
+        "noise": "Graph random noise; no public seed input",
+        "executionProviders": [
+          "wasm"
+        ]
+      },
+      "capability": {
+        "gpuDispatchVerified": null,
+        "description": "Explicit single-thread WASM provider."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 2550804.694999993,
+          "samples": 31258800,
+          "sampleRate": 24000,
+          "pcmSha256": "4c52386e7b2e4fc147864a15ef221f2aa0702b1a8e2b35b73e51efeeea900d00",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 29574.46500003338,
+            "firstSourceChunkCompletedMs": 29574.480000019073,
+            "audioSeconds": 1302.45,
+            "realTimeFactor": 1.958466501593146,
+            "minSamplesPerChunk": 266400,
+            "maxSamplesPerChunk": 418200
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 2549998.0799999833,
+          "samples": 31258800,
+          "sampleRate": 24000,
+          "pcmSha256": "4c52386e7b2e4fc147864a15ef221f2aa0702b1a8e2b35b73e51efeeea900d00",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 29368.214999973774,
+            "firstSourceChunkCompletedMs": 29368.219999969006,
+            "audioSeconds": 1302.45,
+            "realTimeFactor": 1.9578471956696866,
+            "minSamplesPerChunk": 266400,
+            "maxSamplesPerChunk": 418200
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 2549880.960000038,
+          "samples": 31258800,
+          "sampleRate": 24000,
+          "pcmSha256": "4c52386e7b2e4fc147864a15ef221f2aa0702b1a8e2b35b73e51efeeea900d00",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 29332.665000021458,
+            "firstSourceChunkCompletedMs": 29332.67500001192,
+            "audioSeconds": 1302.45,
+            "realTimeFactor": 1.9577572728319999,
+            "minSamplesPerChunk": 266400,
+            "maxSamplesPerChunk": 418200
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 2550491.4599999785,
+          "samples": 31258800,
+          "sampleRate": 24000,
+          "pcmSha256": "4c52386e7b2e4fc147864a15ef221f2aa0702b1a8e2b35b73e51efeeea900d00",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 29338.95499998331,
+            "firstSourceChunkCompletedMs": 29338.964999973774,
+            "audioSeconds": 1302.45,
+            "realTimeFactor": 1.9582260048370215,
+            "minSamplesPerChunk": 266400,
+            "maxSamplesPerChunk": 418200
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 2549951.050000012,
+          "samples": 31258800,
+          "sampleRate": 24000,
+          "pcmSha256": "4c52386e7b2e4fc147864a15ef221f2aa0702b1a8e2b35b73e51efeeea900d00",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 29340.77999997139,
+            "firstSourceChunkCompletedMs": 29340.78499996662,
+            "audioSeconds": 1302.45,
+            "realTimeFactor": 1.9578110867979668,
+            "minSamplesPerChunk": 266400,
+            "maxSamplesPerChunk": 418200
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 2550722.2599999905,
+          "samples": 31258800,
+          "sampleRate": 24000,
+          "pcmSha256": "4c52386e7b2e4fc147864a15ef221f2aa0702b1a8e2b35b73e51efeeea900d00",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 29349.259999990463,
+            "firstSourceChunkCompletedMs": 29349.264999985695,
+            "audioSeconds": 1302.45,
+            "realTimeFactor": 1.9584032093362436,
+            "minSamplesPerChunk": 266400,
+            "maxSamplesPerChunk": 418200
+          },
+          "audio": {
+            "sha256": "8eaed0e2b32002f29611259b72277b91482d5b96e44842571b55480df29faacc",
+            "bytes": 62517644
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "Campaign 2026-11-10T15-16-09-103Z-2e95f2b088d2; cell 8/25; source 955a87683c0c899cc299161a7b8b127fb75617be; AC attached; native arm64; 8 CPU cores and 16 GiB RAM. Headed Chrome, disposable profiles, sequential inference. Ordinary user applications remain open; owned caffeinate -di assertion for campaign lifetime; no persistent system power settings changed; temperature not instrumented."
+  ]
+}

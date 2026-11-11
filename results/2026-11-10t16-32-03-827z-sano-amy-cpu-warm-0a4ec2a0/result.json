@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-10t16-32-03-827z-sano-amy-cpu-warm-0a4ec2a0",
+  "createdAt": "2026-11-10T17:46:17.251Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-warm-v1",
+    "scenario": "warm",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export.",
+    "warmupRuns": 1,
+    "repetitions": 5,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro (Apple M1 Pro, 16 GB)",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.40",
+    "gpu": null,
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "955a87683c0c899cc299161a7b8b127fb75617be",
+    "dirty": false,
+    "manifestSha256": "d692498775b06e716e111b7d122f5995ec8d8046febc2d2aebfd2c33a542379f"
+  },
+  "assets": [
+    {
+      "id": "runtime:sano-amy:sanotts-web:dist/index.js",
+      "sha256": "0f52b0e87337f5fbcc075b30f2ffb7130b1f319d35995f5ac01d2003c2d9a3e6",
+      "bytes": 21528
+    },
+    {
+      "id": "runtime:sano-amy:sanotts-web:dist/snt_g2p.js",
+      "sha256": "16c09da27d88404fc312fa84ed2b1e1b2584f24fd41337f34a8293a25146b7ab",
+      "bytes": 70136
+    },
+    {
+      "id": "runtime:sano-amy:sanotts-web:dist/snt_g2p.wasm",
+      "sha256": "31da95f157c942c17078f9fa87a0f981cc8d199669b28f8f0d4b61f9e8a9301e",
+      "bytes": 322974
+    },
+    {
+      "id": "runtime:sano-amy:sanotts-web:dist/snt_g2p.data",
+      "sha256": "7f999dfd6efa655018fa19a7c32a1ed889a7576751fbdbec61053f6b8a0cc827",
+      "bytes": 2132172
+    },
+    {
+      "id": "runtime:sano-amy:sanotts-web:dist/snt_voice.js",
+      "sha256": "73745db50516d6052802994a02dd8d0e3e27fcd26efa8cbe7e849d7ee5634266",
+      "bytes": 10406
+    },
+    {
+      "id": "runtime:sano-amy:sanotts-web:dist/snt_voice.wasm",
+      "sha256": "cdcfa5bf3ec162797d8556be7b90ce334f88666141956a1650846bdff9517d1c",
+      "bytes": 40787
+    },
+    {
+      "id": "sano-amy-meta-json",
+      "sha256": "1c211821b231991138b4b383d2fcdc621c3ea72f9302297ffccbc398cded68f4",
+      "bytes": 1197
+    },
+    {
+      "id": "sano-amy-front_f32-bin",
+      "sha256": "9bc304dd1db30b17a2efb751795137c6d26f25aaf9c96f05bc1dec7c86e0ce23",
+      "bytes": 1816420
+    },
+    {
+      "id": "sano-amy-dec_f32-bin",
+      "sha256": "f520bcbf278607343e68170a06619a465a333d2d67476c6823d130e91580281b",
+      "bytes": 4001700
+    },
+    {
+      "id": "sano-amy-README-md",
+      "sha256": "ed743cc1f9ca8a1246c03579b5ec22fda8252e8d6f8ed3264603376a8f9d34db",
+      "bytes": 13163
+    },
+    {
+      "id": "sano-amy-amy-en-1p46m-README-md",
+      "sha256": "70159bc8a786fd16b10e7e4c6cf86760fb62cfba2c58467108ffdd004cf71a92",
+      "bytes": 569
+    },
+    {
+      "id": "sano-amy-amy-en-1p46m-manifest-json",
+      "sha256": "5c6b782b0b418758e4dfd8b877a5d34f361c94e5917b2a3ec82542c35b6677b7",
+      "bytes": 41659
+    },
+    {
+      "id": "sanoTTS-gpl3-license",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "bytes": 35147
+    }
+  ],
+  "cells": [
+    {
+      "model": "sano-amy",
+      "support": {
+        "voiceCount": 1,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned Sano Amy 1.46M checkpoint and FP32 browser bundle only",
+        "notes": "Amy browser bundle uses the official en-us eSpeak frontend and synthesizes at 22,050 Hz. The broader Sano family supports additional voices and languages; they are outside this pinned checkpoint.",
+        "sources": [
+          "https://huggingface.co/ampixa/sanoTTS/blob/4a8194aa1dd958033ee449b3ad30c37e536b216e/amy-en-1p46m/README.md",
+          "https://huggingface.co/ampixa/sanoTTS/blob/4a8194aa1dd958033ee449b3ad30c37e536b216e/web/voices/amy/meta.json"
+        ]
+      },
+      "backendRequested": "cpu",
+      "backendEffective": "cpu/wasm",
+      "status": "measured",
+      "reason": null,
+      "voice": "Amy (English, eSpeak en-us)",
+      "precision": "FP32 browser voice bundle",
+      "settings": {
+        "runtime": "sanotts-web@0.3.0",
+        "modelRevision": "4a8194aa1dd958033ee449b3ad30c37e536b216e",
+        "voiceKey": "amy",
+        "language": "en",
+        "espeakVoice": "en-us",
+        "g2pVoiceSlot": 1,
+        "lengthScale": 1.08,
+        "sampleRate": 22050,
+        "maxSeconds": 120,
+        "maxPhonemeIds": 1024,
+        "executionProviders": [
+          "wasm"
+        ],
+        "callPattern": "One official SanoTTS.synthesize call per canonical source chunk; no harness text splitting.",
+        "assetOrigins": "Explicit local assetBase and voiceBase; cross-origin fetches and classic script loads are rejected.",
+        "disposal": "The official wrapper has no dispose method; the dedicated worker is terminated to release its WebAssembly modules."
+      },
+      "capability": {
+        "gpuDispatchVerified": null,
+        "description": "Official Sano Emscripten WebAssembly inference in a headed Chrome classic worker; an untimed CPU utterance passed; no GPU execution."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 745533.8050000072,
+          "samples": 26524928,
+          "sampleRate": 22050,
+          "pcmSha256": "303f476f7cb0017c214b5f37b16eb9875fee7e376b003b45349257f6b8eb8346",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 16727.814999997616,
+            "firstSourceChunkCompletedMs": 16727.82999998331,
+            "audioSeconds": 1202.9445804988661,
+            "realTimeFactor": 0.6197573995394129,
+            "minSamplesPerChunk": 221952,
+            "maxSamplesPerChunk": 360192
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 737254.0249999762,
+          "samples": 26524928,
+          "sampleRate": 22050,
+          "pcmSha256": "303f476f7cb0017c214b5f37b16eb9875fee7e376b003b45349257f6b8eb8346",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 8435.324999988079,
+            "firstSourceChunkCompletedMs": 8435.334999978542,
+            "audioSeconds": 1202.9445804988661,
+            "realTimeFactor": 0.6128744723171153,
+            "minSamplesPerChunk": 221952,
+            "maxSamplesPerChunk": 360192
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 737233.719999969,
+          "samples": 26524928,
+          "sampleRate": 22050,
+          "pcmSha256": "303f476f7cb0017c214b5f37b16eb9875fee7e376b003b45349257f6b8eb8346",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 8439.180000007153,
+            "firstSourceChunkCompletedMs": 8439.185000002384,
+            "audioSeconds": 1202.9445804988661,
+            "realTimeFactor": 0.6128575929027713,
+            "minSamplesPerChunk": 221952,
+            "maxSamplesPerChunk": 360192
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 737312.7149999738,
+          "samples": 26524928,
+          "sampleRate": 22050,
+          "pcmSha256": "303f476f7cb0017c214b5f37b16eb9875fee7e376b003b45349257f6b8eb8346",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 8435.854999959469,
+            "firstSourceChunkCompletedMs": 8435.8599999547,
+            "audioSeconds": 1202.9445804988661,
+            "realTimeFactor": 0.6129232609321098,
+            "minSamplesPerChunk": 221952,
+            "maxSamplesPerChunk": 360192
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 737211.1050000191,
+          "samples": 26524928,
+          "sampleRate": 22050,
+          "pcmSha256": "303f476f7cb0017c214b5f37b16eb9875fee7e376b003b45349257f6b8eb8346",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 8431.610000014305,
+            "firstSourceChunkCompletedMs": 8431.615000009537,
+            "audioSeconds": 1202.9445804988661,
+            "realTimeFactor": 0.6128387932005102,
+            "minSamplesPerChunk": 221952,
+            "maxSamplesPerChunk": 360192
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 737121.6949999928,
+          "samples": 26524928,
+          "sampleRate": 22050,
+          "pcmSha256": "303f476f7cb0017c214b5f37b16eb9875fee7e376b003b45349257f6b8eb8346",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 8432.95499998331,
+            "firstSourceChunkCompletedMs": 8432.959999978542,
+            "audioSeconds": 1202.9445804988661,
+            "realTimeFactor": 0.6127644672494434,
+            "minSamplesPerChunk": 221952,
+            "maxSamplesPerChunk": 360192
+          },
+          "audio": {
+            "sha256": "426e3661c303c735314241ca11cdb11de92dfabcdefe95ea828a03bdab98988b",
+            "bytes": 53049900
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "Campaign 2026-11-10T15-16-09-103Z-2e95f2b088d2; cell 3/25; source 955a87683c0c899cc299161a7b8b127fb75617be; AC attached; native arm64; 8 CPU cores and 16 GiB RAM. Headed Chrome, disposable profiles, sequential inference. Ordinary user applications remain open; owned caffeinate -di assertion for campaign lifetime; no persistent system power settings changed; temperature not instrumented."
+  ]
+}

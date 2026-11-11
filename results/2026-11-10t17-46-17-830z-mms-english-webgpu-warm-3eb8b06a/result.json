@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-10t17-46-17-830z-mms-english-webgpu-warm-3eb8b06a",
+  "createdAt": "2026-11-10T17:52:21.311Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-warm-v1",
+    "scenario": "warm",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export.",
+    "warmupRuns": 1,
+    "repetitions": 5,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro (Apple M1 Pro, 16 GB)",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.40",
+    "gpu": "apple",
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "955a87683c0c899cc299161a7b8b127fb75617be",
+    "dirty": false,
+    "manifestSha256": "d692498775b06e716e111b7d122f5995ec8d8046febc2d2aebfd2c33a542379f"
+  },
+  "assets": [
+    {
+      "id": "runtime:mms-english:@huggingface/transformers:dist/transformers.min.js",
+      "sha256": "79fad8c1c2fd165bf1e77ace20ce023fab4dc13b6621f0e586c9b8c59c4d09d8",
+      "bytes": 849451
+    },
+    {
+      "id": "runtime:mms-english:@huggingface/transformers:LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "id": "runtime:mms-english:@huggingface/transformers/node_modules/onnxruntime-web:LICENSE",
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "bytes": 1073
+    },
+    {
+      "id": "runtime:mms-english:@huggingface/transformers/node_modules/onnxruntime-web:ThirdPartyNotices.txt",
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+      "bytes": 326866
+    },
+    {
+      "id": "runtime:mms-english:onnxruntime-web:dist/ort.wasm.min.mjs",
+      "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7",
+      "bytes": 49856
+    },
+    {
+      "id": "runtime:mms-english:onnxruntime-web:dist/ort.webgpu.min.mjs",
+      "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
+      "bytes": 66261
+    },
+    {
+      "id": "runtime:mms-english:onnxruntime-web:dist/ort-wasm-simd-threaded.mjs",
+      "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e",
+      "bytes": 20321
+    },
+    {
+      "id": "runtime:mms-english:onnxruntime-web:dist/ort-wasm-simd-threaded.wasm",
+      "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15",
+      "bytes": 11905541
+    },
+    {
+      "id": "runtime:mms-english:onnxruntime-web:dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff",
+      "bytes": 51913
+    },
+    {
+      "id": "runtime:mms-english:onnxruntime-web:dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada",
+      "bytes": 25499390
+    },
+    {
+      "id": "runtime:mms-english:onnxruntime-web:LICENSE",
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "bytes": 1073
+    },
+    {
+      "id": "runtime:mms-english:onnxruntime-web:ThirdPartyNotices.txt",
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+      "bytes": 326866
+    },
+    {
+      "id": "mms-english-config.json",
+      "sha256": "57ec08764d2b37808462757cffc38125abdcc60ffc253aac30a36cc9ae63372e",
+      "bytes": 1656
+    },
+    {
+      "id": "mms-english-tokenizer.json",
+      "sha256": "c97490f8dab9b14d9a17a9a05411f42d1345360d7672fb666b26862ca612b5a4",
+      "bytes": 2107
+    },
+    {
+      "id": "mms-english-tokenizer_config.json",
+      "sha256": "f0b81ebfd014d109e4467fc3cfa15adab2bf1c09052313ad1b2d2771b3ddf287",
+      "bytes": 623
+    },
+    {
+      "id": "mms-english-vocab.json",
+      "sha256": "304f7e71c40d601f9b89d81904609512eebe96b2a941f0a251fc0c9f397bcc45",
+      "bytes": 413
+    },
+    {
+      "id": "mms-english-onnx-model.onnx",
+      "sha256": "cbfd1e634a7bd1fce6690176ab3bfdb2aeb3b3ed756591f85f654a6669cadd3d",
+      "bytes": 114258806
+    }
+  ],
+  "cells": [
+    {
+      "model": "mms-english",
+      "support": {
+        "voiceCount": 1,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned English checkpoint, not the wider multilingual MMS family",
+        "notes": "Single English speaker. Official Xenova ONNX export removes training-only weights. Benchmark spells out numeric tokens before the official grapheme tokenizer to avoid dropping digits absent from its vocabulary.",
+        "sources": [
+          "https://huggingface.co/facebook/mms-tts-eng/blob/c71de0fe7204c83f1c10820a7d696d0b450048ba/README.md"
+        ]
+      },
+      "backendRequested": "webgpu",
+      "backendEffective": "webgpu+wasm",
+      "status": "measured",
+      "reason": null,
+      "voice": "English fixed voice",
+      "precision": "FP32",
+      "settings": {
+        "threads": 1,
+        "sampleRate": 16000,
+        "runtime": "Transformers.js 3.5.1 tokenizer / ONNX Runtime Web 1.23.2",
+        "frontend": "English numeric spelling followed by official MMS VitsTokenizer; lowercase graphemes and model punctuation normalization",
+        "noise": "Graph random noise; no validated public seed input",
+        "executionProviders": [
+          "webgpu",
+          "wasm"
+        ]
+      },
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Observed 1766 dispatches in separate untimed synthesis. CPU tokenization and possible WASM operators; CPU-readable output. Hooks removed before timing."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 58866.30500000715,
+          "samples": 20363776,
+          "sampleRate": 16000,
+          "pcmSha256": "1ab6027e93e01a5bce3fc93da54438365e8474cfa6be6fc801ebc4b9618b7106",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 750.1899999976158,
+            "firstSourceChunkCompletedMs": 750.1949999928474,
+            "audioSeconds": 1272.736,
+            "realTimeFactor": 0.04625177963065958,
+            "minSamplesPerChunk": 141568,
+            "maxSamplesPerChunk": 339712
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 59799.53999996185,
+          "samples": 20517376,
+          "sampleRate": 16000,
+          "pcmSha256": "88bc38bd7aeb56443757e8c6e5621b2022eb479a742d4b7a1798da4b46bf9547",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 736.0749999880791,
+            "firstSourceChunkCompletedMs": 736.0849999785423,
+            "audioSeconds": 1282.336,
+            "realTimeFactor": 0.04663328488006408,
+            "minSamplesPerChunk": 142848,
+            "maxSamplesPerChunk": 308992
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 59003.63499999046,
+          "samples": 20304896,
+          "sampleRate": 16000,
+          "pcmSha256": "e3c2f7c8f0d663ed4717f282de497bb663cd1afbf3237c11c41a48626a046b01",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 759.3450000286102,
+            "firstSourceChunkCompletedMs": 759.3500000238419,
+            "audioSeconds": 1269.056,
+            "realTimeFactor": 0.04649411452291346,
+            "minSamplesPerChunk": 137216,
+            "maxSamplesPerChunk": 317952
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 59575.785000026226,
+          "samples": 20436224,
+          "sampleRate": 16000,
+          "pcmSha256": "2eb74a2668e0340d44639636d00ac57f528b3b67cf130902dfd3dec1822cbfab",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 783.660000026226,
+            "firstSourceChunkCompletedMs": 783.6650000214577,
+            "audioSeconds": 1277.264,
+            "realTimeFactor": 0.046643282046645196,
+            "minSamplesPerChunk": 141568,
+            "maxSamplesPerChunk": 310272
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 59391.47500002384,
+          "samples": 20399360,
+          "sampleRate": 16000,
+          "pcmSha256": "9425e052a4f73e2f38ce229056c1c28e11ed5dc8d58d7a690d9f66c4ba15da3a",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 748.3450000286102,
+            "firstSourceChunkCompletedMs": 748.3450000286102,
+            "audioSeconds": 1274.96,
+            "realTimeFactor": 0.04658301044740529,
+            "minSamplesPerChunk": 149504,
+            "maxSamplesPerChunk": 331008
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 58728.00999999046,
+          "samples": 20168704,
+          "sampleRate": 16000,
+          "pcmSha256": "5ebbd86fb7285fadc93af5815ba406fd9fb4591fb078c58d9b491a07f60cc9c2",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 699.9099999666214,
+            "firstSourceChunkCompletedMs": 699.9099999666214,
+            "audioSeconds": 1260.544,
+            "realTimeFactor": 0.0465894169501346,
+            "minSamplesPerChunk": 143616,
+            "maxSamplesPerChunk": 297216
+          },
+          "audio": {
+            "sha256": "36885f5a8323dce2c287c0d2e9b50560487c117c781b30b5911592ce5f1bd78a",
+            "bytes": 40337452
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "Campaign 2026-11-10T15-16-09-103Z-2e95f2b088d2; cell 4/25; source 955a87683c0c899cc299161a7b8b127fb75617be; AC attached; native arm64; 8 CPU cores and 16 GiB RAM. Headed Chrome, disposable profiles, sequential inference. Ordinary user applications remain open; owned caffeinate -di assertion for campaign lifetime; no persistent system power settings changed; temperature not instrumented."
+  ]
+}

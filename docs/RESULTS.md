@@ -47,3 +47,33 @@ Use a coarse hardware label, not a hostname. Never include absolute home paths,
 account names, browser profile data, tokens, private URLs or unrelated screenshots.
 Inspect generated JSON before submitting it. Validation rejects common patterns,
 but human review is still needed. No automatic upload occurs in any benchmark run.
+
+## Campaign overviews
+
+A campaign overview combines compatible native warm, cached-resource, and CPU
+cold receipts while retaining separate metric boundaries and repetition counts.
+Generate it from already submitted result bundles:
+
+```sh
+node tools/campaign-report.mjs --out reports/CAMPAIGN results/RUN_1/result.json results/RUN_2/result.json
+node tools/campaign-report.mjs --check-all reports
+npm run reference
+```
+
+Replace the example paths with the actual campaign receipts. Include every
+attempt, including unsupported backends and errors; incomplete data stays explicit.
+Each report contains `overview.md`, `overview.svg`, `inputs.json` and
+`checksums.json`. Input IDs and SHA-256 digests bind the overview to public receipt
+bytes. Checks reject changed inputs, mixed source/environment/fixture cohorts,
+duplicate cells and mismatched model configurations. The README's generated
+Reference results section links and displays these overviews. Publish them in the
+same results PR; CI regenerates and checks them. RAM and cold-load diagnostics
+never replace the warm timing scores, and estimated 1 Mbps transfer is not a
+measured throttled run.
+
+An overview omits cold-load columns and panels when no cold receipts are supplied.
+If a user changes scope, retain raw excluded diagnostics locally and document the
+scope change; publish every attempt in the retained scenarios. Do not relabel a
+user-cancelled excluded run as a model failure. Memory means and sampled maxima
+come from the same generation window; sampled maxima are not the separate
+whole-article-call peak that can include post-timer export.
