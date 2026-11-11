@@ -1,0 +1,574 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-11t09-27-11-391z-lfm3-audio-2b-fusor-q7-cpu-cpu-warm-174f10d4",
+  "createdAt": "2026-11-11T10:20:10.689Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-warm-v1",
+    "scenario": "warm",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export.",
+    "warmupRuns": 1,
+    "repetitions": 5,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro / Apple M1 Pro 8-core / 16 GiB / arm64",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.40",
+    "gpu": null,
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "f8fc69dd4860cbae48fe4e398f16419a4af1673f",
+    "dirty": false,
+    "manifestSha256": "c57671388f6c061c5323691eee60498df3649911c63af15bf8fffdd29dab428d"
+  },
+  "assets": [
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-LICENSE",
+      "sha256": "4d28ca14dedc0b3d0fcc2b3339f0e79931faa33874f3d24f522183a8fc70068c",
+      "bytes": 10574
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-config.json",
+      "sha256": "1eb2a8349a1ec9eda2ed8e8bb1a8788007ae2ae9baa38a7d959743c5379d30d8",
+      "bytes": 6243
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-manifest.json",
+      "sha256": "b14cbe39821b6fda8a51cc506249427c5ce7e5c29ca8dce2956e7ad1e964b484",
+      "bytes": 96201
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-0259b04c8877bed0e902ef5cc71b1b96d77feec533554fb928dd640d433472a7.bin",
+      "sha256": "d7357093dfbb6de40036d16c21729864601e6bed6a50c4a3e5a531bba285ea98",
+      "bytes": 40124416
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-05e8111df8c7cbb90fdf4dce07da9241f36167b10ce30b126c11f4441a2d54ce.bin",
+      "sha256": "9ed224ce68f164c34e9259a64bab3e8afbaffca7b93fcb3551639ac607d8d153",
+      "bytes": 40124416
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-079f93f9d739b518a6f80e6892943b68db34f3b8adbbc25dd8b1ac1d08a98acb.bin",
+      "sha256": "c0a3cfd158bfa7508d3b6b4b988fb4c6d8b87ee9908fd1e3418e1a68c19cf3ba",
+      "bytes": 47256576
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-08a0c9a2a25d51c7dfb9f740017a93afc4d5b2dde25f87138ed9f9f56c09a0e9.bin",
+      "sha256": "094706935ca416bb033eeb956868df77ee27fb00f5976e04400fc0046558f564",
+      "bytes": 40124416
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-12c714560b09e63908c85d545d97cb801f0b548e807ba066bde24c56291e6e22.bin",
+      "sha256": "0b5feec4492aec48b2f8dc3b5bf864a25f99ce4bd17fe409e71a6654160c7bb4",
+      "bytes": 47256576
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-12de0886d2ea8770dc31cea0486efbe7942c95477a22eb887aba939c8da2304d.bin",
+      "sha256": "542117349a92ab4f23e46ee1360ba1faadeb3ffd126ba9131af82a818cc872dc",
+      "bytes": 48815616
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-160a90f800530d3e46b89c1cbfb92dd2550c8e5e8bf9aa4801f1f8442718cd4b.bin",
+      "sha256": "fec0f280e33b57bf22ca5fa61ad159f9b424643d187abc525d2121d1568035f2",
+      "bytes": 49618944
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-19a56c15d38a45f24acbdf5dd49575577e90fe009299661d0c6b6d5cf1b42a18.bin",
+      "sha256": "b5447e69c66f24068028f37d0cc7c3049409fc8d212de14da6a246c37cd67b65",
+      "bytes": 5186560
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-22c7282740406674f028f5140dc0e3c468d1ee1626ebb8ce3b9e3a217a862637.bin",
+      "sha256": "d880ab78ad442902907a4c3037b51dc8ac00ade576b05be837c1e3c583c0d78d",
+      "bytes": 40124416
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-2e6a8e07a6576781413626d80127412659e0aff06a18cdf571619e19d4790c86.bin",
+      "sha256": "1fb1cabfcbad59d9e7a206c8e5b902ddedfc53d1d80903b40d63d5d053e8e4cf",
+      "bytes": 40124416
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-37c097cdeb0e03dedd3470094ac6cafbe5c413d17809455037468a0f77794428.bin",
+      "sha256": "19507742693f804d5bf132a15d8d4ceac66a01524d3efa7fed41f087c72eed24",
+      "bytes": 294912000
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-38bce60d04d47e5b52342ea41f9706984f8609a7c9753c67870a5c75a10a5371.bin",
+      "sha256": "18c80628506b4514d09aa136540a90a7f30b8c3477f563fca681688998391025",
+      "bytes": 47256576
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-3fd18022c31a6aeb84079dbe32a9dc0a21f0c75314e55189abd12ef73661e720.bin",
+      "sha256": "6a3c92470b84c07077d55650cd9775d51cbcf45df128eb7f7fee115d187e6c30",
+      "bytes": 49618944
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-45b7cc420c79fa61d02f23193b3f5a701bc16dd58620c9be1846b64c5b7e2cfc.bin",
+      "sha256": "28f293c8a6171cb42244a67a7378cbe754160375de5e769a8d9eb6fcede8dd5f",
+      "bytes": 40124416
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-461231103a014895b67d395d87c438b142885b41e1fa598a09c6f9e8aad5d724.bin",
+      "sha256": "8cfaf429f8ad2dc8e2a10150a75ba514a5f712aaaa09b58c171f712a4dd5c0f0",
+      "bytes": 49618944
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-46b53800db064fba1c7de980f0f61fdd5cbac724e1607fd43e1400ad11391531.bin",
+      "sha256": "e008f9f772ee181df2b13a0d28321cae77b3114464b77503414ec8fd5b16fed0",
+      "bytes": 49618944
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-4ffac31033cb3b0e07a28697c9fde066b7801e58efd84d8e131eafd510e924b6.bin",
+      "sha256": "78a76dc1ce6c8d1fec45a104c3d1386500e4e83e209adbe01f659d5d94f7b402",
+      "bytes": 47256576
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-51b7de267a98ffba4d431a3b0d9d82337cd32612e7f390530d261c2f629e9598.bin",
+      "sha256": "fa93cb3aebbb62b19ea10adcee684f1da6a5ef4b3768994d6017dde40fd9c724",
+      "bytes": 40124416
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-5df7b8bab2f8180037e224c4105288bc02a2d9942e0076024dc171eb5d86134c.bin",
+      "sha256": "51f5995b78ab81b22a47291cc69000c64a77c00e2a40c70a20f8949a5f4ff58a",
+      "bytes": 36659200
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-5f0ea98604893955aca89a7defc95b8e6d9ad9ad6b5be888851c448c864a4ec0.bin",
+      "sha256": "cc7a20fffeca8e0fb37a7b2fb694b4bc60cbff03bb802acbce5041d004cbd393",
+      "bytes": 36659200
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-64811034f64f7b4137d2f314a165fafce055196f852b7ef0bb104a45376fbd0c.bin",
+      "sha256": "e38d6149aa839e0455e3e719f8489148e7c9bbd686efec2f8af1c35265d70e22",
+      "bytes": 47256576
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-66b59eb0abd7033914727b8826e4d9138b8904d3cbfe023f1577eb76f2fb8a7e.bin",
+      "sha256": "ba2fe32b5bfeb93529d68097c3455f9c1ab53a11dd5fa6028cab6074ccdca5bd",
+      "bytes": 40124416
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-69c46f78bdbc3542ab29c857ac0d1b8db2287b0403cae7d431aea581d28317d9.bin",
+      "sha256": "d19ff625a58aef6f2dd5f62a83fce2eeb98283c89bbcb565a513dff92a57db9c",
+      "bytes": 49618944
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-70e1d058a3097e3e924507a88ee4899a6a46b6678ec4077b0753fe0ec488c064.bin",
+      "sha256": "c876b274f04556b5927da32c3c002de6d7d2b5538adedda3ef08003eec780175",
+      "bytes": 49857024
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-734eb32b1bf28ee85a70a2e89b577812df7cf4fc91849f78de28fd81e36f4efa.bin",
+      "sha256": "698503bbd3dc7a3b8ee61ca4013abac1411a5f27b304368befa6c56b3865872c",
+      "bytes": 47256576
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-84068d885022872e540c048973d26c4536c837031e8d5df4532958ecf267c4a0.bin",
+      "sha256": "054c4443e4daab2873bef27d83c56096083e6ac242d41f2e5de5a3576ceab1c3",
+      "bytes": 47256576
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-86976bbf251500dd570d9aa163a728ecf894231b75178dbb7b030cacd7f3f81d.bin",
+      "sha256": "45fac4d9c643d16539c5c849172f2bfd4c6c13c274b5635ce5da846ecf586874",
+      "bytes": 40124416
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-91ffbad72832c6bdc69838374ac8d82d5c9a9d5a1a61aeed8f1c4dcf5a0179b1.bin",
+      "sha256": "474f47b4d1fd72e68656f553a244c9edd9e15cd85abbb4c340669245163c1f8e",
+      "bytes": 49021192
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-9c2636b5198892e54a8b35716c92962466916efcf144598ed849e6aefdb71bdb.bin",
+      "sha256": "ce8c26c0a49d6edfb7b46b169ad9e93163ad2d62dc24a9eb0438250afc782e4e",
+      "bytes": 49618944
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-9dae974b59bfd3f01b50d51e0fc9df933ec9423b896e22a945f391b574565eae.bin",
+      "sha256": "562a30da8eb45463bb3ce8892145b6ecb978ba3111aef35a96bc019c7546b907",
+      "bytes": 47256576
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-a0d83e64744a4f02a0dd0598b031027ff51696a9bd89c072880bf6e421875950.bin",
+      "sha256": "dfbec01aa54d53a09d688e1192d949dd929262362e32dc97692410f40dc87902",
+      "bytes": 47256576
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-a5bc986f7d5ff2a3e34c2fd92f02e87f66d2c7d41d2e2930abda4718c1995a8e.bin",
+      "sha256": "ca4e16252bb9483d980520fdc831157574da23673457dbec4d686ea7b28d4ddd",
+      "bytes": 49618944
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-a5de7233c06fc8ad1cdafeb6c40bd657682e51d0ab4aaaadb8bb707a7c95943a.bin",
+      "sha256": "17598cf778df932ae432859b9692e3ea5faca1cdd2a044d968d98eada2810f8e",
+      "bytes": 47256576
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-b18f870d58fcd5e2e3fd917faf2b2967d128622df8ae02a761b76ca0e5b985c4.bin",
+      "sha256": "1e304d7bdb6b08937b5a18c6968e3fdfcb1e5014d66296280a4d4dc7bad86c7c",
+      "bytes": 35389440
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-b1aec4a37b899c73d957fc3bb9cb8218ad973ad95132b525fb5dab7a3d4fb4d6.bin",
+      "sha256": "3ee6f14043f457cef6a125ac7819e1251822e3b17ddb1edde4332c91a1bb8689",
+      "bytes": 35389440
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-b5419bf55e2e1cf1b0b38ebf03ab8831a4d6315d3a11f6451af5972f7effa362.bin",
+      "sha256": "e2ce49b252ad06ae080d4634d5e53eafd3d3cf1ea090996dcff7d65a4c45e035",
+      "bytes": 49618944
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-c7cedd44dd519941d39a2cee1cd376c340b815ef9703764c994fb91d77ae84e2.bin",
+      "sha256": "543f73404265485f9a06c0f78f92215b30131e8dbd5004b807d3773872b759b8",
+      "bytes": 35414016
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-caa31b8ad847faa7dab4761e0029d566d9b5862a95ae334362f5c10df5e3ab97.bin",
+      "sha256": "da83b0f74e516338c01f383d5518fb991783b88b028c33f9b923ccaeaa55773c",
+      "bytes": 47256576
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-d54311957cb42d837afca9e2f1f568c01b4d26fba8ae8241b724a62cb950576a.bin",
+      "sha256": "fc610f98dcbeee4f6d3cb69ca9cce2eae43889275e22f8e185304884d245efdc",
+      "bytes": 49618944
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-da373558e0a5be778141ec149c2403998b2a2832a203544c0f0d6459ba314b9b.bin",
+      "sha256": "9b15568b6659211c86c2c99c0ab2e184f4f9acb5f65747f5e126d6f05b44e3e2",
+      "bytes": 49618944
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-e42c8ca5dd25b82b201a5730f2d81a3417daf9f6f13ac9ab492c0be07f006730.bin",
+      "sha256": "9349f817887134c9484f9382439b3528c3209993fc7f36ce67a036fe68723ae5",
+      "bytes": 40124416
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-ecf11d3ae1116a6e61054d154bd9471b2ba8c7deca8c77939c8c100c225c83b9.bin",
+      "sha256": "daddd67c6abd0a753215e0c009d8413dfeafc30ea0892f5b7b297fc97e924ef2",
+      "bytes": 47587584
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-ee9756cb8c8fc623df1b6d9b023c7e580980ada19b302811036e383265b342d8.bin",
+      "sha256": "f5d2dd7810d21220ccba3ef1d7e51fc364be27b41c06dd7b8350fb2eb6420e85",
+      "bytes": 49618944
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-f1665dfd26e75c21ae3bc71012704e31bf23257331030f5220645e87c94f7f39.bin",
+      "sha256": "64a8faf24561478faf2cd5819c98ed85a484f269d0fd1774720addb975edafa1",
+      "bytes": 55766016
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-f4db85712a76742c6755593adc891344288a7bb1e33e6fef95e03f1fa7fa3b7c.bin",
+      "sha256": "82c448d13c235101d3f6efd97f8773579a8878e67a2d55eec3c8f01225939a84",
+      "bytes": 46934528
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-parts-fdec142cf691d930f426551dcb0d924305300d3f3febd773048b4757810d4433.bin",
+      "sha256": "539ec63d1faf71e8f593312af282b289ff45c834ed662afd27345fafb78212f5",
+      "bytes": 32200960
+    },
+    {
+      "id": "audio-liquid-lfm3-audio-2b-web-tokenizer.json",
+      "sha256": "41927bd314d17d7d7fadb44e10cd0919f7b71528d7741596d8cbd15c6945ec44",
+      "bytes": 17908634
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-host-loader.js",
+      "sha256": "e92fad5463aa477182e507cdb7ee4d2d47182b481c99bc242d57a889433b91a8",
+      "bytes": 8780
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-host-worker.js",
+      "sha256": "55b771d7026d0358cbb680ed15d768e27323ce02c6222e9504c8c94a5abaa1c2",
+      "bytes": 3944
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-web-single-relaxed-lfm3_runtime.js",
+      "sha256": "3a1aea60e109ef4832a967d6bf83d5b9b0ffffe5bb7239979ebdd2d9500e1188",
+      "bytes": 13763
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-web-single-relaxed-lfm3_runtime_bg.wasm",
+      "sha256": "c2cdf34910e42aa1d01326e95b6784e1e2bdba21153c54c499a307e96969bf17",
+      "bytes": 3988968
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-web-single-lfm3_runtime.js",
+      "sha256": "3a1aea60e109ef4832a967d6bf83d5b9b0ffffe5bb7239979ebdd2d9500e1188",
+      "bytes": 13763
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-web-single-lfm3_runtime_bg.wasm",
+      "sha256": "490f892d81d710f0adfc74a3de10ead678715a6f040c3fa234488e4c7cfde525",
+      "bytes": 3906750
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-web-threaded-relaxed-lfm3_runtime.js",
+      "sha256": "2b65d63422c082fa09c549c2eb125176d1a35ca5fd96c2d2727582d01e88f653",
+      "bytes": 18443
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-web-threaded-relaxed-lfm3_runtime_bg.wasm",
+      "sha256": "23dc58096035a3dc41df7968fcc4c2592cc28626b5de094a17068f41ef6eb06f",
+      "bytes": 4017664
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-web-threaded-relaxed-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-protocol.js",
+      "sha256": "2461f33fc7711854698196e8477a3de0c4b31360d56b6f52aeb5cc7eb306dc53",
+      "bytes": 439
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-web-threaded-relaxed-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-workerHelpers.no-bundler.js",
+      "sha256": "1f2eee2d24aff6d5337efbc166e0d2242f0a1067cff564eb935354d8ecfe4d21",
+      "bytes": 2136
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-web-threaded-lfm3_runtime.js",
+      "sha256": "2b65d63422c082fa09c549c2eb125176d1a35ca5fd96c2d2727582d01e88f653",
+      "bytes": 18443
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-web-threaded-lfm3_runtime_bg.wasm",
+      "sha256": "0b457b91c0cbac25e742dabd8da6b265d802fae58b8807c2973dd16d203dd4e0",
+      "bytes": 3933618
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-web-threaded-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-protocol.js",
+      "sha256": "2461f33fc7711854698196e8477a3de0c4b31360d56b6f52aeb5cc7eb306dc53",
+      "bytes": 439
+    },
+    {
+      "id": "audio-liquid-fusor-engine-dist-web-threaded-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-workerHelpers.no-bundler.js",
+      "sha256": "1f2eee2d24aff6d5337efbc166e0d2242f0a1067cff564eb935354d8ecfe4d21",
+      "bytes": 2136
+    },
+    {
+      "id": "audio-liquid-wasm-bindgen-rayon-1.3.0-license",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "id": "audio-liquid-liquidai-lmf3-wasm-mit-license",
+      "sha256": "b34d36a9d1d848b09e80fae4c50aa6ad4ca452452ce4ba87069e21db1f919a90",
+      "bytes": 1062
+    },
+    {
+      "id": "audio-liquid-fusor-ai-mit-license",
+      "sha256": "b34d36a9d1d848b09e80fae4c50aa6ad4ca452452ce4ba87069e21db1f919a90",
+      "bytes": 1062
+    }
+  ],
+  "cells": [
+    {
+      "model": "lfm3-audio-2b-fusor-q7-cpu",
+      "support": {
+        "voiceCount": null,
+        "bundledVoiceCount": null,
+        "languageCount": 18,
+        "languages": [
+          "en",
+          "ar",
+          "da",
+          "de",
+          "el",
+          "fi",
+          "fr",
+          "he",
+          "it",
+          "ja",
+          "ko",
+          "nl",
+          "pl",
+          "pt",
+          "es",
+          "sv",
+          "tr",
+          "zh"
+        ],
+        "scope": "Pinned Fusor q7 browser bundle; 6 CPU threads; speech generation only",
+        "sources": [
+          "https://huggingface.co/LiquidAI/LFM3-Audio-2B",
+          "https://www.liquid.ai/blog/lfm3",
+          "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/blob/e273326dda2bb26870549ed7b39324ae086e5fe7/README.md",
+          "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/blob/e273326dda2bb26870549ed7b39324ae086e5fe7/manifest.json"
+        ],
+        "notes": "18 spoken languages; English has US and UK locales. Male/female prompt controls do not establish a fixed-voice count. Only American English female is tested. Six-thread Fusor WASM q7 configuration; different weights/runtime/sampling from the official WebGPU GGUF configuration."
+      },
+      "backendRequested": "cpu",
+      "backendEffective": "cpu/wasm",
+      "status": "measured",
+      "reason": null,
+      "voice": "American English female (prompted style; no fixed speaker ID)",
+      "precision": "q7 weights; six-thread WebAssembly (upstream relaxed-SIMD build when supported)",
+      "settings": {
+        "voice": "American English female (prompted style; no fixed speaker ID)",
+        "sampleRate": 24000,
+        "precision": "Fusor q7 CPU bundle; six-thread WebAssembly (upstream relaxed-SIMD build when supported)",
+        "executionProviders": [
+          "cpu-wasm-threads"
+        ],
+        "requestedThreads": 6,
+        "systemPrompt": "Perform TTS in American English using a female voice.",
+        "frontend": "Pinned official LFM3 chat template; canonical source span passed verbatim; reset before every span.",
+        "textSampling": "Official Audio/Omni greedy text defaults (temperature 0, top-p 1, top-k 1, presence penalty 0).",
+        "speechSampling": "Pinned variant defaults: temperature 1, top-k 128, repetition penalty 1.1, recent-frame window 4096. Benchmark seed 0 per source span overrides the upstream browser random seed.",
+        "maxReplyRows": 4096,
+        "runtime": "Fusor browser runtime from Space 572fc51e58808d3536bc8a8bea9d74a11b4b88bc; audio q7 bundle e273326dda2bb26870549ed7b39324ae086e5fe7.",
+        "hostWork": "CPU JavaScript scheduling and 24 kHz PCM transfer; neural inference and codec are in six-thread WebAssembly with upstream relaxed-SIMD selection.",
+        "streaming": "Official 24 kHz PCM drained from Runtime.speech() after every step, including the final EOS/finalize step.",
+        "runtimeBuild": "web-threaded-relaxed",
+        "effectiveThreads": 6
+      },
+      "capability": {
+        "gpuDispatchVerified": null,
+        "description": "Explicit Fusor web-threaded-relaxed CPU runtime with 6 threads; separate untimed probe returned finite 24 kHz PCM. Probe excluded from timed synthesis."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 527151.685000062,
+          "samples": 32678400,
+          "sampleRate": 24000,
+          "pcmSha256": "fd5c49a9c18e1b885c586d5fa65eeb2f8c724ca6550ba07aca368a5d645e3f8b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 530.1600000858307,
+            "firstSourceChunkCompletedMs": 6551.59500002861,
+            "audioSeconds": 1361.6,
+            "realTimeFactor": 0.3871560553760737,
+            "minSamplesPerChunk": 276480,
+            "maxSamplesPerChunk": 432000
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 526675.9200000763,
+          "samples": 32678400,
+          "sampleRate": 24000,
+          "pcmSha256": "fd5c49a9c18e1b885c586d5fa65eeb2f8c724ca6550ba07aca368a5d645e3f8b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 390.06500005722046,
+            "firstSourceChunkCompletedMs": 6335.985000014305,
+            "audioSeconds": 1361.6,
+            "realTimeFactor": 0.38680663924799963,
+            "minSamplesPerChunk": 276480,
+            "maxSamplesPerChunk": 432000
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 526221.9600000381,
+          "samples": 32678400,
+          "sampleRate": 24000,
+          "pcmSha256": "fd5c49a9c18e1b885c586d5fa65eeb2f8c724ca6550ba07aca368a5d645e3f8b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 353.5349999666214,
+            "firstSourceChunkCompletedMs": 6347.960000038147,
+            "audioSeconds": 1361.6,
+            "realTimeFactor": 0.3864732373678306,
+            "minSamplesPerChunk": 276480,
+            "maxSamplesPerChunk": 432000
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 525678.3650000095,
+          "samples": 32678400,
+          "sampleRate": 24000,
+          "pcmSha256": "fd5c49a9c18e1b885c586d5fa65eeb2f8c724ca6550ba07aca368a5d645e3f8b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 389.8049999475479,
+            "firstSourceChunkCompletedMs": 6424.5,
+            "audioSeconds": 1361.6,
+            "realTimeFactor": 0.3860740048472455,
+            "minSamplesPerChunk": 276480,
+            "maxSamplesPerChunk": 432000
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 523810.7350000143,
+          "samples": 32678400,
+          "sampleRate": 24000,
+          "pcmSha256": "fd5c49a9c18e1b885c586d5fa65eeb2f8c724ca6550ba07aca368a5d645e3f8b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 367.94000005722046,
+            "firstSourceChunkCompletedMs": 6403.225000023842,
+            "audioSeconds": 1361.6,
+            "realTimeFactor": 0.38470236119272494,
+            "minSamplesPerChunk": 276480,
+            "maxSamplesPerChunk": 432000
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 526050.6150000095,
+          "samples": 32678400,
+          "sampleRate": 24000,
+          "pcmSha256": "fd5c49a9c18e1b885c586d5fa65eeb2f8c724ca6550ba07aca368a5d645e3f8b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 373.8400000333786,
+            "firstSourceChunkCompletedMs": 6404.305000066757,
+            "audioSeconds": 1361.6,
+            "realTimeFactor": 0.3863473964453654,
+            "minSamplesPerChunk": 276480,
+            "maxSamplesPerChunk": 432000
+          },
+          "audio": {
+            "sha256": "6821b81522a42871490c9d7aa91130b97ed65545fbdab39cd52bd32dbf207a59",
+            "bytes": 65356844
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "AC power verified before run. Sequential headed Chrome; user applications left open. Audio then Omni warm runs, followed by separate one-article cached RSS diagnostics. Six-thread Fusor q7 CPU configuration; differs from official GPU GGUF weights/runtime/sampling, so no controlled CPU/GPU speedup. Cold-load checks excluded."
+  ]
+}
