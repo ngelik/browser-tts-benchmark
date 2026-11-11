@@ -23,6 +23,7 @@ const markdownText = value => String(value ?? '').replaceAll('|', '\\|').replace
 const xml = value => String(value ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&apos;');
 const format = (value, digits = 2) => Number.isFinite(value) ? value.toFixed(digits) : null;
 const medianPresent = values => values.length ? median(values) : null;
+const divideOrMissing = (value, divisor) => Number.isFinite(value) ? value / divisor : null;
 
 function assertNoSymlink(path) {
   const rel = relative(ROOT, path);
@@ -175,9 +176,24 @@ export function validateCampaignInputs(entries, manifest = getAssetLock().models
 
 function statusLabel(row) {
   if (!row) return 'Not submitted';
-  if (row.cell.status === 'unsupported') return `Unsupported: ${row.cell.reason}`;
-  if (row.cell.status === 'error') return `Error: ${row.cell.reason}`;
+  if (row.cell.status === 'unsupported') return 'Unsupported';
+  if (row.cell.status === 'error') return 'Error';
   return 'Measured';
+}
+
+function outcomeNotes(byKey) {
+  const unique = new Map();
+  for (const row of byKey.values()) {
+    if (row.cell.status === 'measured') continue;
+    const detail = String(row.cell.reason ?? 'No reason recorded');
+    const signature = JSON.stringify([row.cell.model, row.cell.backendRequested, row.cell.status, detail]);
+    if (!unique.has(signature)) unique.set(signature, { row, detail });
+  }
+  return [...unique.values()].sort((a, b) =>
+    a.row.cell.model.localeCompare(b.row.cell.model) ||
+    a.row.cell.backendRequested.localeCompare(b.row.cell.backendRequested) ||
+    a.row.cell.status.localeCompare(b.row.cell.status) ||
+    a.detail.localeCompare(b.detail));
 }
 
 function summarizeWarm(row) {
@@ -205,7 +221,9 @@ function summarizeCached(row) {
   const trial = row.cell.trials[0];
   if (!trial) return null;
   if (trial.memory?.availability !== 'measured' || !Number.isFinite(trial.metrics?.generationMeanRssBytes)) return null;
+  const sampledRss = trial.memory.samples.map(sample => sample[1]);
   return { n: row.cell.trials.length, meanRssBytes: trial.metrics.generationMeanRssBytes,
+    peakRssBytes: Math.max(...sampledRss),
     sampleCount: trial.metrics.generationRssSampleCount };
 }
 
@@ -227,11 +245,12 @@ function resultLink(reportDir, row) {
   if (!row) return 'Not submitted';
   const target = resolve(ROOT, 'results', row.data.id, 'summary.md');
   const href = relative(reportDir, target).split(sep).join('/');
-  return `[${markdownText(row.data.id)}](${href})`;
+  return `[Report](${href})`;
 }
 
 function markdownReport(prepared, reportDir) {
   const { base, models, byKey, gpuNames } = prepared;
+  const hasCold = [...byKey.values()].some(row => row.scenario === 'cold');
   const cell = (model, backend, scenario) => byKey.get(`${model}/${backend}/${scenario}`) ?? null;
   const warm = (model, backend) => summarizeWarm(cell(model, backend, 'warm'));
   const cached = (model, backend) => summarizeCached(cell(model, backend, 'cached'));
@@ -241,7 +260,7 @@ function markdownReport(prepared, reportDir) {
   const gpuAvailability = model => model.manifest.backends.includes('webgpu') ? null : 'Unsupported (not declared in manifest)';
 
   let md = `# Browser TTS campaign overview\n\n`;
-  md += `**Cohort:** native headed-Chrome results from source commit \`${base.source.gitCommit}\` (source fingerprint \`${base.source.manifestSha256}\`), on ${markdownText(base.environment.machineLabel)} · ${markdownText(base.environment.os)} · ${markdownText(base.environment.cpu)} · Chrome ${markdownText(base.environment.chromeVersion)} · GPU ${markdownText(gpuNames.join(', ') || 'not reported')}. Fixture: \`${base.fixture.id}\`, ${base.fixture.characters.toLocaleString('en-US')} characters / ${base.fixture.chunks} chunks, SHA-256 \`${base.fixture.sha256}\`.\n\n`;
+  md += `**Cohort:** native headed-Chrome results from source commit \`${base.source.gitCommit}\` (source fingerprint \`${base.source.manifestSha256}\`), on ${markdownText(base.environment.machineLabel)} · ${markdownText(base.environment.os)} · ${markdownText(base.environment.cpu)} · ${markdownText(base.environment.chromeVersion)} · GPU ${markdownText(gpuNames.join(', ') || 'not reported')}. Fixture: \`${base.fixture.id}\`, ${base.fixture.characters.toLocaleString('en-US')} characters / ${base.fixture.chunks} chunks, SHA-256 \`${base.fixture.sha256}\`.\n\n`;
   md += `The included receipts share one source, exact environment and fixture; voice, precision and non-backend settings are checked per model. The recorded non-backend model settings match; \`executionProviders\` identifies the requested runtime providers. Scenarios remain separate and are never pooled. Model support and terms: [voice/language counts](../../docs/MODEL_SUPPORT.md) · [licensing and publication boundaries](../../docs/LICENSING.md).\n\n`;
   md += `## Warm generation\n\n`;
   md += `Full warm workload: one excluded full-article warm-up and at least five scored 20,000-character / 93-chunk repetitions. Generation is the benchmark timer; values summarize scored repetitions only. First PCM is median of recorded per-trial values. Audio duration and RTF are reconciled from output samples, sample rate and generation time.\n\n`;
@@ -271,8 +290,14 @@ function markdownReport(prepared, reportDir) {
     md += `| ${markdownText(model.manifest.displayName ?? model.id)} | ${generation(cpuEntry, cpu)} | ${gpuGeneration} | ${firstPcm(cpuEntry, cpu)} | ${gpuFirst} | ${audioRtf(cpuEntry, cpu, 'cpu')} | ${gpuAudio} |\n`;
   }
 
-  md += `\n## Resource and cold-transfer diagnostics\n\nCached RAM is the mean process-tree RSS sampled during one full generation in a separate one-tab Chrome session. It includes browser baseline and inference workers, may double-count shared pages, and is not model-only RAM or VRAM. Cold HTTP bytes include the harness/runtime assets captured by that cold run, not only model weights. Decimal MB = 1,000,000 bytes; ideal 1 Mbps transfer time is bytes / 125,000 and is an estimate, not observed load time.\n\n`;
-  md += `| Model | CPU mean Chrome RSS | WebGPU mean Chrome RSS | Pinned model weights | CPU cold HTTP bytes | Ideal 1 Mbps | Observed cold load |\n|---|---:|---:|---:|---:|---:|---:|\n`;
+  const resourceHeading = hasCold ? 'Resource and cold-initialization diagnostics' : 'Resource diagnostics';
+  const resourceIntro = hasCold
+    ? 'Cached RAM is the mean process-tree RSS sampled during one full generation in a separate one-tab Chrome session. It includes browser baseline and inference workers, may double-count shared pages, and is not model-only RAM or VRAM. The peak column is the largest RSS sample inside the same generation window; process RSS does not measure total CPU plus GPU allocations. Cold initialization measures timed model/runtime initialization after page open against the local loopback asset server; it excludes page boot and internet download. HTTP byte counts include harness/runtime assets served during initialization, not only model weights. Decimal MB = 1,000,000 bytes; ideal 1 Mbps transfer time is bytes / 125,000 and is an estimate, not observed network time.'
+    : 'Cached RAM is the mean process-tree RSS sampled during one full generation in a separate one-tab Chrome session. It includes browser baseline and inference workers, may double-count shared pages, and is not model-only RAM or VRAM. The peak column is the largest RSS sample inside the same generation window; process RSS does not measure total CPU plus GPU allocations. Decimal MB = 1,000,000 bytes.';
+  md += `\n## ${resourceHeading}\n\n${resourceIntro}\n\n`;
+  const resourceHeaders = ['Model', 'CPU mean Chrome RSS', 'CPU max sampled RSS', 'WebGPU mean Chrome RSS', 'WebGPU max sampled RSS', 'Pinned model weights'];
+  if (hasCold) resourceHeaders.push('CPU cold init HTTP bytes', 'Ideal 1 Mbps estimate', 'Observed CPU cold init');
+  md += `|${resourceHeaders.map(value => ` ${value} `).join('|')}|\n|${resourceHeaders.map((_, index) => index === 0 ? '---' : '---:').join('|')}|\n`;
   for (const model of models) {
     const cpuCacheEntry = cell(model.id, 'cpu', 'cached'), gpuCacheEntry = cell(model.id, 'webgpu', 'cached'), coldEntry = cell(model.id, 'cpu', 'cold');
     const cpuRam = cached(model.id, 'cpu'), gpuRam = cached(model.id, 'webgpu'), coldData = cold(model.id);
@@ -282,21 +307,63 @@ function markdownReport(prepared, reportDir) {
       if (!summary) return `Unavailable (${markdownText(entry.cell.trials[0]?.memory?.availability ?? 'missing memory evidence')})`;
       return `${format(summary.meanRssBytes / 1_000_000)} MB (n=1; ${summary.sampleCount} samples)`;
     };
+    const ramPeak = (entry, summary, backend) => {
+      if (!entry) return backend === 'webgpu' && !model.manifest.backends.includes('webgpu') ? 'Unsupported (not declared in manifest)' : 'Not submitted';
+      if (entry.cell.status !== 'measured') return markdownText(statusLabel(entry));
+      if (!summary) return `Unavailable (${markdownText(entry.cell.trials[0]?.memory?.availability ?? 'missing memory evidence')})`;
+      return `${format(summary.peakRssBytes / 1_000_000)} MB (sampled max; n=1; ${summary.sampleCount} samples)`;
+    };
     const coldValue = (value, unit, digits = 2) => {
       if (!coldEntry) return 'Not submitted';
       if (coldEntry.cell.status !== 'measured') return markdownText(statusLabel(coldEntry));
       return Number.isFinite(value) ? `${format(value, digits)} ${unit} (n=${coldData?.n ?? 0})` : 'Not recorded';
     };
-    md += `| ${markdownText(model.manifest.displayName ?? model.id)} | ${ram(cpuCacheEntry, cpuRam, 'cpu')} | ${ram(gpuCacheEntry, gpuRam, 'webgpu')} | ${format(weightMB(model))} MB | ${coldValue((coldData?.downloadBytes ?? NaN) / 1_000_000, 'MB')} | ${coldValue(coldData?.idealSeconds ?? NaN, 's', 3)} | ${coldValue((coldData?.loadMs ?? NaN) / 1000, 's')} |\n`;
+    const resourceCells = [
+      markdownText(model.manifest.displayName ?? model.id),
+      ram(cpuCacheEntry, cpuRam, 'cpu'),
+      ramPeak(cpuCacheEntry, cpuRam, 'cpu'),
+      ram(gpuCacheEntry, gpuRam, 'webgpu'),
+      ramPeak(gpuCacheEntry, gpuRam, 'webgpu'),
+      `${format(weightMB(model))} MB`,
+    ];
+    if (hasCold) resourceCells.push(
+      coldValue((coldData?.downloadBytes ?? NaN) / 1_000_000, 'MB'),
+      coldValue(coldData?.idealSeconds ?? NaN, 's', 3),
+      coldValue((coldData?.loadMs ?? NaN) / 1000, 's'),
+    );
+    md += `|${resourceCells.map(value => ` ${value} `).join('|')}|\n`;
   }
 
   md += `\n## Submitted receipts\n\nEach cell links to its submitted receipt and full per-run report. Missing entries are labeled, not treated as zero.\n\n`;
-  md += `| Model | Warm CPU | Warm WebGPU | Cached CPU RAM | Cached WebGPU RAM | Cold CPU | Support | License |\n|---|---|---|---|---|---|---|---|\n`;
+  const receiptHeaders = ['Model', 'Warm CPU', 'Warm WebGPU', 'Cached CPU RAM', 'Cached WebGPU RAM'];
+  if (hasCold) receiptHeaders.push('Cold CPU');
+  receiptHeaders.push('Support', 'License');
+  md += `|${receiptHeaders.map(value => ` ${value} `).join('|')}|\n|${receiptHeaders.map(() => '---').join('|')}|\n`;
   for (const model of models) {
     const gpuWarm = cell(model.id, 'webgpu', 'warm'), gpuCache = cell(model.id, 'webgpu', 'cached');
-    md += `| ${markdownText(model.manifest.displayName ?? model.id)} | ${links(model.id, 'cpu', 'warm')} | ${gpuWarm ? resultLink(reportDir, gpuWarm) : model.manifest.backends.includes('webgpu') ? 'Not submitted' : 'Unsupported (manifest)'} | ${links(model.id, 'cpu', 'cached')} | ${gpuCache ? resultLink(reportDir, gpuCache) : model.manifest.backends.includes('webgpu') ? 'Not submitted' : 'Unsupported (manifest)'} | ${links(model.id, 'cpu', 'cold')} | [Support details](../../docs/MODEL_SUPPORT.md#${model.id}) | [Terms](../../docs/LICENSING.md) |\n`;
+    const receiptCells = [
+      markdownText(model.manifest.displayName ?? model.id),
+      links(model.id, 'cpu', 'warm'),
+      gpuWarm ? resultLink(reportDir, gpuWarm) : model.manifest.backends.includes('webgpu') ? 'Not submitted' : 'Unsupported (manifest)',
+      links(model.id, 'cpu', 'cached'),
+      gpuCache ? resultLink(reportDir, gpuCache) : model.manifest.backends.includes('webgpu') ? 'Not submitted' : 'Unsupported (manifest)',
+    ];
+    if (hasCold) receiptCells.push(links(model.id, 'cpu', 'cold'));
+    receiptCells.push(`[Support details](../../docs/MODEL_SUPPORT.md#${model.id})`, '[Terms](../../docs/LICENSING.md)');
+    md += `|${receiptCells.map(value => ` ${value} `).join('|')}|\n`;
   }
-  md += `\n![Six-panel campaign metrics chart](overview.svg)\n\n`;
+  const outcomes = outcomeNotes(byKey);
+  md += `\n## Unsupported and error outcomes\n\n`;
+  if (!outcomes.length) md += `All submitted cells are measured.\n\n`;
+  else {
+    md += `Reasons are listed once per model, backend, status and reason; the receipt table above retains links for every submitted cell.\n\n`;
+    md += `| Model | Backend | Status | Reason | Source receipt |\n|---|---|---|---|---|\n`;
+    for (const { row, detail } of outcomes) {
+      md += `| ${markdownText(row.cell.model)} | ${row.cell.backendRequested} | ${statusLabel(row)} | ${markdownText(detail)} | ${resultLink(reportDir, row)} |\n`;
+    }
+    md += `\n`;
+  }
+  md += `\n![Campaign metrics chart](overview.svg)\n\n`;
   md += `This overview reports measured browser execution and resource diagnostics only. It does not rank speech quality or establish intelligibility. Compare scenarios only within their named protocol boundaries; unsupported, unavailable, unrecorded and not-submitted values remain distinct.\n`;
   return md;
 }
@@ -312,21 +379,35 @@ function svgNumber(value) {
 
 function chartReport(prepared) {
   const { models, byKey } = prepared;
+  const hasCold = [...byKey.values()].some(row => row.scenario === 'cold');
   const get = (model, backend, scenario) => byKey.get(`${model}/${backend}/${scenario}`) ?? null;
   const panelSpecs = [
     { title: 'Warm generation median', unit: 'seconds', scenario: 'warm', value: (row, summary) => summary?.generationMedianSeconds, summarize: summarizeWarm, key: 'generationMedianSeconds' },
     { title: 'First PCM median', unit: 'milliseconds', scenario: 'warm', value: (row, summary) => summary?.firstPcmMedianMs, summarize: summarizeWarm, key: 'firstPcmMedianMs' },
     { title: 'Real-time factor median', unit: 'ratio', scenario: 'warm', value: (row, summary) => summary?.rtfMedian, summarize: summarizeWarm, key: 'rtfMedian' },
+    { title: 'Warm output audio duration median', unit: 'seconds', scenario: 'warm', value: (row, summary) => summary?.audioMedianSeconds, summarize: summarizeWarm },
     { title: 'Mean Chrome RSS during generation', unit: 'decimal MB', scenario: 'cached', value: (row, summary) => summary ? summary.meanRssBytes / 1_000_000 : null, summarize: summarizeCached, key: 'meanRssBytes' },
     { title: 'Pinned model weights', unit: 'decimal MB', scenario: 'size', single: true, value: model => model.weights / 1_000_000 },
-    { title: 'CPU cold HTTP transfer', unit: 'decimal MB · label shows ideal 1 Mbps time', scenario: 'cold', single: true, value: (model, row) => summarizeCold(row)?.downloadBytes / 1_000_000, text: (model, row) => {
+    ...(hasCold ? [
+    { title: 'CPU cold initialization HTTP bytes', unit: 'loopback-served decimal MB · label shows ideal 1 Mbps estimate', scenario: 'cold', single: true, value: (model, row) => divideOrMissing(summarizeCold(row)?.downloadBytes, 1_000_000), text: (model, row) => {
       const summary = summarizeCold(row);
-      return summary ? `${svgNumber(summary.downloadBytes / 1_000_000)} MB · ${svgNumber(summary.idealSeconds)} s ideal` : null;
+      if (!summary || !Number.isFinite(summary.downloadBytes)) return null;
+      const ideal = Number.isFinite(summary.idealSeconds) ? `${svgNumber(summary.idealSeconds)} s ideal` : 'ideal time not recorded';
+      return `${svgNumber(summary.downloadBytes / 1_000_000)} MB · ${ideal}`;
     } },
+    { title: 'Observed CPU cold initialization time', unit: 'seconds after page open', scenario: 'cold', single: true, value: (model, row) => {
+      const summary = summarizeCold(row);
+      return divideOrMissing(summary?.loadMs, 1000);
+    }, text: (model, row) => {
+      const summary = summarizeCold(row);
+      return Number.isFinite(summary?.loadMs) ? `${svgNumber(summary.loadMs / 1000)} s observed` : null;
+    } },
+    ] : []),
   ];
   const width = 1440, panelW = 684, gapX = 24, gapY = 20, top = 122;
   const rowHeight = 56, panelH = 120 + models.length * rowHeight;
-  const height = top + panelH * 3 + gapY * 2 + 34;
+  const panelRows = Math.ceil(panelSpecs.length / 2);
+  const height = top + panelH * panelRows + gapY * (panelRows - 1) + 34;
   const outputs = [];
   for (let panelIndex = 0; panelIndex < panelSpecs.length; panelIndex++) {
     const spec = panelSpecs[panelIndex];
@@ -339,7 +420,7 @@ function chartReport(prepared) {
       else if (spec.single) {
         const entry = get(model.id, 'cpu', spec.scenario);
         const value = spec.value(model, entry);
-        const status = !entry ? 'Not submitted' : entry.cell.status === 'measured' ? 'Measured'
+        const status = !entry ? 'Not submitted' : entry.cell.status === 'measured' ? Number.isFinite(value) ? 'Measured' : 'Not recorded'
           : entry.cell.status === 'unsupported' ? 'Unsupported' : 'Error';
         series.push({ model, backend: 'cpu', value: Number.isFinite(value) ? value : null,
           status, label: spec.text(model, entry) });
@@ -393,7 +474,14 @@ function chartReport(prepared) {
     outputs.push('</g>');
   }
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="campaign-title campaign-desc"><title id="campaign-title">Browser TTS campaign metrics</title><desc id="campaign-desc">Six separate panels show warm generation time, first PCM, real-time factor, generation-window Chrome RSS, pinned model weight size and cold CPU HTTP transfer. CPU and WebGPU bars appear when measured; unsupported and missing evidence are labeled. Scenarios are not pooled and this chart does not rate speech quality.</desc><rect width="100%" height="100%" fill="#f4f7f4"/><g font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" fill="#183b35"><text x="34" y="48" font-size="30" font-weight="750">Browser TTS · campaign overview</text><text x="34" y="77" font-size="14" fill="#526c65">${xml(prepared.base.environment.machineLabel)} · ${xml(prepared.base.environment.chromeVersion)} · ${xml(prepared.base.fixture.characters.toLocaleString('en-US'))} characters / ${xml(prepared.base.fixture.chunks)} chunks</text><text x="34" y="99" font-size="12" fill="#62736d">CPU / WASM · WebGPU with allowed CPU fallback · not a quality ranking</text>${outputs.join('')}<text x="30" y="${height - 17}" font-size="11" fill="#64746f">MB uses decimal bytes. RSS includes Chrome baseline and workers; HTTP transfer includes harness assets. Missing and unsupported values are not zero.</text></g></svg>\n`;
+  const panelNames = panelSpecs.map(spec => spec.title).join(', ');
+  const coldDescription = hasCold
+    ? ' Cold panels report CPU initialization after page open against the local loopback server; HTTP bytes include harness assets, and the 1 Mbps figure is an estimate.'
+    : '';
+  const footer = hasCold
+    ? 'MB uses decimal bytes. RSS includes Chrome baseline and workers; peak is the largest generation-window sample. HTTP transfer includes harness assets. RSS is not total CPU plus GPU memory; missing and unsupported values are not zero.'
+    : 'MB uses decimal bytes. RSS includes Chrome baseline and workers; peak is the largest generation-window sample. RSS is not total CPU plus GPU memory; missing and unsupported values are not zero.';
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="campaign-title campaign-desc"><title id="campaign-title">Browser TTS campaign metrics</title><desc id="campaign-desc">${panelSpecs.length} separate panels show ${xml(panelNames)}. CPU and WebGPU bars appear when measured; unsupported and missing evidence are labeled. Scenarios are not pooled and this chart does not rate speech quality.${xml(coldDescription)}</desc><rect width="100%" height="100%" fill="#f4f7f4"/><g font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" fill="#183b35"><text x="34" y="48" font-size="30" font-weight="750">Browser TTS · campaign overview</text><text x="34" y="77" font-size="14" fill="#526c65">${xml(prepared.base.environment.machineLabel)} · ${xml(prepared.base.environment.chromeVersion)} · ${xml(prepared.base.fixture.characters.toLocaleString('en-US'))} characters / ${xml(prepared.base.fixture.chunks)} chunks</text><text x="34" y="99" font-size="12" fill="#62736d">CPU / WASM · WebGPU with allowed CPU fallback · not a quality ranking</text>${outputs.join('')}<text x="30" y="${height - 17}" font-size="11" fill="#64746f">${xml(footer)}</text></g></svg>\n`;
 }
 
 export function renderCampaignOverview(entries, { reportDir, manifest = getAssetLock().models, cwd = ROOT, sourceCache = new Map() } = {}) {

@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-10t15-16-09-599z-kitten-nano-0.8-cpu-warm-624ea636",
+  "createdAt": "2026-11-10T16:32:01.914Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-warm-v1",
+    "scenario": "warm",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export.",
+    "warmupRuns": 1,
+    "repetitions": 5,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro (Apple M1 Pro, 16 GB)",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.40",
+    "gpu": null,
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "955a87683c0c899cc299161a7b8b127fb75617be",
+    "dirty": false,
+    "manifestSha256": "d692498775b06e716e111b7d122f5995ec8d8046febc2d2aebfd2c33a542379f"
+  },
+  "assets": [
+    {
+      "id": "runtime:kitten-nano-0.8:onnxruntime-web:dist/ort.wasm.min.mjs",
+      "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7",
+      "bytes": 49856
+    },
+    {
+      "id": "runtime:kitten-nano-0.8:onnxruntime-web:dist/ort.webgpu.min.mjs",
+      "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
+      "bytes": 66261
+    },
+    {
+      "id": "runtime:kitten-nano-0.8:onnxruntime-web:dist/ort-wasm-simd-threaded.mjs",
+      "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e",
+      "bytes": 20321
+    },
+    {
+      "id": "runtime:kitten-nano-0.8:onnxruntime-web:dist/ort-wasm-simd-threaded.wasm",
+      "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15",
+      "bytes": 11905541
+    },
+    {
+      "id": "runtime:kitten-nano-0.8:onnxruntime-web:dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff",
+      "bytes": 51913
+    },
+    {
+      "id": "runtime:kitten-nano-0.8:onnxruntime-web:dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada",
+      "bytes": 25499390
+    },
+    {
+      "id": "runtime:kitten-nano-0.8:phonemizer:dist/phonemizer.js",
+      "sha256": "193481f474f7c1ea81df3195d18b45df8ef7254dbdccb3f193d60215c4897bec",
+      "bytes": 1322380
+    },
+    {
+      "id": "runtime:kitten-nano-0.8:phonemizer:LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "id": "runtime:kitten-nano-0.8:onnxruntime-web:LICENSE",
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "bytes": 1073
+    },
+    {
+      "id": "runtime:kitten-nano-0.8:onnxruntime-web:ThirdPartyNotices.txt",
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+      "bytes": 326866
+    },
+    {
+      "id": "kitten-nano-0.8-config.json",
+      "sha256": "b66006ccbeccd4de5fc3c9272059c47f5725df7215fd889785c03602652fab64",
+      "bytes": 688
+    },
+    {
+      "id": "kitten-nano-0.8-kitten_tts_nano_v0_8.onnx",
+      "sha256": "320564d2615f235de972ca27a7f39551c94185cfa24ca85b07a29084135f1e5e",
+      "bytes": 56767095
+    },
+    {
+      "id": "kitten-nano-0.8-voices.npz",
+      "sha256": "8aa7cee235abb0739cb51e6559685f65a4dacd95568833d05699b1633f519b3f",
+      "bytes": 3278902
+    },
+    {
+      "id": "kitten-nano-0.8-espeak-license",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "bytes": 35147
+    }
+  ],
+  "cells": [
+    {
+      "model": "kitten-nano-0.8",
+      "support": {
+        "voiceCount": 8,
+        "bundledVoiceCount": 8,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned Kitten Nano 0.8 checkpoint and supplied voice archive",
+        "notes": "Eight preset voices; all styles bundled in voices.npz. Only Bella is tested. Official clean_text=false path with browser eSpeak and strict token mapping; no silent unknown-symbol skips.",
+        "sources": [
+          "https://huggingface.co/KittenML/kitten-tts-nano-0.8-fp32/blob/e73cfb095bd949c786ccdcf3b8ab04eb36c47442/config.json"
+        ]
+      },
+      "backendRequested": "cpu",
+      "backendEffective": "cpu/wasm",
+      "status": "measured",
+      "reason": null,
+      "voice": "Bella (expr-voice-2-f)",
+      "precision": "FP32",
+      "settings": {
+        "threads": 1,
+        "speed": 1,
+        "effectiveSpeed": 0.8,
+        "sampleRate": 24000,
+        "frontend": "Kitten official ONNX TextCleaner/token spacing port; browser eSpeak en-us with stress and preserved punctuation; clean_text=false",
+        "styleRow": "min(source text length,399)",
+        "tailTrimSamples": 5000,
+        "noise": "Graph random noise; no validated public seed input",
+        "executionProviders": [
+          "wasm"
+        ]
+      },
+      "capability": {
+        "gpuDispatchVerified": null,
+        "description": "Explicit single-thread WASM provider."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 755824.4399999976,
+          "samples": 48169800,
+          "sampleRate": 24000,
+          "pcmSha256": "0a8503132cfb8d6df447a1d2803547671e90a1c96f3f9a58152e30a15892ba31",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 9002.714999973774,
+            "firstSourceChunkCompletedMs": 9002.724999964237,
+            "audioSeconds": 2007.075,
+            "realTimeFactor": 0.3765800680094155,
+            "minSamplesPerChunk": 421600,
+            "maxSamplesPerChunk": 623200
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 754079.594999969,
+          "samples": 48169800,
+          "sampleRate": 24000,
+          "pcmSha256": "04d2bf735b40033c6cc9e1ab29a08496058ff205822d2215e69594b9d48a9d0e",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 8721.474999964237,
+            "firstSourceChunkCompletedMs": 8721.4849999547,
+            "audioSeconds": 2007.075,
+            "realTimeFactor": 0.37571072082506585,
+            "minSamplesPerChunk": 421600,
+            "maxSamplesPerChunk": 623200
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 754009.9200000167,
+          "samples": 48169800,
+          "sampleRate": 24000,
+          "pcmSha256": "5d818b798cd2fe93be9f1bf42d8ccb3641aa28455d6ca010361d1706f1e5d40f",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 8712.735000014305,
+            "firstSourceChunkCompletedMs": 8712.75,
+            "audioSeconds": 2007.075,
+            "realTimeFactor": 0.37567600612832935,
+            "minSamplesPerChunk": 421600,
+            "maxSamplesPerChunk": 623200
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 754783.7450000048,
+          "samples": 48169800,
+          "sampleRate": 24000,
+          "pcmSha256": "0764839b0135008ebba3bcbbcec17ec8953a66fb345b260182686233a138abb5",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 8710.169999957085,
+            "firstSourceChunkCompletedMs": 8710.174999952316,
+            "audioSeconds": 2007.075,
+            "realTimeFactor": 0.376061554750074,
+            "minSamplesPerChunk": 421600,
+            "maxSamplesPerChunk": 623200
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 755389.0199999809,
+          "samples": 48169800,
+          "sampleRate": 24000,
+          "pcmSha256": "963296a2f3773cd0b52ede44ca8cbaf5d10c498451ac9c6e2a2fd243d8305ac2",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 8701.639999985695,
+            "firstSourceChunkCompletedMs": 8701.65499997139,
+            "audioSeconds": 2007.075,
+            "realTimeFactor": 0.37636312544373324,
+            "minSamplesPerChunk": 421600,
+            "maxSamplesPerChunk": 623200
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 753714.4550000429,
+          "samples": 48169800,
+          "sampleRate": 24000,
+          "pcmSha256": "096e2ecc1bdf1599764794813ca6593ad19eb9fbf5eb7b61726e973eb8309c6b",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 8707.824999988079,
+            "firstSourceChunkCompletedMs": 8707.835000038147,
+            "audioSeconds": 2007.075,
+            "realTimeFactor": 0.3755287943898673,
+            "minSamplesPerChunk": 421600,
+            "maxSamplesPerChunk": 623200
+          },
+          "audio": {
+            "sha256": "dfe022d63387bfaf57d3b0839586572269fef43343482efd8c039c59a4293746",
+            "bytes": 96339644
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "Campaign 2026-11-10T15-16-09-103Z-2e95f2b088d2; cell 1/25; source 955a87683c0c899cc299161a7b8b127fb75617be; AC attached; native arm64; 8 CPU cores and 16 GiB RAM. Headed Chrome, disposable profiles, sequential inference. Ordinary user applications remain open; owned caffeinate -di assertion for campaign lifetime; no persistent system power settings changed; temperature not instrumented."
+  ]
+}

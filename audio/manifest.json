@@ -2,6 +2,172 @@
   "schemaVersion": 1,
   "entries": [
     {
+      "resultId": "2026-11-10t17-52-21-838z-inflect-micro-v2-cpu-warm-c57a83a6",
+      "model": "inflect-micro-v2",
+      "backend": "cpu",
+      "trialIndex": 5,
+      "voice": "English (single speaker; eSpeak en-us)",
+      "language": "en",
+      "attribution": "Inflect Micro v2 by Owen Song; fixed synthetic English voice. Official ONNX packaging from Robert Bak conversion. Apache-2.0 model.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/blob/91b1ab6432323064ec0e8e9704d92fcecd24855f/README.md",
+        "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/blob/91b1ab6432323064ec0e8e9704d92fcecd24855f/onnx/SOURCE.json",
+        "https://huggingface.co/owensong/Inflect-Micro-v2/blob/9d862840734dcc53afb5d27ef468459daad020fa/README.md"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-10t17-52-21-838z-inflect-micro-v2-cpu-warm-c57a83a6--inflect-micro-v2--cpu.wav",
+        "sha256": "f1af515c7b68d58ecc169da5b1887412ed47bd8dac69faa29bd712ded77c3025",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t17-52-21-838z-inflect-micro-v2-cpu-warm-c57a83a6--inflect-micro-v2--cpu-full.wav",
+        "sha256": "2ca5475171cb3e7467f8f8784c1eeacf106a54cdc7017aae84cbefd1b7f293c1",
+        "bytes": 58789068
+      }
+    },
+    {
+      "resultId": "2026-11-11t02-50-06-191z-inflect-micro-v2-webgpu-warm-e21ef201",
+      "model": "inflect-micro-v2",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "English (single speaker; eSpeak en-us)",
+      "language": "en",
+      "attribution": "Inflect Micro v2 by Owen Song; fixed synthetic English voice. Official ONNX packaging from Robert Bak conversion. Apache-2.0 model.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/blob/91b1ab6432323064ec0e8e9704d92fcecd24855f/README.md",
+        "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/blob/91b1ab6432323064ec0e8e9704d92fcecd24855f/onnx/SOURCE.json",
+        "https://huggingface.co/owensong/Inflect-Micro-v2/blob/9d862840734dcc53afb5d27ef468459daad020fa/README.md"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-11t02-50-06-191z-inflect-micro-v2-webgpu-warm-e21ef201--inflect-micro-v2--webgpu.wav",
+        "sha256": "de3cfa0c403be6a8643c355661a12bac87449c9268a8995fcb59ae0b211905b1",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-11t02-50-06-191z-inflect-micro-v2-webgpu-warm-e21ef201--inflect-micro-v2--webgpu-full.wav",
+        "sha256": "47be6d2a1cd3c774a17d12b83b3dcd40c608934ddcbfb578addc6d4fa7395278",
+        "bytes": 58789068
+      }
+    },
+    {
+      "resultId": "2026-11-10t15-16-09-599z-kitten-nano-0.8-cpu-warm-624ea636",
+      "model": "kitten-nano-0.8",
+      "backend": "cpu",
+      "trialIndex": 5,
+      "voice": "Bella (expr-voice-2-f)",
+      "language": "en",
+      "attribution": "Kitten Nano 0.8 by KittenML; Bella voice. Apache-2.0 model.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/KittenML/kitten-tts-nano-0.8-fp32/blob/e73cfb095bd949c786ccdcf3b8ab04eb36c47442/config.json"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-10t15-16-09-599z-kitten-nano-0.8-cpu-warm-624ea636--kitten-nano-0.8--cpu.wav",
+        "sha256": "69049b037e5b6885561aa2ecb33992bcaa24c583d0f228c420c2e380b28304e5",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t15-16-09-599z-kitten-nano-0.8-cpu-warm-624ea636--kitten-nano-0.8--cpu-full.wav",
+        "sha256": "dfe022d63387bfaf57d3b0839586572269fef43343482efd8c039c59a4293746",
+        "bytes": 96339644
+      }
+    },
+    {
+      "resultId": "2026-11-10t19-24-19-116z-kitten-nano-0.8-webgpu-warm-cef85ae4",
+      "model": "kitten-nano-0.8",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "Bella (expr-voice-2-f)",
+      "language": "en",
+      "attribution": "Kitten Nano 0.8 by KittenML; Bella voice. Apache-2.0 model.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/KittenML/kitten-tts-nano-0.8-fp32/blob/e73cfb095bd949c786ccdcf3b8ab04eb36c47442/config.json"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-10t19-24-19-116z-kitten-nano-0.8-webgpu-warm-cef85ae4--kitten-nano-0.8--webgpu.wav",
+        "sha256": "b4ac0377fe85521c407b245f1afa20f13e7404436a8b98dc34d2f085c577783f",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t19-24-19-116z-kitten-nano-0.8-webgpu-warm-cef85ae4--kitten-nano-0.8--webgpu-full.wav",
+        "sha256": "cf49e3e8cd09123a25ee4dffd3279be57031039b2a6dff98f38599f5847a1a52",
+        "bytes": 96339644
+      }
+    },
+    {
+      "resultId": "2026-11-10t22-06-51-166z-kokoro-82m-cpu-warm-a9cc8d21",
+      "model": "kokoro-82m",
+      "backend": "cpu",
+      "trialIndex": 5,
+      "voice": "af_heart",
+      "language": "en",
+      "attribution": "Kokoro 82M by hexgrad; af_heart voice. Apache-2.0 model.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/VOICES.md"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-10t22-06-51-166z-kokoro-82m-cpu-warm-a9cc8d21--kokoro-82m--cpu.wav",
+        "sha256": "51edf6b8e4aca455eb1e8650a2eaf38a2c79b1191e0538670fd3db29b1978c19",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t22-06-51-166z-kokoro-82m-cpu-warm-a9cc8d21--kokoro-82m--cpu-full.wav",
+        "sha256": "8eaed0e2b32002f29611259b72277b91482d5b96e44842571b55480df29faacc",
+        "bytes": 62517644
+      }
+    },
+    {
+      "resultId": "2026-11-11t02-22-33-290z-kokoro-82m-webgpu-warm-58b6b9b7",
+      "model": "kokoro-82m",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "af_heart",
+      "language": "en",
+      "attribution": "Kokoro 82M by hexgrad; af_heart voice. Apache-2.0 model.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/VOICES.md"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-11t02-22-33-290z-kokoro-82m-webgpu-warm-58b6b9b7--kokoro-82m--webgpu.wav",
+        "sha256": "498c15ef88bb1461f049e0bcd5eff878f56561d2f3bc22159975e6ad269213cd",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-11t02-22-33-290z-kokoro-82m-webgpu-warm-58b6b9b7--kokoro-82m--webgpu-full.wav",
+        "sha256": "44b3e4ab8da9dc31d7a7d16fe83368caba60e8251b4644895d45c516b8b450aa",
+        "bytes": 62517644
+      }
+    },
+    {
       "resultId": "2026-11-10t12-19-17-960z-leokani-4.5m-cpu-cached-31b8534b",
       "model": "leokani-4.5m",
       "backend": "cpu",
@@ -215,6 +381,60 @@
         "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--leokani-7m--webgpu-full.wav",
         "sha256": "bc91dcfe493dab65202e60c7e70d6d8d140c14bfc2e1da5a5768aa6e7c679b79",
         "bytes": 67249244
+      }
+    },
+    {
+      "resultId": "2026-11-10t19-31-08-081z-mms-english-cpu-warm-b81daec2",
+      "model": "mms-english",
+      "backend": "cpu",
+      "trialIndex": 5,
+      "voice": "English fixed voice",
+      "language": "en",
+      "attribution": "MMS English by Facebook/Meta; Xenova ONNX export. CC BY-NC 4.0 model; noncommercial benchmark evaluation.",
+      "modelTerms": "CC-BY-NC-4.0",
+      "sourceUrls": [
+        "https://huggingface.co/facebook/mms-tts-eng/blob/c71de0fe7204c83f1c10820a7d696d0b450048ba/README.md"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-10t19-31-08-081z-mms-english-cpu-warm-b81daec2--mms-english--cpu.wav",
+        "sha256": "704c01f05dbcc896a53a53cb1d682176ca172369ada67e1f7eb0e7520c500637",
+        "bytes": 960044,
+        "startSample": 0,
+        "sampleRate": 16000,
+        "samples": 480000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t19-31-08-081z-mms-english-cpu-warm-b81daec2--mms-english--cpu-full.wav",
+        "sha256": "1e87067bc4b71fbded1d6b8ff28e885c3b04c9ca6a9521b46ed4431883e012df",
+        "bytes": 38529068
+      }
+    },
+    {
+      "resultId": "2026-11-10t17-46-17-830z-mms-english-webgpu-warm-3eb8b06a",
+      "model": "mms-english",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "English fixed voice",
+      "language": "en",
+      "attribution": "MMS English by Facebook/Meta; Xenova ONNX export. CC BY-NC 4.0 model; noncommercial benchmark evaluation.",
+      "modelTerms": "CC-BY-NC-4.0",
+      "sourceUrls": [
+        "https://huggingface.co/facebook/mms-tts-eng/blob/c71de0fe7204c83f1c10820a7d696d0b450048ba/README.md"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-10t17-46-17-830z-mms-english-webgpu-warm-3eb8b06a--mms-english--webgpu.wav",
+        "sha256": "aa045a3edd67173e02972bd99ba8850a23b1344b368ad857fe92f91945c79cb5",
+        "bytes": 960044,
+        "startSample": 0,
+        "sampleRate": 16000,
+        "samples": 480000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t17-46-17-830z-mms-english-webgpu-warm-3eb8b06a--mms-english--webgpu-full.wav",
+        "sha256": "36885f5a8323dce2c287c0d2e9b50560487c117c781b30b5911592ce5f1bd78a",
+        "bytes": 40337452
       }
     },
     {
@@ -659,6 +879,34 @@
         "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--pivo-curated--webgpu-full.wav",
         "sha256": "964696fcb18b9866d558b4b16e9fc68a49602417010a49b53376c2fca9b780ec",
         "bytes": 38065004
+      }
+    },
+    {
+      "resultId": "2026-11-10t16-32-03-827z-sano-amy-cpu-warm-0a4ec2a0",
+      "model": "sano-amy",
+      "backend": "cpu",
+      "trialIndex": 5,
+      "voice": "Amy (English, eSpeak en-us)",
+      "language": "en",
+      "attribution": "SanoTTS by Ampixa; Amy English checkpoint. GPL-3.0 model and GPL-3.0-or-later browser runtime; evaluation recording.",
+      "modelTerms": "GPL-3.0",
+      "sourceUrls": [
+        "https://huggingface.co/ampixa/sanoTTS/blob/4a8194aa1dd958033ee449b3ad30c37e536b216e/amy-en-1p46m/README.md",
+        "https://huggingface.co/ampixa/sanoTTS/blob/4a8194aa1dd958033ee449b3ad30c37e536b216e/web/voices/amy/meta.json"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-10t16-32-03-827z-sano-amy-cpu-warm-0a4ec2a0--sano-amy--cpu.wav",
+        "sha256": "48b2d2f64514d2ae4ab5d8839a56d5caebad41d3a3e581b1fd2a94dceeffa65d",
+        "bytes": 1323044,
+        "startSample": 0,
+        "sampleRate": 22050,
+        "samples": 661500,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t16-32-03-827z-sano-amy-cpu-warm-0a4ec2a0--sano-amy--cpu-full.wav",
+        "sha256": "426e3661c303c735314241ca11cdb11de92dfabcdefe95ea828a03bdab98988b",
+        "bytes": 53049900
       }
     },
     {

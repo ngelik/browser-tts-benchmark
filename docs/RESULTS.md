@@ -70,3 +70,10 @@ Reference results section links and displays these overviews. Publish them in th
 same results PR; CI regenerates and checks them. RAM and cold-load diagnostics
 never replace the warm timing scores, and estimated 1 Mbps transfer is not a
 measured throttled run.
+
+An overview omits cold-load columns and panels when no cold receipts are supplied.
+If a user changes scope, retain raw excluded diagnostics locally and document the
+scope change; publish every attempt in the retained scenarios. Do not relabel a
+user-cancelled excluded run as a model failure. Memory means and sampled maxima
+come from the same generation window; sampled maxima are not the separate
+whole-article-call peak that can include post-timer export.

@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-11t02-50-06-191z-inflect-micro-v2-webgpu-warm-e21ef201",
+  "createdAt": "2026-11-11T02:55:05.374Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-warm-v1",
+    "scenario": "warm",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export.",
+    "warmupRuns": 1,
+    "repetitions": 5,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro (Apple M1 Pro, 16 GB)",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.40",
+    "gpu": "apple",
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "955a87683c0c899cc299161a7b8b127fb75617be",
+    "dirty": false,
+    "manifestSha256": "d692498775b06e716e111b7d122f5995ec8d8046febc2d2aebfd2c33a542379f"
+  },
+  "assets": [
+    {
+      "id": "runtime:inflect-micro-v2:onnxruntime-web:dist/ort.wasm.min.mjs",
+      "sha256": "69751720f611e37d1ce2fa3c6ebaa80f949014752636c5f8887a63d40feadcc7",
+      "bytes": 49856
+    },
+    {
+      "id": "runtime:inflect-micro-v2:onnxruntime-web:dist/ort.webgpu.min.mjs",
+      "sha256": "8ae8f1340dd86f8aaa5acc0fd5ec2f42ae874ffd7c9cd804281b73fd177c9864",
+      "bytes": 66261
+    },
+    {
+      "id": "runtime:inflect-micro-v2:onnxruntime-web:dist/ort-wasm-simd-threaded.mjs",
+      "sha256": "90a557d15c02bac4504d95b67f431d8594635ed2a0a62a7f2cd83d090ff91d3e",
+      "bytes": 20321
+    },
+    {
+      "id": "runtime:inflect-micro-v2:onnxruntime-web:dist/ort-wasm-simd-threaded.wasm",
+      "sha256": "45eaee27761ad883742a8d4b8fce1538d60ce43b51adf1726fafccc59b8c1a15",
+      "bytes": 11905541
+    },
+    {
+      "id": "runtime:inflect-micro-v2:onnxruntime-web:dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "sha256": "249b4dc791f081d33bd11760bfd669fe85f97289e679bbeb291b874272125dff",
+      "bytes": 51913
+    },
+    {
+      "id": "runtime:inflect-micro-v2:onnxruntime-web:dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "sha256": "babec0bbddb6d3082623b99b7e1391b75e0729bcca076ff8424d7753af97fada",
+      "bytes": 25499390
+    },
+    {
+      "id": "runtime:inflect-micro-v2:phonemizer:dist/phonemizer.js",
+      "sha256": "193481f474f7c1ea81df3195d18b45df8ef7254dbdccb3f193d60215c4897bec",
+      "bytes": 1322380
+    },
+    {
+      "id": "runtime:inflect-micro-v2:phonemizer:LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "id": "runtime:inflect-micro-v2:onnxruntime-web:LICENSE",
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "bytes": 1073
+    },
+    {
+      "id": "runtime:inflect-micro-v2:onnxruntime-web:ThirdPartyNotices.txt",
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+      "bytes": 326866
+    },
+    {
+      "id": "inflect-micro-v2-config.json",
+      "sha256": "91ba9652f743f65e6be48eaa1aacea1db3d2941f5138ce309f359d4ce14f34e4",
+      "bytes": 1210
+    },
+    {
+      "id": "inflect-micro-v2-onnx-duration.onnx",
+      "sha256": "b728ca2564b9e5b7d6cf5e446f65e02a6fe2f1880ba281466fec93a667dd2388",
+      "bytes": 7322687
+    },
+    {
+      "id": "inflect-micro-v2-onnx-decode.onnx",
+      "sha256": "7940923add86f76e7fa78d910b0632ca1779f8cc9a2ca2b49236381a9ca77183",
+      "bytes": 30427790
+    },
+    {
+      "id": "inflect-micro-v2-runtime-text-symbols.py",
+      "sha256": "e8871acbc37bd79f61ed063a2b3aa20e20555ddec15c6b9f29e1ab05e7f8b776",
+      "bytes": 642
+    },
+    {
+      "id": "inflect-micro-v2-onnx-SOURCE.json",
+      "sha256": "e950bf44034b011a64bba3773b388e386418ef952c3cd17ceefda5bfa94a3aaa",
+      "bytes": 633
+    },
+    {
+      "id": "inflect-micro-v2-LICENSE",
+      "sha256": "12c48c640d1d0baf158d45175a4238b9227c71c77f50b0d15791b8efc08cd793",
+      "bytes": 10455
+    },
+    {
+      "id": "inflect-micro-v2-runtime-text-LICENSE",
+      "sha256": "f89accd9d66f6a011f19997d7a21cf71a35ffe2e2d0911b5460cbd0cab52a581",
+      "bytes": 1053
+    },
+    {
+      "id": "inflect-micro-v2-espeak-license",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "bytes": 35147
+    }
+  ],
+  "cells": [
+    {
+      "model": "inflect-micro-v2",
+      "support": {
+        "voiceCount": 1,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Pinned Inflect Micro v2 complete English checkpoint and official FP32 ONNX export",
+        "notes": "One fixed synthetic English voice; no reference recording or voice-cloning model required. 9,356,513 deployable parameters including waveform decoder. Browser port uses a disclosed seeded JavaScript normal-noise generator rather than NumPy bitwise parity.",
+        "sources": [
+          "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/blob/91b1ab6432323064ec0e8e9704d92fcecd24855f/README.md",
+          "https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/blob/91b1ab6432323064ec0e8e9704d92fcecd24855f/onnx/SOURCE.json",
+          "https://huggingface.co/owensong/Inflect-Micro-v2/blob/9d862840734dcc53afb5d27ef468459daad020fa/README.md"
+        ]
+      },
+      "backendRequested": "webgpu",
+      "backendEffective": "webgpu+wasm",
+      "status": "measured",
+      "reason": null,
+      "voice": "English (single speaker; eSpeak en-us)",
+      "precision": "FP32 ONNX",
+      "settings": {
+        "sampleRate": 24000,
+        "speed": 1,
+        "variation": 0.667,
+        "seed": 0,
+        "noiseGenerator": "Seeded Mulberry32 + Box-Muller standard-normal noise; seed resets to 0 per canonical source span and increments for internal pieces. This is not NumPy PCG64 bitwise parity.",
+        "runtime": "ONNX Runtime Web 1.23.2; Inflect-Micro-v2-ONNX pinned graphs",
+        "frontend": "Pinned Inflect VITS frontend port: English normalization, eSpeak en-us with stress, punctuation retained, two official phoneme overrides, exact symbols.py vocabulary and blank insertion; unknown symbols fail.",
+        "chunking": "Official 280-character sentence/punctuation chunking inside each canonical source span; 5 ms edge fades and punctuation-based internal pauses are preserved.",
+        "waveform": "One duration graph and one decoder graph call per internal piece; waveform is awaited to CPU, faded and clipped to [-1, 1].",
+        "executionProviders": [
+          "webgpu",
+          "wasm"
+        ]
+      },
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Observed 2250 WebGPU dispatches in untimed duration and decoder inference; final waveform was read back to CPU. WASM fallback may execute unsupported operators. Hooks removed before timing."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 48845.25499999523,
+          "samples": 29394512,
+          "sampleRate": 24000,
+          "pcmSha256": "c4009124179bcf59d98bd47504ce1be2063e2c097bd8e5bc9d6da07057be5a49",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 791.1749999523163,
+            "firstSourceChunkCompletedMs": 791.1799999475479,
+            "audioSeconds": 1224.7713333333334,
+            "realTimeFactor": 0.03988112202712825,
+            "minSamplesPerChunk": 247360,
+            "maxSamplesPerChunk": 408288
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 48285.24000000954,
+          "samples": 29394512,
+          "sampleRate": 24000,
+          "pcmSha256": "c4009124179bcf59d98bd47504ce1be2063e2c097bd8e5bc9d6da07057be5a49",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 553.1050000190735,
+            "firstSourceChunkCompletedMs": 553.1100000143051,
+            "audioSeconds": 1224.7713333333334,
+            "realTimeFactor": 0.03942388157354777,
+            "minSamplesPerChunk": 247360,
+            "maxSamplesPerChunk": 408288
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 48250.94999998808,
+          "samples": 29394512,
+          "sampleRate": 24000,
+          "pcmSha256": "c4009124179bcf59d98bd47504ce1be2063e2c097bd8e5bc9d6da07057be5a49",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 551.1599999666214,
+            "firstSourceChunkCompletedMs": 551.164999961853,
+            "audioSeconds": 1224.7713333333334,
+            "realTimeFactor": 0.03939588451067716,
+            "minSamplesPerChunk": 247360,
+            "maxSamplesPerChunk": 408288
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 48216.47000002861,
+          "samples": 29394512,
+          "sampleRate": 24000,
+          "pcmSha256": "c4009124179bcf59d98bd47504ce1be2063e2c097bd8e5bc9d6da07057be5a49",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 551.2700000405312,
+            "firstSourceChunkCompletedMs": 551.2750000357628,
+            "audioSeconds": 1224.7713333333334,
+            "realTimeFactor": 0.039367732316858556,
+            "minSamplesPerChunk": 247360,
+            "maxSamplesPerChunk": 408288
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 48227.30500000715,
+          "samples": 29394512,
+          "sampleRate": 24000,
+          "pcmSha256": "c4009124179bcf59d98bd47504ce1be2063e2c097bd8e5bc9d6da07057be5a49",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 557.6750000119209,
+            "firstSourceChunkCompletedMs": 557.6750000119209,
+            "audioSeconds": 1224.7713333333334,
+            "realTimeFactor": 0.039376578866156094,
+            "minSamplesPerChunk": 247360,
+            "maxSamplesPerChunk": 408288
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 48177.30000001192,
+          "samples": 29394512,
+          "sampleRate": 24000,
+          "pcmSha256": "c4009124179bcf59d98bd47504ce1be2063e2c097bd8e5bc9d6da07057be5a49",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 549.4800000190735,
+            "firstSourceChunkCompletedMs": 549.4800000190735,
+            "audioSeconds": 1224.7713333333334,
+            "realTimeFactor": 0.03933575083676457,
+            "minSamplesPerChunk": 247360,
+            "maxSamplesPerChunk": 408288
+          },
+          "audio": {
+            "sha256": "47be6d2a1cd3c774a17d12b83b3dcd40c608934ddcbfb578addc6d4fa7395278",
+            "bytes": 58789068
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "Campaign 2026-11-10T15-16-09-103Z-2e95f2b088d2; cell 10/25; source 955a87683c0c899cc299161a7b8b127fb75617be; AC attached; native arm64; 8 CPU cores and 16 GiB RAM. Headed Chrome, disposable profiles, sequential inference. Ordinary user applications remain open; owned caffeinate -di assertion for campaign lifetime; no persistent system power settings changed; temperature not instrumented."
+  ]
+}

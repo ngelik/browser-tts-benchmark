@@ -7,7 +7,7 @@ import { randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { getAssetLock } from '../lib/catalog.mjs';
 import { validateResult } from '../tools/results.mjs';
-import { validateCampaignInputs } from '../tools/campaign-report.mjs';
+import { renderCampaignOverview, validateCampaignInputs } from '../tools/campaign-report.mjs';
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const reportTool = 'tools/campaign-report.mjs';
@@ -73,7 +73,7 @@ async function temporaryReports(t) {
   return directory;
 }
 
-test('campaign overview binds real receipts, renders all six panels and verifies its committed inputs', async t => {
+test('campaign overview omits cold metrics when no cold receipts are supplied', async t => {
   const pair = await supertonicWarmPair();
   const temp = await temporaryReports(t);
   const output = temp;
@@ -94,12 +94,16 @@ test('campaign overview binds real receipts, renders all six panels and verifies
   assert.deepEqual(manifest.results.map(entry => entry.id), manifest.results.map(entry => entry.id).slice().sort());
   assert.match(markdown, /Warm generation/);
   assert.match(markdown, /mean Chrome RSS/);
-  assert.match(markdown, /CPU cold HTTP bytes/);
+  assert.match(markdown, /CPU max sampled RSS/);
+  assert.match(markdown, /WebGPU max sampled RSS/);
+  assert.doesNotMatch(markdown, /cold initialization|cold init|Cold CPU|HTTP bytes/i);
   assert.match(markdown, /Not submitted/);
   assert.match(markdown, /Scenarios remain separate/);
   assert.match(markdown, /\.\.\/\.\.\/results\//);
   assert.match(svg, /aria-labelledby="campaign-title campaign-desc"/);
-  for (const phrase of ['Warm generation median', 'First PCM median', 'Real-time factor median', 'Mean Chrome RSS during generation', 'Pinned model weights', 'CPU cold HTTP transfer']) {
+  assert.match(svg, /6 separate panels/);
+  assert.doesNotMatch(svg, /cold initialization|HTTP bytes/i);
+  for (const phrase of ['Warm generation median', 'First PCM median', 'Real-time factor median', 'Warm output audio duration median', 'Mean Chrome RSS during generation', 'Pinned model weights']) {
     assert.ok(svg.includes(phrase), `missing SVG panel: ${phrase}`);
   }
 
@@ -150,6 +154,23 @@ test('settings differences on an unsupported cell do not invalidate its measured
   delete gpuSettings.executionProviders;
   assert.notDeepEqual(cpuSettings, gpuSettings);
   assert.doesNotThrow(() => validateCampaignInputs(rows));
+});
+
+test('campaign overview deduplicates outcome reasons while keeping concise metric cells and every receipt link', async () => {
+  const rows = await woofUnsupportedCpuAndMeasuredGpu();
+  const cpu = rows.find(item => item.data.cells[0].backendRequested === 'cpu');
+  const gpu = rows.find(item => item.data.cells[0].backendRequested === 'webgpu');
+  const reason = cpu.data.cells[0].reason;
+  const rendered = renderCampaignOverview(rows, { reportDir: join(root, 'reports', 'outcome-note-test') });
+  const trial = gpu.data.cells[0].trials[0];
+  const sampledMax = Math.max(...trial.memory.samples.map(sample => sample[1]));
+  const expectedPeak = (sampledMax / 1_000_000).toFixed(2) + ' MB (sampled max; n=1; ' + trial.memory.samples.length + ' samples)';
+  assert.ok(rendered.overviewMd.includes(expectedPeak));
+  assert.equal(rendered.overviewMd.split(reason).length - 1, 1);
+  assert.match(rendered.overviewMd, /\| woof \| cpu \| Unsupported \|/);
+  for (const { data } of rows) assert.ok(rendered.overviewMd.includes(data.id), `missing receipt link ${data.id}`);
+  assert.doesNotMatch(rendered.overviewMd, /Cold CPU|cold init/i);
+  assert.doesNotMatch(rendered.overviewSvg, /cold initialization|HTTP bytes/i);
 });
 
 test('campaign validator rejects model weight metadata that differs from manifest hashes', async () => {
