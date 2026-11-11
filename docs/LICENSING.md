@@ -88,3 +88,19 @@ The browser frontend port retains notices under `web/inflect/`. The fixed voice
 is described upstream as synthetic, with no reference recording required.
 The model's private training recipe/data are not fully released; open model
 weights do not imply an open training corpus. Weights remain in ignored cache.
+
+## Liquid AI LFM3 Audio / Omni GGUF
+
+The official weights use **LFM Open License v1.0**, not an OSI-approved permissive
+license. The license contains a USD 10 million annual revenue threshold for
+commercial use; retain the upstream terms and notices and assess the exact use.
+The pinned licenses are fetched with the weights. Sources:
+[Audio terms](https://huggingface.co/LiquidAI/LFM3-Audio-2B-GGUF/blob/39670cb5c42e9c4bfe046519ba7ffbe47f9552ad/LICENSE),
+[Omni terms](https://huggingface.co/LiquidAI/LFM3-Omni-2B-GGUF/blob/d508b88f08a5b4286f2d2805a6a8d69a0ff44c72/LICENSE).
+
+The official WebGPU Space provides a JavaScript runtime without separately
+established redistribution terms. It is pinned and downloaded into ignored local
+storage; this repository does not relicense or redistribute that bundle or the
+weights. The original benchmark adapter is MIT. Recordings use the benchmark's
+original article and retain model attribution/terms in the audio manifest.
+See [configuration and reproducibility details](LIQUID_LFM3.md).

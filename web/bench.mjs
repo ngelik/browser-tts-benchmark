@@ -1,3 +1,4 @@
+import { createLiquidGgufAdapter } from './adapters/liquid-gguf.mjs';
 import { createPhononAdapter } from './adapters/phonon.mjs';
 import { createParadeeAdapter } from './adapters/paradee.mjs';
 import { createLeokaniAdapter } from './adapters/leokani.mjs';
@@ -17,6 +18,8 @@ import { createInflectAdapter } from './adapters/inflect.mjs';
 const statusNode = document.querySelector('#status');
 const state = { fixture: null, chunks: null, engine: null, model: null, backend: null, smoke: false };
 const FACTORIES = {
+  'lfm3-audio-2b-gguf': () => createLiquidGgufAdapter('audio'),
+  'lfm3-omni-2b-gguf': () => createLiquidGgufAdapter('omni'),
   phonon: createPhononAdapter,
   paradee: createParadeeAdapter,
   'leokani-7m': () => createLeokaniAdapter('leokani-7m'),
