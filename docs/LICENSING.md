@@ -121,3 +121,21 @@ The browser port retains upstream notices and records changes in
 CPython 3.13.2 retains PSF terms, NumPy 2.2.5 retains BSD-3-Clause and bundled
 third-party terms, and Transformers.js 3.5.1 is Apache-2.0. Licenses are staged
 with their respective assets; the root MIT license does not relicense them.
+
+## Original Pocket TTS English ONNX
+
+The public [KevinAHM ONNX export](https://huggingface.co/KevinAHM/pocket-tts-onnx/blob/58a6d00cf13d239b6748cb0769f35c580a8f606c/README.md)
+declares **CC-BY-4.0** for model weights inherited from Kyutai Pocket TTS, and
+includes upstream prohibited-use conditions. These cover, among other things,
+unauthorized voice impersonation/cloning, deception, unlawful activity and
+privacy-invasive content. The [pinned browser Space](https://huggingface.co/spaces/KevinAHM/pocket-tts-web/blob/d0c0c79b7712256a32d691c67f20b8ae2e020d00/README.md)
+says its bundled voice assets inherit Pocket TTS terms. The benchmark uses the
+provided **alba** preset with the repository's fictional English article; no
+custom voice cloning or gated upstream downloads are involved.
+
+The community frontend is **Apache-2.0**, ONNX Runtime Web is **MIT**, and component
+notices remain applicable. The browser adapter retains the frontend's code
+license and change notice. `--accept-license` acknowledges the documented model
+conditions; it does not relicense weights, voices or recordings under this
+repository's MIT license. Published recordings must retain source attribution and
+these model terms. See [configuration and reproduction](POCKET_TTS.md).

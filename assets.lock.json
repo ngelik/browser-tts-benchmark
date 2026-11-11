@@ -3628,7 +3628,7 @@
       "runtime": {
         "package": "@huggingface/transformers",
         "version": "3.5.1",
-        "license": "Apache-2.0 wrapper/C; MPL-2.0 Pyodide; PSF Python; BSD-3-Clause NumPy; third-party notices apply",
+        "license": "MIT browser glue/SIMD; Apache-2.0 upstream C/Python; MPL-2.0 Pyodide; PSF Python; BSD-3-Clause NumPy; component notices apply",
         "files": [
           {
             "package": "@huggingface/transformers",
@@ -3844,7 +3844,7 @@
       ],
       "license": {
         "model": "Apache-2.0",
-        "runtime": "Apache-2.0 / MPL-2.0 / PSF / BSD-3-Clause; component notices apply",
+        "runtime": "MIT / Apache-2.0 / MPL-2.0 / PSF / BSD-3-Clause; component notices apply",
         "requiresAcceptance": false
       },
       "backends": [
@@ -3863,6 +3863,239 @@
           "https://huggingface.co/SyzygyResearch/Mach-Boom/blob/01860b06bdf8498761255ad1c64b99980b96486d/voices/voices.jsonl"
         ],
         "notes": "Zoey, Juniper, Everly and Harper are supplied upstream. Additional compatible Phonon voices are not counted here. Only Zoey in English is measured. Browser port uses CPU WebAssembly, not native x86 AMX/AVX."
+      }
+    },
+    "pocket-tts-100m-english-int8": {
+      "displayName": "Pocket TTS 100M English (INT8/FP32)",
+      "modelRevision": "58a6d00cf13d239b6748cb0769f35c580a8f606c",
+      "runtime": {
+        "package": "onnxruntime-web-pocket",
+        "version": "1.31.1",
+        "license": "MIT ONNX Runtime Web; Apache-2.0 community frontend and Transformers.js; component notices apply",
+        "files": [
+          {
+            "path": "dist/ort.wasm.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.31.1/ort.wasm.min.mjs",
+            "bytes": 53725,
+            "sha256": "c21d9c326d453a4a61398270c804d5979e118540597cb0c07f7b3d64e6098234",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1"
+          },
+          {
+            "path": "dist/ort.webgpu.min.mjs",
+            "target": "runtimes/onnxruntime-web/1.31.1/ort.webgpu.min.mjs",
+            "bytes": 70742,
+            "sha256": "329cd956772397a1aedd668e911195d39afefb182f6fc14aafa4f08ac8d8f379",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.mjs",
+            "target": "runtimes/onnxruntime-web/1.31.1/ort-wasm-simd-threaded.mjs",
+            "bytes": 24738,
+            "sha256": "30ed0b5cd1182ede931fea448afb567d4dc705ec957af09f108a2be5f770dac3",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.wasm",
+            "target": "runtimes/onnxruntime-web/1.31.1/ort-wasm-simd-threaded.wasm",
+            "bytes": 14848852,
+            "sha256": "4b884c203b0fa48d057be3332c65513ff85aa3c5bddd6946acc0fab7ecda001d",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.mjs",
+            "target": "runtimes/onnxruntime-web/1.31.1/ort-wasm-simd-threaded.asyncify.mjs",
+            "bytes": 53457,
+            "sha256": "59cf781530e1a16df2a291d78798e3ec1152467edaec402d6f9599d85047c302",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1"
+          },
+          {
+            "path": "dist/ort-wasm-simd-threaded.asyncify.wasm",
+            "target": "runtimes/onnxruntime-web/1.31.1/ort-wasm-simd-threaded.asyncify.wasm",
+            "bytes": 28747738,
+            "sha256": "ca319e9539cd0f1e291cf56074760121eaf39650f5dbf84b6e52c07f4b2944ec",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1"
+          },
+          {
+            "path": "LICENSE",
+            "target": "licenses/onnxruntime-web-1.31.1/LICENSE",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/6af1a932e2286d5c58166085d24c68783033edee/LICENSE",
+            "bytes": 1073,
+            "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1",
+            "kind": "license"
+          },
+          {
+            "path": "ThirdPartyNotices.txt",
+            "target": "licenses/onnxruntime-web-1.31.1/ThirdPartyNotices.txt",
+            "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/6af1a932e2286d5c58166085d24c68783033edee/ThirdPartyNotices.txt",
+            "bytes": 338088,
+            "sha256": "143764b952fdb1a7c69ce653bfba74a7744d6a8a573bfb73e235fba356c83de3",
+            "package": "onnxruntime-web-pocket",
+            "version": "1.31.1",
+            "kind": "license"
+          },
+          {
+            "package": "@huggingface/transformers",
+            "version": "3.5.1",
+            "path": "dist/transformers.min.js",
+            "target": "runtimes/transformers/3.5.1/transformers.min.js",
+            "bytes": 849451,
+            "sha256": "79fad8c1c2fd165bf1e77ace20ce023fab4dc13b6621f0e586c9b8c59c4d09d8"
+          },
+          {
+            "package": "@huggingface/transformers",
+            "version": "3.5.1",
+            "path": "LICENSE",
+            "target": "licenses/transformers-3.5.1/LICENSE",
+            "bytes": 11358,
+            "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "pocket-tts-flow_lm_flow_int8-onnx",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/flow_lm_flow_int8.onnx",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/flow_lm_flow_int8.onnx",
+          "bytes": 9962530,
+          "sha256": "3dd781ee5abee9e195320bf0106bebd6372a852b3b36352524ee78b40554635d",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pocket-tts-flow_lm_main_int8-onnx",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/flow_lm_main_int8.onnx",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/flow_lm_main_int8.onnx",
+          "bytes": 76341079,
+          "sha256": "f9bd8106b79a0192c1c43399ab938fb24900a95c1c599870d75a884e99000116",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pocket-tts-mimi_decoder_int8-onnx",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/mimi_decoder_int8.onnx",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/mimi_decoder_int8.onnx",
+          "bytes": 22684077,
+          "sha256": "3630450a3297a101792a6ac66619ebc70ab916b265e6220c2afaef8b1673f925",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pocket-tts-mimi_encoder_int8-onnx",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/mimi_encoder_int8.onnx",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/mimi_encoder_int8.onnx",
+          "bytes": 20779616,
+          "sha256": "abb46f1ad0b83c3840fe38c3652ab0eda7d1d97a63f1953bbbff5d04d8f4c855",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pocket-tts-text_conditioner_int8-onnx",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/text_conditioner_int8.onnx",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/text_conditioner_int8.onnx",
+          "bytes": 16388384,
+          "sha256": "24c0642bff11a4e1435c004d0c2aa6c68e093fadfa35f0f0dba849ac67f25ac3",
+          "kind": "model-weights"
+        },
+        {
+          "id": "pocket-tts-bundle-json",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bundle.json",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bundle.json",
+          "bytes": 24381,
+          "sha256": "bab643150f437f37df080a710520ff39ed9ebd9a339f8ebdc739f7eddfc28b3f",
+          "kind": "model-support"
+        },
+        {
+          "id": "pocket-tts-bos_before_voice-npy",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bos_before_voice.npy",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bos_before_voice.npy",
+          "bytes": 4224,
+          "sha256": "f46edf4f7007b7ba4ea58831f49d003e59e167b4641c44bb3addfe9231a780b1",
+          "kind": "model-support"
+        },
+        {
+          "id": "pocket-tts-tokenizer-model",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/tokenizer.model",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/tokenizer.model",
+          "bytes": 59339,
+          "sha256": "d461765ae179566678c93091c5fa6f2984c31bbe990bf1aa62d92c64d91bc3f6",
+          "kind": "model-support"
+        },
+        {
+          "id": "pocket-tts-voices-bin",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/voices.bin",
+          "url": "https://huggingface.co/spaces/KevinAHM/pocket-tts-web/resolve/d0c0c79b7712256a32d691c67f20b8ae2e020d00/onnx/english_2026-04/voices.bin",
+          "bytes": 52401928,
+          "sha256": "044364b05514d99f72c63830b0675951137c36f836e1e71bb2546e59b8c6d625",
+          "kind": "voice"
+        },
+        {
+          "id": "pocket-tts-code-license",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/CODE-LICENSE",
+          "url": "https://huggingface.co/spaces/KevinAHM/pocket-tts-web/resolve/d0c0c79b7712256a32d691c67f20b8ae2e020d00/CODE-LICENSE",
+          "bytes": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "kind": "license"
+        },
+        {
+          "id": "pocket-tts-model-readme-md",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/MODEL-README.md",
+          "url": "https://huggingface.co/KevinAHM/pocket-tts-onnx/resolve/58a6d00cf13d239b6748cb0769f35c580a8f606c/README.md",
+          "bytes": 8057,
+          "sha256": "05ed0a614d1b512918aa02062624407040680c9a8e8fd6f437e4b59519f0bbff",
+          "kind": "model-terms"
+        },
+        {
+          "id": "pocket-tts-readme-md",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/README.md",
+          "url": "https://huggingface.co/spaces/KevinAHM/pocket-tts-web/resolve/d0c0c79b7712256a32d691c67f20b8ae2e020d00/README.md",
+          "bytes": 2306,
+          "sha256": "cffacb28e5a913bdfd88fb4f52f3636f8eb09f4532a6d5cace76aee8b61b617d",
+          "kind": "model-support"
+        },
+        {
+          "id": "pocket-tts-upstream-worker",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/upstream-inference-worker.js",
+          "url": "https://huggingface.co/spaces/KevinAHM/pocket-tts-web/resolve/d0c0c79b7712256a32d691c67f20b8ae2e020d00/inference-worker.js",
+          "bytes": 33984,
+          "sha256": "dace0a022e17dffcf60fdb7b86e49facf093f709b352fb306c1d6641ae0f5366",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "pocket-tts-browser-tokenizer-json",
+          "target": "models/pocket-tts/58a6d00cf13d239b6748cb0769f35c580a8f606c/tokenizer.json",
+          "sourcePath": "web/pocket/tokenizer.json",
+          "bytes": 116539,
+          "sha256": "5a2d7403d2e64e23fa3e7624da48fa222fa64f43257a1baad94155deeb308876",
+          "kind": "model-support"
+        }
+      ],
+      "license": {
+        "model": "CC-BY-4.0 + upstream prohibited-use conditions",
+        "runtime": "Apache-2.0 frontend/Transformers.js / MIT ONNX Runtime Web",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "cpu",
+        "webgpu"
+      ],
+      "support": {
+        "voiceCount": 8,
+        "bundledVoiceCount": 8,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Selected english_2026-04 checkpoint with eight bundled preset voices; not the broader multilingual family",
+        "sources": [
+          "https://huggingface.co/KevinAHM/pocket-tts-onnx/tree/58a6d00cf13d239b6748cb0769f35c580a8f606c",
+          "https://huggingface.co/spaces/KevinAHM/pocket-tts-web/tree/d0c0c79b7712256a32d691c67f20b8ae2e020d00",
+          "https://huggingface.co/KevinAHM/pocket-tts-onnx/blob/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bundle.json"
+        ],
+        "notes": "Alba, Azelma, Cosette, Eponine, Fantine, Javert, Jean and Marius are bundled; only alba in English is measured. This is the original approximately 100M Pocket family, not the newer 18.2M model. A pinned community ONNX/browser implementation is used."
       }
     }
   }

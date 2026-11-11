@@ -182,3 +182,18 @@ Zoey, Juniper, Everly and Harper. Only Zoey is staged and measured (**1 bundled
 benchmark voice**). Upstream also supports compatible Phonon voice files, but
 that external catalog is not included in this four-voice count. CPU WebAssembly
 is an experimental local port; no WebGPU inference path is implemented.
+
+<a id="pocket-tts-100m-english-int8"></a>
+
+## Original Pocket TTS English INT8/FP32
+
+The selected `english_2026-04` checkpoint supports **1 language (English)** and
+**8 bundled preset voices**: alba, azelma, cosette, eponine, fantine, javert, jean
+and marius. Only **alba** is tested. Counts come from the
+[pinned bundle metadata](https://huggingface.co/KevinAHM/pocket-tts-onnx/blob/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bundle.json)
+and [browser voice bundle](https://huggingface.co/spaces/KevinAHM/pocket-tts-web/tree/d0c0c79b7712256a32d691c67f20b8ae2e020d00/onnx/english_2026-04).
+The broader export family advertises six languages; that is not the language
+count for this English-only configuration. Arbitrary voice cloning is also not
+counted as a finite preset catalog. This is the original approximately 100M model
+[family described by Kyutai](https://kyutai.org/tts/) and shown in the screenshot,
+not the newer 18.2M Pocket model.
