@@ -8,7 +8,7 @@ const root = resolve(import.meta.dirname, '..');
 
 test('catalog entries match the pinned browser backends', () => {
   const models = listModels();
-  assert.deepEqual(models.map(model => model.id), ['paradee', 'phonon', 'leokani-7m', 'leokani-4.5m', 'pivo-curated', 'woof', 'piper-en-gb-southern-english-female-low', 'supertonic-3', 'kokoro-82m', 'mms-english', 'kitten-nano-0.8', 'sano-amy', 'inflect-micro-v2']);
+  assert.deepEqual(models.map(model => model.id), ['paradee', 'phonon', 'leokani-7m', 'leokani-4.5m', 'pivo-curated', 'woof', 'piper-en-gb-southern-english-female-low', 'supertonic-3', 'kokoro-82m', 'mms-english', 'kitten-nano-0.8', 'sano-amy', 'inflect-micro-v2', 'lfm3-audio-2b-gguf', 'lfm3-omni-2b-gguf']);
   assert.deepEqual(models[0].backends, ['cpu', 'webgpu']);
   assert.equal(models[0].modelRevision, 'ed2934d4df8a4fd891e29584c5e1104649409765');
   assert.deepEqual(models[1].backends, ['cpu', 'webgpu']);
@@ -24,6 +24,9 @@ test('catalog entries match the pinned browser backends', () => {
   assert.equal(models[7].support.voiceCount,10);
   assert.equal(models[7].support.languageCount,31);
   assert.equal(models[7].support.bundledVoiceCount,1);
+  for (const id of ['lfm3-audio-2b-gguf','lfm3-omni-2b-gguf']) {
+    const m=models.find(model=>model.id===id);assert.deepEqual(m.backends,['webgpu']);assert.equal(m.support.languageCount,18);assert.equal(m.support.voiceCount,null);
+  }
 });
 
 test('Piper has voice and lineage cards plus immutable cache-only runtime pins', async () => {

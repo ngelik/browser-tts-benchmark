@@ -2253,6 +2253,168 @@
           "https://huggingface.co/owensong/Inflect-Micro-v2/blob/9d862840734dcc53afb5d27ef468459daad020fa/README.md"
         ]
       }
+    },
+    "lfm3-audio-2b-gguf": {
+      "displayName": "LFM3-Audio-2B (GGUF Q4_K_M / Q8_0)",
+      "modelRevision": "39670cb5c42e9c4bfe046519ba7ffbe47f9552ad",
+      "runtime": {
+        "license": "Official Liquid AI browser bundle; separate redistribution terms not established",
+        "files": []
+      },
+      "assets": [
+        {
+          "id": "lfm3-audio-model.gguf",
+          "target": "liquid-gguf/audio/model.gguf",
+          "url": "https://huggingface.co/LiquidAI/LFM3-Audio-2B-GGUF/resolve/39670cb5c42e9c4bfe046519ba7ffbe47f9552ad/LFM3-Audio-2B-Q4_K_M.gguf",
+          "bytes": 1099626016,
+          "sha256": "9a773289bd321ed879cd3a76545f6aca506e403851a45fb315420aee45625be2",
+          "kind": "model-weights"
+        },
+        {
+          "id": "lfm3-audio-LICENSE.txt",
+          "target": "liquid-gguf/audio/LICENSE.txt",
+          "url": "https://huggingface.co/LiquidAI/LFM3-Audio-2B-GGUF/resolve/39670cb5c42e9c4bfe046519ba7ffbe47f9552ad/LICENSE",
+          "bytes": 10574,
+          "sha256": "4d28ca14dedc0b3d0fcc2b3339f0e79931faa33874f3d24f522183a8fc70068c",
+          "kind": "license"
+        },
+        {
+          "id": "lfm3-audio-mmproj.gguf",
+          "target": "liquid-gguf/audio/mmproj.gguf",
+          "url": "https://huggingface.co/LiquidAI/LFM3-Audio-2B-GGUF/resolve/39670cb5c42e9c4bfe046519ba7ffbe47f9552ad/mmproj-LFM3-Audio-2B-Q8_0.gguf",
+          "bytes": 303811840,
+          "sha256": "2b6648b1fd48af16aa0877b0592b144d15070783673e038a379fdbc51d40e365",
+          "kind": "model-weights"
+        },
+        {
+          "id": "lfm3-audio-webgpu-runtime",
+          "target": "liquid-gguf/runtime.mjs",
+          "url": "https://huggingface.co/spaces/LiquidAI/LFM3-Omni-2B-WebGPU/resolve/9c2fb176f4c222da394e8037d3c0d0837f70b978/Lfm3OmniForConditionalGeneration.js",
+          "bytes": 1626254,
+          "sha256": "77821949412f5dd6d60e37f22415f0e71454e65f6a73928529c6fbec0f2cf2cb",
+          "kind": "runtime-source"
+        }
+      ],
+      "license": {
+        "model": "LFM Open License v1.0 ($10M revenue threshold)",
+        "runtime": "Official browser bundle; fetched locally, not redistributed",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "webgpu"
+      ],
+      "support": {
+        "voiceCount": null,
+        "bundledVoiceCount": null,
+        "languageCount": 18,
+        "languages": [
+          "en",
+          "ar",
+          "da",
+          "de",
+          "el",
+          "fi",
+          "fr",
+          "he",
+          "it",
+          "ja",
+          "ko",
+          "nl",
+          "pl",
+          "pt",
+          "es",
+          "sv",
+          "tr",
+          "zh"
+        ],
+        "scope": "Pinned speech-generating checkpoint; TTS mode only",
+        "sources": [
+          "https://huggingface.co/LiquidAI/LFM3-Audio-2B",
+          "https://www.liquid.ai/blog/lfm3"
+        ],
+        "notes": "18 spoken languages (English has US and UK locales). Female/male prompt controls do not establish a count of fixed voices. Benchmark selects American English female. Weight size includes complete pinned GGUF files, including modality components not exercised by TTS."
+      }
+    },
+    "lfm3-omni-2b-gguf": {
+      "displayName": "LFM3-Omni-2B (GGUF Q4_K_M / Q8_0)",
+      "modelRevision": "d508b88f08a5b4286f2d2805a6a8d69a0ff44c72",
+      "runtime": {
+        "license": "Official Liquid AI browser bundle; separate redistribution terms not established",
+        "files": []
+      },
+      "assets": [
+        {
+          "id": "lfm3-omni-model.gguf",
+          "target": "liquid-gguf/omni/model.gguf",
+          "url": "https://huggingface.co/LiquidAI/LFM3-Omni-2B-GGUF/resolve/d508b88f08a5b4286f2d2805a6a8d69a0ff44c72/LFM3-Omni-2B-Q4_K_M.gguf",
+          "bytes": 1099630080,
+          "sha256": "9f8d30e9d4fd7a9349d586e077988229b3ca0a0e4ad730897563d1eccc9893e2",
+          "kind": "model-weights"
+        },
+        {
+          "id": "lfm3-omni-LICENSE.txt",
+          "target": "liquid-gguf/omni/LICENSE.txt",
+          "url": "https://huggingface.co/LiquidAI/LFM3-Omni-2B-GGUF/resolve/d508b88f08a5b4286f2d2805a6a8d69a0ff44c72/LICENSE",
+          "bytes": 10574,
+          "sha256": "4d28ca14dedc0b3d0fcc2b3339f0e79931faa33874f3d24f522183a8fc70068c",
+          "kind": "license"
+        },
+        {
+          "id": "lfm3-omni-mmproj.gguf",
+          "target": "liquid-gguf/omni/mmproj.gguf",
+          "url": "https://huggingface.co/LiquidAI/LFM3-Omni-2B-GGUF/resolve/d508b88f08a5b4286f2d2805a6a8d69a0ff44c72/mmproj-LFM3-Omni-2B-Q8_0.gguf",
+          "bytes": 506842528,
+          "sha256": "8a25f9d1931244429de404fccacfb7fb933970a36aa5688d2f5069f29c6b27b1",
+          "kind": "model-weights"
+        },
+        {
+          "id": "lfm3-omni-webgpu-runtime",
+          "target": "liquid-gguf/runtime.mjs",
+          "url": "https://huggingface.co/spaces/LiquidAI/LFM3-Omni-2B-WebGPU/resolve/9c2fb176f4c222da394e8037d3c0d0837f70b978/Lfm3OmniForConditionalGeneration.js",
+          "bytes": 1626254,
+          "sha256": "77821949412f5dd6d60e37f22415f0e71454e65f6a73928529c6fbec0f2cf2cb",
+          "kind": "runtime-source"
+        }
+      ],
+      "license": {
+        "model": "LFM Open License v1.0 ($10M revenue threshold)",
+        "runtime": "Official browser bundle; fetched locally, not redistributed",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "webgpu"
+      ],
+      "support": {
+        "voiceCount": null,
+        "bundledVoiceCount": null,
+        "languageCount": 18,
+        "languages": [
+          "en",
+          "ar",
+          "da",
+          "de",
+          "el",
+          "fi",
+          "fr",
+          "he",
+          "it",
+          "ja",
+          "ko",
+          "nl",
+          "pl",
+          "pt",
+          "es",
+          "sv",
+          "tr",
+          "zh"
+        ],
+        "scope": "Pinned speech-generating checkpoint; TTS mode only",
+        "sources": [
+          "https://huggingface.co/LiquidAI/LFM3-Omni-2B",
+          "https://www.liquid.ai/blog/lfm3"
+        ],
+        "notes": "18 spoken languages (English has US and UK locales). Female/male prompt controls do not establish a count of fixed voices. Benchmark selects American English female. Weight size includes complete pinned GGUF files, including modality components not exercised by TTS."
+      }
     }
   }
 }

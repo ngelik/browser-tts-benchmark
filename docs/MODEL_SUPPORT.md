@@ -131,3 +131,23 @@ Supported voices: **1**. Bundled voices: **1**. Supported languages: **1** (en).
 Pinned Inflect Micro v2 complete English checkpoint and official FP32 ONNX export. One fixed synthetic English voice; no reference recording or voice-cloning model required. 9,356,513 deployable parameters including waveform decoder. Browser port uses a disclosed seeded JavaScript normal-noise generator rather than NumPy bitwise parity.
 
 [Primary source 1](https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/blob/91b1ab6432323064ec0e8e9704d92fcecd24855f/README.md), [Primary source 2](https://huggingface.co/owensong/Inflect-Micro-v2-ONNX/blob/91b1ab6432323064ec0e8e9704d92fcecd24855f/onnx/SOURCE.json), [Primary source 3](https://huggingface.co/owensong/Inflect-Micro-v2/blob/9d862840734dcc53afb5d27ef468459daad020fa/README.md).
+
+<a id="lfm3-audio-2b-gguf"></a>
+
+## LFM3-Audio-2B (GGUF Q4_K_M / Q8_0)
+
+Supported languages: **18** (en, ar, da, de, el, fi, fr, he, it, ja, ko, nl, pl, pt, es, sv, tr, zh). Fixed voice count: **unknown**. Male/female prompt controls are not a catalog of fixed voices; only American English female is tested.
+
+18 spoken languages (English has US and UK locales). Female/male prompt controls do not establish a count of fixed voices. Benchmark selects American English female. Weight size includes complete pinned GGUF files, including modality components not exercised by TTS.
+
+[Official checkpoint](https://huggingface.co/LiquidAI/LFM3-Audio-2B) · [Configuration](LIQUID_LFM3.md).
+
+<a id="lfm3-omni-2b-gguf"></a>
+
+## LFM3-Omni-2B (GGUF Q4_K_M / Q8_0)
+
+Supported languages: **18** (en, ar, da, de, el, fi, fr, he, it, ja, ko, nl, pl, pt, es, sv, tr, zh). Fixed voice count: **unknown**. Male/female prompt controls are not a catalog of fixed voices; only American English female is tested.
+
+18 spoken languages (English has US and UK locales). Female/male prompt controls do not establish a count of fixed voices. Benchmark selects American English female. Weight size includes complete pinned GGUF files, including modality components not exercised by TTS.
+
+[Official checkpoint](https://huggingface.co/LiquidAI/LFM3-Omni-2B) · [Configuration](LIQUID_LFM3.md).
