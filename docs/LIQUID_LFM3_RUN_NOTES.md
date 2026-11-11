@@ -43,3 +43,23 @@ reported as output-length observations, not a proved truncation diagnosis.
 The public full WAV and clip correspond to scored trial 5. Finite/nonempty PCM
 and a normal stop do not establish faithful reading or pronunciation quality.
 The benchmark has not performed an ASR or subjective speech-quality evaluation.
+
+## Completed CPU and GPU coverage
+
+Both speech-generating family members now have five-repetition warm CPU and
+WebGPU results, separate one-article memory diagnostics, and archived final-trial
+WAVs. Each timing score excludes one full-article warmup. No dedicated cold-load
+or throttled-download experiment was run in this campaign.
+
+The [Omni CPU report](../reports/lfm3-omni-cpu/overview.md) uses clean source
+`35f6b1982836fe137fa2293810d9e4a144f76cd7` for both timing and memory. All five
+scored CPU outputs have identical PCM hashes under seed 0; this is repeatability
+evidence, not a speech-quality score. Its memory diagnostic had no overlapping
+inference or tests. Audio CPU and official GPU results retain their own source
+cohorts in [their reports](../README.md#campaign-overviews).
+
+[Compare the family table and listen](https://ngelik.github.io/browser-tts-benchmark/?q=LFM3).
+CPU q7/Fusor and GPU GGUF Q4_K_M/Q8_0 differ in precision, runtime, packaging,
+context and sampling settings. Do not interpret their time ratio as isolated
+hardware acceleration. RAM is the sampled owned Chrome process tree during
+one article, including workers and browser baseline, not dedicated GPU memory.

@@ -129,6 +129,23 @@ try {
   await page.waitForFunction(() => document.querySelector('dialog').open);
   assert.match(await page.locator('#detail-title').innerText(), /Piper/);
   await page.locator('#close-details').click();
+  // Shareable family views must preserve the requested filter, chart and units.
+  await page.setViewportSize({width:1440,height:1000});
+  const family = expected.models.filter(model => model.name.toLowerCase().includes('lfm3'));
+  assert.ok(family.length >= 4, 'The published LFM3 configurations must remain discoverable');
+  await page.goto(new URL('?q=LFM3', base).href);
+  await page.waitForFunction(n => document.querySelectorAll('#model-rows tr').length === n, family.length);
+  assert.equal(await page.locator('#search').inputValue(), 'LFM3');
+  assert.equal(await page.locator('#table-view').isVisible(), true);
+  await page.screenshot({path:`${review}/lfm3-table.png`,fullPage:true});
+  for (const metric of ['generation','memory','size']) {
+    await page.goto(new URL(`?q=LFM3&view=charts&metric=${metric}`, base).href);
+    await page.waitForFunction(n => document.querySelectorAll('.bar-row').length === n, family.length*(metric === 'size' ? 1 : 2));
+    assert.equal(await page.locator('[data-view="charts"]').getAttribute('aria-pressed'), 'true');
+    assert.equal(await page.locator(`[data-metric="${metric}"]`).getAttribute('aria-pressed'), 'true');
+    assert.equal(await page.locator('#charts').evaluate(e => e.innerHTML.includes('NaN')), false);
+    await page.screenshot({path:`${review}/lfm3-${metric}.png`,fullPage:true});
+  }
   const sample = expected.models.find(m=>m.audio.length).audio[0];
   const legacy = new URL('audio/', base); legacy.searchParams.set('sample', sample.clip.path.split('/').at(-1));
   await page.goto(legacy.href);
@@ -136,7 +153,7 @@ try {
   await page.locator('audio').evaluate(async a => {a.muted=true;await a.play();});
   await page.waitForFunction(() => document.querySelector('audio').currentTime > .15);
   assert.deepEqual(errors, []); assert.deepEqual(external, []); assert.deepEqual(failedResponses, []);
-  const result = {base,chrome:browser.version(),models:expected.models.length,playedClips:clips,filters:true,sorting:true,charts:true,details:true,keyboard:true,mobile:true,legacyDeepLink:true,externalRequests:external.length,errors};
+  const result = {base,chrome:browser.version(),models:expected.models.length,playedClips:clips,filters:true,sorting:true,charts:true,details:true,keyboard:true,mobile:true,legacyDeepLink:true,familyDeepLinks:true,externalRequests:external.length,errors};
   await writeFile(`${review}/verification.json`, JSON.stringify(result,null,2)+'\n');
   console.log(JSON.stringify(result,null,2));
 } finally {await browser?.close(); server?.kill('SIGTERM');}

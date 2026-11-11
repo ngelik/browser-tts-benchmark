@@ -1,0 +1,595 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-11t11-02-51-665z-lfm3-omni-2b-fusor-q7-cpu-cpu-warm-4378e428",
+  "createdAt": "2026-11-11T11:56:59.339Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-warm-v1",
+    "scenario": "warm",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export.",
+    "warmupRuns": 1,
+    "repetitions": 5,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro / Apple M1 Pro 8-core / 16 GiB / arm64",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.40",
+    "gpu": null,
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "35f6b1982836fe137fa2293810d9e4a144f76cd7",
+    "dirty": false,
+    "manifestSha256": "4513eb4a58228274100310f743b48b2233037318bba7d9ad6679a9585b2aa79f"
+  },
+  "assets": [
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-LICENSE",
+      "sha256": "4d28ca14dedc0b3d0fcc2b3339f0e79931faa33874f3d24f522183a8fc70068c",
+      "bytes": 10574
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-config.json",
+      "sha256": "17e3792551ef56b37e85bbd1e6e968f70dc5b4b14c96f1339d0be85e0ba46875",
+      "bytes": 5912
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-manifest.json",
+      "sha256": "96acbfa469bbf95f7ec87bb46317400dab2491d648416643c5b10f5c3645de24",
+      "bytes": 116644
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-071da0361ddd942c9d0031066c57a7fb65a622b6757fbfb70bc9b45a814ab70c.bin",
+      "sha256": "f889f00a1a9367825fe5e001b88599ce84b1d4b38864e03a13287471e3b315eb",
+      "bytes": 48271872
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-0b2233381a87b69de62cb26e4bbe839f634d64ca7980a1a88a261e8374a4103d.bin",
+      "sha256": "37561bacb8431e33687522b3a6ab222dd79037de679c015a9e3e65e97f561f69",
+      "bytes": 55766016
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-0e1e42f9296a50541fc21711d39fc62fafed36888590f3b5db2afbac8f2668af.bin",
+      "sha256": "a15ae5375a4d06aed7e551e5a13e282273fbe18367343ec4b5964c7f6b278d3c",
+      "bytes": 40124416
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-14c62a2c50d42fafde2bf1d8dd07d13f1441584b1f3ce104c3dddbc2c2a59dd5.bin",
+      "sha256": "5ee11ecdf19a9d330ac674955d433b93a89819d011f32b150b5c34747ccdf39b",
+      "bytes": 35389440
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-1707fc024efa1c8271b146a722a1f7bd48d64a867973f9c4ed22a11d11b8524b.bin",
+      "sha256": "71e7e238f2f8980ac4020e53f48eb34377c000538a5ad1b56015739ed9c1380a",
+      "bytes": 47882752
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-19a56c15d38a45f24acbdf5dd49575577e90fe009299661d0c6b6d5cf1b42a18.bin",
+      "sha256": "b5447e69c66f24068028f37d0cc7c3049409fc8d212de14da6a246c37cd67b65",
+      "bytes": 5186560
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-1a153a634609dc5c745452aaf8bc84c5eb71e2dc037bbd48ebaa91bcc8741861.bin",
+      "sha256": "fea4ddf32dd22aea9608922528cd7f5f7386f1b325bd31c519a960a11b8ec5df",
+      "bytes": 49618944
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-232153bc9c98f796891912855931fc77ce044437e1e7f39db73363cc8fe09dae.bin",
+      "sha256": "4e4b0e6a0c663efda3e984468bed8dbf7ececfb45768a1320517c82d5a7d40b4",
+      "bytes": 40124416
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-240cb92f4e07d766be98da70c82914e2960df82bb17091bbddb9a4d4f68da217.bin",
+      "sha256": "77a7ac1620c3c8c3ec27fc2941168a444ab40461db7844410ad9761de261dab2",
+      "bytes": 47256576
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-2419ce7c911c45b6632eb3e504294e576d9125e9adc5f8cddb43bf7ef6763245.bin",
+      "sha256": "4eb5db0db0e6a3d3bf65b051fb36b4939d547788faecc2612f2fe12b31fcf139",
+      "bytes": 35414016
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-28a8aa2ade7176ef6db1ece0d0edc8bb82de81538638c5075db9a1289e041e79.bin",
+      "sha256": "e0052f57276b44b582b39229d5e1aa8034e4745839463a95621f39ff24748a5a",
+      "bytes": 47256576
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-28f86d817e098641eb3e2050180354342b226685fd02cc6f08dd4a7e33504e18.bin",
+      "sha256": "ef8cdac6774b4623c8d4d701e6ba353903d86807207a7d2252c27a7240e6a29e",
+      "bytes": 49618944
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-2aa090dbb13c37637fbb4963cd267e1cb5087a095bff555ea40e72e55b9c3058.bin",
+      "sha256": "8752a9a2fdd4143a8b2ed8babaf547ee05a4a78eac49cad4e216f76553a9b369",
+      "bytes": 50178560
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-2f34aeb88eeccee267f35e562a9596ea3a596e08481453ccb8b082e6aa5e477c.bin",
+      "sha256": "a55f18300535005b57651ee17e1d6bbdf171604b44bc90fb32f787b6f49b043b",
+      "bytes": 36659200
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-33b4e6a931691f0ce76203a6dff3ab37d67fe0ac10b3ffb1062834d8d9b9d7fd.bin",
+      "sha256": "10848bb80b15ec22727378440c2aad17d89182ef0e4acc45aa3c740c2250407a",
+      "bytes": 49070336
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-39875e9a3780d90eaa2f29e68b9a51aad1760bd29974bdc5de7290171a2d8463.bin",
+      "sha256": "73985813db0844da1f514e6f9cb902a56362f2a0158860488e7630abe5327553",
+      "bytes": 49618944
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-48153a17c8a13e5bc3be09b47664912540780db9149146399733b6a6bbfb9445.bin",
+      "sha256": "13fce6dfd382e94d19091e05cd9d64923b5be8f90c6fcade013f640500992b6a",
+      "bytes": 47256576
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-59320446a7dee7aeb56e3ee2c8cc7924884d51b3234975c74a5d29758aff6382.bin",
+      "sha256": "3b6fa29de69117ca6a97a6ec9acea5796d80c5d13960275315e9c40fb12783dc",
+      "bytes": 47256576
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-5cc8dc394b9c56b286a626beab31a6b0dd9490f0ffbd55a33ca1c26ca6eef521.bin",
+      "sha256": "a3821df7811cd4412110e74f49deac536251a963d8fb645b2d480bc63ebe6ecb",
+      "bytes": 47256576
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-614dd5797dffd9c718130514a72dff8e01b33bb7d6a568ddd4773e3d37a5d071.bin",
+      "sha256": "d216f12486a60e2235ba49084423e58d0a93ed6614b1482504624169673adeb3",
+      "bytes": 49618944
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-69972e6e23be53a0a821842b89b4e64fa315a2333cfeaa213e16cd3d97eba7fa.bin",
+      "sha256": "37e6b9dbbe346d6eea89a9b26e5eea152dcf0ff3e239660c2972a32a78ebaa58",
+      "bytes": 40124416
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-6a0ea7bf0ce6a2a9fbcdc049cbaaf09fb8af615cf8148aa1509a162f813b444d.bin",
+      "sha256": "d6f4f14ddcd107e8a66de2a0bee24584df7574b03e0ef0e0452b596c521c121c",
+      "bytes": 49618944
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-6f723958e4d71d0436689950c0e6549fe771a93d72ca85918c77bec690656fb5.bin",
+      "sha256": "7f1790d8f497bcc1fa2d8acf3a3ef68b1f8fba39b73450056a6351fe95d8e4a2",
+      "bytes": 49857024
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-71985b47d1cf7c670f358552af8b3805e8d40f948721f351eb587315ba1e607a.bin",
+      "sha256": "a105806f1759623a8f297a1efd22501ed6ff775cc3ed8dc28db375aafe7b84e8",
+      "bytes": 40124416
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-744b247e0a9dd88dc8a48908a7592eaa150131bca30dd9aee5f1e306f4a27092.bin",
+      "sha256": "db74b5aa9c49a35fe8510007bac8b31ed061729153cddac504f3d2197ac0458c",
+      "bytes": 49618944
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-7b7e59aef0750d2a7b6d5e1c5daa48c0e8acd1fb78276b59b3209e3cfe4b66a9.bin",
+      "sha256": "04120d3ca1afcfdd9599c9d9d71703a09718fbe8683dfde4e01e8dc127556e15",
+      "bytes": 49021192
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-7d054516cbc2855ee36c27444ad7f58d308c72c9eac9750e0a986c5ec69fecb1.bin",
+      "sha256": "e130ad9a81d77f53cf81b20fd37cb85d8e0e37ec51b2e91fb33478ab97599b66",
+      "bytes": 47256576
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-815258d2048ff13c6da2a0512f8232141f529a9f8e608655f1652019148f54fc.bin",
+      "sha256": "aa2f790e401c47c55e0ed9ab0e1ea745d9f4c01c458eb9487c3acdc6243734fe",
+      "bytes": 40124416
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-81f28e287e4e20fa35ff32f09040743093a82cb4d6ba7b7e7665e231c78ffe31.bin",
+      "sha256": "756da7b222b6881637dfd1c1eece098f6ccaa832b997e1f52452b70b91e58989",
+      "bytes": 40124416
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-84eb3ec21b7572bb1839ed8b4d6670c460f98d61f83ddc21f019d786a7472beb.bin",
+      "sha256": "7ed9da5ff864577b40104f52d106744912d4d0d0513d26d2044d88372d31c363",
+      "bytes": 49618944
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-8be6071208619202e0944a293cca4d3a1574b688d5d0e2be9c8c78454fc2ce1d.bin",
+      "sha256": "853eca2d075fdad6dbbee165d64674c68ec791ebbe133863e14cde1cee95e7c4",
+      "bytes": 47256576
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-8fed2d4a70f10b1beb88d10dafbe868b10d5e62568c8cb93bc5a15de1ea04b59.bin",
+      "sha256": "18b2e616645c56dfb8c3d1b9c4358ac3574deeb284314e763082b6047f39cb64",
+      "bytes": 49618944
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-91d39917e8f64f07cf589275743a2e4bb90856f7804042ddc75f4ea6c738f898.bin",
+      "sha256": "adedeedbc4708de6cf779727d4f1562356f2afefe368188a80d2f99c6033e483",
+      "bytes": 49618944
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-99114d8cdbdc4260d6c3d2608b029e08783b07291cfa14d2d560d4b7fad68bf4.bin",
+      "sha256": "ee74c2303ef3f8f67caf76c967d8ff81cdb100b16e70508a30b55063b9cd5f3e",
+      "bytes": 47256576
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-a08101a537f59d15e624ce6e42000f3fed97672beeb564feef7522cd4e0ef8fc.bin",
+      "sha256": "0f375593b39d5e4d0c6cce5bb8dabe52dff71dea3e052b9d5092491381d98a0c",
+      "bytes": 47256576
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-a15e6dc7e1f2c080d748061f66adcf8e64ccf31641aebe8fc3f2001bec25752f.bin",
+      "sha256": "7bf7e442f0a7bd652700fc611a43a29d2a2374568bdc4b11287f989cbf0f6fe0",
+      "bytes": 40124416
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-a3e16878fd6cdcaa1816835e10ead00f0ee60c964d6a305c11c12d4de7abddbe.bin",
+      "sha256": "7430c3ee4d1d64a11fdc21d2769e2989c3abd52dca0a33323a8d05ee05bd2b71",
+      "bytes": 49618944
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-ac56548d2d230cb7e1a1716efd248a9956b92e9997555442f4c178556fd9d628.bin",
+      "sha256": "bbe62bc9580b857cbc585774809d8947417f0028327ec045ebe47a56baec9dfb",
+      "bytes": 294912000
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-adec4949d1ac163ae11be59e54e9f07a173d064fc9963581d0ae24903bb90890.bin",
+      "sha256": "f9b54841059e19ce0ffd2cff618b4eaeb0a1534fc74957735611302afb5535bb",
+      "bytes": 36659200
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-b1024e276f0adbcbfb9c6cc329bf75e624496c55b99934200d93c2f0b39bfd71.bin",
+      "sha256": "232464607b6796ded0a2f6a018f47e6b83d45e8ca1cc118eac2be76b2ab49a14",
+      "bytes": 49618944
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-b13e5b8ee3c0b745056e81eb7e50b673b1e8e9b95912981220b05b779bfdb746.bin",
+      "sha256": "25a4d644f6ca37f7d774ff5c5ea823e5a1d6ebac9ba116202d087e37007a35a0",
+      "bytes": 35389440
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-b2e12dfcf6246909c82952c27e7d80064cfb369a44b8928d9ad62f365ffaf037.bin",
+      "sha256": "d99a5c5c351c5876cc2e7081be1e349b9f9f8d01caacaf1e8f25f64df4da444c",
+      "bytes": 40124416
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-b3e679d209f7f03598533f40ded7065459a1918f2af9fa6d2bf5322936a6e87c.bin",
+      "sha256": "b5db14a9402c1aa40907822aa442c02db3e3dda1b88d3b7992a4466ce1f7dd70",
+      "bytes": 47256576
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-b5d6989e116962724e6f337637ff03083d83475bf6bb77212ea3ca8a8df3ddaa.bin",
+      "sha256": "5d9d5c71df34ec405be3b349305efbb7aede27f31d1894811a27538b988577b2",
+      "bytes": 40124416
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-c823d6e648838ed98ba83b59423d78e6805812cbef618df02d7bb80b3117550d.bin",
+      "sha256": "bfe128fb87008daab31903722ba0d19d35bedf19da7ac7e82c235829e15ac4ab",
+      "bytes": 47256576
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-cb55c36cf729cac53eeec51ea285cf0b2580d2f4e8ac81d0456a464c7dff9fdd.bin",
+      "sha256": "1d770061741294b4a36f1cc523673f5dc6b03939665011c8ce192608cf93b3a4",
+      "bytes": 49062912
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-d2ed8887befec349684e08e47b7fb1936a685cf0d2a755bf9284b24292afcaa8.bin",
+      "sha256": "1e5bd2410ddfc3f241778790a572feb7020358fad9964142c4c1f32a3f6097cd",
+      "bytes": 50293760
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-d5e452b07eb67d0c0f99854eb3190988dbd0faec63bdf2b225148f440692d561.bin",
+      "sha256": "1c635d3e93ff8fb75bd81a9c55d821bfaa52970d4829f0a1bea2c93e789a65e8",
+      "bytes": 49062912
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-e30f6c88d78fa8a08457495a22fcc4c0f54c9e17dace61441f03c79dfd243ef6.bin",
+      "sha256": "d027dd440b344023694e09ea62f3a95d9f5fde326a6efa481335ca98c823c621",
+      "bytes": 40124416
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-parts-e83a446e85d401fd442e22c3a76fdbe03d3677836367a765faa8fdafb55dbd22.bin",
+      "sha256": "39335f0478818425344e7248b10c3c009f48f1c8fc1d58a294bf75625a1b4ec4",
+      "bytes": 49613568
+    },
+    {
+      "id": "omni-liquid-lfm3-omni-2b-web-tokenizer.json",
+      "sha256": "41927bd314d17d7d7fadb44e10cd0919f7b71528d7741596d8cbd15c6945ec44",
+      "bytes": 17908634
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-host-loader.js",
+      "sha256": "e92fad5463aa477182e507cdb7ee4d2d47182b481c99bc242d57a889433b91a8",
+      "bytes": 8780
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-host-worker.js",
+      "sha256": "55b771d7026d0358cbb680ed15d768e27323ce02c6222e9504c8c94a5abaa1c2",
+      "bytes": 3944
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-web-single-relaxed-lfm3_runtime.js",
+      "sha256": "3a1aea60e109ef4832a967d6bf83d5b9b0ffffe5bb7239979ebdd2d9500e1188",
+      "bytes": 13763
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-web-single-relaxed-lfm3_runtime_bg.wasm",
+      "sha256": "c2cdf34910e42aa1d01326e95b6784e1e2bdba21153c54c499a307e96969bf17",
+      "bytes": 3988968
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-web-single-lfm3_runtime.js",
+      "sha256": "3a1aea60e109ef4832a967d6bf83d5b9b0ffffe5bb7239979ebdd2d9500e1188",
+      "bytes": 13763
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-web-single-lfm3_runtime_bg.wasm",
+      "sha256": "490f892d81d710f0adfc74a3de10ead678715a6f040c3fa234488e4c7cfde525",
+      "bytes": 3906750
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-web-threaded-relaxed-lfm3_runtime.js",
+      "sha256": "2b65d63422c082fa09c549c2eb125176d1a35ca5fd96c2d2727582d01e88f653",
+      "bytes": 18443
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-web-threaded-relaxed-lfm3_runtime_bg.wasm",
+      "sha256": "23dc58096035a3dc41df7968fcc4c2592cc28626b5de094a17068f41ef6eb06f",
+      "bytes": 4017664
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-web-threaded-relaxed-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-protocol.js",
+      "sha256": "2461f33fc7711854698196e8477a3de0c4b31360d56b6f52aeb5cc7eb306dc53",
+      "bytes": 439
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-web-threaded-relaxed-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-workerHelpers.no-bundler.js",
+      "sha256": "1f2eee2d24aff6d5337efbc166e0d2242f0a1067cff564eb935354d8ecfe4d21",
+      "bytes": 2136
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-web-threaded-lfm3_runtime.js",
+      "sha256": "2b65d63422c082fa09c549c2eb125176d1a35ca5fd96c2d2727582d01e88f653",
+      "bytes": 18443
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-web-threaded-lfm3_runtime_bg.wasm",
+      "sha256": "0b457b91c0cbac25e742dabd8da6b265d802fae58b8807c2973dd16d203dd4e0",
+      "bytes": 3933618
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-web-threaded-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-protocol.js",
+      "sha256": "2461f33fc7711854698196e8477a3de0c4b31360d56b6f52aeb5cc7eb306dc53",
+      "bytes": 439
+    },
+    {
+      "id": "omni-liquid-fusor-engine-dist-web-threaded-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-workerHelpers.no-bundler.js",
+      "sha256": "1f2eee2d24aff6d5337efbc166e0d2242f0a1067cff564eb935354d8ecfe4d21",
+      "bytes": 2136
+    },
+    {
+      "id": "omni-liquid-wasm-bindgen-rayon-1.3.0-license",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "id": "omni-liquid-liquidai-lmf3-wasm-mit-license",
+      "sha256": "b34d36a9d1d848b09e80fae4c50aa6ad4ca452452ce4ba87069e21db1f919a90",
+      "bytes": 1062
+    },
+    {
+      "id": "omni-liquid-fusor-ai-mit-license",
+      "sha256": "b34d36a9d1d848b09e80fae4c50aa6ad4ca452452ce4ba87069e21db1f919a90",
+      "bytes": 1062
+    }
+  ],
+  "cells": [
+    {
+      "model": "lfm3-omni-2b-fusor-q7-cpu",
+      "support": {
+        "voiceCount": null,
+        "bundledVoiceCount": null,
+        "languageCount": 18,
+        "languages": [
+          "en",
+          "ar",
+          "da",
+          "de",
+          "el",
+          "fi",
+          "fr",
+          "he",
+          "it",
+          "ja",
+          "ko",
+          "nl",
+          "pl",
+          "pt",
+          "es",
+          "sv",
+          "tr",
+          "zh"
+        ],
+        "scope": "Pinned Fusor q7 browser bundle; 6 CPU threads; speech generation only",
+        "sources": [
+          "https://huggingface.co/LiquidAI/LFM3-Omni-2B",
+          "https://www.liquid.ai/blog/lfm3",
+          "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/blob/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/README.md",
+          "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/blob/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/manifest.json"
+        ],
+        "notes": "18 spoken languages; English has US and UK locales. Male/female prompt controls do not establish a fixed-voice count. Only American English female is tested. Six-thread Fusor WASM q7 configuration; different weights/runtime/sampling from the official WebGPU GGUF configuration."
+      },
+      "backendRequested": "cpu",
+      "backendEffective": "cpu/wasm",
+      "status": "measured",
+      "reason": null,
+      "voice": "American English female (prompted style; no fixed speaker ID)",
+      "precision": "q7 weights; six-thread WebAssembly (upstream relaxed-SIMD build when supported)",
+      "settings": {
+        "voice": "American English female (prompted style; no fixed speaker ID)",
+        "sampleRate": 24000,
+        "precision": "Fusor q7 CPU bundle; six-thread WebAssembly (upstream relaxed-SIMD build when supported)",
+        "executionProviders": [
+          "cpu-wasm-threads"
+        ],
+        "requestedThreads": 6,
+        "systemPrompt": "Perform TTS in American English using a female voice.",
+        "frontend": "Pinned official LFM3 chat template; canonical source span passed verbatim; reset before every span.",
+        "textSampling": "Official Audio/Omni greedy text defaults (temperature 0, top-p 1, top-k 1, presence penalty 0).",
+        "speechSampling": "Pinned variant defaults: temperature 0.4, top-k all, repetition penalty 1.2, recent-frame window 64. Benchmark seed 0 per source span overrides the upstream browser random seed.",
+        "maxReplyRows": 4096,
+        "runtime": "Fusor browser runtime from Space 572fc51e58808d3536bc8a8bea9d74a11b4b88bc; omni q7 bundle 09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4.",
+        "loadingCache": "HTTP-streamed model parts; bypasses upstream OPFS caching. The browser HTTP cache may evict immutable local assets and refetch them. Initialization is outside generation timing.",
+        "hostWork": "CPU JavaScript scheduling and 24 kHz PCM transfer; neural inference and codec are in six-thread WebAssembly with upstream relaxed-SIMD selection.",
+        "streaming": "Official 24 kHz PCM drained from Runtime.speech() after every step, including the final EOS/finalize step.",
+        "runtimeBuild": "web-threaded-relaxed",
+        "effectiveThreads": 6
+      },
+      "capability": {
+        "gpuDispatchVerified": null,
+        "description": "Explicit Fusor web-threaded-relaxed CPU runtime with 6 threads; separate untimed probe returned finite 24 kHz PCM. Probe excluded from timed synthesis."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 536538.3600000143,
+          "samples": 33442560,
+          "sampleRate": 24000,
+          "pcmSha256": "15167d4fc414eb5ba60bc410e7b2333a674e40cdf47ed3f56f15a859113d47df",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 621.2799999713898,
+            "firstSourceChunkCompletedMs": 6668.830000042915,
+            "audioSeconds": 1393.44,
+            "realTimeFactor": 0.3850459007922941,
+            "minSamplesPerChunk": 284160,
+            "maxSamplesPerChunk": 445440
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 536340.7999999523,
+          "samples": 33442560,
+          "sampleRate": 24000,
+          "pcmSha256": "15167d4fc414eb5ba60bc410e7b2333a674e40cdf47ed3f56f15a859113d47df",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 457.10000002384186,
+            "firstSourceChunkCompletedMs": 6541.289999961853,
+            "audioSeconds": 1393.44,
+            "realTimeFactor": 0.38490412217243103,
+            "minSamplesPerChunk": 284160,
+            "maxSamplesPerChunk": 445440
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 534002.2549999952,
+          "samples": 33442560,
+          "sampleRate": 24000,
+          "pcmSha256": "15167d4fc414eb5ba60bc410e7b2333a674e40cdf47ed3f56f15a859113d47df",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 365.0149999856949,
+            "firstSourceChunkCompletedMs": 6777.384999990463,
+            "audioSeconds": 1393.44,
+            "realTimeFactor": 0.3832258690722207,
+            "minSamplesPerChunk": 284160,
+            "maxSamplesPerChunk": 445440
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 540014.8450000286,
+          "samples": 33442560,
+          "sampleRate": 24000,
+          "pcmSha256": "15167d4fc414eb5ba60bc410e7b2333a674e40cdf47ed3f56f15a859113d47df",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 383.5499999523163,
+            "firstSourceChunkCompletedMs": 6617.580000042915,
+            "audioSeconds": 1393.44,
+            "realTimeFactor": 0.38754079472386943,
+            "minSamplesPerChunk": 284160,
+            "maxSamplesPerChunk": 445440
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 540612.5149999857,
+          "samples": 33442560,
+          "sampleRate": 24000,
+          "pcmSha256": "15167d4fc414eb5ba60bc410e7b2333a674e40cdf47ed3f56f15a859113d47df",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 378.5049999952316,
+            "firstSourceChunkCompletedMs": 6688.65499997139,
+            "audioSeconds": 1393.44,
+            "realTimeFactor": 0.38796971164885874,
+            "minSamplesPerChunk": 284160,
+            "maxSamplesPerChunk": 445440
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 534486.7350000143,
+          "samples": 33442560,
+          "sampleRate": 24000,
+          "pcmSha256": "15167d4fc414eb5ba60bc410e7b2333a674e40cdf47ed3f56f15a859113d47df",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 365.4299999475479,
+            "firstSourceChunkCompletedMs": 6519.824999928474,
+            "audioSeconds": 1393.44,
+            "realTimeFactor": 0.38357355537376153,
+            "minSamplesPerChunk": 284160,
+            "maxSamplesPerChunk": 445440
+          },
+          "audio": {
+            "sha256": "ce802d72385d8af420e0ca65a8b61e763e431d0a12192b1a38d0ff8f96b676a1",
+            "bytes": 66885164
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "AC power verified before run. Sequential headed Chrome; user applications left open. No overlapping inference or tests. Omni uses the reviewed HTTP-only loading fix after preserved pre-scoring OPFS loading failures; weights, neural runtime and speech settings unchanged. Six-thread q7 CPU is distinct from official GGUF WebGPU configuration. Different source cohort from prior Audio CPU. Cold-load checks excluded."
+  ]
+}

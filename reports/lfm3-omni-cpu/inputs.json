@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "results": [
+    {
+      "id": "2026-11-11t11-02-51-665z-lfm3-omni-2b-fusor-q7-cpu-cpu-warm-4378e428",
+      "sha256": "ba4d113627481ce96ee8ff6d72e526557b4147e95ae6f8a28ee31c73cc8b4672"
+    },
+    {
+      "id": "2026-11-11t11-57-01-791z-lfm3-omni-2b-fusor-q7-cpu-cpu-cached-42d33e30",
+      "sha256": "15cfe9aaa8dd113e559abe6ce4a06df7022f14b5018baefec41f34d47861ce7a"
+    }
+  ]
+}

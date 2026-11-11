@@ -1,6 +1,6 @@
 # Liquid LFM3 CPU adapter provenance
 
-This benchmark wrapper calls the unmodified Fusor WebAssembly runtime and official bundle loader. On the M1 Pro baseline it requests six compute threads. The upstream loader selects the relaxed-SIMD build when the browser supports it, then falls back to a single-thread build if thread initialization fails; the wrapper rejects that fallback rather than recording a single-thread run.
+This benchmark wrapper calls the unmodified Fusor WebAssembly runtime. Audio uses the upstream bundle loader; Omni uses the HTTP-only loading port described below. On the M1 Pro baseline it requests six compute threads. The upstream loader selects the relaxed-SIMD build when the browser supports it, then falls back to a single-thread build if thread initialization fails; the wrapper rejects that fallback rather than recording a single-thread run.
 
 The upstream browser Space is pinned to `fusorlabs/liquidai-lmf3-wasm@572fc51e58808d3536bc8a8bea9d74a11b4b88bc`; its `engine/dist/host/worker.js`, `loader.js`, runtime glue, WASM and wasm-bindgen worker helpers are dynamically imported from locally staged assets. The runtime files remain cache-only. The source repositories are `fusor-rs/liquidai-lmf3-wasm@d21345320af38a5f2246a6d2e608d7cf178d92ef` and submodule `fusor-ai@67bbe1ebeb140f11262f15996b79825bbe1cf461`.
 
