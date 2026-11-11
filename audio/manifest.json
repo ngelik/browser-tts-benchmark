@@ -384,6 +384,36 @@
       }
     },
     {
+      "resultId": "2026-11-11t09-27-11-391z-lfm3-audio-2b-fusor-q7-cpu-cpu-warm-174f10d4",
+      "model": "lfm3-audio-2b-fusor-q7-cpu",
+      "backend": "cpu",
+      "trialIndex": 5,
+      "voice": "American English female (prompted style; no fixed speaker ID)",
+      "language": "en",
+      "attribution": "LFM3-Audio-2B by Liquid AI; Fusor q7 CPU browser bundle. American English female prompted style. LFM Open License v1.0; noncommercial benchmark evaluation.",
+      "modelTerms": "LFM Open License v1.0 ($10M revenue threshold)",
+      "sourceUrls": [
+        "https://huggingface.co/LiquidAI/LFM3-Audio-2B",
+        "https://www.liquid.ai/blog/lfm3",
+        "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/blob/e273326dda2bb26870549ed7b39324ae086e5fe7/README.md",
+        "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/blob/e273326dda2bb26870549ed7b39324ae086e5fe7/manifest.json"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-11t09-27-11-391z-lfm3-audio-2b-fusor-q7-cpu-cpu-warm-174f10d4--lfm3-audio-2b-fusor-q7-cpu--cpu.wav",
+        "sha256": "6b1ec4c6be8e77a9b6290e5fdefeea104f9fab4115aa513ad662d641c67d58f0",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-11t09-27-11-391z-lfm3-audio-2b-fusor-q7-cpu-cpu-warm-174f10d4--lfm3-audio-2b-fusor-q7-cpu--cpu-full.wav",
+        "sha256": "6821b81522a42871490c9d7aa91130b97ed65545fbdab39cd52bd32dbf207a59",
+        "bytes": 65356844
+      }
+    },
+    {
       "resultId": "2026-11-11t07-33-16-967z-lfm3-audio-2b-gguf-webgpu-warm-b42e4073",
       "model": "lfm3-audio-2b-gguf",
       "backend": "webgpu",

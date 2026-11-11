@@ -1,6 +1,7 @@
-// Thin benchmark adapter around the pinned Fusor browser runtime. The loader, runtime glue and
-// WASM stay in the ignored staged asset cache; no model/runtime source is copied into this repo.
+// Thin benchmark adapter around the pinned Fusor browser runtime. Neural runtime glue and WASM
+// stay in the ignored asset cache; the local controller and HTTP loader ports retain MIT attribution.
 import { validateFusorManifest, validateGenerationPlan } from './contract.mjs';
+import { loadHttpParts } from './part-loader.mjs';
 
 const SPACE_REVISION = '572fc51e58808d3536bc8a8bea9d74a11b4b88bc';
 const SPEECH_SYSTEM = 'Perform TTS in American English using a female voice.';
@@ -27,6 +28,7 @@ let hostWorker = null;
 let kind = null;
 let settings = null;
 let restoreFetchFence = null;
+let loadingAbortController = null;
 
 function resourceBase(path) {
   return new URL(path, self.location.origin + '/');
@@ -60,6 +62,9 @@ function variantSettings(selectedKind, variant) {
     speechSampling: `Pinned variant defaults: temperature ${sampling.temperature}, top-k ${sampling.topK ?? 'all'}, repetition penalty ${sampling.repetitionPenalty}, recent-frame window ${sampling.window}. Benchmark seed 0 per source span overrides the upstream browser random seed.`,
     maxReplyRows: MAX_REPLY_ROWS,
     runtime: `Fusor browser runtime from Space ${SPACE_REVISION}; ${selectedKind} q7 bundle ${variant.bundleRevision}.`,
+    loadingCache: selectedKind === 'omni'
+      ? 'HTTP-streamed model parts; bypasses upstream OPFS caching. The browser HTTP cache may evict immutable local assets and refetch them. Initialization is outside generation timing.'
+      : 'Pinned upstream loader uses OPFS for verified model parts when available; initialization is outside generation timing.',
     hostWork: 'CPU JavaScript scheduling and 24 kHz PCM transfer; neural inference and codec are in six-thread WebAssembly with upstream relaxed-SIMD selection.',
     streaming: 'Official 24 kHz PCM drained from Runtime.speech() after every step, including the final EOS/finalize step.',
   };
@@ -91,8 +96,8 @@ async function initialize(options) {
   const runtimeRoot = resourceBase(`liquid-cpu/runtime/${SPACE_REVISION}/engine/dist/`);
   const restoreFetch = localFetchFence(modelBase, runtimeRoot);
   try {
-    // Both helpers are the exact upstream Space/Fusor browser host modules, staged locally by
-    // immutable revision. The official loader performs BLAKE3 verification for every model part.
+    // The pinned upstream host modules create the runtime. Audio uses upstream loadParts; Omni
+    // uses the local HTTP-only loader, while runtime.end_part remains the BLAKE3 authority.
     hostWorker = await import(new URL('host/worker.js', runtimeRoot));
     const loader = await import(new URL('host/loader.js', runtimeRoot));
     const response = await fetch(new URL('manifest.json', modelBase));
@@ -110,7 +115,22 @@ async function initialize(options) {
       throw new Error(`Fusor selected ${started.build.name} with ${started.threads} thread(s); the six-thread protocol forbids fallback.`);
     }
     runtime = new started.glue.Runtime(manifestText);
-    await loader.loadParts({ runtime, manifest, baseUrl: modelBase, cacheName: `lfm3-${kind}-q7-threads-${CPU_THREADS}` });
+    if (kind === 'omni') {
+      loadingAbortController = new AbortController();
+      try {
+        await loadHttpParts({
+          runtime,
+          manifest,
+          baseUrl: modelBase,
+          signal: loadingAbortController.signal,
+          onProgress(progress) { self.postMessage({ type: 'model-part-progress', ...progress }); },
+        });
+      } finally {
+        loadingAbortController = null;
+      }
+    } else {
+      await loader.loadParts({ runtime, manifest, baseUrl: modelBase, cacheName: `lfm3-${kind}-q7-threads-${CPU_THREADS}` });
+    }
     settings = { ...settings, runtimeBuild: started.build.name, effectiveThreads: started.threads };
     baseInfo.settings = settings;
     baseInfo.runtimeBuild = started.build.name;
@@ -133,6 +153,8 @@ async function initialize(options) {
       capability: { gpuDispatchVerified: null, description },
     };
   } catch (error) {
+    loadingAbortController?.abort(error);
+    loadingAbortController = null;
     restoreFetch();
     runtime?.free?.();
     runtime = null;
@@ -193,6 +215,8 @@ async function generate(chunk, onFirstPcm) {
 }
 
 async function dispose() {
+  loadingAbortController?.abort(new Error('Fusor model loading was disposed.'));
+  loadingAbortController = null;
   try { await runtime?.reset(); }
   finally {
     runtime?.free?.();

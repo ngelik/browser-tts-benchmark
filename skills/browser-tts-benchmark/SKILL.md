@@ -116,6 +116,8 @@ and the `error.json` diagnostic with phase `result-validation` under `runs/`.
 Fix the reporting contract before rerunning; do not submit or hand-edit the invalid
 candidate into a publishable score.
 
+Separate loading/cache stalls from synthesis failures. Preserve failed full attempts, diagnose the active stage, and publish any adapter/loading fix before fresh scoring. Keep different source/configuration cohorts explicit. If an unintended test or workload overlaps a resource diagnostic, preserve its receipt, disclose the deviation in linked run notes, and repeat under the intended conditions; do not alter the old receipt or quietly select a lower value.
+
 If Chrome exits before the canonical fixture loads, keep the CLI's
 `runs/<id>/error.json` browser-setup diagnostic and distinguish host permissions
 from a model/backend incompatibility. Retry only in an already approved Chrome

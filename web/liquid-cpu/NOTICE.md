@@ -11,3 +11,11 @@ The local wrapper selects one q7 bundle, sets seed 0 for each canonical source s
 Both model bundles use Liquid AI's LFM Open License v1.0. The pinned Audio manifest names base weights `LiquidAI/LFM3-Audio-2B@9d49701c372d6011d900f6abb40c6b296fb706dd`. The pinned Omni bundle manifest identifies `LiquidAI/LFM3-Omni-2B@ce2458cbce4ad970f92032ed94e3d18d30b04f9c`; this is independent of the separate GPU GGUF bundle.
 
 `notices/LICENSE-Fusor` is the MIT license text from the app and `fusor-ai` commits. Both pinned repos contain the same license blob (SHA-256 `b34d36a9d1d848b09e80fae4c50aa6ad4ca452452ce4ba87069e21db1f919a90`, Git blob SHA-1 `a3feefb5b0d93f333c5180dcf1181b60affc5a81`); the asset lock records each repo target. `notices/LICENSE-LFM-Open-v1.0` contains the model bundle license text. The threaded WASM worker helper comes from `wasm-bindgen-rayon@1.3.0`, pinned by the upstream Fusor `Cargo.lock`. Its Cargo metadata declares Apache-2.0; release tag `v1.3.0` resolves to commit `6a09d723ed5eed586d1db808f9cc56625b36ff77`. Its license copy is `notices/LICENSE-wasm-bindgen-rayon-1.3.0` (SHA-256 `cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30`). `assets.lock.json` records byte counts and SHA-256 values for model, runtime and license files. Scored runs cite a clean, published implementation commit.
+
+`part-loader.mjs` is a local MIT-attributed port of the model-part streaming code
+in the same pinned Fusor `packages/host/loader.js`. Omni bypasses that loader's
+optional OPFS persistence, preserving four parallel lanes, approximately 4 MiB
+writes and the neural runtime's BLAKE3 verification. It adds exact byte checks,
+120-second part timeouts and cancellation of sibling requests. Audio retains
+the upstream OPFS loader. This is loading glue; neural WASM and model files are
+unchanged and remain outside Git. See `docs/LIQUID_LFM3_CPU.md` for the policy.
