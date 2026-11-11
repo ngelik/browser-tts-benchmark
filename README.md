@@ -157,6 +157,7 @@ Counts describe the pinned model/catalog, not the number of voices or languages 
 | LFM3-Omni-2B (GGUF Q4_K_M / Q8_0) | Unknown | Unknown | 18 | [Details](docs/MODEL_SUPPORT.md#lfm3-omni-2b-gguf) |
 | LFM3-Audio-2B (Fusor q7 / CPU 6 threads) | Unknown | Unknown | 18 | [Details](docs/MODEL_SUPPORT.md#lfm3-audio-2b-fusor-q7-cpu) |
 | LFM3-Omni-2B (Fusor q7 / CPU 6 threads) | Unknown | Unknown | 18 | [Details](docs/MODEL_SUPPORT.md#lfm3-omni-2b-fusor-q7-cpu) |
+| Mach Boom 3.5-bit (browser WASM port) | 4 | 1 | 1 (en) | [Details](docs/MODEL_SUPPORT.md#mach-boom) |
 
 ### Controlled native comparisons
 

@@ -1,3 +1,4 @@
+import { createMachBoomAdapter } from './adapters/mach-boom.mjs';
 import { createLiquidCpuAdapter } from './adapters/liquid-cpu.mjs';
 import { createLiquidGgufAdapter } from './adapters/liquid-gguf.mjs';
 import { createPhononAdapter } from './adapters/phonon.mjs';
@@ -19,6 +20,7 @@ import { createInflectAdapter } from './adapters/inflect.mjs';
 const statusNode = document.querySelector('#status');
 const state = { fixture: null, chunks: null, engine: null, model: null, backend: null, smoke: false };
 const FACTORIES = {
+  'mach-boom': createMachBoomAdapter,
   'lfm3-audio-2b-fusor-q7-cpu': () => createLiquidCpuAdapter('audio'),
   'lfm3-omni-2b-fusor-q7-cpu': () => createLiquidCpuAdapter('omni'),
   'lfm3-audio-2b-gguf': () => createLiquidGgufAdapter('audio'),

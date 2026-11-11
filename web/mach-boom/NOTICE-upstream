@@ -1,0 +1,11 @@
+Mach Boom
+
+This repository contains a compressed copy of Phonon 31m (gradium/phonon-31m-en, by Gradium, Apache License 2.0)
+and four voice embeddings from gradium/phonon-voices (Apache License 2.0), redistributed under the same license.
+Phonon builds on Pocket TTS and the Mimi codec, developed by Kyutai.
+
+Modifications: the model weights were re-encoded with Mach trellis coding (bitshift trellis, 3 to 4 bits a weight,
+Hadamard-rotated) and int8 / int4 rounding, and packed into mach-boom.bin; three constant embeddings were folded in at
+pack time. tokenizer.json is Phonon's tokenizer.5.0.0.json, unchanged.
+
+The runtime code (mach.py, packfmt.py, tmk*.c, tts.py, frontend_en.py) is new code written for this release.

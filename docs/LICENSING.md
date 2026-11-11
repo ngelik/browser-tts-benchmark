@@ -110,3 +110,14 @@ See [configuration and reproducibility details](LIQUID_LFM3.md).
 The Audio and Omni q7 bundles retain **LFM Open License v1.0**, including its commercial revenue threshold. Their manifests identify the underlying Liquid AI checkpoints. Model terms are separate from the **MIT** Fusor app/runtime and **Apache-2.0** `wasm-bindgen-rayon` 1.3.0 helper terms. Pinned license files accompany the downloaded assets; copies and source attribution are retained in [the CPU adapter notice](../web/liquid-cpu/NOTICE.md). The benchmark does not relicense model weights or recordings under its root MIT license.
 
 Sources: [Audio bundle license](https://huggingface.co/fusorlabs/lfm3-audio-2b-web/blob/e273326dda2bb26870549ed7b39324ae086e5fe7/LICENSE), [Omni bundle license](https://huggingface.co/fusorlabs/lfm3-omni-2b-web/blob/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/LICENSE), [Fusor runtime source](https://github.com/fusor-rs/liquidai-lmf3-wasm/tree/d21345320af38a5f2246a6d2e608d7cf178d92ef), [threaded helper license](https://github.com/RReverser/wasm-bindgen-rayon/blob/6a09d723ed5eed586d1db808f9cc56625b36ff77/LICENSE). See [CPU configuration details](LIQUID_LFM3_CPU.md).
+
+## Mach Boom browser port
+
+[Mach Boom weights, four provided voices and runtime sources](https://huggingface.co/SyzygyResearch/Mach-Boom/blob/01860b06bdf8498761255ad1c64b99980b96486d/LICENSE)
+use Apache-2.0; its [NOTICE](https://huggingface.co/SyzygyResearch/Mach-Boom/blob/01860b06bdf8498761255ad1c64b99980b96486d/NOTICE)
+credits Gradium Phonon and Kyutai Pocket TTS/Mimi. Zoey is the tested preset.
+The browser port retains upstream notices and records changes in
+[its source notice](../web/mach-boom/NOTICE.md). Pyodide 0.29.3 is MPL-2.0,
+CPython 3.13.2 retains PSF terms, NumPy 2.2.5 retains BSD-3-Clause and bundled
+third-party terms, and Transformers.js 3.5.1 is Apache-2.0. Licenses are staged
+with their respective assets; the root MIT license does not relicense them.

@@ -171,3 +171,14 @@ Supported spoken languages: **18**. Fixed voice count: **unknown**. Male/female 
 18 spoken languages; English has US and UK locales. Male/female prompt controls do not establish a fixed-voice count. Only American English female is tested. Six-thread Fusor WASM q7 configuration; different weights/runtime/sampling from the official WebGPU GGUF configuration.
 
 [Bundle manifest](https://huggingface.co/fusorlabs/lfm3-omni-2b-web/blob/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/manifest.json) · [Runtime and configuration](LIQUID_LFM3_CPU.md).
+
+<a id="mach-boom"></a>
+
+## Mach Boom 3.5-bit browser port
+
+English only (**1 language**). **4 named voices** ship in the
+[pinned release](https://huggingface.co/SyzygyResearch/Mach-Boom/blob/01860b06bdf8498761255ad1c64b99980b96486d/voices/voices.jsonl):
+Zoey, Juniper, Everly and Harper. Only Zoey is staged and measured (**1 bundled
+benchmark voice**). Upstream also supports compatible Phonon voice files, but
+that external catalog is not included in this four-voice count. CPU WebAssembly
+is an experimental local port; no WebGPU inference path is implemented.

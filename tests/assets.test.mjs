@@ -8,7 +8,7 @@ const root = resolve(import.meta.dirname, '..');
 
 test('catalog entries match the pinned browser backends', () => {
   const models = listModels();
-  assert.deepEqual(models.map(model => model.id), ['paradee', 'phonon', 'leokani-7m', 'leokani-4.5m', 'pivo-curated', 'woof', 'piper-en-gb-southern-english-female-low', 'supertonic-3', 'kokoro-82m', 'mms-english', 'kitten-nano-0.8', 'sano-amy', 'inflect-micro-v2', 'lfm3-audio-2b-gguf', 'lfm3-omni-2b-gguf', 'lfm3-audio-2b-fusor-q7-cpu', 'lfm3-omni-2b-fusor-q7-cpu']);
+  assert.deepEqual(models.map(model => model.id), ['paradee', 'phonon', 'leokani-7m', 'leokani-4.5m', 'pivo-curated', 'woof', 'piper-en-gb-southern-english-female-low', 'supertonic-3', 'kokoro-82m', 'mms-english', 'kitten-nano-0.8', 'sano-amy', 'inflect-micro-v2', 'lfm3-audio-2b-gguf', 'lfm3-omni-2b-gguf', 'lfm3-audio-2b-fusor-q7-cpu', 'lfm3-omni-2b-fusor-q7-cpu', 'mach-boom']);
   assert.deepEqual(models[0].backends, ['cpu', 'webgpu']);
   assert.equal(models[0].modelRevision, 'ed2934d4df8a4fd891e29584c5e1104649409765');
   assert.deepEqual(models[1].backends, ['cpu', 'webgpu']);
