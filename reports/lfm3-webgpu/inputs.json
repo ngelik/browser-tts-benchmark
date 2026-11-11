@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "results": [
+    {
+      "id": "2026-11-11t07-33-16-967z-lfm3-audio-2b-gguf-webgpu-warm-b42e4073",
+      "sha256": "655f6ae32a671f5634857fda54cecde5d23d5ae8cd470166ed405bcf9ecf46e4"
+    },
+    {
+      "id": "2026-11-11t08-11-31-864z-lfm3-omni-2b-gguf-webgpu-warm-0e07e4f7",
+      "sha256": "3cccf111be4a03850325d6ece474b0f4238060c8e35d70ad52fe17350d3ab487"
+    },
+    {
+      "id": "2026-11-11t08-50-49-901z-lfm3-audio-2b-gguf-webgpu-cached-ffbdd243",
+      "sha256": "bf94ddfeb2a89d261aff457863b39e0fac4faca0d8140fd1845a0403ac3d6d6f"
+    },
+    {
+      "id": "2026-11-11t08-57-29-900z-lfm3-omni-2b-gguf-webgpu-cached-f692b3e2",
+      "sha256": "567551c427c6f551f21e6df264d90d62c9a6e579a548ebe3c566080eac56b60c"
+    }
+  ]
+}

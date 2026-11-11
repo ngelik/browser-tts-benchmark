@@ -2415,6 +2415,1212 @@
         ],
         "notes": "18 spoken languages (English has US and UK locales). Female/male prompt controls do not establish a count of fixed voices. Benchmark selects American English female. Weight size includes complete pinned GGUF files, including modality components not exercised by TTS."
       }
+    },
+    "lfm3-audio-2b-fusor-q7-cpu": {
+      "displayName": "LFM3-Audio-2B (Fusor q7 / CPU 6 threads)",
+      "modelRevision": "e273326dda2bb26870549ed7b39324ae086e5fe7",
+      "runtime": {
+        "license": "MIT Fusor runtime; Apache-2.0 wasm-bindgen-rayon helpers",
+        "files": []
+      },
+      "assets": [
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-LICENSE",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/LICENSE",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/LICENSE",
+          "bytes": 10574,
+          "sha256": "4d28ca14dedc0b3d0fcc2b3339f0e79931faa33874f3d24f522183a8fc70068c",
+          "kind": "license"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-config.json",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/config.json",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/config.json",
+          "bytes": 6243,
+          "sha256": "1eb2a8349a1ec9eda2ed8e8bb1a8788007ae2ae9baa38a7d959743c5379d30d8",
+          "kind": "model-support"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-manifest.json",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/manifest.json",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/manifest.json",
+          "bytes": 96201,
+          "sha256": "b14cbe39821b6fda8a51cc506249427c5ce7e5c29ca8dce2956e7ad1e964b484",
+          "kind": "model-support"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-0259b04c8877bed0e902ef5cc71b1b96d77feec533554fb928dd640d433472a7.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/0259b04c8877bed0e902ef5cc71b1b96d77feec533554fb928dd640d433472a7.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/0259b04c8877bed0e902ef5cc71b1b96d77feec533554fb928dd640d433472a7.bin",
+          "bytes": 40124416,
+          "sha256": "d7357093dfbb6de40036d16c21729864601e6bed6a50c4a3e5a531bba285ea98",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-05e8111df8c7cbb90fdf4dce07da9241f36167b10ce30b126c11f4441a2d54ce.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/05e8111df8c7cbb90fdf4dce07da9241f36167b10ce30b126c11f4441a2d54ce.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/05e8111df8c7cbb90fdf4dce07da9241f36167b10ce30b126c11f4441a2d54ce.bin",
+          "bytes": 40124416,
+          "sha256": "9ed224ce68f164c34e9259a64bab3e8afbaffca7b93fcb3551639ac607d8d153",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-079f93f9d739b518a6f80e6892943b68db34f3b8adbbc25dd8b1ac1d08a98acb.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/079f93f9d739b518a6f80e6892943b68db34f3b8adbbc25dd8b1ac1d08a98acb.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/079f93f9d739b518a6f80e6892943b68db34f3b8adbbc25dd8b1ac1d08a98acb.bin",
+          "bytes": 47256576,
+          "sha256": "c0a3cfd158bfa7508d3b6b4b988fb4c6d8b87ee9908fd1e3418e1a68c19cf3ba",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-08a0c9a2a25d51c7dfb9f740017a93afc4d5b2dde25f87138ed9f9f56c09a0e9.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/08a0c9a2a25d51c7dfb9f740017a93afc4d5b2dde25f87138ed9f9f56c09a0e9.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/08a0c9a2a25d51c7dfb9f740017a93afc4d5b2dde25f87138ed9f9f56c09a0e9.bin",
+          "bytes": 40124416,
+          "sha256": "094706935ca416bb033eeb956868df77ee27fb00f5976e04400fc0046558f564",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-12c714560b09e63908c85d545d97cb801f0b548e807ba066bde24c56291e6e22.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/12c714560b09e63908c85d545d97cb801f0b548e807ba066bde24c56291e6e22.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/12c714560b09e63908c85d545d97cb801f0b548e807ba066bde24c56291e6e22.bin",
+          "bytes": 47256576,
+          "sha256": "0b5feec4492aec48b2f8dc3b5bf864a25f99ce4bd17fe409e71a6654160c7bb4",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-12de0886d2ea8770dc31cea0486efbe7942c95477a22eb887aba939c8da2304d.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/12de0886d2ea8770dc31cea0486efbe7942c95477a22eb887aba939c8da2304d.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/12de0886d2ea8770dc31cea0486efbe7942c95477a22eb887aba939c8da2304d.bin",
+          "bytes": 48815616,
+          "sha256": "542117349a92ab4f23e46ee1360ba1faadeb3ffd126ba9131af82a818cc872dc",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-160a90f800530d3e46b89c1cbfb92dd2550c8e5e8bf9aa4801f1f8442718cd4b.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/160a90f800530d3e46b89c1cbfb92dd2550c8e5e8bf9aa4801f1f8442718cd4b.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/160a90f800530d3e46b89c1cbfb92dd2550c8e5e8bf9aa4801f1f8442718cd4b.bin",
+          "bytes": 49618944,
+          "sha256": "fec0f280e33b57bf22ca5fa61ad159f9b424643d187abc525d2121d1568035f2",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-19a56c15d38a45f24acbdf5dd49575577e90fe009299661d0c6b6d5cf1b42a18.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/19a56c15d38a45f24acbdf5dd49575577e90fe009299661d0c6b6d5cf1b42a18.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/19a56c15d38a45f24acbdf5dd49575577e90fe009299661d0c6b6d5cf1b42a18.bin",
+          "bytes": 5186560,
+          "sha256": "b5447e69c66f24068028f37d0cc7c3049409fc8d212de14da6a246c37cd67b65",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-22c7282740406674f028f5140dc0e3c468d1ee1626ebb8ce3b9e3a217a862637.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/22c7282740406674f028f5140dc0e3c468d1ee1626ebb8ce3b9e3a217a862637.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/22c7282740406674f028f5140dc0e3c468d1ee1626ebb8ce3b9e3a217a862637.bin",
+          "bytes": 40124416,
+          "sha256": "d880ab78ad442902907a4c3037b51dc8ac00ade576b05be837c1e3c583c0d78d",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-2e6a8e07a6576781413626d80127412659e0aff06a18cdf571619e19d4790c86.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/2e6a8e07a6576781413626d80127412659e0aff06a18cdf571619e19d4790c86.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/2e6a8e07a6576781413626d80127412659e0aff06a18cdf571619e19d4790c86.bin",
+          "bytes": 40124416,
+          "sha256": "1fb1cabfcbad59d9e7a206c8e5b902ddedfc53d1d80903b40d63d5d053e8e4cf",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-37c097cdeb0e03dedd3470094ac6cafbe5c413d17809455037468a0f77794428.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/37c097cdeb0e03dedd3470094ac6cafbe5c413d17809455037468a0f77794428.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/37c097cdeb0e03dedd3470094ac6cafbe5c413d17809455037468a0f77794428.bin",
+          "bytes": 294912000,
+          "sha256": "19507742693f804d5bf132a15d8d4ceac66a01524d3efa7fed41f087c72eed24",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-38bce60d04d47e5b52342ea41f9706984f8609a7c9753c67870a5c75a10a5371.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/38bce60d04d47e5b52342ea41f9706984f8609a7c9753c67870a5c75a10a5371.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/38bce60d04d47e5b52342ea41f9706984f8609a7c9753c67870a5c75a10a5371.bin",
+          "bytes": 47256576,
+          "sha256": "18c80628506b4514d09aa136540a90a7f30b8c3477f563fca681688998391025",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-3fd18022c31a6aeb84079dbe32a9dc0a21f0c75314e55189abd12ef73661e720.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/3fd18022c31a6aeb84079dbe32a9dc0a21f0c75314e55189abd12ef73661e720.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/3fd18022c31a6aeb84079dbe32a9dc0a21f0c75314e55189abd12ef73661e720.bin",
+          "bytes": 49618944,
+          "sha256": "6a3c92470b84c07077d55650cd9775d51cbcf45df128eb7f7fee115d187e6c30",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-45b7cc420c79fa61d02f23193b3f5a701bc16dd58620c9be1846b64c5b7e2cfc.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/45b7cc420c79fa61d02f23193b3f5a701bc16dd58620c9be1846b64c5b7e2cfc.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/45b7cc420c79fa61d02f23193b3f5a701bc16dd58620c9be1846b64c5b7e2cfc.bin",
+          "bytes": 40124416,
+          "sha256": "28f293c8a6171cb42244a67a7378cbe754160375de5e769a8d9eb6fcede8dd5f",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-461231103a014895b67d395d87c438b142885b41e1fa598a09c6f9e8aad5d724.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/461231103a014895b67d395d87c438b142885b41e1fa598a09c6f9e8aad5d724.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/461231103a014895b67d395d87c438b142885b41e1fa598a09c6f9e8aad5d724.bin",
+          "bytes": 49618944,
+          "sha256": "8cfaf429f8ad2dc8e2a10150a75ba514a5f712aaaa09b58c171f712a4dd5c0f0",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-46b53800db064fba1c7de980f0f61fdd5cbac724e1607fd43e1400ad11391531.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/46b53800db064fba1c7de980f0f61fdd5cbac724e1607fd43e1400ad11391531.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/46b53800db064fba1c7de980f0f61fdd5cbac724e1607fd43e1400ad11391531.bin",
+          "bytes": 49618944,
+          "sha256": "e008f9f772ee181df2b13a0d28321cae77b3114464b77503414ec8fd5b16fed0",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-4ffac31033cb3b0e07a28697c9fde066b7801e58efd84d8e131eafd510e924b6.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/4ffac31033cb3b0e07a28697c9fde066b7801e58efd84d8e131eafd510e924b6.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/4ffac31033cb3b0e07a28697c9fde066b7801e58efd84d8e131eafd510e924b6.bin",
+          "bytes": 47256576,
+          "sha256": "78a76dc1ce6c8d1fec45a104c3d1386500e4e83e209adbe01f659d5d94f7b402",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-51b7de267a98ffba4d431a3b0d9d82337cd32612e7f390530d261c2f629e9598.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/51b7de267a98ffba4d431a3b0d9d82337cd32612e7f390530d261c2f629e9598.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/51b7de267a98ffba4d431a3b0d9d82337cd32612e7f390530d261c2f629e9598.bin",
+          "bytes": 40124416,
+          "sha256": "fa93cb3aebbb62b19ea10adcee684f1da6a5ef4b3768994d6017dde40fd9c724",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-5df7b8bab2f8180037e224c4105288bc02a2d9942e0076024dc171eb5d86134c.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/5df7b8bab2f8180037e224c4105288bc02a2d9942e0076024dc171eb5d86134c.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/5df7b8bab2f8180037e224c4105288bc02a2d9942e0076024dc171eb5d86134c.bin",
+          "bytes": 36659200,
+          "sha256": "51f5995b78ab81b22a47291cc69000c64a77c00e2a40c70a20f8949a5f4ff58a",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-5f0ea98604893955aca89a7defc95b8e6d9ad9ad6b5be888851c448c864a4ec0.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/5f0ea98604893955aca89a7defc95b8e6d9ad9ad6b5be888851c448c864a4ec0.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/5f0ea98604893955aca89a7defc95b8e6d9ad9ad6b5be888851c448c864a4ec0.bin",
+          "bytes": 36659200,
+          "sha256": "cc7a20fffeca8e0fb37a7b2fb694b4bc60cbff03bb802acbce5041d004cbd393",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-64811034f64f7b4137d2f314a165fafce055196f852b7ef0bb104a45376fbd0c.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/64811034f64f7b4137d2f314a165fafce055196f852b7ef0bb104a45376fbd0c.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/64811034f64f7b4137d2f314a165fafce055196f852b7ef0bb104a45376fbd0c.bin",
+          "bytes": 47256576,
+          "sha256": "e38d6149aa839e0455e3e719f8489148e7c9bbd686efec2f8af1c35265d70e22",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-66b59eb0abd7033914727b8826e4d9138b8904d3cbfe023f1577eb76f2fb8a7e.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/66b59eb0abd7033914727b8826e4d9138b8904d3cbfe023f1577eb76f2fb8a7e.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/66b59eb0abd7033914727b8826e4d9138b8904d3cbfe023f1577eb76f2fb8a7e.bin",
+          "bytes": 40124416,
+          "sha256": "ba2fe32b5bfeb93529d68097c3455f9c1ab53a11dd5fa6028cab6074ccdca5bd",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-69c46f78bdbc3542ab29c857ac0d1b8db2287b0403cae7d431aea581d28317d9.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/69c46f78bdbc3542ab29c857ac0d1b8db2287b0403cae7d431aea581d28317d9.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/69c46f78bdbc3542ab29c857ac0d1b8db2287b0403cae7d431aea581d28317d9.bin",
+          "bytes": 49618944,
+          "sha256": "d19ff625a58aef6f2dd5f62a83fce2eeb98283c89bbcb565a513dff92a57db9c",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-70e1d058a3097e3e924507a88ee4899a6a46b6678ec4077b0753fe0ec488c064.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/70e1d058a3097e3e924507a88ee4899a6a46b6678ec4077b0753fe0ec488c064.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/70e1d058a3097e3e924507a88ee4899a6a46b6678ec4077b0753fe0ec488c064.bin",
+          "bytes": 49857024,
+          "sha256": "c876b274f04556b5927da32c3c002de6d7d2b5538adedda3ef08003eec780175",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-734eb32b1bf28ee85a70a2e89b577812df7cf4fc91849f78de28fd81e36f4efa.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/734eb32b1bf28ee85a70a2e89b577812df7cf4fc91849f78de28fd81e36f4efa.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/734eb32b1bf28ee85a70a2e89b577812df7cf4fc91849f78de28fd81e36f4efa.bin",
+          "bytes": 47256576,
+          "sha256": "698503bbd3dc7a3b8ee61ca4013abac1411a5f27b304368befa6c56b3865872c",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-84068d885022872e540c048973d26c4536c837031e8d5df4532958ecf267c4a0.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/84068d885022872e540c048973d26c4536c837031e8d5df4532958ecf267c4a0.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/84068d885022872e540c048973d26c4536c837031e8d5df4532958ecf267c4a0.bin",
+          "bytes": 47256576,
+          "sha256": "054c4443e4daab2873bef27d83c56096083e6ac242d41f2e5de5a3576ceab1c3",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-86976bbf251500dd570d9aa163a728ecf894231b75178dbb7b030cacd7f3f81d.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/86976bbf251500dd570d9aa163a728ecf894231b75178dbb7b030cacd7f3f81d.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/86976bbf251500dd570d9aa163a728ecf894231b75178dbb7b030cacd7f3f81d.bin",
+          "bytes": 40124416,
+          "sha256": "45fac4d9c643d16539c5c849172f2bfd4c6c13c274b5635ce5da846ecf586874",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-91ffbad72832c6bdc69838374ac8d82d5c9a9d5a1a61aeed8f1c4dcf5a0179b1.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/91ffbad72832c6bdc69838374ac8d82d5c9a9d5a1a61aeed8f1c4dcf5a0179b1.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/91ffbad72832c6bdc69838374ac8d82d5c9a9d5a1a61aeed8f1c4dcf5a0179b1.bin",
+          "bytes": 49021192,
+          "sha256": "474f47b4d1fd72e68656f553a244c9edd9e15cd85abbb4c340669245163c1f8e",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-9c2636b5198892e54a8b35716c92962466916efcf144598ed849e6aefdb71bdb.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/9c2636b5198892e54a8b35716c92962466916efcf144598ed849e6aefdb71bdb.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/9c2636b5198892e54a8b35716c92962466916efcf144598ed849e6aefdb71bdb.bin",
+          "bytes": 49618944,
+          "sha256": "ce8c26c0a49d6edfb7b46b169ad9e93163ad2d62dc24a9eb0438250afc782e4e",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-9dae974b59bfd3f01b50d51e0fc9df933ec9423b896e22a945f391b574565eae.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/9dae974b59bfd3f01b50d51e0fc9df933ec9423b896e22a945f391b574565eae.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/9dae974b59bfd3f01b50d51e0fc9df933ec9423b896e22a945f391b574565eae.bin",
+          "bytes": 47256576,
+          "sha256": "562a30da8eb45463bb3ce8892145b6ecb978ba3111aef35a96bc019c7546b907",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-a0d83e64744a4f02a0dd0598b031027ff51696a9bd89c072880bf6e421875950.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/a0d83e64744a4f02a0dd0598b031027ff51696a9bd89c072880bf6e421875950.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/a0d83e64744a4f02a0dd0598b031027ff51696a9bd89c072880bf6e421875950.bin",
+          "bytes": 47256576,
+          "sha256": "dfbec01aa54d53a09d688e1192d949dd929262362e32dc97692410f40dc87902",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-a5bc986f7d5ff2a3e34c2fd92f02e87f66d2c7d41d2e2930abda4718c1995a8e.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/a5bc986f7d5ff2a3e34c2fd92f02e87f66d2c7d41d2e2930abda4718c1995a8e.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/a5bc986f7d5ff2a3e34c2fd92f02e87f66d2c7d41d2e2930abda4718c1995a8e.bin",
+          "bytes": 49618944,
+          "sha256": "ca4e16252bb9483d980520fdc831157574da23673457dbec4d686ea7b28d4ddd",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-a5de7233c06fc8ad1cdafeb6c40bd657682e51d0ab4aaaadb8bb707a7c95943a.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/a5de7233c06fc8ad1cdafeb6c40bd657682e51d0ab4aaaadb8bb707a7c95943a.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/a5de7233c06fc8ad1cdafeb6c40bd657682e51d0ab4aaaadb8bb707a7c95943a.bin",
+          "bytes": 47256576,
+          "sha256": "17598cf778df932ae432859b9692e3ea5faca1cdd2a044d968d98eada2810f8e",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-b18f870d58fcd5e2e3fd917faf2b2967d128622df8ae02a761b76ca0e5b985c4.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/b18f870d58fcd5e2e3fd917faf2b2967d128622df8ae02a761b76ca0e5b985c4.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/b18f870d58fcd5e2e3fd917faf2b2967d128622df8ae02a761b76ca0e5b985c4.bin",
+          "bytes": 35389440,
+          "sha256": "1e304d7bdb6b08937b5a18c6968e3fdfcb1e5014d66296280a4d4dc7bad86c7c",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-b1aec4a37b899c73d957fc3bb9cb8218ad973ad95132b525fb5dab7a3d4fb4d6.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/b1aec4a37b899c73d957fc3bb9cb8218ad973ad95132b525fb5dab7a3d4fb4d6.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/b1aec4a37b899c73d957fc3bb9cb8218ad973ad95132b525fb5dab7a3d4fb4d6.bin",
+          "bytes": 35389440,
+          "sha256": "3ee6f14043f457cef6a125ac7819e1251822e3b17ddb1edde4332c91a1bb8689",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-b5419bf55e2e1cf1b0b38ebf03ab8831a4d6315d3a11f6451af5972f7effa362.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/b5419bf55e2e1cf1b0b38ebf03ab8831a4d6315d3a11f6451af5972f7effa362.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/b5419bf55e2e1cf1b0b38ebf03ab8831a4d6315d3a11f6451af5972f7effa362.bin",
+          "bytes": 49618944,
+          "sha256": "e2ce49b252ad06ae080d4634d5e53eafd3d3cf1ea090996dcff7d65a4c45e035",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-c7cedd44dd519941d39a2cee1cd376c340b815ef9703764c994fb91d77ae84e2.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/c7cedd44dd519941d39a2cee1cd376c340b815ef9703764c994fb91d77ae84e2.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/c7cedd44dd519941d39a2cee1cd376c340b815ef9703764c994fb91d77ae84e2.bin",
+          "bytes": 35414016,
+          "sha256": "543f73404265485f9a06c0f78f92215b30131e8dbd5004b807d3773872b759b8",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-caa31b8ad847faa7dab4761e0029d566d9b5862a95ae334362f5c10df5e3ab97.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/caa31b8ad847faa7dab4761e0029d566d9b5862a95ae334362f5c10df5e3ab97.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/caa31b8ad847faa7dab4761e0029d566d9b5862a95ae334362f5c10df5e3ab97.bin",
+          "bytes": 47256576,
+          "sha256": "da83b0f74e516338c01f383d5518fb991783b88b028c33f9b923ccaeaa55773c",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-d54311957cb42d837afca9e2f1f568c01b4d26fba8ae8241b724a62cb950576a.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/d54311957cb42d837afca9e2f1f568c01b4d26fba8ae8241b724a62cb950576a.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/d54311957cb42d837afca9e2f1f568c01b4d26fba8ae8241b724a62cb950576a.bin",
+          "bytes": 49618944,
+          "sha256": "fc610f98dcbeee4f6d3cb69ca9cce2eae43889275e22f8e185304884d245efdc",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-da373558e0a5be778141ec149c2403998b2a2832a203544c0f0d6459ba314b9b.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/da373558e0a5be778141ec149c2403998b2a2832a203544c0f0d6459ba314b9b.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/da373558e0a5be778141ec149c2403998b2a2832a203544c0f0d6459ba314b9b.bin",
+          "bytes": 49618944,
+          "sha256": "9b15568b6659211c86c2c99c0ab2e184f4f9acb5f65747f5e126d6f05b44e3e2",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-e42c8ca5dd25b82b201a5730f2d81a3417daf9f6f13ac9ab492c0be07f006730.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/e42c8ca5dd25b82b201a5730f2d81a3417daf9f6f13ac9ab492c0be07f006730.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/e42c8ca5dd25b82b201a5730f2d81a3417daf9f6f13ac9ab492c0be07f006730.bin",
+          "bytes": 40124416,
+          "sha256": "9349f817887134c9484f9382439b3528c3209993fc7f36ce67a036fe68723ae5",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-ecf11d3ae1116a6e61054d154bd9471b2ba8c7deca8c77939c8c100c225c83b9.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/ecf11d3ae1116a6e61054d154bd9471b2ba8c7deca8c77939c8c100c225c83b9.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/ecf11d3ae1116a6e61054d154bd9471b2ba8c7deca8c77939c8c100c225c83b9.bin",
+          "bytes": 47587584,
+          "sha256": "daddd67c6abd0a753215e0c009d8413dfeafc30ea0892f5b7b297fc97e924ef2",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-ee9756cb8c8fc623df1b6d9b023c7e580980ada19b302811036e383265b342d8.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/ee9756cb8c8fc623df1b6d9b023c7e580980ada19b302811036e383265b342d8.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/ee9756cb8c8fc623df1b6d9b023c7e580980ada19b302811036e383265b342d8.bin",
+          "bytes": 49618944,
+          "sha256": "f5d2dd7810d21220ccba3ef1d7e51fc364be27b41c06dd7b8350fb2eb6420e85",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-f1665dfd26e75c21ae3bc71012704e31bf23257331030f5220645e87c94f7f39.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/f1665dfd26e75c21ae3bc71012704e31bf23257331030f5220645e87c94f7f39.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/f1665dfd26e75c21ae3bc71012704e31bf23257331030f5220645e87c94f7f39.bin",
+          "bytes": 55766016,
+          "sha256": "64a8faf24561478faf2cd5819c98ed85a484f269d0fd1774720addb975edafa1",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-f4db85712a76742c6755593adc891344288a7bb1e33e6fef95e03f1fa7fa3b7c.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/f4db85712a76742c6755593adc891344288a7bb1e33e6fef95e03f1fa7fa3b7c.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/f4db85712a76742c6755593adc891344288a7bb1e33e6fef95e03f1fa7fa3b7c.bin",
+          "bytes": 46934528,
+          "sha256": "82c448d13c235101d3f6efd97f8773579a8878e67a2d55eec3c8f01225939a84",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-parts-fdec142cf691d930f426551dcb0d924305300d3f3febd773048b4757810d4433.bin",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/parts/fdec142cf691d930f426551dcb0d924305300d3f3febd773048b4757810d4433.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/parts/fdec142cf691d930f426551dcb0d924305300d3f3febd773048b4757810d4433.bin",
+          "bytes": 32200960,
+          "sha256": "539ec63d1faf71e8f593312af282b289ff45c834ed662afd27345fafb78212f5",
+          "kind": "model-weights"
+        },
+        {
+          "id": "audio-liquid-lfm3-audio-2b-web-tokenizer.json",
+          "target": "liquid-cpu/audio/e273326dda2bb26870549ed7b39324ae086e5fe7/model/tokenizer.json",
+          "url": "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/resolve/e273326dda2bb26870549ed7b39324ae086e5fe7/tokenizer.json",
+          "bytes": 17908634,
+          "sha256": "41927bd314d17d7d7fadb44e10cd0919f7b71528d7741596d8cbd15c6945ec44",
+          "kind": "model-support"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-host-loader.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/host/loader.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/host/loader.js",
+          "bytes": 8780,
+          "sha256": "e92fad5463aa477182e507cdb7ee4d2d47182b481c99bc242d57a889433b91a8",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-host-worker.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/host/worker.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/host/worker.js",
+          "bytes": 3944,
+          "sha256": "55b771d7026d0358cbb680ed15d768e27323ce02c6222e9504c8c94a5abaa1c2",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-web-single-relaxed-lfm3_runtime.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single-relaxed/lfm3_runtime.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single-relaxed/lfm3_runtime.js",
+          "bytes": 13763,
+          "sha256": "3a1aea60e109ef4832a967d6bf83d5b9b0ffffe5bb7239979ebdd2d9500e1188",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-web-single-relaxed-lfm3_runtime_bg.wasm",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single-relaxed/lfm3_runtime_bg.wasm",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single-relaxed/lfm3_runtime_bg.wasm",
+          "bytes": 3988968,
+          "sha256": "c2cdf34910e42aa1d01326e95b6784e1e2bdba21153c54c499a307e96969bf17",
+          "kind": "runtime"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-web-single-lfm3_runtime.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single/lfm3_runtime.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single/lfm3_runtime.js",
+          "bytes": 13763,
+          "sha256": "3a1aea60e109ef4832a967d6bf83d5b9b0ffffe5bb7239979ebdd2d9500e1188",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-web-single-lfm3_runtime_bg.wasm",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single/lfm3_runtime_bg.wasm",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single/lfm3_runtime_bg.wasm",
+          "bytes": 3906750,
+          "sha256": "490f892d81d710f0adfc74a3de10ead678715a6f040c3fa234488e4c7cfde525",
+          "kind": "runtime"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-web-threaded-relaxed-lfm3_runtime.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/lfm3_runtime.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/lfm3_runtime.js",
+          "bytes": 18443,
+          "sha256": "2b65d63422c082fa09c549c2eb125176d1a35ca5fd96c2d2727582d01e88f653",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-web-threaded-relaxed-lfm3_runtime_bg.wasm",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/lfm3_runtime_bg.wasm",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/lfm3_runtime_bg.wasm",
+          "bytes": 4017664,
+          "sha256": "23dc58096035a3dc41df7968fcc4c2592cc28626b5de094a17068f41ef6eb06f",
+          "kind": "runtime"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-web-threaded-relaxed-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-protocol.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/protocol.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/protocol.js",
+          "bytes": 439,
+          "sha256": "2461f33fc7711854698196e8477a3de0c4b31360d56b6f52aeb5cc7eb306dc53",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-web-threaded-relaxed-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-workerHelpers.no-bundler.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/workerHelpers.no-bundler.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/workerHelpers.no-bundler.js",
+          "bytes": 2136,
+          "sha256": "1f2eee2d24aff6d5337efbc166e0d2242f0a1067cff564eb935354d8ecfe4d21",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-web-threaded-lfm3_runtime.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/lfm3_runtime.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/lfm3_runtime.js",
+          "bytes": 18443,
+          "sha256": "2b65d63422c082fa09c549c2eb125176d1a35ca5fd96c2d2727582d01e88f653",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-web-threaded-lfm3_runtime_bg.wasm",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/lfm3_runtime_bg.wasm",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/lfm3_runtime_bg.wasm",
+          "bytes": 3933618,
+          "sha256": "0b457b91c0cbac25e742dabd8da6b265d802fae58b8807c2973dd16d203dd4e0",
+          "kind": "runtime"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-web-threaded-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-protocol.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/protocol.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/protocol.js",
+          "bytes": 439,
+          "sha256": "2461f33fc7711854698196e8477a3de0c4b31360d56b6f52aeb5cc7eb306dc53",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "audio-liquid-fusor-engine-dist-web-threaded-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-workerHelpers.no-bundler.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/workerHelpers.no-bundler.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/workerHelpers.no-bundler.js",
+          "bytes": 2136,
+          "sha256": "1f2eee2d24aff6d5337efbc166e0d2242f0a1067cff564eb935354d8ecfe4d21",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "audio-liquid-wasm-bindgen-rayon-1.3.0-license",
+          "target": "licenses/wasm-bindgen-rayon/1.3.0/LICENSE",
+          "url": "https://raw.githubusercontent.com/RReverser/wasm-bindgen-rayon/6a09d723ed5eed586d1db808f9cc56625b36ff77/LICENSE",
+          "bytes": 11358,
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "kind": "license"
+        },
+        {
+          "id": "audio-liquid-liquidai-lmf3-wasm-mit-license",
+          "target": "licenses/liquidai-lmf3-wasm/LICENSE",
+          "url": "https://raw.githubusercontent.com/fusor-rs/liquidai-lmf3-wasm/d21345320af38a5f2246a6d2e608d7cf178d92ef/LICENSE",
+          "bytes": 1062,
+          "sha256": "b34d36a9d1d848b09e80fae4c50aa6ad4ca452452ce4ba87069e21db1f919a90",
+          "kind": "license"
+        },
+        {
+          "id": "audio-liquid-fusor-ai-mit-license",
+          "target": "licenses/fusor-ai/LICENSE",
+          "url": "https://raw.githubusercontent.com/fusor-rs/fusor-ai/67bbe1ebeb140f11262f15996b79825bbe1cf461/LICENSE",
+          "bytes": 1062,
+          "sha256": "b34d36a9d1d848b09e80fae4c50aa6ad4ca452452ce4ba87069e21db1f919a90",
+          "kind": "license"
+        }
+      ],
+      "license": {
+        "model": "LFM Open License v1.0 ($10M revenue threshold)",
+        "runtime": "MIT Fusor; Apache-2.0 threaded helpers",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "cpu"
+      ],
+      "support": {
+        "voiceCount": null,
+        "bundledVoiceCount": null,
+        "languageCount": 18,
+        "languages": [
+          "en",
+          "ar",
+          "da",
+          "de",
+          "el",
+          "fi",
+          "fr",
+          "he",
+          "it",
+          "ja",
+          "ko",
+          "nl",
+          "pl",
+          "pt",
+          "es",
+          "sv",
+          "tr",
+          "zh"
+        ],
+        "scope": "Pinned Fusor q7 browser bundle; 6 CPU threads; speech generation only",
+        "sources": [
+          "https://huggingface.co/LiquidAI/LFM3-Audio-2B",
+          "https://www.liquid.ai/blog/lfm3",
+          "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/blob/e273326dda2bb26870549ed7b39324ae086e5fe7/README.md",
+          "https://huggingface.co/fusorlabs/lfm3-audio-2b-web/blob/e273326dda2bb26870549ed7b39324ae086e5fe7/manifest.json"
+        ],
+        "notes": "18 spoken languages; English has US and UK locales. Male/female prompt controls do not establish a fixed-voice count. Only American English female is tested. Six-thread Fusor WASM q7 configuration; different weights/runtime/sampling from the official WebGPU GGUF configuration."
+      }
+    },
+    "lfm3-omni-2b-fusor-q7-cpu": {
+      "displayName": "LFM3-Omni-2B (Fusor q7 / CPU 6 threads)",
+      "modelRevision": "09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4",
+      "runtime": {
+        "license": "MIT Fusor runtime; Apache-2.0 wasm-bindgen-rayon helpers",
+        "files": []
+      },
+      "assets": [
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-LICENSE",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/LICENSE",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/LICENSE",
+          "bytes": 10574,
+          "sha256": "4d28ca14dedc0b3d0fcc2b3339f0e79931faa33874f3d24f522183a8fc70068c",
+          "kind": "license"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-config.json",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/config.json",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/config.json",
+          "bytes": 5912,
+          "sha256": "17e3792551ef56b37e85bbd1e6e968f70dc5b4b14c96f1339d0be85e0ba46875",
+          "kind": "model-support"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-manifest.json",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/manifest.json",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/manifest.json",
+          "bytes": 116644,
+          "sha256": "96acbfa469bbf95f7ec87bb46317400dab2491d648416643c5b10f5c3645de24",
+          "kind": "model-support"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-071da0361ddd942c9d0031066c57a7fb65a622b6757fbfb70bc9b45a814ab70c.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/071da0361ddd942c9d0031066c57a7fb65a622b6757fbfb70bc9b45a814ab70c.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/071da0361ddd942c9d0031066c57a7fb65a622b6757fbfb70bc9b45a814ab70c.bin",
+          "bytes": 48271872,
+          "sha256": "f889f00a1a9367825fe5e001b88599ce84b1d4b38864e03a13287471e3b315eb",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-0b2233381a87b69de62cb26e4bbe839f634d64ca7980a1a88a261e8374a4103d.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/0b2233381a87b69de62cb26e4bbe839f634d64ca7980a1a88a261e8374a4103d.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/0b2233381a87b69de62cb26e4bbe839f634d64ca7980a1a88a261e8374a4103d.bin",
+          "bytes": 55766016,
+          "sha256": "37561bacb8431e33687522b3a6ab222dd79037de679c015a9e3e65e97f561f69",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-0e1e42f9296a50541fc21711d39fc62fafed36888590f3b5db2afbac8f2668af.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/0e1e42f9296a50541fc21711d39fc62fafed36888590f3b5db2afbac8f2668af.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/0e1e42f9296a50541fc21711d39fc62fafed36888590f3b5db2afbac8f2668af.bin",
+          "bytes": 40124416,
+          "sha256": "a15ae5375a4d06aed7e551e5a13e282273fbe18367343ec4b5964c7f6b278d3c",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-14c62a2c50d42fafde2bf1d8dd07d13f1441584b1f3ce104c3dddbc2c2a59dd5.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/14c62a2c50d42fafde2bf1d8dd07d13f1441584b1f3ce104c3dddbc2c2a59dd5.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/14c62a2c50d42fafde2bf1d8dd07d13f1441584b1f3ce104c3dddbc2c2a59dd5.bin",
+          "bytes": 35389440,
+          "sha256": "5ee11ecdf19a9d330ac674955d433b93a89819d011f32b150b5c34747ccdf39b",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-1707fc024efa1c8271b146a722a1f7bd48d64a867973f9c4ed22a11d11b8524b.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/1707fc024efa1c8271b146a722a1f7bd48d64a867973f9c4ed22a11d11b8524b.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/1707fc024efa1c8271b146a722a1f7bd48d64a867973f9c4ed22a11d11b8524b.bin",
+          "bytes": 47882752,
+          "sha256": "71e7e238f2f8980ac4020e53f48eb34377c000538a5ad1b56015739ed9c1380a",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-19a56c15d38a45f24acbdf5dd49575577e90fe009299661d0c6b6d5cf1b42a18.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/19a56c15d38a45f24acbdf5dd49575577e90fe009299661d0c6b6d5cf1b42a18.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/19a56c15d38a45f24acbdf5dd49575577e90fe009299661d0c6b6d5cf1b42a18.bin",
+          "bytes": 5186560,
+          "sha256": "b5447e69c66f24068028f37d0cc7c3049409fc8d212de14da6a246c37cd67b65",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-1a153a634609dc5c745452aaf8bc84c5eb71e2dc037bbd48ebaa91bcc8741861.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/1a153a634609dc5c745452aaf8bc84c5eb71e2dc037bbd48ebaa91bcc8741861.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/1a153a634609dc5c745452aaf8bc84c5eb71e2dc037bbd48ebaa91bcc8741861.bin",
+          "bytes": 49618944,
+          "sha256": "fea4ddf32dd22aea9608922528cd7f5f7386f1b325bd31c519a960a11b8ec5df",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-232153bc9c98f796891912855931fc77ce044437e1e7f39db73363cc8fe09dae.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/232153bc9c98f796891912855931fc77ce044437e1e7f39db73363cc8fe09dae.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/232153bc9c98f796891912855931fc77ce044437e1e7f39db73363cc8fe09dae.bin",
+          "bytes": 40124416,
+          "sha256": "4e4b0e6a0c663efda3e984468bed8dbf7ececfb45768a1320517c82d5a7d40b4",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-240cb92f4e07d766be98da70c82914e2960df82bb17091bbddb9a4d4f68da217.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/240cb92f4e07d766be98da70c82914e2960df82bb17091bbddb9a4d4f68da217.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/240cb92f4e07d766be98da70c82914e2960df82bb17091bbddb9a4d4f68da217.bin",
+          "bytes": 47256576,
+          "sha256": "77a7ac1620c3c8c3ec27fc2941168a444ab40461db7844410ad9761de261dab2",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-2419ce7c911c45b6632eb3e504294e576d9125e9adc5f8cddb43bf7ef6763245.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/2419ce7c911c45b6632eb3e504294e576d9125e9adc5f8cddb43bf7ef6763245.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/2419ce7c911c45b6632eb3e504294e576d9125e9adc5f8cddb43bf7ef6763245.bin",
+          "bytes": 35414016,
+          "sha256": "4eb5db0db0e6a3d3bf65b051fb36b4939d547788faecc2612f2fe12b31fcf139",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-28a8aa2ade7176ef6db1ece0d0edc8bb82de81538638c5075db9a1289e041e79.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/28a8aa2ade7176ef6db1ece0d0edc8bb82de81538638c5075db9a1289e041e79.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/28a8aa2ade7176ef6db1ece0d0edc8bb82de81538638c5075db9a1289e041e79.bin",
+          "bytes": 47256576,
+          "sha256": "e0052f57276b44b582b39229d5e1aa8034e4745839463a95621f39ff24748a5a",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-28f86d817e098641eb3e2050180354342b226685fd02cc6f08dd4a7e33504e18.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/28f86d817e098641eb3e2050180354342b226685fd02cc6f08dd4a7e33504e18.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/28f86d817e098641eb3e2050180354342b226685fd02cc6f08dd4a7e33504e18.bin",
+          "bytes": 49618944,
+          "sha256": "ef8cdac6774b4623c8d4d701e6ba353903d86807207a7d2252c27a7240e6a29e",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-2aa090dbb13c37637fbb4963cd267e1cb5087a095bff555ea40e72e55b9c3058.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/2aa090dbb13c37637fbb4963cd267e1cb5087a095bff555ea40e72e55b9c3058.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/2aa090dbb13c37637fbb4963cd267e1cb5087a095bff555ea40e72e55b9c3058.bin",
+          "bytes": 50178560,
+          "sha256": "8752a9a2fdd4143a8b2ed8babaf547ee05a4a78eac49cad4e216f76553a9b369",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-2f34aeb88eeccee267f35e562a9596ea3a596e08481453ccb8b082e6aa5e477c.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/2f34aeb88eeccee267f35e562a9596ea3a596e08481453ccb8b082e6aa5e477c.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/2f34aeb88eeccee267f35e562a9596ea3a596e08481453ccb8b082e6aa5e477c.bin",
+          "bytes": 36659200,
+          "sha256": "a55f18300535005b57651ee17e1d6bbdf171604b44bc90fb32f787b6f49b043b",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-33b4e6a931691f0ce76203a6dff3ab37d67fe0ac10b3ffb1062834d8d9b9d7fd.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/33b4e6a931691f0ce76203a6dff3ab37d67fe0ac10b3ffb1062834d8d9b9d7fd.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/33b4e6a931691f0ce76203a6dff3ab37d67fe0ac10b3ffb1062834d8d9b9d7fd.bin",
+          "bytes": 49070336,
+          "sha256": "10848bb80b15ec22727378440c2aad17d89182ef0e4acc45aa3c740c2250407a",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-39875e9a3780d90eaa2f29e68b9a51aad1760bd29974bdc5de7290171a2d8463.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/39875e9a3780d90eaa2f29e68b9a51aad1760bd29974bdc5de7290171a2d8463.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/39875e9a3780d90eaa2f29e68b9a51aad1760bd29974bdc5de7290171a2d8463.bin",
+          "bytes": 49618944,
+          "sha256": "73985813db0844da1f514e6f9cb902a56362f2a0158860488e7630abe5327553",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-48153a17c8a13e5bc3be09b47664912540780db9149146399733b6a6bbfb9445.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/48153a17c8a13e5bc3be09b47664912540780db9149146399733b6a6bbfb9445.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/48153a17c8a13e5bc3be09b47664912540780db9149146399733b6a6bbfb9445.bin",
+          "bytes": 47256576,
+          "sha256": "13fce6dfd382e94d19091e05cd9d64923b5be8f90c6fcade013f640500992b6a",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-59320446a7dee7aeb56e3ee2c8cc7924884d51b3234975c74a5d29758aff6382.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/59320446a7dee7aeb56e3ee2c8cc7924884d51b3234975c74a5d29758aff6382.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/59320446a7dee7aeb56e3ee2c8cc7924884d51b3234975c74a5d29758aff6382.bin",
+          "bytes": 47256576,
+          "sha256": "3b6fa29de69117ca6a97a6ec9acea5796d80c5d13960275315e9c40fb12783dc",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-5cc8dc394b9c56b286a626beab31a6b0dd9490f0ffbd55a33ca1c26ca6eef521.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/5cc8dc394b9c56b286a626beab31a6b0dd9490f0ffbd55a33ca1c26ca6eef521.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/5cc8dc394b9c56b286a626beab31a6b0dd9490f0ffbd55a33ca1c26ca6eef521.bin",
+          "bytes": 47256576,
+          "sha256": "a3821df7811cd4412110e74f49deac536251a963d8fb645b2d480bc63ebe6ecb",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-614dd5797dffd9c718130514a72dff8e01b33bb7d6a568ddd4773e3d37a5d071.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/614dd5797dffd9c718130514a72dff8e01b33bb7d6a568ddd4773e3d37a5d071.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/614dd5797dffd9c718130514a72dff8e01b33bb7d6a568ddd4773e3d37a5d071.bin",
+          "bytes": 49618944,
+          "sha256": "d216f12486a60e2235ba49084423e58d0a93ed6614b1482504624169673adeb3",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-69972e6e23be53a0a821842b89b4e64fa315a2333cfeaa213e16cd3d97eba7fa.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/69972e6e23be53a0a821842b89b4e64fa315a2333cfeaa213e16cd3d97eba7fa.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/69972e6e23be53a0a821842b89b4e64fa315a2333cfeaa213e16cd3d97eba7fa.bin",
+          "bytes": 40124416,
+          "sha256": "37e6b9dbbe346d6eea89a9b26e5eea152dcf0ff3e239660c2972a32a78ebaa58",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-6a0ea7bf0ce6a2a9fbcdc049cbaaf09fb8af615cf8148aa1509a162f813b444d.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/6a0ea7bf0ce6a2a9fbcdc049cbaaf09fb8af615cf8148aa1509a162f813b444d.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/6a0ea7bf0ce6a2a9fbcdc049cbaaf09fb8af615cf8148aa1509a162f813b444d.bin",
+          "bytes": 49618944,
+          "sha256": "d6f4f14ddcd107e8a66de2a0bee24584df7574b03e0ef0e0452b596c521c121c",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-6f723958e4d71d0436689950c0e6549fe771a93d72ca85918c77bec690656fb5.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/6f723958e4d71d0436689950c0e6549fe771a93d72ca85918c77bec690656fb5.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/6f723958e4d71d0436689950c0e6549fe771a93d72ca85918c77bec690656fb5.bin",
+          "bytes": 49857024,
+          "sha256": "7f1790d8f497bcc1fa2d8acf3a3ef68b1f8fba39b73450056a6351fe95d8e4a2",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-71985b47d1cf7c670f358552af8b3805e8d40f948721f351eb587315ba1e607a.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/71985b47d1cf7c670f358552af8b3805e8d40f948721f351eb587315ba1e607a.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/71985b47d1cf7c670f358552af8b3805e8d40f948721f351eb587315ba1e607a.bin",
+          "bytes": 40124416,
+          "sha256": "a105806f1759623a8f297a1efd22501ed6ff775cc3ed8dc28db375aafe7b84e8",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-744b247e0a9dd88dc8a48908a7592eaa150131bca30dd9aee5f1e306f4a27092.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/744b247e0a9dd88dc8a48908a7592eaa150131bca30dd9aee5f1e306f4a27092.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/744b247e0a9dd88dc8a48908a7592eaa150131bca30dd9aee5f1e306f4a27092.bin",
+          "bytes": 49618944,
+          "sha256": "db74b5aa9c49a35fe8510007bac8b31ed061729153cddac504f3d2197ac0458c",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-7b7e59aef0750d2a7b6d5e1c5daa48c0e8acd1fb78276b59b3209e3cfe4b66a9.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/7b7e59aef0750d2a7b6d5e1c5daa48c0e8acd1fb78276b59b3209e3cfe4b66a9.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/7b7e59aef0750d2a7b6d5e1c5daa48c0e8acd1fb78276b59b3209e3cfe4b66a9.bin",
+          "bytes": 49021192,
+          "sha256": "04120d3ca1afcfdd9599c9d9d71703a09718fbe8683dfde4e01e8dc127556e15",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-7d054516cbc2855ee36c27444ad7f58d308c72c9eac9750e0a986c5ec69fecb1.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/7d054516cbc2855ee36c27444ad7f58d308c72c9eac9750e0a986c5ec69fecb1.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/7d054516cbc2855ee36c27444ad7f58d308c72c9eac9750e0a986c5ec69fecb1.bin",
+          "bytes": 47256576,
+          "sha256": "e130ad9a81d77f53cf81b20fd37cb85d8e0e37ec51b2e91fb33478ab97599b66",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-815258d2048ff13c6da2a0512f8232141f529a9f8e608655f1652019148f54fc.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/815258d2048ff13c6da2a0512f8232141f529a9f8e608655f1652019148f54fc.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/815258d2048ff13c6da2a0512f8232141f529a9f8e608655f1652019148f54fc.bin",
+          "bytes": 40124416,
+          "sha256": "aa2f790e401c47c55e0ed9ab0e1ea745d9f4c01c458eb9487c3acdc6243734fe",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-81f28e287e4e20fa35ff32f09040743093a82cb4d6ba7b7e7665e231c78ffe31.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/81f28e287e4e20fa35ff32f09040743093a82cb4d6ba7b7e7665e231c78ffe31.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/81f28e287e4e20fa35ff32f09040743093a82cb4d6ba7b7e7665e231c78ffe31.bin",
+          "bytes": 40124416,
+          "sha256": "756da7b222b6881637dfd1c1eece098f6ccaa832b997e1f52452b70b91e58989",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-84eb3ec21b7572bb1839ed8b4d6670c460f98d61f83ddc21f019d786a7472beb.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/84eb3ec21b7572bb1839ed8b4d6670c460f98d61f83ddc21f019d786a7472beb.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/84eb3ec21b7572bb1839ed8b4d6670c460f98d61f83ddc21f019d786a7472beb.bin",
+          "bytes": 49618944,
+          "sha256": "7ed9da5ff864577b40104f52d106744912d4d0d0513d26d2044d88372d31c363",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-8be6071208619202e0944a293cca4d3a1574b688d5d0e2be9c8c78454fc2ce1d.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/8be6071208619202e0944a293cca4d3a1574b688d5d0e2be9c8c78454fc2ce1d.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/8be6071208619202e0944a293cca4d3a1574b688d5d0e2be9c8c78454fc2ce1d.bin",
+          "bytes": 47256576,
+          "sha256": "853eca2d075fdad6dbbee165d64674c68ec791ebbe133863e14cde1cee95e7c4",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-8fed2d4a70f10b1beb88d10dafbe868b10d5e62568c8cb93bc5a15de1ea04b59.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/8fed2d4a70f10b1beb88d10dafbe868b10d5e62568c8cb93bc5a15de1ea04b59.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/8fed2d4a70f10b1beb88d10dafbe868b10d5e62568c8cb93bc5a15de1ea04b59.bin",
+          "bytes": 49618944,
+          "sha256": "18b2e616645c56dfb8c3d1b9c4358ac3574deeb284314e763082b6047f39cb64",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-91d39917e8f64f07cf589275743a2e4bb90856f7804042ddc75f4ea6c738f898.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/91d39917e8f64f07cf589275743a2e4bb90856f7804042ddc75f4ea6c738f898.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/91d39917e8f64f07cf589275743a2e4bb90856f7804042ddc75f4ea6c738f898.bin",
+          "bytes": 49618944,
+          "sha256": "adedeedbc4708de6cf779727d4f1562356f2afefe368188a80d2f99c6033e483",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-99114d8cdbdc4260d6c3d2608b029e08783b07291cfa14d2d560d4b7fad68bf4.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/99114d8cdbdc4260d6c3d2608b029e08783b07291cfa14d2d560d4b7fad68bf4.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/99114d8cdbdc4260d6c3d2608b029e08783b07291cfa14d2d560d4b7fad68bf4.bin",
+          "bytes": 47256576,
+          "sha256": "ee74c2303ef3f8f67caf76c967d8ff81cdb100b16e70508a30b55063b9cd5f3e",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-a08101a537f59d15e624ce6e42000f3fed97672beeb564feef7522cd4e0ef8fc.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/a08101a537f59d15e624ce6e42000f3fed97672beeb564feef7522cd4e0ef8fc.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/a08101a537f59d15e624ce6e42000f3fed97672beeb564feef7522cd4e0ef8fc.bin",
+          "bytes": 47256576,
+          "sha256": "0f375593b39d5e4d0c6cce5bb8dabe52dff71dea3e052b9d5092491381d98a0c",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-a15e6dc7e1f2c080d748061f66adcf8e64ccf31641aebe8fc3f2001bec25752f.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/a15e6dc7e1f2c080d748061f66adcf8e64ccf31641aebe8fc3f2001bec25752f.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/a15e6dc7e1f2c080d748061f66adcf8e64ccf31641aebe8fc3f2001bec25752f.bin",
+          "bytes": 40124416,
+          "sha256": "7bf7e442f0a7bd652700fc611a43a29d2a2374568bdc4b11287f989cbf0f6fe0",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-a3e16878fd6cdcaa1816835e10ead00f0ee60c964d6a305c11c12d4de7abddbe.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/a3e16878fd6cdcaa1816835e10ead00f0ee60c964d6a305c11c12d4de7abddbe.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/a3e16878fd6cdcaa1816835e10ead00f0ee60c964d6a305c11c12d4de7abddbe.bin",
+          "bytes": 49618944,
+          "sha256": "7430c3ee4d1d64a11fdc21d2769e2989c3abd52dca0a33323a8d05ee05bd2b71",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-ac56548d2d230cb7e1a1716efd248a9956b92e9997555442f4c178556fd9d628.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/ac56548d2d230cb7e1a1716efd248a9956b92e9997555442f4c178556fd9d628.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/ac56548d2d230cb7e1a1716efd248a9956b92e9997555442f4c178556fd9d628.bin",
+          "bytes": 294912000,
+          "sha256": "bbe62bc9580b857cbc585774809d8947417f0028327ec045ebe47a56baec9dfb",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-adec4949d1ac163ae11be59e54e9f07a173d064fc9963581d0ae24903bb90890.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/adec4949d1ac163ae11be59e54e9f07a173d064fc9963581d0ae24903bb90890.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/adec4949d1ac163ae11be59e54e9f07a173d064fc9963581d0ae24903bb90890.bin",
+          "bytes": 36659200,
+          "sha256": "f9b54841059e19ce0ffd2cff618b4eaeb0a1534fc74957735611302afb5535bb",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-b1024e276f0adbcbfb9c6cc329bf75e624496c55b99934200d93c2f0b39bfd71.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/b1024e276f0adbcbfb9c6cc329bf75e624496c55b99934200d93c2f0b39bfd71.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/b1024e276f0adbcbfb9c6cc329bf75e624496c55b99934200d93c2f0b39bfd71.bin",
+          "bytes": 49618944,
+          "sha256": "232464607b6796ded0a2f6a018f47e6b83d45e8ca1cc118eac2be76b2ab49a14",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-b13e5b8ee3c0b745056e81eb7e50b673b1e8e9b95912981220b05b779bfdb746.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/b13e5b8ee3c0b745056e81eb7e50b673b1e8e9b95912981220b05b779bfdb746.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/b13e5b8ee3c0b745056e81eb7e50b673b1e8e9b95912981220b05b779bfdb746.bin",
+          "bytes": 35389440,
+          "sha256": "25a4d644f6ca37f7d774ff5c5ea823e5a1d6ebac9ba116202d087e37007a35a0",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-b2e12dfcf6246909c82952c27e7d80064cfb369a44b8928d9ad62f365ffaf037.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/b2e12dfcf6246909c82952c27e7d80064cfb369a44b8928d9ad62f365ffaf037.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/b2e12dfcf6246909c82952c27e7d80064cfb369a44b8928d9ad62f365ffaf037.bin",
+          "bytes": 40124416,
+          "sha256": "d99a5c5c351c5876cc2e7081be1e349b9f9f8d01caacaf1e8f25f64df4da444c",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-b3e679d209f7f03598533f40ded7065459a1918f2af9fa6d2bf5322936a6e87c.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/b3e679d209f7f03598533f40ded7065459a1918f2af9fa6d2bf5322936a6e87c.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/b3e679d209f7f03598533f40ded7065459a1918f2af9fa6d2bf5322936a6e87c.bin",
+          "bytes": 47256576,
+          "sha256": "b5db14a9402c1aa40907822aa442c02db3e3dda1b88d3b7992a4466ce1f7dd70",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-b5d6989e116962724e6f337637ff03083d83475bf6bb77212ea3ca8a8df3ddaa.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/b5d6989e116962724e6f337637ff03083d83475bf6bb77212ea3ca8a8df3ddaa.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/b5d6989e116962724e6f337637ff03083d83475bf6bb77212ea3ca8a8df3ddaa.bin",
+          "bytes": 40124416,
+          "sha256": "5d9d5c71df34ec405be3b349305efbb7aede27f31d1894811a27538b988577b2",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-c823d6e648838ed98ba83b59423d78e6805812cbef618df02d7bb80b3117550d.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/c823d6e648838ed98ba83b59423d78e6805812cbef618df02d7bb80b3117550d.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/c823d6e648838ed98ba83b59423d78e6805812cbef618df02d7bb80b3117550d.bin",
+          "bytes": 47256576,
+          "sha256": "bfe128fb87008daab31903722ba0d19d35bedf19da7ac7e82c235829e15ac4ab",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-cb55c36cf729cac53eeec51ea285cf0b2580d2f4e8ac81d0456a464c7dff9fdd.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/cb55c36cf729cac53eeec51ea285cf0b2580d2f4e8ac81d0456a464c7dff9fdd.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/cb55c36cf729cac53eeec51ea285cf0b2580d2f4e8ac81d0456a464c7dff9fdd.bin",
+          "bytes": 49062912,
+          "sha256": "1d770061741294b4a36f1cc523673f5dc6b03939665011c8ce192608cf93b3a4",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-d2ed8887befec349684e08e47b7fb1936a685cf0d2a755bf9284b24292afcaa8.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/d2ed8887befec349684e08e47b7fb1936a685cf0d2a755bf9284b24292afcaa8.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/d2ed8887befec349684e08e47b7fb1936a685cf0d2a755bf9284b24292afcaa8.bin",
+          "bytes": 50293760,
+          "sha256": "1e5bd2410ddfc3f241778790a572feb7020358fad9964142c4c1f32a3f6097cd",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-d5e452b07eb67d0c0f99854eb3190988dbd0faec63bdf2b225148f440692d561.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/d5e452b07eb67d0c0f99854eb3190988dbd0faec63bdf2b225148f440692d561.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/d5e452b07eb67d0c0f99854eb3190988dbd0faec63bdf2b225148f440692d561.bin",
+          "bytes": 49062912,
+          "sha256": "1c635d3e93ff8fb75bd81a9c55d821bfaa52970d4829f0a1bea2c93e789a65e8",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-e30f6c88d78fa8a08457495a22fcc4c0f54c9e17dace61441f03c79dfd243ef6.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/e30f6c88d78fa8a08457495a22fcc4c0f54c9e17dace61441f03c79dfd243ef6.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/e30f6c88d78fa8a08457495a22fcc4c0f54c9e17dace61441f03c79dfd243ef6.bin",
+          "bytes": 40124416,
+          "sha256": "d027dd440b344023694e09ea62f3a95d9f5fde326a6efa481335ca98c823c621",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-parts-e83a446e85d401fd442e22c3a76fdbe03d3677836367a765faa8fdafb55dbd22.bin",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/parts/e83a446e85d401fd442e22c3a76fdbe03d3677836367a765faa8fdafb55dbd22.bin",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/parts/e83a446e85d401fd442e22c3a76fdbe03d3677836367a765faa8fdafb55dbd22.bin",
+          "bytes": 49613568,
+          "sha256": "39335f0478818425344e7248b10c3c009f48f1c8fc1d58a294bf75625a1b4ec4",
+          "kind": "model-weights"
+        },
+        {
+          "id": "omni-liquid-lfm3-omni-2b-web-tokenizer.json",
+          "target": "liquid-cpu/omni/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/model/tokenizer.json",
+          "url": "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/resolve/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/tokenizer.json",
+          "bytes": 17908634,
+          "sha256": "41927bd314d17d7d7fadb44e10cd0919f7b71528d7741596d8cbd15c6945ec44",
+          "kind": "model-support"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-host-loader.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/host/loader.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/host/loader.js",
+          "bytes": 8780,
+          "sha256": "e92fad5463aa477182e507cdb7ee4d2d47182b481c99bc242d57a889433b91a8",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-host-worker.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/host/worker.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/host/worker.js",
+          "bytes": 3944,
+          "sha256": "55b771d7026d0358cbb680ed15d768e27323ce02c6222e9504c8c94a5abaa1c2",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-web-single-relaxed-lfm3_runtime.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single-relaxed/lfm3_runtime.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single-relaxed/lfm3_runtime.js",
+          "bytes": 13763,
+          "sha256": "3a1aea60e109ef4832a967d6bf83d5b9b0ffffe5bb7239979ebdd2d9500e1188",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-web-single-relaxed-lfm3_runtime_bg.wasm",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single-relaxed/lfm3_runtime_bg.wasm",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single-relaxed/lfm3_runtime_bg.wasm",
+          "bytes": 3988968,
+          "sha256": "c2cdf34910e42aa1d01326e95b6784e1e2bdba21153c54c499a307e96969bf17",
+          "kind": "runtime"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-web-single-lfm3_runtime.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single/lfm3_runtime.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single/lfm3_runtime.js",
+          "bytes": 13763,
+          "sha256": "3a1aea60e109ef4832a967d6bf83d5b9b0ffffe5bb7239979ebdd2d9500e1188",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-web-single-lfm3_runtime_bg.wasm",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single/lfm3_runtime_bg.wasm",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-single/lfm3_runtime_bg.wasm",
+          "bytes": 3906750,
+          "sha256": "490f892d81d710f0adfc74a3de10ead678715a6f040c3fa234488e4c7cfde525",
+          "kind": "runtime"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-web-threaded-relaxed-lfm3_runtime.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/lfm3_runtime.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/lfm3_runtime.js",
+          "bytes": 18443,
+          "sha256": "2b65d63422c082fa09c549c2eb125176d1a35ca5fd96c2d2727582d01e88f653",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-web-threaded-relaxed-lfm3_runtime_bg.wasm",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/lfm3_runtime_bg.wasm",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/lfm3_runtime_bg.wasm",
+          "bytes": 4017664,
+          "sha256": "23dc58096035a3dc41df7968fcc4c2592cc28626b5de094a17068f41ef6eb06f",
+          "kind": "runtime"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-web-threaded-relaxed-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-protocol.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/protocol.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/protocol.js",
+          "bytes": 439,
+          "sha256": "2461f33fc7711854698196e8477a3de0c4b31360d56b6f52aeb5cc7eb306dc53",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-web-threaded-relaxed-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-workerHelpers.no-bundler.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/workerHelpers.no-bundler.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded-relaxed/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/workerHelpers.no-bundler.js",
+          "bytes": 2136,
+          "sha256": "1f2eee2d24aff6d5337efbc166e0d2242f0a1067cff564eb935354d8ecfe4d21",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-web-threaded-lfm3_runtime.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/lfm3_runtime.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/lfm3_runtime.js",
+          "bytes": 18443,
+          "sha256": "2b65d63422c082fa09c549c2eb125176d1a35ca5fd96c2d2727582d01e88f653",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-web-threaded-lfm3_runtime_bg.wasm",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/lfm3_runtime_bg.wasm",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/lfm3_runtime_bg.wasm",
+          "bytes": 3933618,
+          "sha256": "0b457b91c0cbac25e742dabd8da6b265d802fae58b8807c2973dd16d203dd4e0",
+          "kind": "runtime"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-web-threaded-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-protocol.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/protocol.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/protocol.js",
+          "bytes": 439,
+          "sha256": "2461f33fc7711854698196e8477a3de0c4b31360d56b6f52aeb5cc7eb306dc53",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "omni-liquid-fusor-engine-dist-web-threaded-snippets-wasm-bindgen-rayon-38edf6e439f6d70d-src-workerHelpers.no-bundler.js",
+          "target": "liquid-cpu/runtime/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/workerHelpers.no-bundler.js",
+          "url": "https://huggingface.co/spaces/fusorlabs/liquidai-lmf3-wasm/resolve/572fc51e58808d3536bc8a8bea9d74a11b4b88bc/engine/dist/web-threaded/snippets/wasm-bindgen-rayon-38edf6e439f6d70d/src/workerHelpers.no-bundler.js",
+          "bytes": 2136,
+          "sha256": "1f2eee2d24aff6d5337efbc166e0d2242f0a1067cff564eb935354d8ecfe4d21",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "omni-liquid-wasm-bindgen-rayon-1.3.0-license",
+          "target": "licenses/wasm-bindgen-rayon/1.3.0/LICENSE",
+          "url": "https://raw.githubusercontent.com/RReverser/wasm-bindgen-rayon/6a09d723ed5eed586d1db808f9cc56625b36ff77/LICENSE",
+          "bytes": 11358,
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "kind": "license"
+        },
+        {
+          "id": "omni-liquid-liquidai-lmf3-wasm-mit-license",
+          "target": "licenses/liquidai-lmf3-wasm/LICENSE",
+          "url": "https://raw.githubusercontent.com/fusor-rs/liquidai-lmf3-wasm/d21345320af38a5f2246a6d2e608d7cf178d92ef/LICENSE",
+          "bytes": 1062,
+          "sha256": "b34d36a9d1d848b09e80fae4c50aa6ad4ca452452ce4ba87069e21db1f919a90",
+          "kind": "license"
+        },
+        {
+          "id": "omni-liquid-fusor-ai-mit-license",
+          "target": "licenses/fusor-ai/LICENSE",
+          "url": "https://raw.githubusercontent.com/fusor-rs/fusor-ai/67bbe1ebeb140f11262f15996b79825bbe1cf461/LICENSE",
+          "bytes": 1062,
+          "sha256": "b34d36a9d1d848b09e80fae4c50aa6ad4ca452452ce4ba87069e21db1f919a90",
+          "kind": "license"
+        }
+      ],
+      "license": {
+        "model": "LFM Open License v1.0 ($10M revenue threshold)",
+        "runtime": "MIT Fusor; Apache-2.0 threaded helpers",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "cpu"
+      ],
+      "support": {
+        "voiceCount": null,
+        "bundledVoiceCount": null,
+        "languageCount": 18,
+        "languages": [
+          "en",
+          "ar",
+          "da",
+          "de",
+          "el",
+          "fi",
+          "fr",
+          "he",
+          "it",
+          "ja",
+          "ko",
+          "nl",
+          "pl",
+          "pt",
+          "es",
+          "sv",
+          "tr",
+          "zh"
+        ],
+        "scope": "Pinned Fusor q7 browser bundle; 6 CPU threads; speech generation only",
+        "sources": [
+          "https://huggingface.co/LiquidAI/LFM3-Omni-2B",
+          "https://www.liquid.ai/blog/lfm3",
+          "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/blob/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/README.md",
+          "https://huggingface.co/fusorlabs/lfm3-omni-2b-web/blob/09f4fc6ddbbb3cc6cd30f74b1e76cc894f4901f4/manifest.json"
+        ],
+        "notes": "18 spoken languages; English has US and UK locales. Male/female prompt controls do not establish a fixed-voice count. Only American English female is tested. Six-thread Fusor WASM q7 configuration; different weights/runtime/sampling from the official WebGPU GGUF configuration."
+      }
     }
   }
 }

@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-11t08-11-31-864z-lfm3-omni-2b-gguf-webgpu-warm-0e07e4f7",
+  "createdAt": "2026-11-11T08:50:48.425Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-warm-v1",
+    "scenario": "warm",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export.",
+    "warmupRuns": 1,
+    "repetitions": 5,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro / Apple M1 Pro 8-core / 16 GiB / arm64",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.40",
+    "gpu": "apple metal-3",
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "150db9efe48086e488bf2a206279b2384826b245",
+    "dirty": false,
+    "manifestSha256": "5f8229f4bac76312c4391f1a9f229dd38cc63c22520194f71b4fcf3931c89fcf"
+  },
+  "assets": [
+    {
+      "id": "lfm3-omni-model.gguf",
+      "sha256": "9f8d30e9d4fd7a9349d586e077988229b3ca0a0e4ad730897563d1eccc9893e2",
+      "bytes": 1099630080
+    },
+    {
+      "id": "lfm3-omni-LICENSE.txt",
+      "sha256": "4d28ca14dedc0b3d0fcc2b3339f0e79931faa33874f3d24f522183a8fc70068c",
+      "bytes": 10574
+    },
+    {
+      "id": "lfm3-omni-mmproj.gguf",
+      "sha256": "8a25f9d1931244429de404fccacfb7fb933970a36aa5688d2f5069f29c6b27b1",
+      "bytes": 506842528
+    },
+    {
+      "id": "lfm3-omni-webgpu-runtime",
+      "sha256": "77821949412f5dd6d60e37f22415f0e71454e65f6a73928529c6fbec0f2cf2cb",
+      "bytes": 1626254
+    }
+  ],
+  "cells": [
+    {
+      "model": "lfm3-omni-2b-gguf",
+      "support": {
+        "voiceCount": null,
+        "bundledVoiceCount": null,
+        "languageCount": 18,
+        "languages": [
+          "en",
+          "ar",
+          "da",
+          "de",
+          "el",
+          "fi",
+          "fr",
+          "he",
+          "it",
+          "ja",
+          "ko",
+          "nl",
+          "pl",
+          "pt",
+          "es",
+          "sv",
+          "tr",
+          "zh"
+        ],
+        "scope": "Pinned speech-generating checkpoint; TTS mode only",
+        "sources": [
+          "https://huggingface.co/LiquidAI/LFM3-Omni-2B",
+          "https://www.liquid.ai/blog/lfm3"
+        ],
+        "notes": "18 spoken languages (English has US and UK locales). Female/male prompt controls do not establish a count of fixed voices. Benchmark selects American English female. Weight size includes complete pinned GGUF files, including modality components not exercised by TTS."
+      },
+      "backendRequested": "webgpu",
+      "backendEffective": "webgpu",
+      "status": "measured",
+      "reason": null,
+      "voice": "American English female (prompted style; no fixed voice identifier)",
+      "precision": "GGUF Q4_K_M language backbone + Q8_0 mmproj",
+      "settings": {
+        "sampleRate": 24000,
+        "contextTokens": 4096,
+        "maxNewTokens": 2048,
+        "generationMode": "audio",
+        "textDoSample": false,
+        "speechSampling": "Official pinned depth-decoder defaults; high-level API does not expose a speech seed. Stochastic speech retained.",
+        "systemPrompt": "Perform TTS in American English using a female voice.",
+        "frontend": "Official GGUF tokenizer/chat template; exact canonical text as user message; independent reset for every source span; no truncation.",
+        "runtime": "LiquidAI LFM3-Omni-2B-WebGPU 9c2fb176f4c222da394e8037d3c0d0837f70b978",
+        "executionProviders": [
+          "webgpu"
+        ],
+        "hostWork": "CPU JavaScript tokenization, scheduling and PCM delivery; neural kernels use the official WebGPU runtime.",
+        "prefixSnapshots": false
+      },
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Observed 90359 WebGPU compute dispatches during untimed synthesis with finite CPU-readable PCM. Hooks removed before timing. CPU JavaScript handles tokenization and scheduling."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 387934.6599999666,
+          "samples": 32778240,
+          "sampleRate": 24000,
+          "pcmSha256": "4ae8c91afeae11d78947ab8106e561e8f68a883671dd6c5c0dff5ef1a49efadf",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 489.6200000047684,
+            "firstSourceChunkCompletedMs": 4641.329999923706,
+            "audioSeconds": 1365.76,
+            "realTimeFactor": 0.2840430675960393,
+            "minSamplesPerChunk": 272640,
+            "maxSamplesPerChunk": 433920
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 389279.62999999523,
+          "samples": 32893440,
+          "sampleRate": 24000,
+          "pcmSha256": "79dca8e6f37606b0e243c78eef7423de931659322f1ab1eaf08b9088ae04b0df",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 447.1100000143051,
+            "firstSourceChunkCompletedMs": 4415.950000047684,
+            "audioSeconds": 1370.56,
+            "realTimeFactor": 0.2840296156315632,
+            "minSamplesPerChunk": 272640,
+            "maxSamplesPerChunk": 445440
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 389593.7799999714,
+          "samples": 32929920,
+          "sampleRate": 24000,
+          "pcmSha256": "3ddc2f9b37e2aacb62eb02d08c18dc762dda25bb0c3dd216066ae6a81e6b7c16",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 449.835000038147,
+            "firstSourceChunkCompletedMs": 4514.9400000572205,
+            "audioSeconds": 1372.08,
+            "realTimeFactor": 0.28394392455248335,
+            "minSamplesPerChunk": 276480,
+            "maxSamplesPerChunk": 445440
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 388700.93000006676,
+          "samples": 32807040,
+          "sampleRate": 24000,
+          "pcmSha256": "e0be12b847d11a548f12a9d84a95cf13cf53703198468dc9b021cd03e6aa7c6f",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 442.19000005722046,
+            "firstSourceChunkCompletedMs": 4548.159999966621,
+            "audioSeconds": 1366.96,
+            "realTimeFactor": 0.2843542824955132,
+            "minSamplesPerChunk": 280320,
+            "maxSamplesPerChunk": 441600
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 388283.36500000954,
+          "samples": 32805120,
+          "sampleRate": 24000,
+          "pcmSha256": "6c69baee2f24f4f27c7d1ae5a30b8b0deecbbf1a78d8a341a5e9eed3a48cb1cb",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 442.13499999046326,
+            "firstSourceChunkCompletedMs": 4636.215000033379,
+            "audioSeconds": 1366.88,
+            "realTimeFactor": 0.2840654373463724,
+            "minSamplesPerChunk": 280320,
+            "maxSamplesPerChunk": 441600
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 387331.3600000143,
+          "samples": 32653440,
+          "sampleRate": 24000,
+          "pcmSha256": "97c9ae0ce93daaba33c6e9846e52f3f5d8cb83c2435ea63ed4579d950780866a",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 447.75,
+            "firstSourceChunkCompletedMs": 4474.670000076294,
+            "audioSeconds": 1360.56,
+            "realTimeFactor": 0.2846852472511424,
+            "minSamplesPerChunk": 272640,
+            "maxSamplesPerChunk": 449280
+          },
+          "audio": {
+            "sha256": "47bf0c2426f8a03d24da25e053d8e653dce80162beb8d886c3d8310deae2d226",
+            "bytes": 65306924
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "AC power; headed Google Chrome; sequential Liquid campaign: Audio GPU warm, Omni GPU warm, Audio cached memory, Omni cached memory. No cold-load checks. Normal user applications left running; no thermal or background-load isolation. Official runtime retains stochastic speech sampling. CPU Fusor q7 configurations use different weights and runtime."
+  ]
+}

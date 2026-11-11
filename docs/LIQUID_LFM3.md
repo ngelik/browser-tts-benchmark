@@ -25,7 +25,8 @@ Each unchanged canonical source span is passed as a user message. The session is
 reset for each span; no previous sentence or output is added to its context.
 Generation uses audio mode, 4,096 context tokens and a 2,048 output-token ceiling.
 Input capacity is checked before generation. Any non-stop completion, empty or
-nonfinite PCM fails the attempt; no truncated output is accepted as a score.
+nonfinite PCM fails the attempt; cap-terminated output is not accepted as a score.
+A normal stop alone does not establish that every word was spoken.
 The output is mono 24 kHz. The first streamed PCM event is observed separately
 from completion of the full source span.
 
@@ -46,6 +47,8 @@ absent from the tested WASM backend. A native Python/ORT CPU result must not be
 reported as browser CPU. Any community CPU runtime uses its own explicit model
 configuration, asset closure and precision; do not compute a controlled CPU/GPU
 speedup across different weight formats.
+
+The browser CPU alternative is documented in [Fusor q7 CPU configurations](LIQUID_LFM3_CPU.md).
 
 ## Reproduce
 
