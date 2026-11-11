@@ -28,6 +28,23 @@ try {
   page.on('response', r => {if (r.status() >= 400) failedResponses.push(r.status()+' '+r.url());});
   await page.goto(base);
   await page.waitForFunction(n => document.querySelectorAll('#model-rows tr').length === n, expected.models.length);
+  const rankedIds = (models, value) => [...models].sort((a, b) => {
+    const av = value(a), bv = value(b);
+    return av == null && bv == null ? a.name.localeCompare(b.name) : av == null ? 1 : bv == null ? -1 : av - bv || a.name.localeCompare(b.name);
+  }).map(model => model.id);
+  const assertDefaultOrder = async () => {
+    assert.deepEqual(await page.locator('#model-rows tr').evaluateAll(rows => rows.map(row => row.dataset.model)), rankedIds(expected.models, model => model.warm.cpu.medianSeconds));
+    assert.equal(await page.locator('th[data-column="cpu"]').getAttribute('aria-sort'), 'ascending');
+    assert.equal(await page.locator('#sort-select').inputValue(), 'cpu');
+  };
+  const assertChartOrder = async (models, metric) => {
+    for (const backend of metric === 'size' ? ['size'] : ['cpu', 'webgpu']) {
+      const panel = page.getByRole('region', {name: `${backend === 'size' ? 'Model size' : backend === 'cpu' ? 'CPU' : 'GPU'} chart`, exact:true});
+      const value = model => backend === 'size' ? model.modelMB : model[metric === 'generation' ? 'warm' : 'memory'][backend][metric === 'generation' ? 'medianSeconds' : 'meanMB'];
+      assert.deepEqual(await panel.locator('.bar-row [data-detail]').evaluateAll(buttons => buttons.map(button => button.dataset.detail)), rankedIds(models, value));
+    }
+  };
+  await assertDefaultOrder();
   assert.equal(await page.locator('audio').count(), 1);
   assert.equal(await page.locator('audio').getAttribute('src'), null, 'Audio must not download on initial load');
   for (const model of expected.models) {
@@ -78,6 +95,7 @@ try {
   const cohorts = await page.locator('#cohort option').evaluateAll(options => options.map(o => o.value).filter(v => !['all','paired','historical'].includes(v)));
   for (const key of cohorts) {await page.locator('#cohort').selectOption(key); assert.equal(await page.locator('#model-rows tr').count(), expected.models.filter(m => ['cpu','webgpu'].some(b => m.warm[b].cohortKey === key)).length);}
   await page.locator('#reset').click();
+  await assertDefaultOrder();
   await page.locator('[data-sort="webgpu"]').click();
   const measuredGpu = expected.models.filter(m => m.warm.webgpu.medianSeconds != null).sort((a,b) => a.warm.webgpu.medianSeconds-b.warm.webgpu.medianSeconds);
   assert.equal(await page.locator('#model-rows tr').first().getAttribute('data-model'), measuredGpu[0].id);
@@ -91,6 +109,7 @@ try {
     assert.equal(await page.locator('.chart-panel').count(), metric === 'size' ? 1 : 2);
     assert.equal(await page.locator('.bar-row').count(), expected.models.length*(metric === 'size' ? 1 : 2));
     assert.equal(await page.locator('#charts').evaluate(e => e.innerHTML.includes('NaN')), false);
+    await assertChartOrder(expected.models, metric);
   }
   await page.locator('[data-metric="generation"]').click();
   await page.locator('#cohort').selectOption(cohorts.at(-1));
@@ -144,6 +163,7 @@ try {
     assert.equal(await page.locator('[data-view="charts"]').getAttribute('aria-pressed'), 'true');
     assert.equal(await page.locator(`[data-metric="${metric}"]`).getAttribute('aria-pressed'), 'true');
     assert.equal(await page.locator('#charts').evaluate(e => e.innerHTML.includes('NaN')), false);
+    await assertChartOrder(family, metric);
     await page.screenshot({path:`${review}/lfm3-${metric}.png`,fullPage:true});
   }
   const sample = expected.models.find(m=>m.audio.length).audio[0];

@@ -6,7 +6,7 @@ const repo = 'https://github.com/ngelik/browser-tts-benchmark';
 const labels = {cpu: 'CPU', webgpu: 'GPU'};
 const shortLicense = value => value.startsWith('Model license not separately') ? 'Unspecified · terms ↗' : value.startsWith('OpenRAIL-M') ? 'OpenRAIL-M ↗' : value.startsWith('Underdog Non-Commercial') ? 'Underdog NC 1.0 ↗' : value;
 const chromeVersion = metric => (metric?.environment?.chromeVersion ?? 'unknown').replace(/^Google Chrome\s+/, '');
-const state = {data: null, view: 'table', metric: 'generation', sort: 'name', direction: 1, playing: null, cohorts: new Map()};
+const state = {data: null, view: 'table', metric: 'generation', sort: 'cpu', direction: 1, playing: null, cohorts: new Map()};
 const audio = $('#sample-audio');
 const dialog = $('#details');
 let playRequest = 0;
@@ -25,13 +25,13 @@ function outputWarningTag(model) {
   };
   return button('output-warning', 'Check audio', scored, 'Check audio') + button('output-warmup', 'Warm-up note', warmup, 'Excluded warm-up note');
 }
-const compare = (a, b) => {
-  const av = metricValue(a, state.sort), bv = metricValue(b, state.sort);
+const compareValues = (a, b, av, bv, direction = 1) => {
   if (av == null && bv == null) return a.name.localeCompare(b.name);
   if (av == null) return 1;
   if (bv == null) return -1;
-  return (typeof av === 'string' ? av.localeCompare(bv) : av - bv) * state.direction || a.name.localeCompare(b.name);
+  return (typeof av === 'string' ? av.localeCompare(bv) : av - bv) * direction || a.name.localeCompare(b.name);
 };
+const compare = (a, b) => compareValues(a, b, metricValue(a, state.sort), metricValue(b, state.sort), state.direction);
 function visibleModels() {
   const term = $('#search').value.trim().toLowerCase(), cohort = $('#cohort').value, license = $('#license').value;
   return state.data.models.filter(model => (!term || `${model.name} ${model.id}`.toLowerCase().includes(term)) && (license === 'all' || model.license.model === license) && (cohort === 'all' || (cohort === 'paired' && model.pairedWarm) || (cohort === 'historical' && historical(model)) || ['cpu', 'webgpu'].some(b => model.warm[b]?.cohortKey === cohort))).sort(compare);
@@ -65,7 +65,7 @@ function renderCharts(models) {
   const max = Math.max(1, ...models.flatMap(m => backends.map(b => get(m, b) ?? 0)));
   const units = kind === 'generation' ? 'seconds' : 'MB';
   $('#charts').classList.toggle('single', kind === 'size');
-  $('#charts').innerHTML = backends.map(backend => `<section class="chart-panel ${backend === 'webgpu' ? 'gpu' : backend}" aria-label="${backend === 'size' ? 'Model size' : labels[backend]} chart"><h3>${backend === 'size' ? 'Model weights' : `<i class="key ${backend === 'cpu' ? 'cpu' : 'gpu'}"></i>${labels[backend]} / ${backend === 'cpu' ? 'WebAssembly' : 'WebGPU'}`}</h3><p class="small">${kind === 'generation' ? 'Median full-article generation · seconds' : kind === 'memory' ? 'Average Chrome process RSS · MB' : 'Verified core model weights · MB'}</p>${models.map(model => {
+  $('#charts').innerHTML = backends.map(backend => `<section class="chart-panel ${backend === 'webgpu' ? 'gpu' : backend}" aria-label="${backend === 'size' ? 'Model size' : labels[backend]} chart"><h3>${backend === 'size' ? 'Model weights' : `<i class="key ${backend === 'cpu' ? 'cpu' : 'gpu'}"></i>${labels[backend]} / ${backend === 'cpu' ? 'WebAssembly' : 'WebGPU'}`}</h3><p class="small">${kind === 'generation' ? 'Median full-article generation · seconds' : kind === 'memory' ? 'Average Chrome process RSS · MB' : 'Verified core model weights · MB'}</p>${[...models].sort((a, b) => compareValues(a, b, get(a, backend), get(b, backend))).map(model => {
     const value = get(model, backend), missing = !Number.isFinite(value);
     const metric = kind === 'size' ? null : model[kind === 'generation' ? 'warm' : 'memory'][backend];
     return `<div class="bar-row ${missing ? 'unavailable' : ''}"><div class="bar-label"><button data-detail="${escape(model.id)}">${escape(model.name)}</button><span class="value">${missing ? statusLabel(metric) : `${fmt(value)} <span class="sr-only">${units}</span>`}</span></div>${missing ? '' : `<div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:${value / max * 100}%"></div></div>`}</div>`;
@@ -77,12 +77,13 @@ function render() {
   $('#visible-count').textContent = `${models.length} of ${state.data.models.length} configurations`;
   $('#table-view').hidden = state.view !== 'table' || models.length === 0;
   $('#charts-view').hidden = state.view !== 'charts' || models.length === 0;
+  $('.sort-field').hidden = state.view !== 'table';
   $('#no-results').hidden = models.length > 0;
   const cohort = $('#cohort').value;
   $('#scope-note').textContent = cohort === 'all' || cohort === 'historical' ? 'Warm generation medians. Lower is better. Different source and Chrome cohorts are shown together; open a model for its exact test conditions.' : cohort === 'paired' ? 'CPU and GPU are compatible within each model’s native pair. Different pairs can still use different source and Chrome cohorts. RAM comes from separate diagnostics.' : 'Models with warm evidence in the selected source / environment cohort. Each backend and memory diagnostic retains its own source in model details.';
   renderTable(models); renderCharts(models);
 }
-function reset() { $('#search').value = ''; $('#cohort').value = 'all'; $('#license').value = 'all'; state.sort = 'name'; state.direction = 1; $('#sort-select').value = 'name'; render(); }
+function reset() { $('#search').value = ''; $('#cohort').value = 'all'; $('#license').value = 'all'; state.sort = 'cpu'; state.direction = 1; $('#sort-select').value = 'cpu'; render(); }
 function provenance(metric) {
   if (!metric?.resultId) return '<p class="provenance">No published result for this path.</p>';
   const env = metric.environment;

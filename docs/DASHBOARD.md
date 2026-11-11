@@ -77,3 +77,9 @@ exact merge commit's workflow and the live page before reporting publication.
 New benchmark submissions automatically enter this same dashboard via their
 validated result bundles and verified audio manifest; do not hand-edit generated
 scores or create a competing results page.
+
+The default table and Reset sort by CPU generation time, fastest first. Column
+headings (or the mobile Sort menu) can select another table order. Each chart
+sorts independently by its displayed value, lowest first: generation seconds,
+average memory, or model size. Unavailable measurements stay last, and ties use
+the model name. Table sorting does not change chart ranking.
