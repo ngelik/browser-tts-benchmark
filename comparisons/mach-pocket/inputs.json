@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "inputs": [
+    {
+      "id": "2026-11-11t23-29-37-690z-mach-boom-cpu-warm-3e5836ed",
+      "sha256": "56c9c604da13068e023ce505665342788fe09a1aa80ce12a76b79e3bb4ad1edf"
+    },
+    {
+      "id": "2026-11-12t06-54-44-012z-mach-boom-webgpu-warm-50fcc07b",
+      "sha256": "cc622823df4d4e71212bc36a3086a672bb5a97ac69256a44e804e53961fd3369"
+    },
+    {
+      "id": "2026-11-12t05-28-59-020z-pocket-tts-100m-english-int8-cpu-warm-72714412",
+      "sha256": "54163d0fea94952d3a7638bb8b8411f55240bddd1c757c3b905e2e3d2ab1dcfe"
+    },
+    {
+      "id": "2026-11-12t01-52-33-830z-pocket-tts-100m-english-int8-webgpu-warm-69de3d93",
+      "sha256": "ad0467a9907bd40ae5e4f2645ad96f642733585e757e03047187eccc6eedfe47"
+    }
+  ]
+}

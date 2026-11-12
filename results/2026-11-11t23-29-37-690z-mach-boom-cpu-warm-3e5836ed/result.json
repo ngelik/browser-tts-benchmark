@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-11t23-29-37-690z-mach-boom-cpu-warm-3e5836ed",
+  "createdAt": "2026-11-12T01:52:33.130Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-warm-v1",
+    "scenario": "warm",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export.",
+    "warmupRuns": 1,
+    "repetitions": 5,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro / Apple M1 Pro 8-core / 16 GiB / arm64",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.40",
+    "gpu": null,
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "4a72310bcacf9b2a09b0d9f69982ebe36ee5cce4",
+    "dirty": false,
+    "manifestSha256": "15630e892968f9c97bc9fd039ea965cd6a354f5842267a5738e56f45300c2edf"
+  },
+  "assets": [
+    {
+      "id": "runtime:mach-boom:@huggingface/transformers:dist/transformers.min.js",
+      "sha256": "79fad8c1c2fd165bf1e77ace20ce023fab4dc13b6621f0e586c9b8c59c4d09d8",
+      "bytes": 849451
+    },
+    {
+      "id": "runtime:mach-boom:@huggingface/transformers:LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "id": "mach-boom-mach-py",
+      "sha256": "baf7e538dd40d4b132e29a4153fcc6d31a508fb68a695694e189824472366e68",
+      "bytes": 37725
+    },
+    {
+      "id": "mach-boom-packfmt-py",
+      "sha256": "1e467938d715c51806280567432bd6626193ad198fd4001f47831a756009fea0",
+      "bytes": 5542
+    },
+    {
+      "id": "mach-boom-frontend_en-py",
+      "sha256": "51c65d91ecbcdbb42e93ea80202fa81d1103edb8313500fb965c93d366ab7607",
+      "bytes": 19067
+    },
+    {
+      "id": "mach-boom-tmk-c",
+      "sha256": "f81a8bcdc069fa3dad82b4cd5d5a5a5e806642b6870c680f3b6f63760b256402",
+      "bytes": 18463
+    },
+    {
+      "id": "mach-boom-tmk_act-c",
+      "sha256": "e62d3b6ef784349047ca0d210de2b7a978ba2be9e64134e0bc8e4f9ad6d566bf",
+      "bytes": 1170
+    },
+    {
+      "id": "mach-boom-tmk_model-c",
+      "sha256": "d44bba43c112e12fefc03ecebade530de7fea9b0f2992f741c4f3cc5038f3b12",
+      "bytes": 5966
+    },
+    {
+      "id": "mach-boom-tmk_amx-c",
+      "sha256": "3c3122780bd160cbdb66739385707d5af3796061bae06ca4e4b4f48a6f81cb84",
+      "bytes": 21869
+    },
+    {
+      "id": "mach-boom-tokenizer-json",
+      "sha256": "28161547feed30fa70e9ce6da0b791835db9c9720683d87f17e0327f01687cc5",
+      "bytes": 302879
+    },
+    {
+      "id": "mach-boom-voices-voices-jsonl",
+      "sha256": "e981491585ea92c9867e9dc1085c685dba0d9346a345696e5cd4dc103611cfac",
+      "bytes": 1175
+    },
+    {
+      "id": "mach-boom-LICENSE",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "bytes": 10174
+    },
+    {
+      "id": "mach-boom-NOTICE",
+      "sha256": "4eecdf98075519be0ce7ccf56882b8d0be3c3471adb3f19a8c469be506f50dea",
+      "bytes": 722
+    },
+    {
+      "id": "mach-boom-MANIFEST-json",
+      "sha256": "8682cd6fc5bfa4b5b6f98a5febca70f43b3370f75d5c524dcc23711df6e460c4",
+      "bytes": 3046
+    },
+    {
+      "id": "mach-boom-mach-boom-bin",
+      "sha256": "c5076b20ab44bf9421ced5b5c96fdad2283c94984d275441fbf4783d0fc7322e",
+      "bytes": 18155776
+    },
+    {
+      "id": "mach-boom-voices-NbpkqMVS3CJeq2j8-safetensors",
+      "sha256": "97c7f8c253413574406ab80dd23f49c3ebb2517163b00a9bf86b9c4cf43e7e23",
+      "bytes": 256136
+    },
+    {
+      "id": "mach-boom-pyodide-pyodide-mjs",
+      "sha256": "23213d27e9dacbda6f25f955fb38dabfc40ada082c04ee253047ea5dddcaa3b5",
+      "bytes": 17616
+    },
+    {
+      "id": "mach-boom-pyodide-pyodide-asm-js",
+      "sha256": "1263f02b5b26099b96112378156f242dd98b39a8201ba7765e5fe3d455c5ce91",
+      "bytes": 1074322
+    },
+    {
+      "id": "mach-boom-pyodide-pyodide-asm-wasm",
+      "sha256": "e2f4ee75b325e35eb31bfb8c613d4dd5098f5502c156a97847686875b5025480",
+      "bytes": 8647684
+    },
+    {
+      "id": "mach-boom-pyodide-python_stdlib-zip",
+      "sha256": "4298b6ee445cb724c3973437da47789752b9e6ff4e26619026b283ec801fc46b",
+      "bytes": 2423989
+    },
+    {
+      "id": "mach-boom-pyodide-pyodide-lock-json",
+      "sha256": "3256ffc76388de0e37f4b34d42ab484268d1afc675179ff97b2a5bb14f84ccac",
+      "bytes": 120010
+    },
+    {
+      "id": "mach-boom-pyodide-numpy-2-2-5-cp313-cp313-pyodide_2025_0_wasm32-whl",
+      "sha256": "6eaab6a7bb658d71ebe702911a3deab715323642462eb41b65565ca6a7cc23f1",
+      "bytes": 3103966
+    },
+    {
+      "id": "mach-boom-wasm-kernels",
+      "sha256": "2e8da30890c335472b6de243eae23147a328d8a90c02930f180afbcb50ea1cf0",
+      "bytes": 21841
+    },
+    {
+      "id": "mach-boom-pyodide-license",
+      "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+      "bytes": 16725
+    },
+    {
+      "id": "mach-boom-python-license",
+      "sha256": "78b12c3a81360b357002334f0e70ea0e92eebf7a9b358805c03c48484945f3bb",
+      "bytes": 13809
+    },
+    {
+      "id": "mach-boom-numpy-license",
+      "sha256": "01fb016849aa427edb1bbbbd55f91c26ca6cadb32a5b20e7f000655dd05b0760",
+      "bytes": 1543
+    }
+  ],
+  "cells": [
+    {
+      "model": "mach-boom",
+      "support": {
+        "voiceCount": 4,
+        "bundledVoiceCount": 1,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Four named voices bundled upstream with this English checkpoint; Zoey staged for the benchmark",
+        "sources": [
+          "https://huggingface.co/SyzygyResearch/Mach-Boom/blob/01860b06bdf8498761255ad1c64b99980b96486d/README.md",
+          "https://huggingface.co/SyzygyResearch/Mach-Boom/blob/01860b06bdf8498761255ad1c64b99980b96486d/voices/voices.jsonl"
+        ],
+        "notes": "Zoey, Juniper, Everly and Harper are supplied upstream. Additional compatible Phonon voices are not counted here. Only Zoey in English is measured. Browser port uses CPU WebAssembly, not native x86 AMX/AVX."
+      },
+      "backendRequested": "cpu",
+      "backendEffective": "cpu",
+      "status": "measured",
+      "reason": null,
+      "voice": "Zoey",
+      "precision": "Mach trellis 3–4-bit + int8/int4; FP32 compute",
+      "settings": {
+        "runtime": "Pyodide 0.29.3 / NumPy 2.2.5 / Emscripten 4.0.9",
+        "threads": 1,
+        "seed": 0,
+        "voice": "Zoey",
+        "language": "en",
+        "frontend": "upstream frontend_en.normalize; Transformers.js 3.5.1 Unigram; Rust regex hex escapes translated to JavaScript Unicode escapes",
+        "matmul": "FP32 WASM SIMD128 tiled 2D GEMM; higher dimensions use NumPy",
+        "amx": false,
+        "chunkFrames": 16,
+        "firstFrames": 2,
+        "maxFramesPolicy": "fail if upstream limit reached before EOS",
+        "executionProviders": [
+          "wasm"
+        ]
+      },
+      "capability": {
+        "gpuDispatchVerified": null,
+        "description": "Upstream Python/NumPy and portable C kernels execute inside one Chrome worker through WebAssembly. No host Python synthesis, AMX, or GPU."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 1437156.8700000048,
+          "samples": 28174080,
+          "sampleRate": 24000,
+          "pcmSha256": "83fdae876fc90863bb9895bacbe1bde1d4ac0b61aada3ccb5ebfac709c2976ba",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 1037.8500000238419,
+            "firstSourceChunkCompletedMs": 17836.855000019073,
+            "audioSeconds": 1173.92,
+            "realTimeFactor": 1.2242374863704553,
+            "minSamplesPerChunk": 232320,
+            "maxSamplesPerChunk": 387840
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 1432028.1200000048,
+          "samples": 28174080,
+          "sampleRate": 24000,
+          "pcmSha256": "83fdae876fc90863bb9895bacbe1bde1d4ac0b61aada3ccb5ebfac709c2976ba",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 468.4250000715256,
+            "firstSourceChunkCompletedMs": 17062.730000019073,
+            "audioSeconds": 1173.92,
+            "realTimeFactor": 1.2198685770751028,
+            "minSamplesPerChunk": 232320,
+            "maxSamplesPerChunk": 387840
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 1426920.125,
+          "samples": 28174080,
+          "sampleRate": 24000,
+          "pcmSha256": "83fdae876fc90863bb9895bacbe1bde1d4ac0b61aada3ccb5ebfac709c2976ba",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 467.8199999332428,
+            "firstSourceChunkCompletedMs": 17205.18499994278,
+            "audioSeconds": 1173.92,
+            "realTimeFactor": 1.2155173478601609,
+            "minSamplesPerChunk": 232320,
+            "maxSamplesPerChunk": 387840
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 1426151.1299999952,
+          "samples": 28174080,
+          "sampleRate": 24000,
+          "pcmSha256": "83fdae876fc90863bb9895bacbe1bde1d4ac0b61aada3ccb5ebfac709c2976ba",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 461.13499999046326,
+            "firstSourceChunkCompletedMs": 17208.860000014305,
+            "audioSeconds": 1173.92,
+            "realTimeFactor": 1.2148622819272141,
+            "minSamplesPerChunk": 232320,
+            "maxSamplesPerChunk": 387840
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 1422498.7150000334,
+          "samples": 28174080,
+          "sampleRate": 24000,
+          "pcmSha256": "83fdae876fc90863bb9895bacbe1bde1d4ac0b61aada3ccb5ebfac709c2976ba",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 453.77500009536743,
+            "firstSourceChunkCompletedMs": 17073.265000104904,
+            "audioSeconds": 1173.92,
+            "realTimeFactor": 1.2117509838830869,
+            "minSamplesPerChunk": 232320,
+            "maxSamplesPerChunk": 387840
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 1420745.355000019,
+          "samples": 28174080,
+          "sampleRate": 24000,
+          "pcmSha256": "83fdae876fc90863bb9895bacbe1bde1d4ac0b61aada3ccb5ebfac709c2976ba",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 463.2150000333786,
+            "firstSourceChunkCompletedMs": 17067.30999994278,
+            "audioSeconds": 1173.92,
+            "realTimeFactor": 1.2102573897710398,
+            "minSamplesPerChunk": 232320,
+            "maxSamplesPerChunk": 387840
+          },
+          "audio": {
+            "sha256": "3bc925ac53ead525c8f8bc515d576392da71be14ba7991f9d200560eea2cd386",
+            "bytes": 56348204
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "Screenshot campaign mach-pocket-2026-11-11-v1; cell order mach-boom/cpu, pocket-tts-100m-english-int8/webgpu, pocket-tts-100m-english-int8/cpu, mach-boom/webgpu; sequential headed Chrome on AC power. Other user apps left open; no controlled thermal stabilization or universal performance claim. Process-scoped idle-sleep prevention is active. No dedicated cold-load check. One full excluded warmup and five scored full articles."
+  ]
+}

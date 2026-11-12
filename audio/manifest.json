@@ -500,6 +500,34 @@
       }
     },
     {
+      "resultId": "2026-11-11t23-29-37-690z-mach-boom-cpu-warm-3e5836ed",
+      "model": "mach-boom",
+      "backend": "cpu",
+      "trialIndex": 5,
+      "voice": "Zoey",
+      "language": "en",
+      "attribution": "Mach Boom by SyzygyResearch; Zoey English voice. The pinned Apache-2.0 checkpoint notice credits Gradium Phonon and Kyutai Pocket TTS/Mimi. Experimental Chrome WebAssembly port; noncommercial benchmark evaluation.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/SyzygyResearch/Mach-Boom/blob/01860b06bdf8498761255ad1c64b99980b96486d/README.md",
+        "https://huggingface.co/SyzygyResearch/Mach-Boom/blob/01860b06bdf8498761255ad1c64b99980b96486d/voices/voices.jsonl"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-11t23-29-37-690z-mach-boom-cpu-warm-3e5836ed--mach-boom--cpu.wav",
+        "sha256": "616f7ccee5b0aafb7ce52ac8b2661df1101fe7fc8bff88e071b96d45f23f8671",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-11t23-29-37-690z-mach-boom-cpu-warm-3e5836ed--mach-boom--cpu-full.wav",
+        "sha256": "3bc925ac53ead525c8f8bc515d576392da71be14ba7991f9d200560eea2cd386",
+        "bytes": 56348204
+      }
+    },
+    {
       "resultId": "2026-11-10t19-31-08-081z-mms-english-cpu-warm-b81daec2",
       "model": "mms-english",
       "backend": "cpu",
@@ -995,6 +1023,64 @@
         "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--pivo-curated--webgpu-full.wav",
         "sha256": "964696fcb18b9866d558b4b16e9fc68a49602417010a49b53376c2fca9b780ec",
         "bytes": 38065004
+      }
+    },
+    {
+      "resultId": "2026-11-12t05-28-59-020z-pocket-tts-100m-english-int8-cpu-warm-72714412",
+      "model": "pocket-tts-100m-english-int8",
+      "backend": "cpu",
+      "trialIndex": 5,
+      "voice": "alba",
+      "language": "en",
+      "attribution": "Pocket TTS by Kyutai; KevinAHM public ONNX export and browser frontend, alba English preset. CC-BY-4.0 with upstream prohibited-use conditions; noncommercial benchmark evaluation.",
+      "modelTerms": "CC-BY-4.0 + upstream prohibited-use conditions",
+      "sourceUrls": [
+        "https://huggingface.co/KevinAHM/pocket-tts-onnx/tree/58a6d00cf13d239b6748cb0769f35c580a8f606c",
+        "https://huggingface.co/spaces/KevinAHM/pocket-tts-web/tree/d0c0c79b7712256a32d691c67f20b8ae2e020d00",
+        "https://huggingface.co/KevinAHM/pocket-tts-onnx/blob/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bundle.json"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-12t05-28-59-020z-pocket-tts-100m-english-int8-cpu-warm-72714412--pocket-tts-100m-english-int8--cpu.wav",
+        "sha256": "452a6149d077539af671dc0e7f8e1038d93784fb1f0808308828fda8c03eac8f",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-12t05-28-59-020z-pocket-tts-100m-english-int8-cpu-warm-72714412--pocket-tts-100m-english-int8--cpu-full.wav",
+        "sha256": "77c3d7c44057aeb86bdd8af6db8c7aa3f432523d196f7a9e5314a681c9020d37",
+        "bytes": 52867724
+      }
+    },
+    {
+      "resultId": "2026-11-12t01-52-33-830z-pocket-tts-100m-english-int8-webgpu-warm-69de3d93",
+      "model": "pocket-tts-100m-english-int8",
+      "backend": "webgpu",
+      "trialIndex": 5,
+      "voice": "alba",
+      "language": "en",
+      "attribution": "Pocket TTS by Kyutai; KevinAHM public ONNX export and browser frontend, alba English preset. CC-BY-4.0 with upstream prohibited-use conditions; noncommercial benchmark evaluation.",
+      "modelTerms": "CC-BY-4.0 + upstream prohibited-use conditions",
+      "sourceUrls": [
+        "https://huggingface.co/KevinAHM/pocket-tts-onnx/tree/58a6d00cf13d239b6748cb0769f35c580a8f606c",
+        "https://huggingface.co/spaces/KevinAHM/pocket-tts-web/tree/d0c0c79b7712256a32d691c67f20b8ae2e020d00",
+        "https://huggingface.co/KevinAHM/pocket-tts-onnx/blob/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bundle.json"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-12t01-52-33-830z-pocket-tts-100m-english-int8-webgpu-warm-69de3d93--pocket-tts-100m-english-int8--webgpu.wav",
+        "sha256": "9a2820748e05522b11cff877d64643d97ab74bc74b8c7260ddcbd6c0296ce2f8",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-12t01-52-33-830z-pocket-tts-100m-english-int8-webgpu-warm-69de3d93--pocket-tts-100m-english-int8--webgpu-full.wav",
+        "sha256": "97585174d53630018e8e56ad4ea42fa86189630d9aea05f7fe1c2c829bd7f964",
+        "bytes": 52602764
       }
     },
     {

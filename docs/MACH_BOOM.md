@@ -7,6 +7,9 @@ at the user's request; Kitten Nano, Woof and Supertonic 3 already have results.
 The screenshot's word-error percentages are publisher measurements, not our
 benchmark's speech-quality results.
 
+The measured Mach Boom and Pocket TTS browser results, settings, comparison and
+RAM scope are summarized in the [campaign results note](MACH_POCKET_RESULTS.md).
+
 Mach Boom has 18,155,776 bytes of core weights. The publisher's 19.5 MB download
 includes a different native runnable stack. Our browser download additionally
 needs Pyodide/CPython, NumPy, tokenizer code and compiled WASM; do not equate its

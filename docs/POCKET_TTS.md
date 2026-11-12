@@ -8,6 +8,9 @@ It does not substitute the newer 18.2M Pocket model. These are community browser
 artifacts, not an official Kyutai browser runtime. No gated original weights are
 fetched. We use the selected April 2026 English checkpoint and the alba preset.
 
+The measured Pocket TTS and Mach Boom browser results, settings, comparison and
+RAM scope are summarized in the [campaign results note](MACH_POCKET_RESULTS.md).
+
 The five ONNX files total **146,155,686 bytes**. With `bundle.json`, SentencePiece
 model, BOS seed and all eight bundled voice states, the selected inference data
 totals **198,645,558 bytes** in the original bundle. The browser port uses a
