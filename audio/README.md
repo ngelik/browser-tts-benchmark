@@ -72,6 +72,8 @@ commercial-use clearance or a grant of rights in upstream voices.
 - Sano Amy: ampixa, Amy English checkpoint; GPL-3.0 model card and GPL-3.0-or-later browser runtime terms are documented separately.
 - Inflect Micro v2: Owen Song, fixed synthetic English voice; Apache-2.0 model/export terms and MIT symbol-inventory attribution.
 - MMS English: Meta, English single-speaker checkpoint; CC BY-NC 4.0 model terms. Broader MMS language coverage is not claimed for this checkpoint.
+- Mach Boom: SyzygyResearch, tested Zoey voice; the Apache-2.0 checkpoint notice credits Gradium Phonon and Kyutai Pocket TTS/Mimi. This result uses an experimental Chrome Pyodide/NumPy WebAssembly port, not the upstream Linux/x86 optimized runtime. Its WebGPU path was unsupported in this campaign.
+- Pocket TTS: Kyutai checkpoint through KevinAHM's public ONNX export and browser frontend, tested `alba` preset. CC-BY-4.0 and upstream prohibited-use conditions apply. Four of the five ONNX graphs are dynamically quantized; the text conditioner is FP32. CPU uses one-thread WASM; the experimental WebGPU path used explicit WebGPU/WASM providers, actual dispatch proof and awaited CPU-readable PCM. GPU timing is not GPU-exclusive.
 
 See [component licensing](../docs/LICENSING.md) and the linked primary sources.
 No listening quality score is inferred from speed, waveform hashes or file size.

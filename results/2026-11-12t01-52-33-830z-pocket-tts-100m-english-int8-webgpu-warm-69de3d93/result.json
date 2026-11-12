@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-11-12t01-52-33-830z-pocket-tts-100m-english-int8-webgpu-warm-69de3d93",
+  "createdAt": "2026-11-12T05:28:58.341Z",
+  "origin": "native",
+  "protocol": {
+    "id": "browser-tts-warm-v1",
+    "scenario": "warm",
+    "timingBoundary": "First source-chunk request through final CPU-readable PCM; excludes initialization, validation, hashing, WAV encoding and save. Optional articleCallPeakRssBytes spans the entire browser call including post-timer validation/export.",
+    "warmupRuns": 1,
+    "repetitions": 5,
+    "smoke": false,
+    "networkMbps": null
+  },
+  "environment": {
+    "machineLabel": "MacBook Pro / Apple M1 Pro 8-core / 16 GiB / arm64",
+    "os": "Darwin 25.6.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Pro",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chromeVersion": "Google Chrome 157.0.8103.40",
+    "gpu": "apple",
+    "headless": false
+  },
+  "fixture": {
+    "id": "english-20k-v1",
+    "sha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+    "characters": 20000,
+    "chunks": 93
+  },
+  "source": {
+    "gitCommit": "4a72310bcacf9b2a09b0d9f69982ebe36ee5cce4",
+    "dirty": false,
+    "manifestSha256": "15630e892968f9c97bc9fd039ea965cd6a354f5842267a5738e56f45300c2edf"
+  },
+  "assets": [
+    {
+      "id": "runtime:pocket-tts-100m-english-int8:onnxruntime-web-pocket:dist/ort.wasm.min.mjs",
+      "sha256": "c21d9c326d453a4a61398270c804d5979e118540597cb0c07f7b3d64e6098234",
+      "bytes": 53725
+    },
+    {
+      "id": "runtime:pocket-tts-100m-english-int8:onnxruntime-web-pocket:dist/ort.webgpu.min.mjs",
+      "sha256": "329cd956772397a1aedd668e911195d39afefb182f6fc14aafa4f08ac8d8f379",
+      "bytes": 70742
+    },
+    {
+      "id": "runtime:pocket-tts-100m-english-int8:onnxruntime-web-pocket:dist/ort-wasm-simd-threaded.mjs",
+      "sha256": "30ed0b5cd1182ede931fea448afb567d4dc705ec957af09f108a2be5f770dac3",
+      "bytes": 24738
+    },
+    {
+      "id": "runtime:pocket-tts-100m-english-int8:onnxruntime-web-pocket:dist/ort-wasm-simd-threaded.wasm",
+      "sha256": "4b884c203b0fa48d057be3332c65513ff85aa3c5bddd6946acc0fab7ecda001d",
+      "bytes": 14848852
+    },
+    {
+      "id": "runtime:pocket-tts-100m-english-int8:onnxruntime-web-pocket:dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "sha256": "59cf781530e1a16df2a291d78798e3ec1152467edaec402d6f9599d85047c302",
+      "bytes": 53457
+    },
+    {
+      "id": "runtime:pocket-tts-100m-english-int8:onnxruntime-web-pocket:dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "sha256": "ca319e9539cd0f1e291cf56074760121eaf39650f5dbf84b6e52c07f4b2944ec",
+      "bytes": 28747738
+    },
+    {
+      "id": "runtime:pocket-tts-100m-english-int8:onnxruntime-web-pocket:LICENSE",
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "bytes": 1073
+    },
+    {
+      "id": "runtime:pocket-tts-100m-english-int8:onnxruntime-web-pocket:ThirdPartyNotices.txt",
+      "sha256": "143764b952fdb1a7c69ce653bfba74a7744d6a8a573bfb73e235fba356c83de3",
+      "bytes": 338088
+    },
+    {
+      "id": "runtime:pocket-tts-100m-english-int8:@huggingface/transformers:dist/transformers.min.js",
+      "sha256": "79fad8c1c2fd165bf1e77ace20ce023fab4dc13b6621f0e586c9b8c59c4d09d8",
+      "bytes": 849451
+    },
+    {
+      "id": "runtime:pocket-tts-100m-english-int8:@huggingface/transformers:LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "id": "pocket-tts-flow_lm_flow_int8-onnx",
+      "sha256": "3dd781ee5abee9e195320bf0106bebd6372a852b3b36352524ee78b40554635d",
+      "bytes": 9962530
+    },
+    {
+      "id": "pocket-tts-flow_lm_main_int8-onnx",
+      "sha256": "f9bd8106b79a0192c1c43399ab938fb24900a95c1c599870d75a884e99000116",
+      "bytes": 76341079
+    },
+    {
+      "id": "pocket-tts-mimi_decoder_int8-onnx",
+      "sha256": "3630450a3297a101792a6ac66619ebc70ab916b265e6220c2afaef8b1673f925",
+      "bytes": 22684077
+    },
+    {
+      "id": "pocket-tts-mimi_encoder_int8-onnx",
+      "sha256": "abb46f1ad0b83c3840fe38c3652ab0eda7d1d97a63f1953bbbff5d04d8f4c855",
+      "bytes": 20779616
+    },
+    {
+      "id": "pocket-tts-text_conditioner_int8-onnx",
+      "sha256": "24c0642bff11a4e1435c004d0c2aa6c68e093fadfa35f0f0dba849ac67f25ac3",
+      "bytes": 16388384
+    },
+    {
+      "id": "pocket-tts-bundle-json",
+      "sha256": "bab643150f437f37df080a710520ff39ed9ebd9a339f8ebdc739f7eddfc28b3f",
+      "bytes": 24381
+    },
+    {
+      "id": "pocket-tts-bos_before_voice-npy",
+      "sha256": "f46edf4f7007b7ba4ea58831f49d003e59e167b4641c44bb3addfe9231a780b1",
+      "bytes": 4224
+    },
+    {
+      "id": "pocket-tts-tokenizer-model",
+      "sha256": "d461765ae179566678c93091c5fa6f2984c31bbe990bf1aa62d92c64d91bc3f6",
+      "bytes": 59339
+    },
+    {
+      "id": "pocket-tts-voices-bin",
+      "sha256": "044364b05514d99f72c63830b0675951137c36f836e1e71bb2546e59b8c6d625",
+      "bytes": 52401928
+    },
+    {
+      "id": "pocket-tts-code-license",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "id": "pocket-tts-model-readme-md",
+      "sha256": "05ed0a614d1b512918aa02062624407040680c9a8e8fd6f437e4b59519f0bbff",
+      "bytes": 8057
+    },
+    {
+      "id": "pocket-tts-readme-md",
+      "sha256": "cffacb28e5a913bdfd88fb4f52f3636f8eb09f4532a6d5cace76aee8b61b617d",
+      "bytes": 2306
+    },
+    {
+      "id": "pocket-tts-upstream-worker",
+      "sha256": "dace0a022e17dffcf60fdb7b86e49facf093f709b352fb306c1d6641ae0f5366",
+      "bytes": 33984
+    },
+    {
+      "id": "pocket-tts-browser-tokenizer-json",
+      "sha256": "5a2d7403d2e64e23fa3e7624da48fa222fa64f43257a1baad94155deeb308876",
+      "bytes": 116539
+    }
+  ],
+  "cells": [
+    {
+      "model": "pocket-tts-100m-english-int8",
+      "support": {
+        "voiceCount": 8,
+        "bundledVoiceCount": 8,
+        "languageCount": 1,
+        "languages": [
+          "en"
+        ],
+        "scope": "Selected english_2026-04 checkpoint with eight bundled preset voices; not the broader multilingual family",
+        "sources": [
+          "https://huggingface.co/KevinAHM/pocket-tts-onnx/tree/58a6d00cf13d239b6748cb0769f35c580a8f606c",
+          "https://huggingface.co/spaces/KevinAHM/pocket-tts-web/tree/d0c0c79b7712256a32d691c67f20b8ae2e020d00",
+          "https://huggingface.co/KevinAHM/pocket-tts-onnx/blob/58a6d00cf13d239b6748cb0769f35c580a8f606c/onnx/english_2026-04/bundle.json"
+        ],
+        "notes": "Alba, Azelma, Cosette, Eponine, Fantine, Javert, Jean and Marius are bundled; only alba in English is measured. This is the original approximately 100M Pocket family, not the newer 18.2M model. A pinned community ONNX/browser implementation is used."
+      },
+      "backendRequested": "webgpu",
+      "backendEffective": "webgpu+wasm",
+      "status": "measured",
+      "reason": null,
+      "voice": "alba",
+      "precision": "Mixed: 4 quantized graphs (Flow main/flow, MIMI encoder/decoder); FP32 text conditioner.",
+      "settings": {
+        "executionProviders": [
+          "webgpu",
+          "wasm"
+        ],
+        "language": "en",
+        "bundle": "english_2026-04",
+        "voice": "alba",
+        "temperature": 0.7,
+        "randomSeed": "Unseeded; pinned worker uses Math.random() Box-Muller latent noise.",
+        "sampleRate": 24000,
+        "wasmThreads": 1,
+        "maxFramesPerInternalUtterance": 500,
+        "eosLogitThreshold": -4,
+        "frontend": "Pinned KevinAHM Pocket TTS browser frontend: whitespace/newline normalization, optional semicolon cleanup, initial capitalization and terminal punctuation; pinned SentencePiece Unigram tokenizer, browser-loaded from a hash-locked local JSON conversion audited against the original tokenizer.model. Sentence splitting uses a 50-token internal limit. The 93 canonical spans are passed intact to the frontend.",
+        "generation": "One latent flow step, temperature 0.7 with unseeded Math.random noise, EOS logit threshold -4 and the pinned frontend frames-after-EOS rule; independent Flow/MIMI state is reset between internal utterances. Output is 24 kHz Float32 PCM with 0.25-second silence between internal utterances. A 500-frame guard is treated as an error, never silent truncation.",
+        "voiceSelection": "Pinned built-in English voice alba from the selected English bundle; the other seven bundled voices are not used in this configuration.",
+        "modelFiles": "Five pinned ONNX graphs; four use dynamically quantized initializers and the text conditioner is FP32. The local Unigram tokenizer conversion and preset voice-state assets are hash-locked.",
+        "chunking": "The 93 canonical source spans are passed whole; pinned frontend may split each into internal sentence/50-token utterances and inserts 0.25 seconds of silence between them.",
+        "outputLocation": "ONNX Runtime Web default CPU output; every session.run is awaited before copied Float32 PCM is returned."
+      },
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Observed 117258 WebGPU compute dispatches in separate untimed Pocket TTS synthesis; WebGPU with WASM fallback. Hooks removed before scored generation."
+      },
+      "warmup": [
+        {
+          "index": 1,
+          "generationMs": 2124964.585000038,
+          "samples": 26472240,
+          "sampleRate": 24000,
+          "pcmSha256": "4664312f65ad0c1d102c817088e23243b4daed82323fdc8c75f3131ba573c3f3",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 1035.7700001001358,
+            "firstSourceChunkCompletedMs": 25627.509999990463,
+            "audioSeconds": 1103.01,
+            "realTimeFactor": 1.9265143425717248,
+            "minSamplesPerChunk": 217200,
+            "maxSamplesPerChunk": 355440
+          }
+        }
+      ],
+      "trials": [
+        {
+          "index": 1,
+          "generationMs": 2158186.2000000477,
+          "samples": 26343600,
+          "sampleRate": 24000,
+          "pcmSha256": "ec6ba8cba8f6854a7c5638acc88d8125c322d2c58c9f722bacf02475bc36fb5d",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 872.7749999761581,
+            "firstSourceChunkCompletedMs": 25455.295000076294,
+            "audioSeconds": 1097.65,
+            "realTimeFactor": 1.9661879469776775,
+            "minSamplesPerChunk": 217200,
+            "maxSamplesPerChunk": 363120
+          }
+        },
+        {
+          "index": 2,
+          "generationMs": 2129322.149999976,
+          "samples": 26539440,
+          "sampleRate": 24000,
+          "pcmSha256": "2748504cd3495e0da7d124f6a1b6d989d59c972e2fb379aa7623d810a7a995e0",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 919.1200000047684,
+            "firstSourceChunkCompletedMs": 28483.259999990463,
+            "audioSeconds": 1105.81,
+            "realTimeFactor": 1.9255768622095804,
+            "minSamplesPerChunk": 221040,
+            "maxSamplesPerChunk": 357360
+          }
+        },
+        {
+          "index": 3,
+          "generationMs": 2099828.044999957,
+          "samples": 26349360,
+          "sampleRate": 24000,
+          "pcmSha256": "224b57acf285b98e8b6fb589fc0804e8a0369a7a5c8db40f16560f850dea865d",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 898.0149999856949,
+            "firstSourceChunkCompletedMs": 26286.419999957085,
+            "audioSeconds": 1097.89,
+            "realTimeFactor": 1.9126033072529645,
+            "minSamplesPerChunk": 219120,
+            "maxSamplesPerChunk": 361200
+          }
+        },
+        {
+          "index": 4,
+          "generationMs": 2212107.9700000286,
+          "samples": 26581680,
+          "sampleRate": 24000,
+          "pcmSha256": "380b35a836a72c4e2814c96aabd1a8ce02f34f63a16114f2de65788a86d423f0",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 875.6299999952316,
+            "firstSourceChunkCompletedMs": 24017.580000042915,
+            "audioSeconds": 1107.57,
+            "realTimeFactor": 1.9972624484231503,
+            "minSamplesPerChunk": 215280,
+            "maxSamplesPerChunk": 391920
+          }
+        },
+        {
+          "index": 5,
+          "generationMs": 2225881.9949998856,
+          "samples": 26301360,
+          "sampleRate": 24000,
+          "pcmSha256": "06578979770e4ed8d31c0d6f037883ded8b55a7575a6389b73011a9e27e9595d",
+          "validation": {
+            "finitePcm": true,
+            "chunkCount": 93,
+            "nonemptyChunks": true
+          },
+          "metrics": {
+            "firstPcmMs": 925.4049999713898,
+            "firstSourceChunkCompletedMs": 27364.354999899864,
+            "audioSeconds": 1095.89,
+            "realTimeFactor": 2.0311180821066763,
+            "minSamplesPerChunk": 215280,
+            "maxSamplesPerChunk": 368880
+          },
+          "audio": {
+            "sha256": "97585174d53630018e8e56ad4ea42fa86189630d9aea05f7fe1c2c829bd7f964",
+            "bytes": 52602764
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Capability checks run separately before timing. GPU dispatch does not imply GPU-exclusive execution.",
+    "Raw WAV is saved locally; opt-in audio publication is separate from timing and automatic result submission.",
+    "Screenshot campaign mach-pocket-2026-11-11-v1; cell order mach-boom/cpu, pocket-tts-100m-english-int8/webgpu, pocket-tts-100m-english-int8/cpu, mach-boom/webgpu; sequential headed Chrome on AC power. Other user apps left open; no controlled thermal stabilization or universal performance claim. Process-scoped idle-sleep prevention is active. No dedicated cold-load check. One full excluded warmup and five scored full articles."
+  ]
+}
