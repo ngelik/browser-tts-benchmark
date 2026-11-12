@@ -80,8 +80,8 @@ seed input, so output duration and waveform can vary across repetitions.
 ## Completed scored result
 
 The exact implementation commit
-[`e1efaa2c3220f4a19c6c730a2037395854531428`](https://github.com/ngelik/browser-tts-benchmark/commit/e1efaa2c3220f4a19c6c730a2037395854531428)
-was published before scoring and merged through [PR #7](https://github.com/ngelik/browser-tts-benchmark/pull/7).
+[`e1efaa2c3220f4a19c6c730a2037395854531428`](https://github.com/ngelik/tts-bench/commit/e1efaa2c3220f4a19c6c730a2037395854531428)
+was published before scoring and merged through [PR #7](https://github.com/ngelik/tts-bench/pull/7).
 The checkout remained clean throughout one full warm-up and five scored articles.
 All six articles passed 93-chunk, finite/nonempty PCM validation.
 

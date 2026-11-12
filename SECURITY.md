@@ -12,5 +12,5 @@ CI uses read-only repository permissions, no secrets and no self-hosted GPU runn
 Never change result validation to run untrusted pull-request code with privileged
 credentials (`pull_request_target`) or on a personal machine automatically.
 
-Report sensitive security issues through [GitHub private vulnerability reporting](https://github.com/ngelik/browser-tts-benchmark/security/advisories/new).
+Report sensitive security issues through [GitHub private vulnerability reporting](https://github.com/ngelik/tts-bench/security/advisories/new).
 Do not include credentials or private machine data in a public issue.

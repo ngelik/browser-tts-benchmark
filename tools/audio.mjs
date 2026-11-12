@@ -7,7 +7,7 @@ import {verifySource} from './provenance.mjs';
 const sourceCache=new Map();
 export function verifyAudioAttribution(a){const m=getModel(a.model);if(a.modelTerms!==m.license.model||a.attribution!==(attribution[a.model]??m.displayName)||JSON.stringify(a.sourceUrls)!==JSON.stringify(m.support.sources))throw new Error('Audio attribution differs from verified model catalog');}
 export const MAX_CLIP_BYTES=3000000; // 30 seconds of mono PCM16 at up to 48 kHz.
-const BASE='https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/';
+const BASE='https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/';
 export function wavInfo(b){
  if(b.length<44||b.toString('ascii',0,4)!=='RIFF'||b.toString('ascii',8,12)!=='WAVE'||b.toString('ascii',12,16)!=='fmt '||b.readUInt32LE(16)!==16||b.readUInt16LE(20)!==1||b.readUInt16LE(22)!==1||b.readUInt16LE(34)!==16||b.toString('ascii',36,40)!=='data'||b.readUInt32LE(4)!==b.length-8||b.readUInt32LE(40)!==b.length-44||(b.length-44)%2)throw new Error('Expected canonical mono PCM16 WAV');
  const sampleRate=b.readUInt32LE(24);if(sampleRate<8000||sampleRate>48000||b.readUInt32LE(28)!==sampleRate*2||b.readUInt16LE(32)!==2)throw new Error('Invalid WAV format');

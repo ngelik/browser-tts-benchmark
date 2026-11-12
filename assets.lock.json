@@ -1106,7 +1106,7 @@
         "scope": "Pinned benchmark checkpoint",
         "sources": [
           "https://huggingface.co/ConwayResearch/Underdog-Woof/raw/be702960539777fc3f698e54335276a8391b00f9/README.md",
-          "https://github.com/ngelik/browser-tts-benchmark/blob/8dae4a37e61e662037fd73a58c7254e1dac9dd89/web/workers/woof.mjs"
+          "https://github.com/ngelik/tts-bench/blob/8dae4a37e61e662037fd73a58c7254e1dac9dd89/web/workers/woof.mjs"
         ],
         "notes": "The pinned browser one-voice case uses Isla. The separate two-voice Juno/Mira release is not this measured case."
       }
@@ -3812,7 +3812,7 @@
         {
           "id": "mach-boom-wasm-kernels",
           "target": "runtimes/mach-boom/tmk-wasm-v1.so",
-          "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/mach-boom-wasm-v1/tmk-wasm-v1.so",
+          "url": "https://github.com/ngelik/tts-bench/releases/download/mach-boom-wasm-v1/tmk-wasm-v1.so",
           "bytes": 21841,
           "sha256": "2e8da30890c335472b6de243eae23147a328d8a90c02930f180afbcb50ea1cf0",
           "kind": "runtime-source"

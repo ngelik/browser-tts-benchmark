@@ -2,7 +2,7 @@ const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt = (value, digits = 2) => Number.isFinite(value) ? value.toLocaleString('en-US', {minimumFractionDigits: digits, maximumFractionDigits: digits}) : '—';
-const repo = 'https://github.com/ngelik/browser-tts-benchmark';
+const repo = 'https://github.com/ngelik/tts-bench';
 const labels = {cpu: 'CPU', webgpu: 'GPU'};
 const shortLicense = value => value.startsWith('Model license not separately') ? 'Unspecified · terms ↗' : value.startsWith('OpenRAIL-M') ? 'OpenRAIL-M ↗' : value.startsWith('Underdog Non-Commercial') ? 'Underdog NC 1.0 ↗' : value;
 const chromeVersion = metric => (metric?.environment?.chromeVersion ?? 'unknown').replace(/^Google Chrome\s+/, '');
