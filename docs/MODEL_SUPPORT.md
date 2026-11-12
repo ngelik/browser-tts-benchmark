@@ -60,7 +60,7 @@ Supported voices: **1**. Bundled voices: **1**. Supported languages: **1** (en).
 
 Pinned benchmark checkpoint. The pinned browser one-voice case uses Isla. The separate two-voice Juno/Mira release is not this measured case.
 
-[Primary source 1](https://huggingface.co/ConwayResearch/Underdog-Woof/raw/be702960539777fc3f698e54335276a8391b00f9/README.md), [Primary source 2](https://github.com/ngelik/browser-tts-benchmark/blob/8dae4a37e61e662037fd73a58c7254e1dac9dd89/web/workers/woof.mjs).
+[Primary source 1](https://huggingface.co/ConwayResearch/Underdog-Woof/raw/be702960539777fc3f698e54335276a8391b00f9/README.md), [Primary source 2](https://github.com/ngelik/tts-bench/blob/8dae4a37e61e662037fd73a58c7254e1dac9dd89/web/workers/woof.mjs).
 
 <a id="piper-en-gb-southern-english-female-low"></a>
 

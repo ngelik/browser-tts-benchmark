@@ -25,7 +25,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t17-52-21-838z-inflect-micro-v2-cpu-warm-c57a83a6--inflect-micro-v2--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t17-52-21-838z-inflect-micro-v2-cpu-warm-c57a83a6--inflect-micro-v2--cpu-full.wav",
         "sha256": "2ca5475171cb3e7467f8f8784c1eeacf106a54cdc7017aae84cbefd1b7f293c1",
         "bytes": 58789068
       }
@@ -54,7 +54,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-11t02-50-06-191z-inflect-micro-v2-webgpu-warm-e21ef201--inflect-micro-v2--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-11t02-50-06-191z-inflect-micro-v2-webgpu-warm-e21ef201--inflect-micro-v2--webgpu-full.wav",
         "sha256": "47be6d2a1cd3c774a17d12b83b3dcd40c608934ddcbfb578addc6d4fa7395278",
         "bytes": 58789068
       }
@@ -81,7 +81,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t15-16-09-599z-kitten-nano-0.8-cpu-warm-624ea636--kitten-nano-0.8--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t15-16-09-599z-kitten-nano-0.8-cpu-warm-624ea636--kitten-nano-0.8--cpu-full.wav",
         "sha256": "dfe022d63387bfaf57d3b0839586572269fef43343482efd8c039c59a4293746",
         "bytes": 96339644
       }
@@ -108,7 +108,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t19-24-19-116z-kitten-nano-0.8-webgpu-warm-cef85ae4--kitten-nano-0.8--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t19-24-19-116z-kitten-nano-0.8-webgpu-warm-cef85ae4--kitten-nano-0.8--webgpu-full.wav",
         "sha256": "cf49e3e8cd09123a25ee4dffd3279be57031039b2a6dff98f38599f5847a1a52",
         "bytes": 96339644
       }
@@ -135,7 +135,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t22-06-51-166z-kokoro-82m-cpu-warm-a9cc8d21--kokoro-82m--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t22-06-51-166z-kokoro-82m-cpu-warm-a9cc8d21--kokoro-82m--cpu-full.wav",
         "sha256": "8eaed0e2b32002f29611259b72277b91482d5b96e44842571b55480df29faacc",
         "bytes": 62517644
       }
@@ -162,7 +162,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-11t02-22-33-290z-kokoro-82m-webgpu-warm-58b6b9b7--kokoro-82m--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-11t02-22-33-290z-kokoro-82m-webgpu-warm-58b6b9b7--kokoro-82m--webgpu-full.wav",
         "sha256": "44b3e4ab8da9dc31d7a7d16fe83368caba60e8251b4644895d45c516b8b450aa",
         "bytes": 62517644
       }
@@ -189,7 +189,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-19-17-960z-leokani-4.5m-cpu-cached-31b8534b--leokani-4.5m--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-19-17-960z-leokani-4.5m-cpu-cached-31b8534b--leokani-4.5m--cpu-full.wav",
         "sha256": "e3f09193e2b3f625ede0ac15a7a38b8a1950ce4c4fb11d95d20a733528f28b93",
         "bytes": 67212044
       }
@@ -216,7 +216,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--leokani-4.5m--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--leokani-4.5m--cpu-full.wav",
         "sha256": "16c4bc75452e2725d1f6177cfb9bb94c9033d57686a325bf70f159a5cd8a8dea",
         "bytes": 67212044
       }
@@ -243,7 +243,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-20-20-070z-leokani-4.5m-webgpu-cached-2527e2cc--leokani-4.5m--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-20-20-070z-leokani-4.5m-webgpu-cached-2527e2cc--leokani-4.5m--webgpu-full.wav",
         "sha256": "82e2e2ddbe34665144a2b0caedc7c1242e884b700f9b51c21f33ef260040c648",
         "bytes": 67213244
       }
@@ -270,7 +270,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--leokani-4.5m--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--leokani-4.5m--webgpu-full.wav",
         "sha256": "82e2e2ddbe34665144a2b0caedc7c1242e884b700f9b51c21f33ef260040c648",
         "bytes": 67213244
       }
@@ -297,7 +297,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-21-33-736z-leokani-7m-cpu-cached-05654530--leokani-7m--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-21-33-736z-leokani-7m-cpu-cached-05654530--leokani-7m--cpu-full.wav",
         "sha256": "717ec843835e4c9a3231101e462a0e349d4b33ff792f0e9195a0683d3cb89392",
         "bytes": 67249244
       }
@@ -324,7 +324,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--leokani-7m--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--leokani-7m--cpu-full.wav",
         "sha256": "c508b72aa6c37043978ff01fc4efbb1510538c3e83dbb068485828d0718a4d37",
         "bytes": 67249244
       }
@@ -351,7 +351,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-22-54-319z-leokani-7m-webgpu-cached-fd1cde50--leokani-7m--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-22-54-319z-leokani-7m-webgpu-cached-fd1cde50--leokani-7m--webgpu-full.wav",
         "sha256": "bc91dcfe493dab65202e60c7e70d6d8d140c14bfc2e1da5a5768aa6e7c679b79",
         "bytes": 67249244
       }
@@ -378,7 +378,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--leokani-7m--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--leokani-7m--webgpu-full.wav",
         "sha256": "bc91dcfe493dab65202e60c7e70d6d8d140c14bfc2e1da5a5768aa6e7c679b79",
         "bytes": 67249244
       }
@@ -408,7 +408,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-11t09-27-11-391z-lfm3-audio-2b-fusor-q7-cpu-cpu-warm-174f10d4--lfm3-audio-2b-fusor-q7-cpu--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-11t09-27-11-391z-lfm3-audio-2b-fusor-q7-cpu-cpu-warm-174f10d4--lfm3-audio-2b-fusor-q7-cpu--cpu-full.wav",
         "sha256": "6821b81522a42871490c9d7aa91130b97ed65545fbdab39cd52bd32dbf207a59",
         "bytes": 65356844
       }
@@ -436,7 +436,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-11t07-33-16-967z-lfm3-audio-2b-gguf-webgpu-warm-b42e4073--lfm3-audio-2b-gguf--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-11t07-33-16-967z-lfm3-audio-2b-gguf-webgpu-warm-b42e4073--lfm3-audio-2b-gguf--webgpu-full.wav",
         "sha256": "75412d0501803058be9680bd7b23a6883b569592c51dab7e609ecf3bae5ff909",
         "bytes": 63436844
       }
@@ -466,7 +466,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-11t11-02-51-665z-lfm3-omni-2b-fusor-q7-cpu-cpu-warm-4378e428--lfm3-omni-2b-fusor-q7-cpu--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-11t11-02-51-665z-lfm3-omni-2b-fusor-q7-cpu-cpu-warm-4378e428--lfm3-omni-2b-fusor-q7-cpu--cpu-full.wav",
         "sha256": "ce802d72385d8af420e0ca65a8b61e763e431d0a12192b1a38d0ff8f96b676a1",
         "bytes": 66885164
       }
@@ -494,7 +494,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-11t08-11-31-864z-lfm3-omni-2b-gguf-webgpu-warm-0e07e4f7--lfm3-omni-2b-gguf--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-11t08-11-31-864z-lfm3-omni-2b-gguf-webgpu-warm-0e07e4f7--lfm3-omni-2b-gguf--webgpu-full.wav",
         "sha256": "47bf0c2426f8a03d24da25e053d8e653dce80162beb8d886c3d8310deae2d226",
         "bytes": 65306924
       }
@@ -522,7 +522,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-11t23-29-37-690z-mach-boom-cpu-warm-3e5836ed--mach-boom--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-11t23-29-37-690z-mach-boom-cpu-warm-3e5836ed--mach-boom--cpu-full.wav",
         "sha256": "3bc925ac53ead525c8f8bc515d576392da71be14ba7991f9d200560eea2cd386",
         "bytes": 56348204
       }
@@ -549,7 +549,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t19-31-08-081z-mms-english-cpu-warm-b81daec2--mms-english--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t19-31-08-081z-mms-english-cpu-warm-b81daec2--mms-english--cpu-full.wav",
         "sha256": "1e87067bc4b71fbded1d6b8ff28e885c3b04c9ca6a9521b46ed4431883e012df",
         "bytes": 38529068
       }
@@ -576,7 +576,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t17-46-17-830z-mms-english-webgpu-warm-3eb8b06a--mms-english--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t17-46-17-830z-mms-english-webgpu-warm-3eb8b06a--mms-english--webgpu-full.wav",
         "sha256": "36885f5a8323dce2c287c0d2e9b50560487c117c781b30b5911592ce5f1bd78a",
         "bytes": 40337452
       }
@@ -604,7 +604,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f--paradee--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-09t04-55-36-509z-paradee-cpu-warm-244b2a2f--paradee--cpu-full.wav",
         "sha256": "1df498a0845a45321663e327bba6818c547d13a5b2d4e6b3b112330c14595006",
         "bytes": 61792844
       }
@@ -632,7 +632,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-13-43-130z-paradee-cpu-cached-becd1b05--paradee--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-13-43-130z-paradee-cpu-cached-becd1b05--paradee--cpu-full.wav",
         "sha256": "f671d1bb8881f6212cf42e2cddf33b754b9511539f78b6520cf64f40d33df66f",
         "bytes": 61792844
       }
@@ -660,7 +660,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0--paradee--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-09t05-06-08-477z-paradee-webgpu-warm-c3836dc0--paradee--webgpu-full.wav",
         "sha256": "054611a9fd8ed930dbdb5d65be9b34090532e36c9d921ea5658277a66a65ebc2",
         "bytes": 61792844
       }
@@ -688,7 +688,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-18-50-239z-paradee-webgpu-cached-66f2f822--paradee--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-18-50-239z-paradee-webgpu-cached-66f2f822--paradee--webgpu-full.wav",
         "sha256": "df336e8f7bce159275d08a58e4a667a8d7ccc483564e696f9b8f9b512cfb205a",
         "bytes": 61792844
       }
@@ -716,7 +716,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-24-03-928z-phonon-cpu-cached-26724b34--phonon--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-24-03-928z-phonon-cpu-cached-26724b34--phonon--cpu-full.wav",
         "sha256": "944f56bc8dbe707f6cd6f35039ab415b28f46c04e7633578e76faa86a6d5c492",
         "bytes": 58617644
       }
@@ -744,7 +744,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--phonon--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--phonon--cpu-full.wav",
         "sha256": "0123690a35f51e13a4edcb72faa02fefe17be814ae865567d01afdb3796dc9f7",
         "bytes": 58617644
       }
@@ -772,7 +772,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-28-29-585z-phonon-webgpu-cached-4f21d78e--phonon--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-28-29-585z-phonon-webgpu-cached-4f21d78e--phonon--webgpu-full.wav",
         "sha256": "92c35633e1e6071d0f118841cdea4cb7d378dd37b91cd591d3915b86427dc4cd",
         "bytes": 58529324
       }
@@ -800,7 +800,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--phonon--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--phonon--webgpu-full.wav",
         "sha256": "92c35633e1e6071d0f118841cdea4cb7d378dd37b91cd591d3915b86427dc4cd",
         "bytes": 58529324
       }
@@ -828,7 +828,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-09t20-33-26-966z-piper-en-gb-southern-english-female-low-cpu-warm-9a0ba981--piper-en-gb-southern-english-female-low--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-09t20-33-26-966z-piper-en-gb-southern-english-female-low-cpu-warm-9a0ba981--piper-en-gb-southern-english-female-low--cpu-full.wav",
         "sha256": "4b205c1777a3939fae48c4ed8f45a1a71ada66142d4abd183c80fee6c15b4f94",
         "bytes": 33750572
       }
@@ -856,7 +856,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-32-39-591z-piper-en-gb-southern-english-female-low-cpu-cached-fff0c4ea--piper-en-gb-southern-english-female-low--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-32-39-591z-piper-en-gb-southern-english-female-low-cpu-cached-fff0c4ea--piper-en-gb-southern-english-female-low--cpu-full.wav",
         "sha256": "5ef508688ba3a19cd6c33e8fabe6db3c657af546bd26e6a0daeabe877e638ede",
         "bytes": 33620524
       }
@@ -884,7 +884,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-09t20-52-18-629z-piper-en-gb-southern-english-female-low-webgpu-warm-d8fb8392--piper-en-gb-southern-english-female-low--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-09t20-52-18-629z-piper-en-gb-southern-english-female-low-webgpu-warm-d8fb8392--piper-en-gb-southern-english-female-low--webgpu-full.wav",
         "sha256": "7e9cb2ef736010d30fbf08b0ad06cbfe359702ee1c7016f3c6402a3212785fd4",
         "bytes": 33568812
       }
@@ -912,7 +912,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-35-36-473z-piper-en-gb-southern-english-female-low-webgpu-cached-b3f670b8--piper-en-gb-southern-english-female-low--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-35-36-473z-piper-en-gb-southern-english-female-low-webgpu-cached-b3f670b8--piper-en-gb-southern-english-female-low--webgpu-full.wav",
         "sha256": "98a910eaf013990d39e8f891baae851542f5be2d5b6cdcd0159b01bb24708a1a",
         "bytes": 33757228
       }
@@ -939,7 +939,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-59-54-018z-pivo-curated-cpu-cached-60e6cfd6--pivo-curated--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-59-54-018z-pivo-curated-cpu-cached-60e6cfd6--pivo-curated--cpu-full.wav",
         "sha256": "7ed7bce9577d9f59080c4765629c004ba4b08f8b045ae1a310767420a23f25a1",
         "bytes": 38065004
       }
@@ -966,7 +966,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--pivo-curated--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-primary-warm--pivo-curated--cpu-full.wav",
         "sha256": "9c48cc897a5337d6f855104c7d90ab8d0a81ee330c5afbe0339e9d670b4e7d4a",
         "bytes": 38065004
       }
@@ -993,7 +993,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t13-01-23-404z-pivo-curated-webgpu-cached-d9ffb3e4--pivo-curated--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t13-01-23-404z-pivo-curated-webgpu-cached-d9ffb3e4--pivo-curated--webgpu-full.wav",
         "sha256": "964696fcb18b9866d558b4b16e9fc68a49602417010a49b53376c2fca9b780ec",
         "bytes": 38065004
       }
@@ -1020,7 +1020,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--pivo-curated--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--pivo-curated--webgpu-full.wav",
         "sha256": "964696fcb18b9866d558b4b16e9fc68a49602417010a49b53376c2fca9b780ec",
         "bytes": 38065004
       }
@@ -1049,7 +1049,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-12t05-28-59-020z-pocket-tts-100m-english-int8-cpu-warm-72714412--pocket-tts-100m-english-int8--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-12t05-28-59-020z-pocket-tts-100m-english-int8-cpu-warm-72714412--pocket-tts-100m-english-int8--cpu-full.wav",
         "sha256": "77c3d7c44057aeb86bdd8af6db8c7aa3f432523d196f7a9e5314a681c9020d37",
         "bytes": 52867724
       }
@@ -1078,7 +1078,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-12t01-52-33-830z-pocket-tts-100m-english-int8-webgpu-warm-69de3d93--pocket-tts-100m-english-int8--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-12t01-52-33-830z-pocket-tts-100m-english-int8-webgpu-warm-69de3d93--pocket-tts-100m-english-int8--webgpu-full.wav",
         "sha256": "97585174d53630018e8e56ad4ea42fa86189630d9aea05f7fe1c2c829bd7f964",
         "bytes": 52602764
       }
@@ -1106,7 +1106,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t16-32-03-827z-sano-amy-cpu-warm-0a4ec2a0--sano-amy--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t16-32-03-827z-sano-amy-cpu-warm-0a4ec2a0--sano-amy--cpu-full.wav",
         "sha256": "426e3661c303c735314241ca11cdb11de92dfabcdefe95ea828a03bdab98988b",
         "bytes": 53049900
       }
@@ -1135,7 +1135,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t07-43-34-755z-supertonic-3-cpu-warm-a07fded0--supertonic-3--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t07-43-34-755z-supertonic-3-cpu-warm-a07fded0--supertonic-3--cpu-full.wav",
         "sha256": "2c75f50384f5d383133d67dfaaceca548f1264f6552ba43e96aa5ff537b909cb",
         "bytes": 99376812
       }
@@ -1164,7 +1164,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-37-17-447z-supertonic-3-cpu-cached-9f32062c--supertonic-3--cpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-37-17-447z-supertonic-3-cpu-cached-9f32062c--supertonic-3--cpu-full.wav",
         "sha256": "779fecfd6a7e838d77925fa98358deaca5afc8ef0eb5905a22e3e99d5bece49c",
         "bytes": 99376812
       }
@@ -1193,7 +1193,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t09-58-29-882z-supertonic-3-webgpu-warm-97865808--supertonic-3--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t09-58-29-882z-supertonic-3-webgpu-warm-97865808--supertonic-3--webgpu-full.wav",
         "sha256": "a139c7b0bf460cb75cbcbfcc40b26de835b60907bb9e2b3667c6d3778950e29e",
         "bytes": 99376756
       }
@@ -1222,7 +1222,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-35-56-902z-supertonic-3-webgpu-cached-3af494cf--supertonic-3--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-35-56-902z-supertonic-3-webgpu-cached-3af494cf--supertonic-3--webgpu-full.wav",
         "sha256": "7204bd3bf1e93f745a0238b0050b62d9b5930e97c253fc8b9f525778952b532c",
         "bytes": 99376756
       }
@@ -1238,7 +1238,7 @@
       "modelTerms": "Underdog Non-Commercial License 1.0; attribution required",
       "sourceUrls": [
         "https://huggingface.co/ConwayResearch/Underdog-Woof/raw/be702960539777fc3f698e54335276a8391b00f9/README.md",
-        "https://github.com/ngelik/browser-tts-benchmark/blob/8dae4a37e61e662037fd73a58c7254e1dac9dd89/web/workers/woof.mjs"
+        "https://github.com/ngelik/tts-bench/blob/8dae4a37e61e662037fd73a58c7254e1dac9dd89/web/workers/woof.mjs"
       ],
       "clip": {
         "path": "audio/samples/2026-11-10t12-29-29-399z-woof-webgpu-cached-14969663--woof--webgpu.wav",
@@ -1250,7 +1250,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/2026-11-10t12-29-29-399z-woof-webgpu-cached-14969663--woof--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t12-29-29-399z-woof-webgpu-cached-14969663--woof--webgpu-full.wav",
         "sha256": "d52b91fef56eb6b78317b6de612593b4e21554ae0ffb6248e9e0ba0a045ccb86",
         "bytes": 60165164
       }
@@ -1266,7 +1266,7 @@
       "modelTerms": "Underdog Non-Commercial License 1.0; attribution required",
       "sourceUrls": [
         "https://huggingface.co/ConwayResearch/Underdog-Woof/raw/be702960539777fc3f698e54335276a8391b00f9/README.md",
-        "https://github.com/ngelik/browser-tts-benchmark/blob/8dae4a37e61e662037fd73a58c7254e1dac9dd89/web/workers/woof.mjs"
+        "https://github.com/ngelik/tts-bench/blob/8dae4a37e61e662037fd73a58c7254e1dac9dd89/web/workers/woof.mjs"
       ],
       "clip": {
         "path": "audio/samples/historical-2026-11-08-m1pro-gpu-warm--woof--webgpu.wav",
@@ -1278,7 +1278,7 @@
         "seconds": 30
       },
       "full": {
-        "url": "https://github.com/ngelik/browser-tts-benchmark/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--woof--webgpu-full.wav",
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/historical-2026-11-08-m1pro-gpu-warm--woof--webgpu-full.wav",
         "sha256": "d52b91fef56eb6b78317b6de612593b4e21554ae0ffb6248e9e0ba0a045ccb86",
         "bytes": 60165164
       }

@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
-    if: github.ref == 'refs/heads/main' && github.repository == 'ngelik/browser-tts-benchmark'
+    if: github.ref == 'refs/heads/main' && github.repository == 'ngelik/tts-bench'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

@@ -1,6 +1,6 @@
 ---
 name: browser-tts-benchmark
-description: Run, extend, verify, and prepare pull requests for reproducible browser-only TTS benchmarks in Google Chrome using ngelik/browser-tts-benchmark. Use for measuring a TTS model locally, comparing CPU/WASM and WebGPU, or adding a Hugging Face model with reproducible evidence.
+description: Run, extend, verify, and prepare pull requests for reproducible browser-only TTS benchmarks in Google Chrome using ngelik/tts-bench. Use for measuring a TTS model locally, comparing CPU/WASM and WebGPU, or adding a Hugging Face model with reproducible evidence.
 ---
 
 # Browser TTS Benchmark
@@ -44,8 +44,8 @@ baseline evaluation. Implementation-only proposals remain distinct from results.
 Locate an existing checkout or clone the public repository into a new directory:
 
 ```sh
-git clone https://github.com/ngelik/browser-tts-benchmark.git
-cd browser-tts-benchmark
+git clone https://github.com/ngelik/tts-bench.git
+cd tts-bench
 npm ci
 npm run bench -- models
 ```

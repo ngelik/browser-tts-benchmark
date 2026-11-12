@@ -1,6 +1,6 @@
 # Benchmark dashboard
 
-Live: <https://ngelik.github.io/browser-tts-benchmark/>.
+Live: <https://ngelik.github.io/tts-bench/>.
 The original listening room and deep links remain at `/audio/`.
 
 ## Build and preview

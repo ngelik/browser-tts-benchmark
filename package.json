@@ -6,7 +6,7 @@
   "description": "Repeatable, local browser-only TTS benchmarks in Google Chrome",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ngelik/browser-tts-benchmark.git"
+    "url": "https://github.com/ngelik/tts-bench.git"
   },
   "type": "module",
   "engines": {

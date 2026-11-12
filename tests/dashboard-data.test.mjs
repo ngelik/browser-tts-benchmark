@@ -72,7 +72,7 @@ test('keeps unsupported cells, historical warm provenance, and independent RAM p
   assert.equal(leokani.warm.cpu.origin, 'historical-import');
   assert.equal(leokani.memory.cpu.origin, 'native');
   assert.notEqual(leokani.warm.cpu.sourceCommit, leokani.memory.cpu.sourceCommit);
-  assert.equal(leokani.warm.cpu.reportUrl, `https://github.com/ngelik/browser-tts-benchmark/blob/main/results/${leokani.warm.cpu.resultId}/summary.md`);
+  assert.equal(leokani.warm.cpu.reportUrl, `https://github.com/ngelik/tts-bench/blob/main/results/${leokani.warm.cpu.resultId}/summary.md`);
 });
 
 test('forms comparison-compatible cohorts and only pairs matching measured native warm receipts', () => {
@@ -100,7 +100,7 @@ test('keeps every verified audio example and marks exact warm matches separately
       assert.equal(typeof entry.scenario, 'string');
       assert.equal(typeof entry.sourceCreatedAt, 'string');
       assert.ok(['native', 'historical-import'].includes(entry.sourceOrigin));
-      assert.ok(entry.reportUrl.startsWith('https://github.com/ngelik/browser-tts-benchmark/blob/main/results/'));
+      assert.ok(entry.reportUrl.startsWith('https://github.com/ngelik/tts-bench/blob/main/results/'));
       assert.ok(Array.isArray(entry.sourceUrls) && entry.sourceUrls.length > 0);
       const warm = model.warm[entry.backend];
       assert.equal(entry.matchesSelectedWarm, warm.status === 'measured' && entry.resultId === warm.resultId);

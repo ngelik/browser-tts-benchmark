@@ -58,7 +58,7 @@ evidence, not a speech-quality score. Its memory diagnostic had no overlapping
 inference or tests. Audio CPU and official GPU results retain their own source
 cohorts in [their reports](../README.md#campaign-overviews).
 
-[Compare the family table and listen](https://ngelik.github.io/browser-tts-benchmark/?q=LFM3).
+[Compare the family table and listen](https://ngelik.github.io/tts-bench/?q=LFM3).
 CPU q7/Fusor and GPU GGUF Q4_K_M/Q8_0 differ in precision, runtime, packaging,
 context and sampling settings. Do not interpret their time ratio as isolated
 hardware acceleration. RAM is the sampled owned Chrome process tree during

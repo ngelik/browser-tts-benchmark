@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
   - name: Benchmark result contributions
-    url: https://github.com/ngelik/browser-tts-benchmark/blob/main/CONTRIBUTING.md
+    url: https://github.com/ngelik/tts-bench/blob/main/CONTRIBUTING.md
     about: Submit M1 Pro baseline results, or request a model evaluation, through a pull request.
   - name: Report a security vulnerability privately
-    url: https://github.com/ngelik/browser-tts-benchmark/security/advisories/new
+    url: https://github.com/ngelik/tts-bench/security/advisories/new
     about: Keep sensitive security details out of public issues.

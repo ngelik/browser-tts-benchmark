@@ -9,6 +9,6 @@ test('each README Listen link opens its exact hosted recording while retaining f
  const block=referenceBlock([base],getAssetLock().models,[],entries);
  const urls=[...block.matchAll(/\[▶ Listen\]\(([^)]+)\)/g)].map(m=>new URL(m[1]));
  assert.equal(urls.length,entries.length);
- entries.forEach((entry,i)=>{assert.equal(urls[i].origin,'https://ngelik.github.io');assert.equal(urls[i].pathname,'/browser-tts-benchmark/audio/');assert.equal(urls[i].searchParams.get('sample'),entry.clip.path.split('/').at(-1));assert.ok(block.includes(entry.full.url));});
+ entries.forEach((entry,i)=>{assert.equal(urls[i].origin,'https://ngelik.github.io');assert.equal(urls[i].pathname,'/tts-bench/audio/');assert.equal(urls[i].searchParams.get('sample'),entry.clip.path.split('/').at(-1));assert.ok(block.includes(entry.full.url));});
  assert.ok(block.includes('Open the listening room'));
 });

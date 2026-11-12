@@ -16,7 +16,7 @@ const canonical = value => Array.isArray(value)
 const stable = value => JSON.stringify(canonical(value));
 const mean = values => values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : null;
 const latestOrder = (a, b) => a.result.createdAt.localeCompare(b.result.createdAt) || a.result.id.localeCompare(b.result.id);
-const receiptUrl = id => `https://github.com/ngelik/browser-tts-benchmark/blob/main/results/${id}/summary.md`;
+const receiptUrl = id => `https://github.com/ngelik/tts-bench/blob/main/results/${id}/summary.md`;
 const missingMetric = (reason, fields) => ({
   status: 'unavailable', reason, resultId: null, reportUrl: null, origin: null,
   createdAt: null, protocolId: null, sourceCommit: null, sourceFingerprint: null,
