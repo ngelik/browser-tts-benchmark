@@ -1,0 +1,101 @@
+{
+  "startedAt": "2026-11-14T14:40:36.786Z",
+  "finishedAt": "2026-11-14T14:43:16.964Z",
+  "kind": "single-span-warm-diagnostic-v1",
+  "model": "ming-3.0-tts-0.5b-gguf",
+  "backend": "webgpu",
+  "threads": 6,
+  "timeoutMs": 600000,
+  "modelRevision": "2eb8d37c7f10672e69c8aa33091baa04c461b66c",
+  "source": "f0704f978ed99f1d24833030f5ddb70f18d7c4bf",
+  "dirty": false,
+  "chrome": "157.0.8103.40",
+  "arch": "arm64",
+  "cpu": "Apple M1 Pro",
+  "cores": 8,
+  "ramBytes": 17179869184,
+  "os": "25.6.0",
+  "fixtureSha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+  "chunkId": 0,
+  "start": 0,
+  "end": 233,
+  "sourceSha256": "54006eb541e2056b2a11c4cdb38692df161553c1682a1f17c5951c1f49c3af6b",
+  "externalRequests": 0,
+  "configuration": {
+    "voice": "US_James built-in voice (English)",
+    "precision": "Q8_0 GGUF; the pinned checkpoint retains a BF16 stop head and F32 speaker encoder.",
+    "settings": {
+      "language": "en",
+      "template": "ip",
+      "voiceId": "US_James",
+      "seed": 1895,
+      "maxTokens": 1000,
+      "guidanceScale": 2,
+      "sigma": 0.25,
+      "temperature": 0,
+      "sampleRate": 44100,
+      "threads": 6,
+      "pthreadPoolSize": 12,
+      "modelCache": "Pinned GGUF stored in 16 MiB same-origin CacheStorage ranges keyed by full asset SHA-256, then filled into Emscripten MEMFS; incomplete ranges are rejected. Cache entries can be evicted and fetched again.",
+      "output": "Mono 44.1 kHz Float32 PCM; offline API returns the complete span before first-pcm is emitted.",
+      "executionProviders": [
+        "webgpu"
+      ]
+    },
+    "status": "measured",
+    "backendEffective": "webgpu",
+    "capability": {
+      "gpuDispatchVerified": true,
+      "description": "Observed 254143 WebGPU dispatches during untimed synthesis with finite CPU-readable PCM. Hooks were installed before runtime init and the probe is outside generation timing."
+    },
+    "gpu": "apple"
+  },
+  "capabilityProbe": {
+    "voice": "US_James built-in voice (English)",
+    "precision": "Q8_0 GGUF; the pinned checkpoint retains a BF16 stop head and F32 speaker encoder.",
+    "settings": {
+      "language": "en",
+      "template": "ip",
+      "voiceId": "US_James",
+      "seed": 1895,
+      "maxTokens": 1000,
+      "guidanceScale": 2,
+      "sigma": 0.25,
+      "temperature": 0,
+      "sampleRate": 44100,
+      "threads": 6,
+      "pthreadPoolSize": 12,
+      "modelCache": "Pinned GGUF stored in 16 MiB same-origin CacheStorage ranges keyed by full asset SHA-256, then filled into Emscripten MEMFS; incomplete ranges are rejected. Cache entries can be evicted and fetched again.",
+      "output": "Mono 44.1 kHz Float32 PCM; offline API returns the complete span before first-pcm is emitted.",
+      "executionProviders": [
+        "webgpu"
+      ]
+    },
+    "status": "measured",
+    "backendEffective": "webgpu",
+    "capability": {
+      "gpuDispatchVerified": true,
+      "description": "Observed 254143 WebGPU dispatches during untimed synthesis with finite CPU-readable PCM. Hooks were installed before runtime init and the probe is outside generation timing."
+    },
+    "gpu": "apple"
+  },
+  "warmup": {
+    "generationMs": 64305.28999996185,
+    "firstPcmMs": 64298.15999996662,
+    "sampleRate": 44100,
+    "samples": 577710,
+    "pcmSha256": "85d968e9822e2d62c04772d7a4ad992fe803f4cd4aedda1660ebbfac19b177f1"
+  },
+  "measured": {
+    "generationMs": 64310.300000071526,
+    "firstPcmMs": 64304.69000005722,
+    "sampleRate": 44100,
+    "samples": 577710,
+    "pcmSha256": "85d968e9822e2d62c04772d7a4ad992fe803f4cd4aedda1660ebbfac19b177f1"
+  },
+  "wav": {
+    "file": "output.wav",
+    "sha256": "6e185fdc7da48a9aa0a1100b53cd0582f28877fae360022b5cf84896de87169b",
+    "bytes": 1155464
+  }
+}

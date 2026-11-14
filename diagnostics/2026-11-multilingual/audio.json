@@ -60,6 +60,21 @@
         "https://github.com/mdanyalmalik/quick-inf/blob/b50b3b8576f486d55fec5c366a0d8305a1fe8c41/src/runtime/speech/speech-engine.ts"
       ],
       "attribution": "Preset adapted from LibriTTS-R, Koizumi et al. (2023), speaker 4446, CC BY 4.0."
+    },
+    {
+      "id": "ming-3.0-tts-0.5b-gguf--webgpu",
+      "model": "ming-3.0-tts-0.5b-gguf",
+      "backend": "webgpu",
+      "receipt": "receipts/ming-3.0-tts-0.5b-gguf--webgpu.json",
+      "receiptSha256": "761ac2025463ad2f066526c09bdcfc3ff5e4ce0b968e34fb817f615c6aac2871",
+      "releaseUrl": "https://github.com/ngelik/tts-bench/releases/download/first-span-2026-11/ming-3.0-tts-0.5b-gguf--webgpu.wav",
+      "voice": "US_James built-in voice (English)",
+      "modelLicense": "MIT",
+      "sourceUrls": [
+        "https://github.com/inclusionAI/Ming-3.0-tts/blob/e999c39fa676722aaa9ea29b5aa19a90525b271f/cookbooks/instruction_en.md#built-in-premium-voices",
+        "https://huggingface.co/audio-cpp/Ming-3.0-TTS-0.5B-GGUF/blob/2eb8d37c7f10672e69c8aa33091baa04c461b66c/README.md",
+        "https://github.com/0xShug0/audio.cpp/blob/d38518a0d6a7aaab9d3f3dd91e9780c69857b0ac/docs/models/ming3_tts.md"
+      ]
     }
   ]
 }
