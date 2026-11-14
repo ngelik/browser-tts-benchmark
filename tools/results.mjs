@@ -3,6 +3,9 @@ import { createHash } from 'node:crypto';
 import { readFile, readdir } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
 
+// A 24-hour diagnostic at 500 ms yields up to 172,801 timestamp/RSS pairs.
+export const MAX_RESOURCE_RECEIPT_BYTES = 20_000_000;
+const resourceReceipt = data => data.origin === 'native' && data.protocol?.id?.endsWith('-resources');
 export const FIXTURE_SHA = '4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b';
 export const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 const fail = message => { throw new Error(message); };
@@ -55,7 +58,7 @@ function validateGenerationMemory(t,generationMs) {
   check(finite(start)&&start>0&&finite(end)&&end>start,'Invalid generation memory time window');
   check(Math.abs((end-start)-generationMs)<=Math.max(0.01,generationMs*1e-6),'Generation memory window must match generationMs');
   check(memory.samplingIntervalMs===500,'Generation RSS sampling interval must be 500 ms');
-  check(Array.isArray(memory.samples)&&memory.samples.length<=100000,'Invalid generation RSS samples');
+  check(Array.isArray(memory.samples)&&memory.samples.length<=172801,'Invalid generation RSS samples');
   let previous=-Infinity;
   for(const [i,sample] of memory.samples.entries()){
     check(Array.isArray(sample)&&sample.length===2,'Generation RSS samples must be [epochMs, rssBytes] pairs');
@@ -149,7 +152,7 @@ export function validateResult(d, { publication = false } = {}) {
   }
   if(d.notes!==undefined)check(Array.isArray(d.notes)&&d.notes.length<=50&&d.notes.every(n=>text(n,2000)),'Invalid notes');
   const raw=JSON.stringify(d);
-  check(raw.length<2000000,'Result exceeds 2 MB limit');
+  check(Buffer.byteLength(raw)<(resourceReceipt(d)?MAX_RESOURCE_RECEIPT_BYTES:2_000_000),'Result exceeds receipt size limit');
   check(!/(?:\/Users\/|\/home\/|[A-Za-z]:\\\\Users\\\\|gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9]{20,})/.test(raw),'Private path or credential-like string in result');
   return d;
 }
@@ -160,4 +163,4 @@ export async function resultPaths(root){
   async function walk(dir){for(const e of await readdir(dir,{withFileTypes:true})){check(!e.isSymbolicLink(),'Symlinks are not allowed in published results');const p=join(dir,e.name);if(e.isDirectory())await walk(p);else if(e.name==='result.json')paths.push(p);}}
   await walk(resolve(root));return paths.sort();
 }
-export async function readResult(file,opts){const raw=await readFile(file);check(raw.length<2000000,'Result file too large');return validateResult(JSON.parse(raw),opts);}
+export async function readResult(file,opts){const raw=await readFile(file);check(raw.length<MAX_RESOURCE_RECEIPT_BYTES,'Result file too large');const data=JSON.parse(raw);check(resourceReceipt(data)||raw.length<2_000_000,'Result file too large');return validateResult(data,opts);}

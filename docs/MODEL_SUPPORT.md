@@ -197,3 +197,15 @@ count for this English-only configuration. Arbitrary voice cloning is also not
 counted as a finite preset catalog. This is the original approximately 100M model
 [family described by Kyutai](https://kyutai.org/tts/) and shown in the screenshot,
 not the newer 18.2M Pocket model.
+
+<a id="audio8-realistic-0.6b-int4"></a>
+
+## Audio8 TTS Realistic Air 0.6B
+
+Edge0 lists **23 languages** and supports open-ended voice conditioning. This configuration uses English and a reference-free voice with **zero bundled presets**. [Checkpoint and export details](AUDIO8_REALISTIC.md).
+
+<a id="fun-cosyvoice3-0.5b-2512"></a>
+
+## Fun-CosyVoice3 0.5B (2512)
+
+The checkpoint supports **9 languages** and open-ended reference voices. The browser export bundles **one English preset**, derived from LibriTTS-R speaker 4446. [Checkpoint, preset and license details](COSYVOICE3.md).

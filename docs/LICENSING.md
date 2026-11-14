@@ -139,3 +139,11 @@ license and change notice. `--accept-license` acknowledges the documented model
 conditions; it does not relicense weights, voices or recordings under this
 repository's MIT license. Published recordings must retain source attribution and
 these model terms. See [configuration and reproduction](POCKET_TTS.md).
+
+## Ming 3.0, Audio8 and Fun-CosyVoice3
+
+| Configuration | Model terms | Other terms in this configuration |
+| --- | --- | --- |
+| Ming 3.0 TTS 0.5B | MIT | The community GGUF preserves the original checkpoint terms. The browser build includes audio.cpp, GGML and their component notices. [Model](https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B) · [GGUF source](https://huggingface.co/audio-cpp/Ming-3.0-TTS-0.5B-GGUF) |
+| Audio8 TTS Realistic Air 0.6B | Apache-2.0 | The INT4 conversion uses the Realistic acoustic weights. The evaluation uses reference-free synthesis. ONNX Runtime Web is MIT. [Configuration and notices](AUDIO8_REALISTIC.md) |
+| Fun-CosyVoice3 0.5B (2512) | Apache-2.0 | The bundled English preset derives from LibriTTS-R under CC BY 4.0. Quick Inference frontend code uses PolyForm Noncommercial 1.0.0. ONNX Runtime Web is MIT. [Configuration and notices](COSYVOICE3.md) |

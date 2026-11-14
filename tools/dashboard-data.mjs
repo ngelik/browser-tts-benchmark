@@ -113,7 +113,7 @@ function createWarmMetric(candidate) {
 
 export function summarizeMemoryTrials(trials) {
   const means = [];
-  const samples = [];
+  let peakRss = 0;
   let sampleCount = 0;
   for (const trial of trials) {
     if (trial.memory?.availability !== 'measured' || !finite(trial.metrics?.generationMeanRssBytes)) return null;
@@ -122,7 +122,7 @@ export function summarizeMemoryTrials(trials) {
     const end = trial.memory.finalPcmAtEpochMs;
     for (const [at, rss] of trial.memory.samples) {
       if (at >= start && at <= end) {
-        samples.push(rss);
+        peakRss = Math.max(peakRss, rss);
         sampleCount++;
       }
     }
@@ -130,7 +130,7 @@ export function summarizeMemoryTrials(trials) {
   if (!means.length || !sampleCount) return null;
   return {
     meanMB: mean(means) / 1_000_000,
-    peakMB: Math.max(...samples) / 1_000_000,
+    peakMB: peakRss / 1_000_000,
     n: means.length,
     sampleCount,
   };

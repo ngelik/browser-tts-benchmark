@@ -5,6 +5,7 @@ on:
     paths:
       - 'audio/**'
       - 'dashboard/**'
+      - 'diagnostics/**'
       - 'results/**'
       - 'tools/**'
       - 'lib/**'

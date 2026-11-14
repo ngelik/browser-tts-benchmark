@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Short English synthesis diagnostics for Audio8, Fun-CosyVoice3 and Ming in Google Chrome on Apple M1 Pro.">
+  <meta name="theme-color" content="#f6f5f1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; base-uri 'none'">
+  <title>Short-input diagnostics · Browser TTS Benchmark</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/diagnostics.css">
+  <script type="module" src="../assets/diagnostics.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#observations">Skip to observations</a>
+  <div class="shell">
+    <header class="masthead">
+      <a class="brand" href="../"><span class="soundmark" aria-hidden="true"><i></i><i></i><i></i><i></i></span> Browser TTS <span class="brand-dot">/</span> <span class="brand-light">Benchmark</span></a>
+      <nav aria-label="Project"><a href="../">Dashboard</a><a href="https://github.com/ngelik/tts-bench">GitHub ↗</a></nav>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="title">
+        <div><p class="eyebrow">14 NOVEMBER 2026</p><h1 id="title">Short-input diagnostics</h1>
+        <p class="intro-copy">How long does a browser take to produce a short passage of speech? These development runs cover three English inputs. The reference dashboard uses repeated runs of the full 20,000-character article.</p></div>
+      </section>
+      <div class="baseline"><p><strong>Apple M1 Pro</strong><span class="baseline-divider">/</span> 16 GiB <span class="baseline-divider">/</span> Chrome 157.0.8103.40</p><a href="./2026-11-multilingual/observations.json">Download observations JSON ↗</a></div>
+      <section id="observations" aria-labelledby="runs-title" tabindex="-1">
+        <h2 id="runs-title">Generation and playback time</h2>
+        <p class="guide">Generation ends when the browser returns audio samples. Playback time is the length of that audio. Each timed row contains one observation. Read the warm-up column before comparing runs.</p>
+        <div class="legend"><span><i class="generation"></i>Generation</span><span><i class="playback"></i>Playback</span></div>
+        <div id="groups" aria-live="polite"></div>
+        <p id="load-status" role="status">Loading observations…</p>
+        <noscript><p>Read the inputs, sample counts and timings in the <a href="./2026-11-multilingual/observations.json">observations JSON</a>.</p></noscript>
+      </section>
+    </main>
+    <footer><a href="../">← Full-article benchmark</a><a href="https://github.com/ngelik/tts-bench/blob/main/docs/FIRST_SPAN_DIAGNOSTIC.md">Diagnostic procedure ↗</a></footer>
+  </div>
+</body>
+</html>
