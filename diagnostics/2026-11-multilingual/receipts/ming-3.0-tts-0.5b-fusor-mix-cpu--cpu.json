@@ -1,0 +1,72 @@
+{
+  "startedAt": "2026-11-14T15:01:46.878Z",
+  "finishedAt": "2026-11-14T15:02:13.905Z",
+  "kind": "single-span-warm-diagnostic-v1",
+  "model": "ming-3.0-tts-0.5b-fusor-mix-cpu",
+  "backend": "cpu",
+  "threads": 6,
+  "timeoutMs": 1800000,
+  "modelRevision": "62588575d91dceb33822fe1e3925e748393c6b3e",
+  "source": "c112b9f63a11f3cd6049d18d604566dad223f1cf",
+  "dirty": false,
+  "chrome": "157.0.8103.40",
+  "arch": "arm64",
+  "cpu": "Apple M1 Pro",
+  "cores": 8,
+  "ramBytes": 17179869184,
+  "os": "25.6.0",
+  "fixtureSha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+  "chunkId": 0,
+  "start": 0,
+  "end": 233,
+  "sourceSha256": "54006eb541e2056b2a11c4cdb38692df161553c1682a1f17c5951c1f49c3af6b",
+  "externalRequests": 0,
+  "configuration": {
+    "backendRequested": "cpu",
+    "voice": "US_James (built-in US English male narrator)",
+    "precision": "Fusor mix: Q4 LLM/VAE, Q7 flow/aggregator/embeddings",
+    "sampleRate": 44100,
+    "settings": {
+      "voice": "US_James",
+      "preset": "quality",
+      "seed": 1895,
+      "sampleRate": 44100,
+      "threadCount": 6,
+      "maxFramesPerInternalFragment": 512,
+      "quantization": "mix: LLM and VAE decoder 4-bit; flow head, aggregator and embeddings 7-bit",
+      "baseModelRevision": "e5bd8da31ecf1b9276cdbdda821fa891068f1368",
+      "modelBundleRevision": "62588575d91dceb33822fe1e3925e748393c6b3e",
+      "runtimeSpaceRevision": "bdf46b41e966340f398fdd82d3ca64f4058ad892",
+      "loadingCache": "Revision-scoped Cache Storage supplies verified part responses to the bounded Fusor loader; the runtime checks BLAKE3 on every load.",
+      "textProcessing": "Pinned upstream Ming fragmenter; benchmark source spans are passed verbatim, and a source span may become multiple internal fragments.",
+      "runtimeBuild": "web-threaded-relaxed",
+      "effectiveThreads": 6
+    },
+    "status": "measured",
+    "backendEffective": "cpu/wasm",
+    "capability": {
+      "gpuDispatchVerified": null,
+      "description": "Pinned Fusor web-threaded-relaxed WebAssembly runtime initialized with 6 compute threads."
+    }
+  },
+  "capabilityProbe": null,
+  "warmup": {
+    "generationMs": 11225.365000009537,
+    "firstPcmMs": 1275.1000000238419,
+    "sampleRate": 44100,
+    "samples": 524790,
+    "pcmSha256": "7e9b0e57a5dc16437eee88aff560d567632ba487ad62cbf64c61099947d09e81"
+  },
+  "measured": {
+    "generationMs": 10917.784999966621,
+    "firstPcmMs": 876.7400000095367,
+    "sampleRate": 44100,
+    "samples": 524790,
+    "pcmSha256": "7e9b0e57a5dc16437eee88aff560d567632ba487ad62cbf64c61099947d09e81"
+  },
+  "wav": {
+    "file": "output.wav",
+    "sha256": "22bc3d02f26497f08f9c8f0955d456890a0eaadbd8f640fea9dc33bd060f91c0",
+    "bytes": 1049624
+  }
+}
