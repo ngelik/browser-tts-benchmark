@@ -4536,6 +4536,94 @@
         ],
         "notes": "No preset voices ship in this configuration. Reference-free English mode is tested."
       }
+    },
+    "ming-3.0-tts-0.5b-gguf": {
+      "displayName": "Ming 3.0 TTS 0.5B (Q8_0 GGUF)",
+      "modelRevision": "2eb8d37c7f10672e69c8aa33091baa04c461b66c",
+      "runtime": {
+        "license": "Apache-2.0 audio.cpp with GGML MIT and separately licensed build components",
+        "files": []
+      },
+      "assets": [
+        {
+          "id": "ming-gguf-weights",
+          "target": "models/ming3-tts-0.5b-q8_0-gguf/2eb8d37c7f10672e69c8aa33091baa04c461b66c/ming-3.0-tts-0.5b-q8_0.gguf",
+          "url": "https://huggingface.co/audio-cpp/Ming-3.0-TTS-0.5B-GGUF/resolve/2eb8d37c7f10672e69c8aa33091baa04c461b66c/ming-3.0-tts-0.5b-q8_0.gguf",
+          "bytes": 1742280896,
+          "sha256": "fcf2aa25e8e9cf2065a936e506581735c64d6255fb7869f09fbb61a2dde09aa1",
+          "kind": "model-weights"
+        },
+        {
+          "id": "ming-gguf-license",
+          "target": "models/ming3-tts-0.5b-q8_0-gguf/2eb8d37c7f10672e69c8aa33091baa04c461b66c/LICENSE",
+          "url": "https://huggingface.co/audio-cpp/Ming-3.0-TTS-0.5B-GGUF/resolve/2eb8d37c7f10672e69c8aa33091baa04c461b66c/LICENSE",
+          "bytes": 1068,
+          "sha256": "3a55f3df052c2a5f943704ef18aa499afe376fe92893828c5de4602e6dabb396",
+          "kind": "license"
+        },
+        {
+          "id": "ming-gguf-card",
+          "target": "models/ming3-tts-0.5b-q8_0-gguf/2eb8d37c7f10672e69c8aa33091baa04c461b66c/README.md",
+          "url": "https://huggingface.co/audio-cpp/Ming-3.0-TTS-0.5B-GGUF/resolve/2eb8d37c7f10672e69c8aa33091baa04c461b66c/README.md",
+          "bytes": 3338,
+          "sha256": "c74a155923f2ef72f47ff6959135444955f797f5c2a4225d221c96554aaee942",
+          "kind": "model-support"
+        },
+        {
+          "id": "ming-audio-cpp-bench-browser-js",
+          "target": "runtimes/audio-cpp-browser-v1/bench_browser.js",
+          "url": "https://github.com/ngelik/tts-bench/releases/download/audio-cpp-browser-v1/bench_browser.js",
+          "bytes": 176974,
+          "sha256": "58b3ca6a4a09f7aa4ea4d6dd055129dbddf30dc082b6d2935cb48b6fe2b66c69",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "ming-audio-cpp-bench-browser-wasm",
+          "target": "runtimes/audio-cpp-browser-v1/bench_browser.wasm",
+          "url": "https://github.com/ngelik/tts-bench/releases/download/audio-cpp-browser-v1/bench_browser.wasm",
+          "bytes": 6250392,
+          "sha256": "fcfd9a036fc4eea8e3521e907e561d991b91eaa39bf8f2bd162ac5a467aef58c",
+          "kind": "runtime-source"
+        },
+        {
+          "id": "ming-audio-cpp-runtime-notices",
+          "target": "runtimes/audio-cpp-browser-v1/THIRD-PARTY-NOTICES.txt",
+          "url": "https://github.com/ngelik/tts-bench/releases/download/audio-cpp-browser-v1/THIRD-PARTY-NOTICES.txt",
+          "bytes": 60846,
+          "sha256": "c1f6b0f354e9f2dcaeee675a45d0e0b5c2e9da192793ff49ebf1c6838216dbdc",
+          "kind": "license"
+        }
+      ],
+      "license": {
+        "model": "MIT",
+        "runtime": "Apache-2.0 audio.cpp, MIT GGML and component notices",
+        "requiresAcceptance": true
+      },
+      "backends": [
+        "cpu",
+        "webgpu"
+      ],
+      "support": {
+        "voiceCount": 117,
+        "bundledVoiceCount": 1,
+        "languageCount": 7,
+        "languages": [
+          "zh",
+          "en",
+          "ja",
+          "ko",
+          "de",
+          "fr",
+          "es"
+        ],
+        "scope": "Named base speakers in the upstream checkpoint catalog. The benchmark adapter exposes one fixed English voice.",
+        "sources": [
+          "https://github.com/inclusionAI/Ming-3.0-tts/blob/e999c39fa676722aaa9ea29b5aa19a90525b271f/cookbooks/instruction_en.md#built-in-premium-voices",
+          "https://huggingface.co/audio-cpp/Ming-3.0-TTS-0.5B-GGUF/blob/2eb8d37c7f10672e69c8aa33091baa04c461b66c/README.md",
+          "https://github.com/0xShug0/audio.cpp/blob/d38518a0d6a7aaab9d3f3dd91e9780c69857b0ac/docs/models/ming3_tts.md"
+        ],
+        "notes": "US_James is the sole benchmarked voice. The count deduplicates named base voices and excludes emotion variants, voice cloning and voice design."
+      }
     }
   }
 }

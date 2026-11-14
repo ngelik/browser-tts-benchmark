@@ -209,3 +209,9 @@ Edge0 lists **23 languages** and supports open-ended voice conditioning. This co
 ## Fun-CosyVoice3 0.5B (2512)
 
 The checkpoint supports **9 languages** and open-ended reference voices. The browser export bundles **one English preset**, derived from LibriTTS-R speaker 4446. [Checkpoint, preset and license details](COSYVOICE3.md).
+
+<a id="ming-3.0-tts-0.5b-gguf"></a>
+
+## Ming 3.0 TTS 0.5B (Q8_0 GGUF)
+
+The upstream catalog lists **117 named base voices**: 50 Chinese voices without emotion variants, 62 Chinese base voices with variants, and five English voices. Each base voice counts once. The benchmark exposes one preset, **US_James**. The checkpoint supports **seven languages** (Chinese, English, Japanese, Korean, German, French and Spanish). [Pinned voice catalog](https://github.com/inclusionAI/Ming-3.0-tts/blob/e999c39fa676722aaa9ea29b5aa19a90525b271f/cookbooks/instruction_en.md#built-in-premium-voices) · [Pinned GGUF model card](https://huggingface.co/audio-cpp/Ming-3.0-TTS-0.5B-GGUF/blob/2eb8d37c7f10672e69c8aa33091baa04c461b66c/README.md).
