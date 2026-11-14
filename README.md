@@ -141,6 +141,12 @@ Dedicated full-article memory runs measure an isolated Chrome instance with one 
 | Mach Boom 3.5-bit (browser WASM port) | 18.16 | [1085.29](results/2026-11-12t06-54-45-636z-mach-boom-cpu-cached-3e01ad4c/summary.md) | [unsupported](results/2026-11-12t08-08-33-241z-mach-boom-webgpu-cached-0aeac0ab/summary.md) |
 | Pocket TTS 100M English (INT8/FP32) | 146.16 | [1761.60](results/2026-11-12t07-54-10-491z-pocket-tts-100m-english-int8-cpu-cached-b6c2a919/summary.md) | [2135.24](results/2026-11-12t07-18-18-704z-pocket-tts-100m-english-int8-webgpu-cached-1bbe1503/summary.md) |
 
+**RAM 7** · MacBook Pro / Apple M1 Pro 8-core / 16 GiB / arm64 · Google Chrome 157.0.8103.40 · Darwin 25.6.0 · browser-tts-cached-v1-resources · 1 full article(s) per measured cell · source [`ab5aec3e`](https://github.com/ngelik/tts-bench/commit/ab5aec3e510420adbcac9971f35f92152b19959c).
+
+| Model | Model weights (MB) | CPU avg Chrome RAM (MB) | WebGPU avg Chrome RAM (MB) |
+|---|---:|---:|---:|
+| Fun-CosyVoice3 0.5B (Q8/Q4 ONNX) | 905.67 | — | [2706.94](results/2026-11-14t15-12-11-363z-fun-cosyvoice3-0.5b-2512-webgpu-cached-168c91d4/summary.md) |
+
 ![Average Chrome RAM during generation](docs/reference-memory.svg)
 
 ### Voice and language support
@@ -239,6 +245,7 @@ Synthetic speech from the actual recorded runs. [Listening instructions and attr
 
 | Model | Backend | Source run | 30-second clip | Full article WAV |
 |---|---|---|---|---|
+| Fun-CosyVoice3 0.5B (Q8/Q4 ONNX) | webgpu | [Receipt](results/2026-11-14t15-12-11-363z-fun-cosyvoice3-0.5b-2512-webgpu-cached-168c91d4/summary.md) | [▶ Listen](https://ngelik.github.io/tts-bench/audio/?sample=2026-11-14t15-12-11-363z-fun-cosyvoice3-0.5b-2512-webgpu-cached-168c91d4--fun-cosyvoice3-0.5b-2512--webgpu.wav) | [Download / listen](https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-14t15-12-11-363z-fun-cosyvoice3-0.5b-2512-webgpu-cached-168c91d4--fun-cosyvoice3-0.5b-2512--webgpu-full.wav) |
 | Inflect Micro v2 FP32 | cpu | [Receipt](results/2026-11-10t17-52-21-838z-inflect-micro-v2-cpu-warm-c57a83a6/summary.md) | [▶ Listen](https://ngelik.github.io/tts-bench/audio/?sample=2026-11-10t17-52-21-838z-inflect-micro-v2-cpu-warm-c57a83a6--inflect-micro-v2--cpu.wav) | [Download / listen](https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t17-52-21-838z-inflect-micro-v2-cpu-warm-c57a83a6--inflect-micro-v2--cpu-full.wav) |
 | Inflect Micro v2 FP32 | webgpu | [Receipt](results/2026-11-11t02-50-06-191z-inflect-micro-v2-webgpu-warm-e21ef201/summary.md) | [▶ Listen](https://ngelik.github.io/tts-bench/audio/?sample=2026-11-11t02-50-06-191z-inflect-micro-v2-webgpu-warm-e21ef201--inflect-micro-v2--webgpu.wav) | [Download / listen](https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-11t02-50-06-191z-inflect-micro-v2-webgpu-warm-e21ef201--inflect-micro-v2--webgpu-full.wav) |
 | Kitten Nano 0.8 FP32 | cpu | [Receipt](results/2026-11-10t15-16-09-599z-kitten-nano-0.8-cpu-warm-624ea636/summary.md) | [▶ Listen](https://ngelik.github.io/tts-bench/audio/?sample=2026-11-10t15-16-09-599z-kitten-nano-0.8-cpu-warm-624ea636--kitten-nano-0.8--cpu.wav) | [Download / listen](https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-10t15-16-09-599z-kitten-nano-0.8-cpu-warm-624ea636--kitten-nano-0.8--cpu-full.wav) |
@@ -361,6 +368,7 @@ Synthetic speech from the actual recorded runs. [Listening instructions and attr
 | 68 · 2026-11-12 | pocket-tts-100m-english-int8/webgpu | cached / browser-tts-cached-v1-resources | measured | [Report](results/2026-11-12t07-18-18-704z-pocket-tts-100m-english-int8-webgpu-cached-1bbe1503/summary.md) | [SVG](results/2026-11-12t07-18-18-704z-pocket-tts-100m-english-int8-webgpu-cached-1bbe1503/chart.svg) |
 | 69 · 2026-11-12 | pocket-tts-100m-english-int8/cpu | cached / browser-tts-cached-v1-resources | measured | [Report](results/2026-11-12t07-54-10-491z-pocket-tts-100m-english-int8-cpu-cached-b6c2a919/summary.md) | [SVG](results/2026-11-12t07-54-10-491z-pocket-tts-100m-english-int8-cpu-cached-b6c2a919/chart.svg) |
 | 70 · 2026-11-12 | mach-boom/webgpu | cached / browser-tts-cached-v1-resources | unsupported | [Report](results/2026-11-12t08-08-33-241z-mach-boom-webgpu-cached-0aeac0ab/summary.md) | [SVG](results/2026-11-12t08-08-33-241z-mach-boom-webgpu-cached-0aeac0ab/chart.svg) |
+| 71 · 2026-11-14 | fun-cosyvoice3-0.5b-2512/webgpu | cached / browser-tts-cached-v1-resources | measured | [Report](results/2026-11-14t15-12-11-363z-fun-cosyvoice3-0.5b-2512-webgpu-cached-168c91d4/summary.md) | [SVG](results/2026-11-14t15-12-11-363z-fun-cosyvoice3-0.5b-2512-webgpu-cached-168c91d4/chart.svg) |
 
 </details>
 
