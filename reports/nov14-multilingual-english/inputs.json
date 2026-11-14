@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "results": [
+    {
+      "id": "2026-11-14t15-12-11-363z-fun-cosyvoice3-0.5b-2512-webgpu-cached-168c91d4",
+      "sha256": "76472b69d5a50b10853e0947cef55488d25fb128bcc572cbcfa4b4b2aa633ec2"
+    },
+    {
+      "id": "2026-11-14t15-39-16-252z-ming-3.0-tts-0.5b-gguf-webgpu-cached-680f3a63",
+      "sha256": "778140457e8f2ab1a1ae4c891d98dc834a5996ae9a5dca2b9f9d5ffc12d6d352"
+    }
+  ]
+}

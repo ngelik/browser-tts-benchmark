@@ -557,6 +557,35 @@
       }
     },
     {
+      "resultId": "2026-11-14t15-39-16-252z-ming-3.0-tts-0.5b-gguf-webgpu-cached-680f3a63",
+      "model": "ming-3.0-tts-0.5b-gguf",
+      "backend": "webgpu",
+      "trialIndex": 1,
+      "voice": "US_James built-in voice (English)",
+      "language": "en",
+      "attribution": "Ming 3.0 TTS by inclusionAI, Q8_0 GGUF conversion for audio.cpp. US_James English preset. MIT model terms.",
+      "modelTerms": "MIT",
+      "sourceUrls": [
+        "https://github.com/inclusionAI/Ming-3.0-tts/blob/e999c39fa676722aaa9ea29b5aa19a90525b271f/cookbooks/instruction_en.md#built-in-premium-voices",
+        "https://huggingface.co/audio-cpp/Ming-3.0-TTS-0.5B-GGUF/blob/2eb8d37c7f10672e69c8aa33091baa04c461b66c/README.md",
+        "https://github.com/0xShug0/audio.cpp/blob/d38518a0d6a7aaab9d3f3dd91e9780c69857b0ac/docs/models/ming3_tts.md"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-14t15-39-16-252z-ming-3.0-tts-0.5b-gguf-webgpu-cached-680f3a63--ming-3.0-tts-0.5b-gguf--webgpu.wav",
+        "sha256": "c0abfcbccf5c900c9a20edfedd8b64ba768dd4c73be1993390a1bc979e8826af",
+        "bytes": 2646044,
+        "startSample": 0,
+        "sampleRate": 44100,
+        "samples": 1323000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-14t15-39-16-252z-ming-3.0-tts-0.5b-gguf-webgpu-cached-680f3a63--ming-3.0-tts-0.5b-gguf--webgpu-full.wav",
+        "sha256": "1a3ceba070267b196723b519cda88c1e2bbbeaca25c3993e9abbe161d9abc54b",
+        "bytes": 93033404
+      }
+    },
+    {
       "resultId": "2026-11-10t19-31-08-081z-mms-english-cpu-warm-b81daec2",
       "model": "mms-english",
       "backend": "cpu",
