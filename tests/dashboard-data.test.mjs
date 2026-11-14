@@ -49,9 +49,19 @@ test('exports all catalog models with explicit warm, memory, license, and suppor
         assert.equal(model.memory[backend].n, cell.trials.length);
         assert.ok(model.memory[backend].n >= 1);
         assert.ok(model.memory[backend].sampleCount >= 2);
+        const middle = [Math.floor((cell.trials.length - 1) / 2), Math.floor(cell.trials.length / 2)];
+        for (const [field, values] of [
+          ['generationSeconds', cell.trials.map(t => t.generationMs / 1000)],
+          ['audioSeconds', cell.trials.map(t => t.samples / t.sampleRate)],
+        ]) {
+          values.sort((a, b) => a - b);
+          assert.equal(model.memory[backend][field], (values[middle[0]] + values[middle[1]]) / 2);
+        }
         assert.ok(model.memory[backend].meanMB > 0);
         assert.ok(model.memory[backend].peakMB >= model.memory[backend].meanMB);
       } else {
+        assert.equal(model.memory[backend].generationSeconds, null);
+        assert.equal(model.memory[backend].audioSeconds, null);
         assert.equal(model.memory[backend].meanMB, null);
         assert.equal(model.memory[backend].peakMB, null);
       }
