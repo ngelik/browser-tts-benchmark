@@ -1,8 +1,10 @@
 import { observeComputeDispatches, requestHardwareWebGpuAdapter } from '../piper/webgpu.mjs';
+import { fetchModelAsset } from '../cache-model-asset.mjs';
 import { BpeTokenizer } from './tokenizer.mjs';
 import { fromHalf, prepareText, synthesize } from './generate.mjs';
 
-const modelRoot = '/models/cosyvoice3/dcdb9df4bce4a47d318f5f8736de0b080efd944f/';
+const modelRevision = 'dcdb9df4bce4a47d318f5f8736de0b080efd944f';
+const modelRoot = '/models/cosyvoice3/' + modelRevision + '/';
 const ortRoot = '/runtimes/onnxruntime-web/1.31.1/';
 const graphs = {
   flowEncoder: 'flow_encoder_q4.onnx',
@@ -25,7 +27,7 @@ self.fetch = (input, options) => {
 };
 
 async function asset(path) {
-  const response = await fetch(modelRoot + path);
+  const response = await fetchModelAsset(modelRoot + path, modelRevision);
   if (!response.ok) throw new Error(`CosyVoice3 asset ${path} returned HTTP ${response.status}`);
   return response;
 }

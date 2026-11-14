@@ -1,11 +1,14 @@
 import {observeComputeDispatches, requestHardwareWebGpuAdapter} from '../piper/webgpu.mjs';
+import {fetchModelAsset} from '../cache-model-asset.mjs';
 import {promptTokens, synthesize} from '../audio8/generation.mjs';
 
 const modelRoot = '/models/audio8-realistic/';
+const modelRevision = '04313606782af6b9a1aa93724555bc7b64ba9197';
 const ortRoot = '/runtimes/onnxruntime-web/1.31.1/';
 const sessions = {};
 let ort, tokenizer;
 const voice = 'Reference-free English synthesis';
+const wasmThreads = 6;
 const precision = 'INT4 slow/fast AR, FP16 codec';
 async function dispose() {
   for (const [key, session] of Object.entries(sessions)) { await session.release(); delete sessions[key]; }
@@ -13,16 +16,16 @@ async function dispose() {
 }
 async function loadSession(file, providers) {
   const external = `${file}.onnx.data`;
-  const res = await fetch(modelRoot + external);
-  if (!res.ok) throw new Error(`Audio8 ${external}: HTTP ${res.status}`);
-  return ort.InferenceSession.create(modelRoot + file + '.onnx', {
-    executionProviders:providers, externalData:[{path:external, data:new Uint8Array(await res.arrayBuffer())}],
+  const graph = await fetchModelAsset(modelRoot + file + '.onnx', modelRevision);
+  const weights = await fetchModelAsset(modelRoot + external, modelRevision);
+  return ort.InferenceSession.create(new Uint8Array(await graph.arrayBuffer()), {
+    executionProviders:providers, externalData:[{path:external, data:new Uint8Array(await weights.arrayBuffer())}],
   });
 }
 async function initialize({backend, probe, probeText}) {
   const gpu = backend === 'webgpu', providers = gpu ? ['webgpu', 'wasm'] : ['wasm'];
   const settings = {executionProviders:providers, language:'en', sampleRate:44100, temperature:0.7, topP:0.9, topK:50,
-    seed:42, wasmThreads:1, maxFrames:1024, voiceSelection:voice, sampling:'Seeded JS categorical draw with upstream top-p-before-temperature and ten-frame repetition resampling.',
+    seed:42, wasmThreads, maxFrames:1024, voiceSelection:voice, sampling:'Seeded JS categorical draw with upstream top-p-before-temperature and ten-frame repetition resampling.',
     chunking:'One complete source span per reference-free prompt, one full decoder call after EOS.'};
   let adapter, description;
   if (gpu) {
@@ -32,13 +35,17 @@ async function initialize({backend, probe, probeText}) {
   }
   const bundle = 'ort-wasm-simd-threaded' + (gpu ? '.asyncify' : '');
   ort = await import(ortRoot + (gpu ? 'ort.webgpu.min.mjs' : 'ort.wasm.min.mjs'));
-  ort.env.wasm.numThreads = 1;
+  ort.env.wasm.numThreads = wasmThreads;
   ort.env.wasm.proxy = false;
   ort.env.wasm.wasmPaths = {mjs:ortRoot + bundle + '.mjs', wasm:ortRoot + bundle + '.wasm'};
+  const wasmSha256 = gpu ? 'ca319e9539cd0f1e291cf56074760121eaf39650f5dbf84b6e52c07f4b2944ec'
+                         : '4b884c203b0fa48d057be3332c65513ff85aa3c5bddd6946acc0fab7ecda001d';
+  const wasm = await fetchModelAsset(ortRoot + bundle + '.wasm', wasmSha256);
+  ort.env.wasm.wasmBinary = await wasm.arrayBuffer();
   if (gpu) ort.env.webgpu.adapter = adapter;
   const transformers = await import('/runtimes/transformers/3.5.1/transformers.min.js');
   transformers.env.allowRemoteModels = false;
-  const data = await (await fetch(modelRoot + 'tokenizer/tokenizer.json')).json();
+  const data = await (await fetchModelAsset(modelRoot + 'tokenizer/tokenizer.json', modelRevision)).json();
   tokenizer = new transformers.PreTrainedTokenizer(data, {tokenizer_class:'PreTrainedTokenizer', unk_token:'<|endoftext|>'});
   sessions.slow = await loadSession('slow_ar_int4', providers);
   sessions.fast = await loadSession('fast_ar_int4', providers);
@@ -51,7 +58,7 @@ async function initialize({backend, probe, probeText}) {
     if (gpu && !dispatchCount) throw new Error('Audio8 compatibility probe observed zero GPU dispatches');
   }
   return {status:'measured', backendEffective:gpu ? 'webgpu+wasm' : 'cpu/wasm', voice, precision, settings,
-    capability:{gpuDispatchVerified:dispatchCount>0, description:gpu ? `${dispatchCount} dispatches in separate capability probe; WebGPU with WASM fallback.` : 'Single-thread WebAssembly.'}, ...(gpu ? {gpu:description} : {})};
+    capability:{gpuDispatchVerified:dispatchCount>0, description:gpu ? `${dispatchCount} dispatches in separate capability probe; WebGPU with WASM fallback.` : 'Six-thread WebAssembly.'}, ...(gpu ? {gpu:description} : {})};
 }
 self.onmessage = async ({data}) => {
   try {

@@ -45,6 +45,7 @@ const FACTORIES = {
   'sano-amy': createSanoAdapter,
   'inflect-micro-v2': createInflectAdapter,
 };
+export const diagnosticFactories = Object.freeze(FACTORIES);
 let canonical = null;
 
 function setStatus(message) {
@@ -170,7 +171,7 @@ function joinPcm(parts) {
   return joined;
 }
 
-function encodeWavBase64(pcm, sampleRate) {
+export function encodeWavBase64(pcm, sampleRate) {
   const buffer = new ArrayBuffer(44 + pcm.length * 2);
   const view = new DataView(buffer);
   const putText = (offset, text) => {
