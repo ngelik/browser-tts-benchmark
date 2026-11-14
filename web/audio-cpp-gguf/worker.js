@@ -125,8 +125,7 @@
     if (bytes.byteLength !== end - start + 1) throw new Error('Cached GGUF range ' + start + '-' + end + ' has an unexpected length.');
     return bytes;
   }
-  async function fillModelFile(runtime, options) {
-    config = options.model;
+  async function fillModelFile(runtime) {
     if (!config || !Number.isSafeInteger(config.bytes) || config.bytes <= 0 ||
         !/^[a-f0-9]{64}$/.test(config.sha256 || '') || typeof config.modelUrl !== 'string') {
       throw new Error('Invalid pinned GGUF asset configuration.');
@@ -217,7 +216,7 @@
     });
     runtimeLog('runtime-ready', 'WebAssembly module loaded.');
     runtimeLog('model-cache', 'Filling local MEMFS from verified 16 MiB model ranges.');
-    await fillModelFile(module, options);
+    await fillModelFile(module);
     runtimeLog('session-open', 'Opening ' + family + ' session with ' + options.backend + ' backend and ' + threads + ' threads.');
     const status = await invoke('bench_open','number',['string','string','number'],[family,options.backend,threads]);
     if (status !== 0) throw new Error('audio.cpp model/session initialization failed (' + status + '): ' + module.ccall('bench_error','string',[],[]));
