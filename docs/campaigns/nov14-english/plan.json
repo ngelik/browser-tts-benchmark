@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "ab5aec3e510420adbcac9971f35f92152b19959c",
+  "conditions": "English 20k November campaign. Sequential headed Chrome, AC power and one isolated benchmark tab. Predeclared backend order, no cold-load check.",
+  "cells": [
+    {
+      "model": "fun-cosyvoice3-0.5b-2512",
+      "backend": "webgpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "timeoutMinutes": 1440,
+      "resources": true
+    },
+    {
+      "model": "ming-3.0-tts-0.5b-gguf",
+      "backend": "webgpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "timeoutMinutes": 1440,
+      "resources": true
+    },
+    {
+      "model": "audio8-realistic-0.6b-int4",
+      "backend": "webgpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "timeoutMinutes": 1440,
+      "resources": true
+    },
+    {
+      "model": "ming-3.0-tts-0.5b-fusor-mix-cpu",
+      "backend": "cpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "timeoutMinutes": 1440,
+      "resources": true
+    },
+    {
+      "model": "fun-cosyvoice3-0.5b-2512",
+      "backend": "cpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "timeoutMinutes": 1440,
+      "resources": true
+    },
+    {
+      "model": "ming-3.0-tts-0.5b-gguf",
+      "backend": "cpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "timeoutMinutes": 1440,
+      "resources": true
+    },
+    {
+      "model": "audio8-realistic-0.6b-int4",
+      "backend": "cpu",
+      "scenario": "cached",
+      "repetitions": 1,
+      "timeoutMinutes": 1440,
+      "resources": true
+    },
+    {
+      "model": "audio8-realistic-0.6b-int4",
+      "backend": "webgpu",
+      "scenario": "warm",
+      "repetitions": 5,
+      "timeoutMinutes": 1440,
+      "resources": false
+    },
+    {
+      "model": "fun-cosyvoice3-0.5b-2512",
+      "backend": "webgpu",
+      "scenario": "warm",
+      "repetitions": 5,
+      "timeoutMinutes": 1440,
+      "resources": false
+    },
+    {
+      "model": "ming-3.0-tts-0.5b-gguf",
+      "backend": "webgpu",
+      "scenario": "warm",
+      "repetitions": 5,
+      "timeoutMinutes": 1440,
+      "resources": false
+    },
+    {
+      "model": "fun-cosyvoice3-0.5b-2512",
+      "backend": "cpu",
+      "scenario": "warm",
+      "repetitions": 5,
+      "timeoutMinutes": 1440,
+      "resources": false
+    },
+    {
+      "model": "ming-3.0-tts-0.5b-fusor-mix-cpu",
+      "backend": "cpu",
+      "scenario": "warm",
+      "repetitions": 5,
+      "timeoutMinutes": 1440,
+      "resources": false
+    },
+    {
+      "model": "ming-3.0-tts-0.5b-gguf",
+      "backend": "cpu",
+      "scenario": "warm",
+      "repetitions": 5,
+      "timeoutMinutes": 1440,
+      "resources": false
+    },
+    {
+      "model": "audio8-realistic-0.6b-int4",
+      "backend": "cpu",
+      "scenario": "warm",
+      "repetitions": 5,
+      "timeoutMinutes": 1440,
+      "resources": false
+    }
+  ]
+}
