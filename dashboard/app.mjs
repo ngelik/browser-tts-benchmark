@@ -10,7 +10,7 @@ const state = {data: null, view: 'table', metric: 'generation', sort: 'cpu', dir
 const audio = $('#sample-audio');
 const dialog = $('#details');
 let playRequest = 0;
-const statusLabel = metric => metric?.status === 'measured' ? 'Measured' : metric?.status === 'unsupported' ? 'Unsupported' : metric?.status === 'error' ? 'Run failed' : 'Unavailable';
+const statusLabel = metric => metric?.status === 'measured' ? 'Measured' : metric?.status === 'unsupported' ? 'Unsupported' : metric?.status === 'error' ? 'Run failed' : metric?.displayStatus ?? (metric?.evidenceStatus === 'measured' ? 'Insufficient memory data' : 'Unavailable');
 const isMeasured = metric => metric?.status === 'measured';
 const historical = model => ['cpu', 'webgpu'].some(b => model.warm[b]?.origin === 'historical-import');
 const cohortName = metric => state.cohorts.get(metric?.cohortKey)?.label ?? (metric?.origin === 'historical-import' ? 'Historical' : 'Unavailable');
@@ -68,7 +68,7 @@ function renderCharts(models) {
   $('#charts').innerHTML = backends.map(backend => `<section class="chart-panel ${backend === 'webgpu' ? 'gpu' : backend}" aria-label="${backend === 'size' ? 'Model size' : labels[backend]} chart"><h3>${backend === 'size' ? 'Model weights' : `<i class="key ${backend === 'cpu' ? 'cpu' : 'gpu'}"></i>${labels[backend]} / ${backend === 'cpu' ? 'WebAssembly' : 'WebGPU'}`}</h3><p class="small">${kind === 'generation' ? 'Median full-article generation · seconds' : kind === 'memory' ? 'Average Chrome process RSS · MB' : 'Verified core model weights · MB'}</p>${[...models].sort((a, b) => compareValues(a, b, get(a, backend), get(b, backend))).map(model => {
     const value = get(model, backend), missing = !Number.isFinite(value);
     const metric = kind === 'size' ? null : model[kind === 'generation' ? 'warm' : 'memory'][backend];
-    return `<div class="bar-row ${missing ? 'unavailable' : ''}"><div class="bar-label"><button data-detail="${escape(model.id)}">${escape(model.name)}</button><span class="value">${missing ? statusLabel(metric) : `${fmt(value)} <span class="sr-only">${units}</span>`}</span></div>${missing ? '' : `<div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:${value / max * 100}%"></div></div>`}</div>`;
+    return `<div class="bar-row ${missing ? 'unavailable' : ''}"><div class="bar-label"><button data-detail="${escape(model.id)}">${escape(model.name)}</button><span class="value"${missing && metric?.reason ? ` title="${escape(metric.reason)}"` : ''}>${missing ? escape(statusLabel(metric)) : `${fmt(value)} <span class="sr-only">${units}</span>`}</span></div>${missing ? '' : `<div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:${value / max * 100}%"></div></div>`}</div>`;
   }).join('')}<p class="chart-foot">${kind === 'size' ? 'Excludes runtime and voice assets.' : 'Shared scale across CPU and GPU. Open a model for source and sample count.'}</p></section>`).join('');
 }
 function render() {
