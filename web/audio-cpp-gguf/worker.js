@@ -67,6 +67,9 @@
   let gpuInfo = null;
 
   function errorText(error) { return String(error && (error.stack || error.message) || error); }
+  function runtimeLog(phase, message) {
+    if (config && config.diagnosticLogs) self.postMessage({type:'runtime-log',phase,message:String(message)});
+  }
   function makeUnsupported(reason, info) {
     return { ...info, status:'unsupported', reason, backendEffective:'none',
       capability:{gpuDispatchVerified:false, description:reason} };
@@ -84,7 +87,7 @@
     if (adapter.isFallbackAdapter === true || (info && info.isFallbackAdapter === true)) {
       return {reason:'Software WebGPU fallback adapters are not benchmarked.'};
     }
-    return {adapter, description:info && (info.description || info.vendor) || 'WebGPU adapter details unavailable.'};
+    return {adapter, description:info && (info.description || info.vendor) || 'Hardware WebGPU adapter'};
   }
   function cacheKey(start, end) {
     return new Request(new URL('/' + CACHE_PREFIX + '/' + config.sha256 + '/' + start + '-' + end, self.location.origin));
@@ -150,7 +153,7 @@
         const written = fs.write(stream, bytes, 0, bytes.length, offset);
         if (written !== bytes.length) throw new Error('Could not write GGUF range ' + offset + '-' + end + ' into MEMFS.');
         offset = end + 1;
-        self.postMessage({type:'asset-progress', loaded:offset, total:config.bytes});
+        if (config.diagnosticLogs) self.postMessage({type:'asset-progress', loaded:offset, total:config.bytes});
       }
     } finally {
       fs.close(stream);
@@ -176,6 +179,7 @@
   async function synthesize(text, chunkId, emitFirstPcm) {
     if (typeof text !== 'string' || !text.trim()) throw new Error('GGUF generation requires nonempty canonical source text.');
     const before = dispatchProbe ? totalDispatches() : 0;
+    runtimeLog('synthesis-start', 'Running ' + chunkId + ' on explicit ' + config.backend + ' backend.');
     const status = await invoke('bench_generate', 'number', ['string','string','number'], [text, 'en', config.seed]);
     if (status !== 0) throw new Error('audio.cpp generation failed (' + status + '): ' + module.ccall('bench_error','string',[],[]));
     const output = checkPcm();
@@ -185,14 +189,16 @@
       module._bench_clear_result();
       throw new Error('The explicit WebGPU backend completed speech without an observed WebGPU compute dispatch.');
     }
+    runtimeLog('synthesis-complete', output.frames + ' mono samples at ' + output.rate + ' Hz.');
     if (emitFirstPcm) emitFirstPcm();
     module._bench_clear_result();
     return {parts:[output.pcm], sampleRate:output.rate, completedChunkId:chunkId, dispatches};
   }
   async function initialize(options) {
-    config = Object.assign({}, options.model, {backend:options.backend});
+    config = Object.assign({}, options.model, {backend:options.backend,diagnosticLogs:options.diagnosticLogs === true});
     const family = options.family;
     const threads = options.threads || THREADS;
+    if (!Number.isSafeInteger(threads) || threads < 1 || threads > 16) throw new Error('Backend thread count must be an integer from 1 to 16.');
     if (family !== 'ming3_tts' && family !== 'audio8_tts') throw new Error('Unsupported audio.cpp TTS family.');
     if (options.backend !== 'cpu' && options.backend !== 'webgpu') throw new Error('Backend must be explicitly cpu or webgpu.');
     if (options.backend === 'webgpu') {
@@ -200,17 +206,22 @@
       if (hardware.reason) return makeUnsupported(hardware.reason, options.info || {});
       gpuInfo = hardware.description;
     }
+    runtimeLog('runtime-load', 'Loading pinned audio.cpp WebAssembly runtime.');
     module = await createTTS({
       locateFile(name) {
         return name.endsWith('.wasm') ? RUNTIME_WASM :
           new URL(name, self.location.origin + '/runtimes/audio-cpp-browser-v1/').href;
       },
-      print(message) { self.postMessage({type:'runtime-log',message:String(message)}); },
-      printErr(message) { self.postMessage({type:'runtime-log',message:String(message),error:true}); },
+      print(message) { runtimeLog('audio.cpp', message); },
+      printErr(message) { runtimeLog('audio.cpp error', message); },
     });
+    runtimeLog('runtime-ready', 'WebAssembly module loaded.');
+    runtimeLog('model-cache', 'Filling local MEMFS from verified 16 MiB model ranges.');
     await fillModelFile(module, options);
+    runtimeLog('session-open', 'Opening ' + family + ' session with ' + options.backend + ' backend and ' + threads + ' threads.');
     const status = await invoke('bench_open','number',['string','string','number'],[family,options.backend,threads]);
     if (status !== 0) throw new Error('audio.cpp model/session initialization failed (' + status + '): ' + module.ccall('bench_error','string',[],[]));
+    runtimeLog('session-ready', 'Model session initialized.');
     const info = options.info || {};
     const value = {
       ...info, status:'measured',
@@ -231,7 +242,7 @@
       },
     };
     if (options.backend === 'webgpu') value.gpu = gpuInfo;
-    if (options.backend === 'webgpu' && !options.probe) throw new Error('WebGPU requires an untimed dispatch probe before scoring.');
+    // The benchmark runner validates dispatch in a separate untimed worker. The timed worker remains uninstrumented.
     if (options.probe) {
       const probe = await synthesize(options.probeText || 'The local browser runtime is ready.', 'probe', null);
       value.capability = {

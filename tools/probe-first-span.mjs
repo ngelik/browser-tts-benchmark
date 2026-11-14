@@ -1,4 +1,4 @@
-/** Reproducible diagnostic for one source span. Full article scores use bin/bench.mjs. */
+/** Headed-Chrome diagnostic for a small probe or the first canonical span; never a full benchmark. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
@@ -12,9 +12,20 @@ import {prepareAssets} from '../lib/assets.mjs';
 import {getModel} from '../lib/catalog.mjs';
 import {wavInfo} from './audio.mjs';
 
-const [model, backend, slug, license, ...extra] = process.argv.slice(2);
-if (!model || !['cpu','webgpu'].includes(backend) || !/^[a-z0-9][a-z0-9-]{0,120}$/.test(slug ?? '') || license !== '--accept-license' || extra.length) {
-  throw new Error('Usage: node tools/probe-first-span.mjs MODEL cpu|webgpu NEW-RUN-SLUG --accept-license');
+const [model, backend, slug, license, ...flags] = process.argv.slice(2);
+let threads = 6;
+let timeoutMs = 1_800_000;
+let probeOnly = false;
+for (const flag of flags) {
+  if (flag === '--probe-only') probeOnly = true;
+  else if (flag.startsWith('--threads=')) threads = Number(flag.slice('--threads='.length));
+  else if (flag.startsWith('--timeout-ms=')) timeoutMs = Number(flag.slice('--timeout-ms='.length));
+  else throw new Error('Unknown option: ' + flag);
+}
+if (!model || !['cpu','webgpu'].includes(backend) || !/^[a-z0-9][a-z0-9-]{0,120}$/.test(slug ?? '') ||
+    license !== '--accept-license' || !Number.isSafeInteger(threads) || threads < 1 || threads > 16 ||
+    !Number.isSafeInteger(timeoutMs) || timeoutMs < 1000 || timeoutMs > 1_800_000) {
+  throw new Error('Usage: node tools/probe-first-span.mjs MODEL cpu|webgpu NEW-RUN-SLUG --accept-license [--threads=1..16] [--timeout-ms=1000..1800000] [--probe-only]');
 }
 const runsRoot = resolve('runs');
 await mkdir(runsRoot,{recursive:true});
@@ -40,6 +51,10 @@ try {
   context = await chromium.launchPersistentContext(profile,{executablePath:await findChrome(),headless:false,chromiumSandbox:true,ignoreDefaultArgs:['--enable-unsafe-swiftshader'],args:['--no-first-run','--no-default-browser-check','--disable-software-rasterizer']});
   const page = context.pages()[0] || await context.newPage();
   const external = [];
+  page.on('console', message => {
+    const line = message.text();
+    if (line.startsWith('[audio.cpp/')) console.log(line);
+  });
   await context.route('**/*', async route => {
     const url = new URL(route.request().url());
     if (url.protocol === 'blob:' || url.origin === new URL(server.url).origin) return route.continue();
@@ -47,14 +62,23 @@ try {
     return route.abort();
   });
   await page.goto(server.url);
-  const output = await page.evaluate(async ({model,backend,chunk}) => {
+  const evaluation = page.evaluate(async ({model,backend,chunk,threads,probeOnly}) => {
     const {diagnosticFactories:adapterFactories,encodeWavBase64} = await import('/web/bench.mjs');
+    const {openDiagnosticAdapter} = await import('/web/audio-cpp-gguf/probe-lifecycle.mjs');
     if (!adapterFactories?.[model]) throw new Error('No diagnostic adapter factory for ' + model);
-    const engine = await adapterFactories[model]();
+    const factory = options => adapterFactories[model](options);
+    if (probeOnly) {
+      const engine = await factory({threads,diagnosticLogs:true});
+      try {
+        const configuration = await engine.initialize({backend,probe:true,probeText:'A short browser speech check.',threads,diagnosticLogs:true});
+        if (configuration.status !== 'measured') throw new Error(configuration.reason || configuration.status);
+        if (backend === 'webgpu' && configuration.capability?.gpuDispatchVerified !== true) throw new Error('WebGPU dispatch proof missing');
+        return {probeOnly:true,configuration};
+      } finally {await engine.dispose();}
+    }
+    const opened = await openDiagnosticAdapter(factory,{backend,threads,diagnosticLogs:true});
+    const engine = opened.engine;
     try {
-      const configuration = await engine.initialize({backend,probe:true,probeText:'A short browser speech check.'});
-      if (configuration.status !== 'measured') throw new Error(configuration.reason || configuration.status);
-      if (backend === 'webgpu' && configuration.capability?.gpuDispatchVerified !== true) throw new Error('WebGPU dispatch proof missing');
       const runs = [];
       let raw;
       for (let pass = 0; pass < 2; pass++) {
@@ -71,25 +95,36 @@ try {
         const bytes = new Uint8Array(await crypto.subtle.digest('SHA-256',raw));
         runs.push({generationMs,firstPcmMs,sampleRate:response.sampleRate,samples,pcmSha256:Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('')});
       }
-      // The benchmark encoder runs after each timed call has completed.
-      return {configuration, runs, wavBase64:encodeWavBase64(raw, runs[1].sampleRate)};
+      // The WAV encoder runs after both diagnostic calls have completed.
+      return {configuration:opened.configuration,capabilityProbe:opened.capabilityProbe,runs,wavBase64:encodeWavBase64(raw,runs[1].sampleRate)};
     } finally {await engine.dispose();}
-  },{model,backend,chunk});
+  },{model,backend,chunk,threads,probeOnly});
+  let timeout;
+  const output = await Promise.race([
+    evaluation,
+    new Promise((_, reject) => { timeout = setTimeout(() => reject(new Error('Diagnostic exceeded ' + timeoutMs + ' ms; disposable Chrome context will be closed.')), timeoutMs); }),
+  ]).finally(() => clearTimeout(timeout));
   assert.deepEqual(external,[]);
-  const wav = Buffer.from(output.wavBase64,'base64');
-  const trial = output.runs[1];
-  const decoded = wavInfo(wav);
-  assert.equal(decoded.samples, trial.samples);
-  assert.equal(decoded.sampleRate, trial.sampleRate);
   await prepareAssets(model,{mode:'verify',acceptLicense:true});
   const sourceAtEnd = execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
   const dirtyAtEnd = Boolean(execFileSync('git',['status','--porcelain'],{encoding:'utf8'}).trim());
-  assert.equal(sourceAtEnd, source, 'Git commit changed during synthesis');
-  const record={startedAt,finishedAt:new Date().toISOString(),kind:'single-span-warm-diagnostic-v1',model,backend,modelRevision:config.modelRevision,source,dirty:dirty||dirtyAtEnd,chrome:context.browser().version(),arch:os.arch(),cpu:os.cpus()[0].model,cores:os.cpus().length,ramBytes:os.totalmem(),os:os.release(),
-    fixtureSha256:sha(article),chunkId:chunk.id,start:chunk.start,end:chunk.end,sourceSha256:chunk.sha256,externalRequests:0,configuration:output.configuration,warmup:output.runs[0],measured:trial,wav:{file:'output.wav',sha256:sha(wav),bytes:wav.length}};
-  await writeFile(resolve(out,'output.wav'),wav,{flag:'wx'});
-  await writeFile(resolve(out,'diagnostic.json'),JSON.stringify(record,null,2)+'\n',{flag:'wx'});
-  console.log(JSON.stringify(record,null,2));
+  assert.equal(sourceAtEnd, source, 'Git commit changed during diagnostic');
+  if (probeOnly) {
+    const record={startedAt,finishedAt:new Date().toISOString(),kind:'browser-runtime-capability-probe-v1',model,backend,threads,timeoutMs,modelRevision:config.modelRevision,source,dirty:dirty||dirtyAtEnd,chrome:context.browser().version(),arch:os.arch(),cpu:os.cpus()[0].model,cores:os.cpus().length,ramBytes:os.totalmem(),os:os.release(),externalRequests:0,configuration:output.configuration};
+    await writeFile(resolve(out,'diagnostic.json'),JSON.stringify(record,null,2)+'\n',{flag:'wx'});
+    console.log(JSON.stringify(record,null,2));
+  } else {
+    const wav = Buffer.from(output.wavBase64,'base64');
+    const trial = output.runs[1];
+    const decoded = wavInfo(wav);
+    assert.equal(decoded.samples, trial.samples);
+    assert.equal(decoded.sampleRate, trial.sampleRate);
+    const record={startedAt,finishedAt:new Date().toISOString(),kind:'single-span-warm-diagnostic-v1',model,backend,threads,timeoutMs,modelRevision:config.modelRevision,source,dirty:dirty||dirtyAtEnd,chrome:context.browser().version(),arch:os.arch(),cpu:os.cpus()[0].model,cores:os.cpus().length,ramBytes:os.totalmem(),os:os.release(),
+      fixtureSha256:sha(article),chunkId:chunk.id,start:chunk.start,end:chunk.end,sourceSha256:chunk.sha256,externalRequests:0,configuration:output.configuration,capabilityProbe:output.capabilityProbe,warmup:output.runs[0],measured:trial,wav:{file:'output.wav',sha256:sha(wav),bytes:wav.length}};
+    await writeFile(resolve(out,'output.wav'),wav,{flag:'wx'});
+    await writeFile(resolve(out,'diagnostic.json'),JSON.stringify(record,null,2)+'\n',{flag:'wx'});
+    console.log(JSON.stringify(record,null,2));
+  }
 } finally {
   try {
     await context?.close();

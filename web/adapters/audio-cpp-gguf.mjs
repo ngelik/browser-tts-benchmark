@@ -1,5 +1,6 @@
 // Local adapter for the pinned audio.cpp GGUF browser build.
 const THREADS = 6;
+const PTHREAD_POOL_SIZE = 12;
 const WORKER_URL = new URL('../audio-cpp-gguf/worker.js', import.meta.url);
 
 const MING = Object.freeze({
@@ -54,19 +55,23 @@ const AUDIO8_DEFAULTS = Object.freeze({
   },
 });
 
-export function createAudioCppGgufAdapter(modelConfig) {
+export function createAudioCppGgufAdapter(modelConfig, { threads = modelConfig?.info?.settings?.threads ?? THREADS, diagnosticLogs = false } = {}) {
   if (!modelConfig || !modelConfig.family || !modelConfig.model || !modelConfig.info) {
     throw new Error('audio.cpp GGUF adapter requires a model config.');
+  }
+  if (!Number.isSafeInteger(threads) || threads < 1 || threads > 16) {
+    throw new Error('audio.cpp diagnostic thread count must be an integer from 1 to 16.');
   }
   const model = {
     ...modelConfig,
     model: { ...modelConfig.model },
-    info: { ...modelConfig.info, settings: { ...(modelConfig.info.settings || {}) } },
+    info: { ...modelConfig.info, settings: { ...(modelConfig.info.settings || {}), threads, pthreadPoolSize: PTHREAD_POOL_SIZE } },
   };
   let worker = null;
   let nextId = 0;
   let failed = false;
   const pending = new Map();
+  let lastProgressLogged = 0;
 
   function terminate(error) {
     if (failed) return;
@@ -120,7 +125,17 @@ export function createAudioCppGgufAdapter(modelConfig) {
       if (probe) workerUrl.searchParams.set('dispatchProbe', '1');
       worker = new Worker(workerUrl, { name: 'tts-bench-audio-cpp-' + model.family });
       worker.onmessage = function ({ data }) {
-        if (data && (data.type === 'asset-progress' || data.type === 'runtime-log')) return;
+        if (data && data.type === 'runtime-log') {
+          if (diagnosticLogs) console.info('[audio.cpp/' + model.family + '] ' + (data.phase ? data.phase + ': ' : '') + data.message);
+          return;
+        }
+        if (data && data.type === 'asset-progress') {
+          if (diagnosticLogs && (data.loaded === data.total || data.loaded - lastProgressLogged >= 256 * 1024 * 1024)) {
+            lastProgressLogged = data.loaded;
+            console.info('[audio.cpp/' + model.family + '] model-cache: ' + data.loaded + '/' + data.total + ' bytes');
+          }
+          return;
+        }
         const call = pending.get(data && data.id);
         if (!call) return;
         if (data.event === 'first-pcm') {
@@ -145,8 +160,9 @@ export function createAudioCppGgufAdapter(modelConfig) {
           model: model.model,
           info: model.info,
           backend,
-          threads: THREADS,
-      pthreadPoolSize: 12,
+          threads,
+          pthreadPoolSize: PTHREAD_POOL_SIZE,
+          diagnosticLogs,
           probe,
           probeText,
           cache: true,
@@ -189,8 +205,8 @@ export function createAudioCppGgufAdapter(modelConfig) {
   };
 }
 
-export function createMingGgufAdapter() {
-  return createAudioCppGgufAdapter(MING);
+export function createMingGgufAdapter(options = {}) {
+  return createAudioCppGgufAdapter(MING, options);
 }
 
 export function createAudio8GgufAdapter({ modelUrl, bytes, sha256 } = {}) {
