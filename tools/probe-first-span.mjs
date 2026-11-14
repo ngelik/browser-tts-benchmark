@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import os from 'node:os';
-import {mkdir, readFile, realpath, writeFile} from 'node:fs/promises';
+import {mkdir, mkdtemp, readFile, realpath, rm, writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {chromium} from 'playwright-core';
 import {startServer} from '../lib/server.mjs';
@@ -32,13 +32,15 @@ const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 assert.equal(sha(article),'4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b');
 assert.equal(sha(chunk.text), chunk.sha256);
 await mkdir(out);
-const server = await startServer(process.cwd());
-let browser;
+const profile = await mkdtemp(resolve(os.tmpdir(), 'tts-bench-first-span-'));
+let server;
+let context;
 try {
-  browser = await chromium.launch({executablePath:await findChrome(),headless:false,chromiumSandbox:true,ignoreDefaultArgs:['--enable-unsafe-swiftshader'],args:['--no-first-run','--no-default-browser-check','--disable-software-rasterizer']});
-  const page = await browser.newPage();
+  server = await startServer(process.cwd());
+  context = await chromium.launchPersistentContext(profile,{executablePath:await findChrome(),headless:false,chromiumSandbox:true,ignoreDefaultArgs:['--enable-unsafe-swiftshader'],args:['--no-first-run','--no-default-browser-check','--disable-software-rasterizer']});
+  const page = context.pages()[0] || await context.newPage();
   const external = [];
-  await page.context().route('**/*', async route => {
+  await context.route('**/*', async route => {
     const url = new URL(route.request().url());
     if (url.protocol === 'blob:' || url.origin === new URL(server.url).origin) return route.continue();
     external.push(url.origin);
@@ -83,9 +85,16 @@ try {
   const sourceAtEnd = execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
   const dirtyAtEnd = Boolean(execFileSync('git',['status','--porcelain'],{encoding:'utf8'}).trim());
   assert.equal(sourceAtEnd, source, 'Git commit changed during synthesis');
-  const record={startedAt,finishedAt:new Date().toISOString(),kind:'single-span-warm-diagnostic-v1',model,backend,modelRevision:config.modelRevision,source,dirty:dirty||dirtyAtEnd,chrome:browser.version(),arch:os.arch(),cpu:os.cpus()[0].model,cores:os.cpus().length,ramBytes:os.totalmem(),os:os.release(),
+  const record={startedAt,finishedAt:new Date().toISOString(),kind:'single-span-warm-diagnostic-v1',model,backend,modelRevision:config.modelRevision,source,dirty:dirty||dirtyAtEnd,chrome:context.browser().version(),arch:os.arch(),cpu:os.cpus()[0].model,cores:os.cpus().length,ramBytes:os.totalmem(),os:os.release(),
     fixtureSha256:sha(article),chunkId:chunk.id,start:chunk.start,end:chunk.end,sourceSha256:chunk.sha256,externalRequests:0,configuration:output.configuration,warmup:output.runs[0],measured:trial,wav:{file:'output.wav',sha256:sha(wav),bytes:wav.length}};
   await writeFile(resolve(out,'output.wav'),wav,{flag:'wx'});
   await writeFile(resolve(out,'diagnostic.json'),JSON.stringify(record,null,2)+'\n',{flag:'wx'});
   console.log(JSON.stringify(record,null,2));
-} finally { await browser?.close(); await server.close(); }
+} finally {
+  try {
+    await context?.close();
+  } finally {
+    try { await server?.close(); }
+    finally { await rm(profile, {recursive:true, force:true}); }
+  }
+}
