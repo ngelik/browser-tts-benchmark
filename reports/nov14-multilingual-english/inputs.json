@@ -12,6 +12,10 @@
     {
       "id": "2026-11-14t17-07-22-490z-audio8-realistic-0.6b-int4-webgpu-cached-5ffbf694",
       "sha256": "7bfd109c7b8489387eb9e5b9da73ffb5d5e977e5b9aebc300b3d18933311cfc3"
+    },
+    {
+      "id": "2026-11-14t19-30-24-576z-ming-3.0-tts-0.5b-fusor-mix-cpu-cpu-cached-40143301",
+      "sha256": "1e25df917ef06c33792d87ed94bee7cb5696634db98c594d26640ec46047c520"
     }
   ]
 }
