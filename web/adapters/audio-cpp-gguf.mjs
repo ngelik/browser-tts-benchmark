@@ -121,8 +121,10 @@ export function createAudioCppGgufAdapter(modelConfig, { threads = modelConfig?.
   return {
     async initialize({ backend = 'cpu', probe = false, probeText } = {}) {
       if (worker || failed) throw new Error(model.name + ' adapter instances initialize only once.');
+      // Keep the main worker URL identical for the capability probe and clean
+      // worker. The offline scenario reuses browser HTTP cache entries; a
+      // query-only probe URL would leave the plain worker.js uncached.
       const workerUrl = new URL(WORKER_URL);
-      if (probe) workerUrl.searchParams.set('dispatchProbe', '1');
       worker = new Worker(workerUrl, { name: 'tts-bench-audio-cpp-' + model.family });
       worker.onmessage = function ({ data }) {
         if (data && data.type === 'runtime-log') {
