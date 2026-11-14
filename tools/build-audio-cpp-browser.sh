@@ -59,6 +59,7 @@ cmake.write_text(text.rstrip() + '\n\n' + fragment)
 PY
 cp "$ROOT/web/audio-cpp-gguf/bench_bridge.cpp" "$SOURCE/bench_bridge.cpp"
 
+cd "$CACHE"
 emcmake cmake -G Ninja -S "$SOURCE" -B "$BUILD" \
   -DCMAKE_BUILD_TYPE=Release \
   -DAUDIOCPP_MODEL_SET=custom \
@@ -84,7 +85,12 @@ emcmake cmake -G Ninja -S "$SOURCE" -B "$BUILD" \
 
 cmake --build "$BUILD" --target bench_browser -j 4
 echo "Built pinned browser runtime at $BUILD/bin/bench_browser.js and $BUILD/bin/bench_browser.wasm"
-if strings -a "$BUILD/bin/bench_browser.js" "$BUILD/bin/bench_browser.wasm" | rg -q '/Users/agent1/|/private/tmp/|/var/folders/'; then
-  echo "Generated runtime contains a local absolute path; do not publish it." >&2
-  exit 1
-fi
+python3 - "$ROOT" "$BUILD/bin/bench_browser.js" "$BUILD/bin/bench_browser.wasm" <<'PYSCAN'
+from pathlib import Path
+import sys
+
+root = Path(sys.argv[1]).resolve().as_posix().encode()
+for filename in sys.argv[2:]:
+    if root in Path(filename).read_bytes():
+        raise SystemExit("Generated runtime contains this checkout's absolute path; do not publish it.")
+PYSCAN

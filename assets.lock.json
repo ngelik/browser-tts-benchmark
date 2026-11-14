@@ -4589,8 +4589,8 @@
           "id": "ming-audio-cpp-runtime-notices",
           "target": "runtimes/audio-cpp-browser-v1/THIRD-PARTY-NOTICES.txt",
           "url": "https://github.com/ngelik/tts-bench/releases/download/audio-cpp-browser-v1/THIRD-PARTY-NOTICES.txt",
-          "bytes": 56183,
-          "sha256": "d911ce005adae328033b88c11a9a6f15531e08564e70648e8224c2f5d9c3db5f",
+          "bytes": 60846,
+          "sha256": "c1f6b0f354e9f2dcaeee675a45d0e0b5c2e9da192793ff49ebf1c6838216dbdc",
           "kind": "license"
         }
       ],
