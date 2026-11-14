@@ -8,7 +8,12 @@
   const THREADS = 6;
   const PTHREAD_POOL_SIZE = 12;
   const isPthread = String(self.name || '').startsWith('em-pthread');
-  const dispatchProbe = new URL(self.location.href).searchParams.get('dispatchProbe') === '1';
+  // The top-level worker shares one URL between capability and clean runs.
+  // Emscripten pthreads get the query only in the capability worker so they
+  // can report their dispatch counters without making the later offline
+  // worker request a different script URL.
+  let dispatchProbe = new URL(self.location.href).searchParams.get('dispatchProbe') === '1';
+  let dispatchInstrumentationInstalled = false;
   let localDispatches = 0;
   let trackedWorkers = null;
   const childDispatches = new WeakMap();
@@ -31,6 +36,8 @@
     return total;
   }
   function instrumentPthreads() {
+    if (dispatchInstrumentationInstalled) return;
+    dispatchInstrumentationInstalled = true;
     if (isPthread) {
       const post = self.postMessage.bind(self);
       self.postMessage = function (message) {
@@ -46,8 +53,15 @@
     if (typeof NativeWorker !== 'function') return;
     self.Worker = class extends NativeWorker {
       constructor(url, options) {
-        super(url, options);
-        if (String(options && options.name || '').startsWith('em-pthread-')) {
+        const pthread = String(options && options.name || '').startsWith('em-pthread-');
+        let workerUrl = url;
+        if (pthread && dispatchProbe) {
+          const parsed = new URL(url, self.location.href);
+          parsed.searchParams.set('dispatchProbe', '1');
+          workerUrl = parsed.href;
+        }
+        super(workerUrl, options);
+        if (pthread) {
           trackedWorkers.add(this);
           this.addEventListener('message', event => {
             const count = event.data && event.data.__benchGpuDispatches;
@@ -195,6 +209,11 @@
   }
   async function initialize(options) {
     config = Object.assign({}, options.model, {backend:options.backend,diagnosticLogs:options.diagnosticLogs === true});
+    if (options.probe === true && !dispatchProbe) {
+      dispatchProbe = true;
+      observeDispatches();
+      instrumentPthreads();
+    }
     const family = options.family;
     const threads = options.threads || THREADS;
     if (!Number.isSafeInteger(threads) || threads < 1 || threads > 16) throw new Error('Backend thread count must be an integer from 1 to 16.');
