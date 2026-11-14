@@ -1,0 +1,104 @@
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { wavInfo } from '../../tools/audio.mjs';
+
+const directory = fileURLToPath(new URL('./', import.meta.url));
+const root = resolve(directory, '../..');
+const release = 'https://github.com/ngelik/tts-bench/releases/download/first-span-2026-11/';
+const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+const repoFile = (revision, path) => execFileSync('git', ['show', revision + ':' + path], {cwd:root, maxBuffer:16_000_000});
+const manifest = JSON.parse(await readFile(resolve(directory, 'audio.json')));
+const report = JSON.parse(await readFile(resolve(directory, 'observations.json')));
+const evidenceDir = resolve(root, '.cache/listening-site/diagnostics/2026-11-multilingual');
+const cache = resolve(root, '.cache/first-span-2026-11');
+const seen = new Set();
+const verified = [];
+assert.equal(manifest.schemaVersion, 1);
+assert.ok(manifest.recordings.length > 0);
+
+for (const entry of manifest.recordings) {
+  const {id, model, backend} = entry;
+  assert.match(model, /^[a-z0-9.-]+$/);
+  assert.ok(['cpu','webgpu'].includes(backend));
+  assert.equal(id, model + '--' + backend);
+  assert.equal(entry.releaseUrl, release + id + '.wav');
+  assert.equal(entry.receipt, 'receipts/' + id + '.json');
+  assert.ok(!seen.has(id), 'Duplicate recording ' + id);
+  seen.add(id);
+  const receiptBytes = await readFile(resolve(directory, entry.receipt));
+  assert.equal(sha(receiptBytes), entry.receiptSha256);
+  const r = JSON.parse(receiptBytes);
+  assert.equal(r.kind, 'single-span-warm-diagnostic-v1');
+  assert.equal(r.dirty, false);
+  assert.equal(r.model, model);
+  assert.equal(r.backend, backend);
+  assert.ok(r.configuration.status === 'measured' && r.externalRequests === 0);
+  assert.equal(r.arch, 'arm64');
+  assert.equal(r.cpu, 'Apple M1 Pro');
+  if (backend === 'webgpu') assert.equal(r.configuration.capability.gpuDispatchVerified, true);
+  assert.match(r.source, /^[a-f0-9]{40}$/);
+  execFileSync('git', ['merge-base','--is-ancestor',r.source,'HEAD'], {cwd:root});
+  const locked = JSON.parse(repoFile(r.source,'assets.lock.json')).models[model];
+  assert.equal(r.modelRevision, locked.modelRevision);
+  assert.equal(entry.modelLicense, locked.license.model);
+  assert.equal(entry.voice, r.configuration.voice);
+  assert.deepEqual(entry.sourceUrls, locked.support.sources);
+  const fixture = repoFile(r.source,'fixtures/en-20000.txt');
+  const span = JSON.parse(repoFile(r.source,'fixtures/en-20000.chunks.json')).chunks[0];
+  const source = fixture.toString().slice(span.start, span.end);
+  assert.equal(r.fixtureSha256, sha(fixture));
+  assert.equal(r.sourceSha256, sha(source));
+  assert.equal(r.chunkId, span.id);
+  assert.equal(r.start, span.start);
+  assert.equal(r.end, span.end);
+  assert.ok(r.warmup.samples > 0 && r.warmup.generationMs > 0);
+  const row = report.observations.find(row => row.recording === id);
+  assert.ok(row && row.warmup === 'same-input' && row.timedTrials === 1);
+  assert.equal(row.rawReceiptSha256,entry.receiptSha256);
+  assert.equal(row.requestedBackend,r.backend);
+  assert.equal(row.effectiveBackend,r.configuration.backendEffective);
+  assert.equal(report.models[row.model].modelRevision,r.modelRevision);
+  assert.equal(row.dirty,false);
+  assert.equal(row.pcmSha256,r.measured.pcmSha256);
+  assert.equal(row.generationSeconds,r.measured.generationMs / 1000);
+  assert.equal(row.audioFrames,r.measured.samples);
+  assert.equal(row.sampleRateHz,r.measured.sampleRate);
+  assert.equal(row.benchmarkCommit,r.source);
+  assert.equal(row.audioSeconds,r.measured.samples / r.measured.sampleRate);
+  assert.ok(r.measured.generationMs > 0 && r.measured.firstPcmMs > 0);
+  assert.ok(r.measured.firstPcmMs <= r.measured.generationMs);
+  assert.equal(row.firstPcmMs,r.measured.firstPcmMs);
+  assert.equal(report.inputs[row.input].text,source);
+  assert.equal(r.wav.bytes, 44 + r.measured.samples * 2);
+  assert.ok(r.wav.bytes > 44 && r.wav.bytes < 16 * 1024 * 1024);
+  const name = id + '.wav';
+  let data;
+  try { data = await readFile(resolve(cache,name)); }
+  catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+    const response = await fetch(entry.releaseUrl, {signal:AbortSignal.timeout(60000)});
+    assert.ok(response.ok, name + ' returned HTTP ' + response.status);
+    assert.equal(Number(response.headers.get('Content-Length')),r.wav.bytes);
+    data = Buffer.from(await response.arrayBuffer());
+  }
+  assert.equal(data.length, r.wav.bytes);
+  assert.equal(sha(data), r.wav.sha256);
+  const {samples,sampleRate} = wavInfo(data);
+  assert.equal(samples,r.measured.samples);
+  assert.equal(sampleRate,r.measured.sampleRate);
+  verified.push({entry, receiptBytes, name, data});
+}
+assert.equal(report.observations.filter(row => row.recording).length,verified.length);
+for (const sub of ['audio','receipts']) await mkdir(resolve(evidenceDir,sub), {recursive:true});
+await mkdir(cache,{recursive:true});
+for (const {entry,receiptBytes,name,data} of verified) {
+  await writeFile(resolve(cache,name),data);
+  await writeFile(resolve(evidenceDir,'audio',name),data);
+  await writeFile(resolve(evidenceDir,entry.receipt),receiptBytes);
+}
+await writeFile(resolve(evidenceDir,'audio.json'),JSON.stringify(manifest,null,2)+'\n');
+console.log('Verified and staged '+verified.length+' first-span recordings.');

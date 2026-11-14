@@ -1,0 +1,64 @@
+{
+  "startedAt": "2026-11-14T14:28:09.839Z",
+  "finishedAt": "2026-11-14T14:35:14.308Z",
+  "kind": "single-span-warm-diagnostic-v1",
+  "model": "fun-cosyvoice3-0.5b-2512",
+  "backend": "cpu",
+  "modelRevision": "dcdb9df4bce4a47d318f5f8736de0b080efd944f",
+  "source": "49910f33bfc46a4a4b2c606cd49b50ce1c51faa1",
+  "dirty": false,
+  "chrome": "157.0.8103.40",
+  "arch": "arm64",
+  "cpu": "Apple M1 Pro",
+  "cores": 8,
+  "ramBytes": 17179869184,
+  "os": "25.6.0",
+  "fixtureSha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+  "chunkId": 0,
+  "start": 0,
+  "end": 233,
+  "sourceSha256": "54006eb541e2056b2a11c4cdb38692df161553c1682a1f17c5951c1f49c3af6b",
+  "externalRequests": 0,
+  "configuration": {
+    "backendEffective": "cpu/wasm",
+    "voice": "LibriTTS-R 4446 default",
+    "precision": "Q8 LLM and flow steps; Q4 embeddings and flow encoder; Q4/int8 HiFT",
+    "settings": {
+      "executionProviders": [
+        "wasm"
+      ],
+      "language": "en",
+      "sampleRate": 24000,
+      "wasmThreads": 4,
+      "flowSteps": 10,
+      "guidance": 0.7,
+      "sampler": "RAS top-p 0.8 / top-k 25 / repeat window 10, unseeded",
+      "frontend": "Quick Inference English normalization, Qwen2 BPE, sentence packing up to nominal 80 tokens",
+      "generation": "109 preset prompt speech tokens, cap 20 speech tokens per text token with required stop, fixed start noise and upstream HiFT uniform noise"
+    },
+    "status": "measured",
+    "capability": {
+      "gpuDispatchVerified": null,
+      "description": "Four WASM threads for the five ONNX graphs; browser-worker frontend and sampling."
+    }
+  },
+  "warmup": {
+    "generationMs": 192976.33499991894,
+    "firstPcmMs": 192975.30999994278,
+    "sampleRate": 24000,
+    "samples": 361920,
+    "pcmSha256": "e3a99507d5fe0577570465ecaa3eef338bb0f6f1eaaacd0b5d03455efa9d3f2e"
+  },
+  "measured": {
+    "generationMs": 185801.91499996185,
+    "firstPcmMs": 185801.85500001907,
+    "sampleRate": 24000,
+    "samples": 350400,
+    "pcmSha256": "d1cc9fa008c5de792b8cda9ab1643e478db540b9f6524c5b4298316bf654946d"
+  },
+  "wav": {
+    "file": "output.wav",
+    "sha256": "151cccf2c9af6dda7798460bc9807bc4ea1ea6a7f7ea241ad199d1b9333adbf1",
+    "bytes": 700844
+  }
+}
