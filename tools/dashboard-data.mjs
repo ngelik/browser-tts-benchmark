@@ -158,6 +158,23 @@ function createMemoryMetric(candidate) {
   };
 }
 
+function describeMissingScore(metric, model, backend, scenario, resource) {
+  if (metric.resultId) return metric;
+  if (!model.backends.includes(backend)) {
+    const onlyBackend = model.backends.length === 1 && model.backends[0];
+    const label = onlyBackend === 'cpu' ? 'CPU only' : onlyBackend === 'webgpu' ? 'WebGPU only' : 'No backend';
+    return { ...metric, displayStatus: label, reason: 'The registered configuration supports ' +
+      model.backends.map(b => b === 'cpu' ? 'CPU' : 'WebGPU').join(' and ') + '.' };
+  }
+  if (scenario === 'warm') {
+    const reason = resource.status === 'measured'
+      ? 'A full-article memory run is available in the model details. The repeated warm generation score has not been published.'
+      : 'No repeated warm generation score has been published for this configuration and backend.';
+    return { ...metric, displayStatus: 'No warm score', reason };
+  }
+  return { ...metric, displayStatus: 'No memory run' };
+}
+
 function sameSettings(a, b) {
   const { executionProviders: ignoredA, ...settingsA } = a.settings;
   const { executionProviders: ignoredB, ...settingsB } = b.settings;
@@ -245,6 +262,10 @@ export function assembleDashboardData({ results, models, audioEntries = [] }) {
   const outputModels = Object.entries(models).sort(([a], [b]) => a.localeCompare(b)).map(([id, model]) => {
     const warm = Object.fromEntries(BACKENDS.map(backend => [backend, createWarmMetric(selectedWarm.get(`${id}/${backend}`))]));
     const memory = Object.fromEntries(BACKENDS.map(backend => [backend, createMemoryMetric(selectedMemory.get(`${id}/${backend}`))]));
+    for (const backend of BACKENDS) {
+      warm[backend] = describeMissingScore(warm[backend], model, backend, 'warm', memory[backend]);
+      memory[backend] = describeMissingScore(memory[backend], model, backend, 'memory');
+    }
     const selectedWarmCandidates = BACKENDS.map(backend => selectedWarm.get(`${id}/${backend}`));
     const preferredAudio = Object.fromEntries(BACKENDS.map(backend => [
       backend,

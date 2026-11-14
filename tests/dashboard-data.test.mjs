@@ -85,6 +85,24 @@ test('keeps unsupported cells, historical warm provenance, and independent RAM p
   assert.equal(leokani.warm.cpu.reportUrl, `https://github.com/ngelik/tts-bench/blob/main/results/${leokani.warm.cpu.resultId}/summary.md`);
 });
 
+test('missing warm results distinguish configured backends, CPU-only variants, and separate diagnostic evidence', () => {
+  // Work from a fixed published diagnostic so future warm submissions can supersede it.
+  const cosy = 'fun-cosyvoice3-0.5b-2512', fusor = 'ming-3.0-tts-0.5b-fusor-mix-cpu';
+  const models = getAssetLock().models;
+  const diagnostic = results.find(r => r.protocol.scenario === 'cached' && r.cells.some(c =>
+    c.model === cosy && c.backendRequested === 'webgpu' && c.status === 'measured'));
+  assert.ok(diagnostic);
+  const subset = assembleDashboardData({ results: [diagnostic], models: { [cosy]: models[cosy], [fusor]: models[fusor] } });
+  const [cosyRow, fusorRow] = subset.models;
+  assert.equal(cosyRow.warm.webgpu.displayStatus, 'No warm score');
+  assert.match(cosyRow.warm.webgpu.reason, /full-article memory run/);
+  assert.equal(cosyRow.warm.webgpu.medianSeconds, null);
+  assert.equal(cosyRow.memory.cpu.displayStatus, 'No memory run');
+  assert.equal(fusorRow.warm.webgpu.displayStatus, 'CPU only');
+  assert.equal(fusorRow.memory.webgpu.displayStatus, 'CPU only');
+  assert.equal(fusorRow.warm.webgpu.resultId, null);
+});
+
 test('forms comparison-compatible cohorts and only pairs matching measured native warm receipts', () => {
   const models = Object.fromEntries(dashboard.models.map(model => [model.id, model]));
   const kokoro = models['kokoro-82m'];
