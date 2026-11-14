@@ -60,6 +60,9 @@ async function initialize({backend, probe, probeText}) {
   ort.env.wasm.proxy = false;
   const prefix = 'ort-wasm-simd-threaded' + (gpu ? '.asyncify' : '');
   ort.env.wasm.wasmPaths = {mjs: ortRoot + prefix + '.mjs', wasm: ortRoot + prefix + '.wasm'};
+  const wasmHash = gpu ? 'ca319e9539cd0f1e291cf56074760121eaf39650f5dbf84b6e52c07f4b2944ec' : '4b884c203b0fa48d057be3332c65513ff85aa3c5bddd6946acc0fab7ecda001d';
+  const wasmResponse = await fetchModelAsset(ortRoot + prefix + '.wasm', wasmHash);
+  ort.env.wasm.wasmBinary = new Uint8Array(await wasmResponse.arrayBuffer());
   if (gpu) ort.env.webgpu.adapter = hardware.adapter;
   engine = {
     ort,
