@@ -1,0 +1,69 @@
+{
+  "startedAt": "2026-11-14T14:15:04.501Z",
+  "finishedAt": "2026-11-14T14:18:49.021Z",
+  "kind": "single-span-warm-diagnostic-v1",
+  "model": "audio8-realistic-0.6b-int4",
+  "backend": "webgpu",
+  "modelRevision": "04313606782af6b9a1aa93724555bc7b64ba9197",
+  "source": "49910f33bfc46a4a4b2c606cd49b50ce1c51faa1",
+  "dirty": false,
+  "chrome": "157.0.8103.40",
+  "arch": "arm64",
+  "cpu": "Apple M1 Pro",
+  "cores": 8,
+  "ramBytes": 17179869184,
+  "os": "25.6.0",
+  "fixtureSha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+  "chunkId": 0,
+  "start": 0,
+  "end": 233,
+  "sourceSha256": "54006eb541e2056b2a11c4cdb38692df161553c1682a1f17c5951c1f49c3af6b",
+  "externalRequests": 0,
+  "configuration": {
+    "status": "measured",
+    "backendEffective": "webgpu+wasm",
+    "voice": "Reference-free English synthesis",
+    "precision": "INT4 slow/fast AR, FP16 codec",
+    "settings": {
+      "executionProviders": [
+        "webgpu",
+        "wasm"
+      ],
+      "language": "en",
+      "sampleRate": 44100,
+      "temperature": 0.7,
+      "topP": 0.9,
+      "topK": 50,
+      "seed": 42,
+      "wasmThreads": 6,
+      "maxFrames": 1024,
+      "voiceSelection": "Reference-free English synthesis",
+      "sampling": "Seeded JS categorical draw with upstream top-p-before-temperature and ten-frame repetition resampling.",
+      "chunking": "One complete source span per reference-free prompt, one full decoder call after EOS."
+    },
+    "capability": {
+      "gpuDispatchVerified": true,
+      "description": "301954 dispatches in separate capability probe; WebGPU with WASM fallback."
+    },
+    "gpu": "apple"
+  },
+  "warmup": {
+    "generationMs": 98035.375,
+    "firstPcmMs": 98035.25,
+    "sampleRate": 44100,
+    "samples": 733184,
+    "pcmSha256": "c0d57c882ce5d4fb5339c969efe7647fc44ea3f174625fe4a0a6db2947d59b02"
+  },
+  "measured": {
+    "generationMs": 98762.10499989986,
+    "firstPcmMs": 98760.12000000477,
+    "sampleRate": 44100,
+    "samples": 733184,
+    "pcmSha256": "c0d57c882ce5d4fb5339c969efe7647fc44ea3f174625fe4a0a6db2947d59b02"
+  },
+  "wav": {
+    "file": "output.wav",
+    "sha256": "42f4b94dadf504516df1c70acef68e302510f20c399abbed3500426e0322b639",
+    "bytes": 1466412
+  }
+}

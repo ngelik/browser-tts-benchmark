@@ -27,9 +27,10 @@ function timingCell(value, scale, kind) {
 function group(section, rows, models) {
   const article = element('article', undefined, 'input-group');
   const title = element('h3', section.label);
-  const titleId = 'input-' + rows[0].input;
+  const titleId = 'input-' + rows[0].input + (rows[0].recording ? '-paired' : '-development');
   title.id = titleId;
-  article.append(title, element('div', section.characters + ' characters', 'input-meta'));
+  article.append(title, element('div', section.characters + ' characters · ' +
+    (rows[0].recording ? 'Verified recordings' : 'Development probes'), 'input-meta'));
   article.append(element('blockquote', section.text.trim()));
   const wrapper = element('div', undefined, 'diagnostic-table-wrap');
   wrapper.tabIndex = 0;
@@ -55,6 +56,28 @@ function group(section, rows, models) {
   }
   wrapper.append(table);
   article.append(wrapper);
+  const recordings = rows.filter(r => r.recording);
+  if (recordings.length) {
+    const players = element('div', undefined, 'diagnostic-players');
+    for (const r of recordings) {
+      const name = models[r.model].label + ' · ' + (r.requestedBackend === 'cpu' ? 'CPU' : 'WebGPU');
+      const player = element('figure');
+      player.append(element('figcaption',name));
+      const audio = document.createElement('audio');
+      audio.controls = true;
+      audio.preload = 'none';
+      audio.setAttribute('aria-label', name + ' reading the article opening');
+      audio.src = './2026-11-multilingual/audio/' + encodeURIComponent(r.recording) + '.wav';
+      const link = element('a','Run receipt');
+      link.href = './2026-11-multilingual/receipts/' + encodeURIComponent(r.recording) + '.json';
+      player.append(audio,link);
+      players.append(player);
+    }
+    article.append(players);
+    const attribution = element('a','Recording sources and voice attribution','audio-attribution');
+    attribution.href = './2026-11-multilingual/audio.json';
+    article.append(attribution);
+  }
   const details = element('details');
   details.append(element('summary','Run details'));
   const ul = element('ul');
@@ -80,7 +103,10 @@ async function render() {
   const groups = document.querySelector('#groups');
   for (const [key, section] of Object.entries(inputs)) {
     const rows = observations.filter(row => row.input === key);
-    if (rows.length) groups.append(group(section, rows, models));
+    const paired = rows.filter(row => row.recording);
+    const development = rows.filter(row => !row.recording);
+    if (paired.length) groups.append(group(section, paired, models));
+    if (development.length) groups.append(group(section, development, models));
   }
   document.querySelector('#load-status').hidden = true;
 }

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "recordings": [
+    {
+      "id": "audio8-realistic-0.6b-int4--cpu",
+      "model": "audio8-realistic-0.6b-int4",
+      "backend": "cpu",
+      "receipt": "receipts/audio8-realistic-0.6b-int4--cpu.json",
+      "receiptSha256": "f51d5e3f66b832515ff25e407e286ab0a447664d8e20d182a4a630f4663d501d",
+      "releaseUrl": "https://github.com/ngelik/tts-bench/releases/download/first-span-2026-11/audio8-realistic-0.6b-int4--cpu.wav",
+      "voice": "Reference-free English synthesis",
+      "modelLicense": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/Edge0/Audio8-TTS-Realistic-Air/blob/1e857568bfd4f02931aca3988ee773a44d2d26d3/README.md",
+        "https://huggingface.co/stephvax/audio8-tts-realistic-0.6b-onnx-int4/blob/04313606782af6b9a1aa93724555bc7b64ba9197/provenance.json"
+      ]
+    },
+    {
+      "id": "audio8-realistic-0.6b-int4--webgpu",
+      "model": "audio8-realistic-0.6b-int4",
+      "backend": "webgpu",
+      "receipt": "receipts/audio8-realistic-0.6b-int4--webgpu.json",
+      "receiptSha256": "017ad7a7a48891db171bc676b9eeff430f71d862024daa48253b514db3ab598d",
+      "releaseUrl": "https://github.com/ngelik/tts-bench/releases/download/first-span-2026-11/audio8-realistic-0.6b-int4--webgpu.wav",
+      "voice": "Reference-free English synthesis",
+      "modelLicense": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/Edge0/Audio8-TTS-Realistic-Air/blob/1e857568bfd4f02931aca3988ee773a44d2d26d3/README.md",
+        "https://huggingface.co/stephvax/audio8-tts-realistic-0.6b-onnx-int4/blob/04313606782af6b9a1aa93724555bc7b64ba9197/provenance.json"
+      ]
+    },
+    {
+      "id": "fun-cosyvoice3-0.5b-2512--cpu",
+      "model": "fun-cosyvoice3-0.5b-2512",
+      "backend": "cpu",
+      "receipt": "receipts/fun-cosyvoice3-0.5b-2512--cpu.json",
+      "receiptSha256": "cc4dc92381e2e01c34d1c6c9b6000ef02f394924552633a4374578ac9eadc269",
+      "releaseUrl": "https://github.com/ngelik/tts-bench/releases/download/first-span-2026-11/fun-cosyvoice3-0.5b-2512--cpu.wav",
+      "voice": "LibriTTS-R 4446 default",
+      "modelLicense": "Apache-2.0; preset voice features CC BY 4.0",
+      "sourceUrls": [
+        "https://huggingface.co/danyalmalik/Fun-CosyVoice3-0.5B-ONNX-WebGPU/blob/dcdb9df4bce4a47d318f5f8736de0b080efd944f/README.md",
+        "https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512/blob/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/README.md",
+        "https://github.com/mdanyalmalik/quick-inf/blob/b50b3b8576f486d55fec5c366a0d8305a1fe8c41/src/runtime/speech/speech-engine.ts"
+      ],
+      "attribution": "Preset adapted from LibriTTS-R, Koizumi et al. (2023), speaker 4446, CC BY 4.0."
+    },
+    {
+      "id": "fun-cosyvoice3-0.5b-2512--webgpu",
+      "model": "fun-cosyvoice3-0.5b-2512",
+      "backend": "webgpu",
+      "receipt": "receipts/fun-cosyvoice3-0.5b-2512--webgpu.json",
+      "receiptSha256": "c14fd0e66cf32d32ba657da9c53b589a162f073675f6eb505339a7f5dc71a490",
+      "releaseUrl": "https://github.com/ngelik/tts-bench/releases/download/first-span-2026-11/fun-cosyvoice3-0.5b-2512--webgpu.wav",
+      "voice": "LibriTTS-R 4446 default",
+      "modelLicense": "Apache-2.0; preset voice features CC BY 4.0",
+      "sourceUrls": [
+        "https://huggingface.co/danyalmalik/Fun-CosyVoice3-0.5B-ONNX-WebGPU/blob/dcdb9df4bce4a47d318f5f8736de0b080efd944f/README.md",
+        "https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512/blob/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/README.md",
+        "https://github.com/mdanyalmalik/quick-inf/blob/b50b3b8576f486d55fec5c366a0d8305a1fe8c41/src/runtime/speech/speech-engine.ts"
+      ],
+      "attribution": "Preset adapted from LibriTTS-R, Koizumi et al. (2023), speaker 4446, CC BY 4.0."
+    }
+  ]
+}

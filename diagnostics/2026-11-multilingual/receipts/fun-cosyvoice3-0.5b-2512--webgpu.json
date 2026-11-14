@@ -1,0 +1,66 @@
+{
+  "startedAt": "2026-11-14T14:35:15.598Z",
+  "finishedAt": "2026-11-14T14:36:10.235Z",
+  "kind": "single-span-warm-diagnostic-v1",
+  "model": "fun-cosyvoice3-0.5b-2512",
+  "backend": "webgpu",
+  "modelRevision": "dcdb9df4bce4a47d318f5f8736de0b080efd944f",
+  "source": "49910f33bfc46a4a4b2c606cd49b50ce1c51faa1",
+  "dirty": false,
+  "chrome": "157.0.8103.40",
+  "arch": "arm64",
+  "cpu": "Apple M1 Pro",
+  "cores": 8,
+  "ramBytes": 17179869184,
+  "os": "25.6.0",
+  "fixtureSha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+  "chunkId": 0,
+  "start": 0,
+  "end": 233,
+  "sourceSha256": "54006eb541e2056b2a11c4cdb38692df161553c1682a1f17c5951c1f49c3af6b",
+  "externalRequests": 0,
+  "configuration": {
+    "backendEffective": "webgpu+wasm",
+    "voice": "LibriTTS-R 4446 default",
+    "precision": "Q8 LLM and flow steps; Q4 embeddings and flow encoder; Q4/int8 HiFT",
+    "settings": {
+      "executionProviders": [
+        "webgpu",
+        "wasm"
+      ],
+      "language": "en",
+      "sampleRate": 24000,
+      "wasmThreads": 4,
+      "flowSteps": 10,
+      "guidance": 0.7,
+      "sampler": "RAS top-p 0.8 / top-k 25 / repeat window 10, unseeded",
+      "frontend": "Quick Inference English normalization, Qwen2 BPE, sentence packing up to nominal 80 tokens",
+      "generation": "109 preset prompt speech tokens, cap 20 speech tokens per text token with required stop, fixed start noise and upstream HiFT uniform noise"
+    },
+    "status": "measured",
+    "gpu": "apple",
+    "capability": {
+      "gpuDispatchVerified": true,
+      "description": "Observed 35474 WebGPU compute dispatches during a separate PCM probe; WASM fallback enabled."
+    }
+  },
+  "warmup": {
+    "generationMs": 20486.605000019073,
+    "firstPcmMs": 20486.524999976158,
+    "sampleRate": 24000,
+    "samples": 362880,
+    "pcmSha256": "5a8b8569cf0de24ab3b3877fadc9b5367ac8e990e9b1e518ee236fc8345130e1"
+  },
+  "measured": {
+    "generationMs": 19722.02999997139,
+    "firstPcmMs": 19721.94000005722,
+    "sampleRate": 24000,
+    "samples": 371520,
+    "pcmSha256": "17835c78ade2e0faaf4ea5894c88c6992f53d7ba742550849ac87973a2033611"
+  },
+  "wav": {
+    "file": "output.wav",
+    "sha256": "85b0c7cb4dcabdc8e32819c81083599ee8e93a2313b912ec36149bfa02dccacd",
+    "bytes": 743084
+  }
+}

@@ -15,5 +15,6 @@ await mkdir(resolve(out,'diagnostics/2026-11-multilingual'),{recursive:true});
 await cp('dashboard/diagnostics.html',resolve(out,'diagnostics/index.html'));
 await cp('diagnostics/2026-11-multilingual/observations.json',resolve(out,'diagnostics/2026-11-multilingual/observations.json'));
 for(const file of ['style.css','app.mjs','diagnostics.mjs','diagnostics.css'])await cp('dashboard/'+file,resolve(out,'assets',file));
+await import('../diagnostics/2026-11-multilingual/stage-audio.mjs');
 await writeFile(resolve(out,'assets/data.json'),JSON.stringify(data)+'\n');
 console.log('Built benchmark dashboard: '+data.models.length+' models, '+clips.size+' verified recordings in .cache/listening-site');
