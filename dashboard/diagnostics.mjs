@@ -27,11 +27,13 @@ function timingCell(value, scale, kind) {
 function group(section, rows, models) {
   const article = element('article', undefined, 'input-group');
   const title = element('h3', section.label);
-  const titleId = 'input-' + rows[0].input + (rows[0].recording ? '-paired' : '-development');
+  const cohort = rows[0].comparison || 'development';
+  const titleId = 'input-' + rows[0].input + '-' + cohort;
   title.id = titleId;
   article.append(title, element('div', section.characters + ' characters · ' +
-    (rows[0].recording ? 'Verified recordings' : 'Development probes'), 'input-meta'));
+    ({matched:'Matched CPU and WebGPU runs',individual:'Individual measurement',development:'Development probes'}[cohort]), 'input-meta'));
   article.append(element('blockquote', section.text.trim()));
+  if (rows[0].pairStatus) article.append(element('p',rows[0].pairStatus,'guide'));
   const wrapper = element('div', undefined, 'diagnostic-table-wrap');
   wrapper.tabIndex = 0;
   wrapper.setAttribute('role', 'region');
@@ -50,6 +52,7 @@ function group(section, rows, models) {
     const link = element('a', models[r.model].label);
     link.href = models[r.model].weights; th.append(link);
     const backend = r.effectiveBackend === 'webgpu+wasm' ? 'WebGPU + WASM'
+      : r.effectiveBackend === 'webgpu' ? 'WebGPU'
       : r.requestedBackend === 'cpu' ? 'CPU / WASM' : 'WebGPU requested';
     tr.append(th, element('td', backend), element('td', r.warmupLabel),
       timingCell(r.generationSeconds, scale, 'generation'), timingCell(r.audioSeconds, scale, 'playback'));
@@ -87,6 +90,8 @@ function group(section, rows, models) {
     const notes = [models[r.model].label + ' · ' + backend + '.',
       models[r.model].runtime + threads + '.', models[r.model].precision + '.',
       format.format(r.audioFrames) + ' frames at ' + format.format(r.sampleRateHz) + ' Hz.'];
+    if (r.capabilityProbeMethod) notes.push(r.capabilityProbeMethod);
+    if (models[r.model].voice) notes.push(models[r.model].voice + '.');
     if (r.warmup === 'different-input') notes.push('Capability probe used “Hello, world.”');
     if (r.generationSeconds === null) notes.push('The probe captured the finished waveform only.');
     notes.push(r.sourceStatus + '.');
@@ -103,9 +108,11 @@ async function render() {
   const groups = document.querySelector('#groups');
   for (const [key, section] of Object.entries(inputs)) {
     const rows = observations.filter(row => row.input === key);
-    const paired = rows.filter(row => row.recording);
+    const paired = rows.filter(row => row.comparison === 'matched');
+    const individual = rows.filter(row => row.comparison === 'individual');
     const development = rows.filter(row => !row.recording);
     if (paired.length) groups.append(group(section, paired, models));
+    if (individual.length) groups.append(group(section, individual, models));
     if (development.length) groups.append(group(section, development, models));
   }
   document.querySelector('#load-status').hidden = true;

@@ -55,6 +55,22 @@
       "label": "Ming 3.0 TTS 0.5B",
       "weights": "https://huggingface.co/audio-cpp/Ming-3.0-TTS-0.5B-GGUF/tree/2eb8d37c7f10672e69c8aa33091baa04c461b66c",
       "modelRevision": "2eb8d37c7f10672e69c8aa33091baa04c461b66c",
+      "runtime": "audio.cpp d38518a0 · audio-cpp-browser-v1",
+      "runtimeRevision": "d38518a0d6a7aaab9d3f3dd91e9780c69857b0ac",
+      "precision": "Q8_0 GGUF with a BF16 stop head and F32 speaker encoder",
+      "voice": "US_James built-in English voice",
+      "template": "ip",
+      "seed": 1895,
+      "maxTokens": 1000,
+      "guidanceScale": 2,
+      "sigma": 0.25,
+      "temperature": 0,
+      "pthreadPoolSize": 12
+    },
+    "ming-prototype": {
+      "label": "Ming 3.0 TTS 0.5B",
+      "weights": "https://huggingface.co/audio-cpp/Ming-3.0-TTS-0.5B-GGUF/tree/2eb8d37c7f10672e69c8aa33091baa04c461b66c",
+      "modelRevision": "2eb8d37c7f10672e69c8aa33091baa04c461b66c",
       "runtime": "audio.cpp d38518a0 (Emscripten browser port)",
       "runtimeRevision": "d38518a0d6a7aaab9d3f3dd91e9780c69857b0ac",
       "precision": "Q8_0"
@@ -88,7 +104,8 @@
       "pcmSha256": "d5b62b8326253e26e916849b360c465857279190e343480f969cd3805e033bee",
       "externalRequests": 0,
       "finitePcm": true,
-      "recording": "audio8-realistic-0.6b-int4--cpu"
+      "recording": "audio8-realistic-0.6b-int4--cpu",
+      "comparison": "matched"
     },
     {
       "model": "audio8",
@@ -117,7 +134,8 @@
       "pcmSha256": "c0d57c882ce5d4fb5339c969efe7647fc44ea3f174625fe4a0a6db2947d59b02",
       "externalRequests": 0,
       "finitePcm": true,
-      "recording": "audio8-realistic-0.6b-int4--webgpu"
+      "recording": "audio8-realistic-0.6b-int4--webgpu",
+      "comparison": "matched"
     },
     {
       "model": "cosy",
@@ -146,7 +164,8 @@
       "pcmSha256": "d1cc9fa008c5de792b8cda9ab1643e478db540b9f6524c5b4298316bf654946d",
       "externalRequests": 0,
       "finitePcm": true,
-      "recording": "fun-cosyvoice3-0.5b-2512--cpu"
+      "recording": "fun-cosyvoice3-0.5b-2512--cpu",
+      "comparison": "matched"
     },
     {
       "model": "cosy",
@@ -175,7 +194,40 @@
       "pcmSha256": "17835c78ade2e0faaf4ea5894c88c6992f53d7ba742550849ac87973a2033611",
       "externalRequests": 0,
       "finitePcm": true,
-      "recording": "fun-cosyvoice3-0.5b-2512--webgpu"
+      "recording": "fun-cosyvoice3-0.5b-2512--webgpu",
+      "comparison": "matched"
+    },
+    {
+      "model": "ming",
+      "requestedBackend": "webgpu",
+      "effectiveBackend": "webgpu",
+      "input": "first",
+      "timedTrials": 1,
+      "warmup": "same-input",
+      "warmupLabel": "One identical warm-up",
+      "generationSeconds": 64.31030000007152,
+      "audioFrames": 577710,
+      "sampleRateHz": 44100,
+      "audioSeconds": 13.1,
+      "rawReceiptSha256": "761ac2025463ad2f066526c09bdcfc3ff5e4ce0b968e34fb817f615c6aac2871",
+      "sourceStatus": "Clean source f0704f9",
+      "benchmarkCommit": "f0704f978ed99f1d24833030f5ddb70f18d7c4bf",
+      "dirty": false,
+      "wasmThreads": 6,
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Observed 254143 WebGPU dispatches during untimed synthesis with finite CPU-readable PCM. Hooks were installed before runtime init and the probe is outside generation timing."
+      },
+      "warmupInput": "first",
+      "warmupMs": 64305.28999996185,
+      "firstPcmMs": 64304.69000005722,
+      "pcmSha256": "85d968e9822e2d62c04772d7a4ad992fe803f4cd4aedda1660ebbfac19b177f1",
+      "externalRequests": 0,
+      "finitePcm": true,
+      "recording": "ming-3.0-tts-0.5b-gguf--webgpu",
+      "capabilityProbeMethod": "A separate worker verified 254,143 WebGPU dispatches before a fresh worker rendered the warm-up and timed pass.",
+      "comparison": "individual",
+      "pairStatus": "CPU generation of this input is still under evaluation."
     },
     {
       "model": "audio8",
@@ -275,7 +327,7 @@
       "benchmarkCommit": null
     },
     {
-      "model": "ming",
+      "model": "ming-prototype",
       "requestedBackend": "webgpu",
       "effectiveBackend": null,
       "input": "hello",

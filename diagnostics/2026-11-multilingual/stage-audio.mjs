@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { verifyPairs } from './check-pairs.mjs';
 import { wavInfo } from '../../tools/audio.mjs';
 
 const directory = fileURLToPath(new URL('./', import.meta.url));
@@ -58,6 +59,7 @@ for (const entry of manifest.recordings) {
   assert.ok(r.warmup.samples > 0 && r.warmup.generationMs > 0);
   const row = report.observations.find(row => row.recording === id);
   assert.ok(row && row.warmup === 'same-input' && row.timedTrials === 1);
+  assert.ok(['individual','matched'].includes(row.comparison));
   assert.equal(row.rawReceiptSha256,entry.receiptSha256);
   assert.equal(row.requestedBackend,r.backend);
   assert.equal(row.effectiveBackend,r.configuration.backendEffective);
@@ -90,8 +92,9 @@ for (const entry of manifest.recordings) {
   const {samples,sampleRate} = wavInfo(data);
   assert.equal(samples,r.measured.samples);
   assert.equal(sampleRate,r.measured.sampleRate);
-  verified.push({entry, receiptBytes, name, data});
+  verified.push({entry, receipt:r, row, receiptBytes, name, data});
 }
+verifyPairs(verified.filter(item => item.row.comparison === 'matched').map(item => item.receipt));
 assert.equal(report.observations.filter(row => row.recording).length,verified.length);
 for (const sub of ['audio','receipts']) await mkdir(resolve(evidenceDir,sub), {recursive:true});
 await mkdir(cache,{recursive:true});
