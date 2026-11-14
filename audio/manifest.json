@@ -585,6 +585,36 @@
       }
     },
     {
+      "resultId": "2026-11-14t19-30-24-576z-ming-3.0-tts-0.5b-fusor-mix-cpu-cpu-cached-40143301",
+      "model": "ming-3.0-tts-0.5b-fusor-mix-cpu",
+      "backend": "cpu",
+      "trialIndex": 1,
+      "voice": "US_James (built-in US English male narrator)",
+      "language": "en",
+      "attribution": "Synthetic speech by Ming 3.0 TTS (inclusionAI), Fusor mixed-quantization browser runtime. US_James English preset. Model and runtime under MIT.",
+      "modelTerms": "MIT",
+      "sourceUrls": [
+        "https://github.com/inclusionAI/Ming-3.0-tts/blob/e999c39fa676722aaa9ea29b5aa19a90525b271f/cookbooks/instruction_en.md#built-in-premium-voices",
+        "https://huggingface.co/fusorlabs/ming-3.0-tts-0.5b-web/blob/62588575d91dceb33822fe1e3925e748393c6b3e/README.md",
+        "https://huggingface.co/spaces/fusorlabs/ming-wasm/tree/bdf46b41e966340f398fdd82d3ca64f4058ad892/engine/dist/web-threaded-relaxed",
+        "https://github.com/fusor-rs/ming-wasm/blob/bcbcf268f6b32db48c075aec94f3b7ff59208085/README.md"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-14t19-30-24-576z-ming-3.0-tts-0.5b-fusor-mix-cpu-cpu-cached-40143301--ming-3.0-tts-0.5b-fusor-mix-cpu--cpu.wav",
+        "sha256": "123c43f1d3db011b43339dcbe4f4ec27cbc1440440b87f2f90510e494e788dbb",
+        "bytes": 2646044,
+        "startSample": 0,
+        "sampleRate": 44100,
+        "samples": 1323000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-14t19-30-24-576z-ming-3.0-tts-0.5b-fusor-mix-cpu-cpu-cached-40143301--ming-3.0-tts-0.5b-fusor-mix-cpu--cpu-full.wav",
+        "sha256": "0b74f033029e3437aeb8388f4303f3df3eee379ca20300665c41c2223aa62649",
+        "bytes": 89020304
+      }
+    },
+    {
       "resultId": "2026-11-14t15-39-16-252z-ming-3.0-tts-0.5b-gguf-webgpu-cached-680f3a63",
       "model": "ming-3.0-tts-0.5b-gguf",
       "backend": "webgpu",
