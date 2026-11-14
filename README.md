@@ -168,6 +168,8 @@ Counts describe the pinned model/catalog, not the number of voices or languages 
 | LFM3-Omni-2B (Fusor q7 / CPU 6 threads) | Unknown | Unknown | 18 | [Details](docs/MODEL_SUPPORT.md#lfm3-omni-2b-fusor-q7-cpu) |
 | Mach Boom 3.5-bit (browser WASM port) | 4 | 1 | 1 (en) | [Details](docs/MODEL_SUPPORT.md#mach-boom) |
 | Pocket TTS 100M English (INT8/FP32) | 8 | 8 | 1 (en) | [Details](docs/MODEL_SUPPORT.md#pocket-tts-100m-english-int8) |
+| Fun-CosyVoice3 0.5B (Q8/Q4 ONNX) | Unknown | 1 | 9 | [Details](docs/MODEL_SUPPORT.md#fun-cosyvoice3-0.5b-2512) |
+| Audio8 TTS Realistic 0.6B INT4 | Unknown | 0 | 23 | [Details](docs/MODEL_SUPPORT.md#audio8-realistic-0.6b-int4) |
 
 ### Controlled native comparisons
 

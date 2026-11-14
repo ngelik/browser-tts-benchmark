@@ -15,3 +15,9 @@ test('support prose escaping preserves parentheses, brackets, pipes and literal 
  assert.ok(text.includes('M3 \\(Robert\\) \\| English &amp; more.'));
  assert.ok(!text.includes('export function renderReport'));
 });
+
+test('reference-free models can ship zero preset voices', () => {
+  const support = {...listModels()[0].support, voiceCount: null, bundledVoiceCount: 0};
+  assert.doesNotThrow(() => validateSupport(support));
+  assert.throws(() => validateSupport({...support, bundledVoiceCount: -1}));
+});

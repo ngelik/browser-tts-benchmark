@@ -378,7 +378,7 @@
             },
             "samples": {
               "type": "array",
-              "maxItems": 100000,
+              "maxItems": 172801,
               "items": {
                 "type": "array",
                 "prefixItems": [
@@ -535,7 +535,7 @@
                 "integer",
                 "null"
               ],
-              "minimum": 1
+              "minimum": 0
             },
             "languageCount": {
               "type": [

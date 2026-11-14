@@ -3,7 +3,7 @@ import { lstat, mkdir, readFile, readdir, realpath, writeFile } from 'node:fs/pr
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { getAssetLock } from '../lib/catalog.mjs';
-import { validateResult, sha256, median } from './results.mjs';
+import { MAX_RESOURCE_RECEIPT_BYTES, validateResult, sha256, median } from './results.mjs';
 import { verifySource } from './provenance.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -57,7 +57,7 @@ async function committedResult(id, expectedHash = null) {
   const file = resolve(ROOT, 'results', id, 'result.json');
   assertNoSymlink(file);
   const bytes = await readFile(file);
-  ensure(bytes.length < 2_000_000, `Result ${id} exceeds the public receipt size limit`);
+  ensure(bytes.length < MAX_RESOURCE_RECEIPT_BYTES, `Result ${id} exceeds the public receipt size limit`);
   const digest = sha256(bytes);
   if (expectedHash !== null) ensure(digest === expectedHash, `Committed result hash changed: ${id}`);
   let data;
@@ -73,7 +73,7 @@ async function suppliedResult(file) {
   ensure(relative(resolve(ROOT, 'results'), absolute).startsWith('..') === false,
     'Campaign inputs must be submitted receipts under results/<id>/result.json');
   const raw = await readFile(absolute);
-  ensure(raw.length < 2_000_000, 'Result file exceeds the public receipt size limit');
+  ensure(raw.length < MAX_RESOURCE_RECEIPT_BYTES, 'Result file exceeds the public receipt size limit');
   let data;
   try { data = validateResult(JSON.parse(raw), { publication: true }); }
   catch (error) { throw new Error(`Invalid submitted result ${file}: ${error.message}`); }
@@ -221,9 +221,9 @@ function summarizeCached(row) {
   const trial = row.cell.trials[0];
   if (!trial) return null;
   if (trial.memory?.availability !== 'measured' || !Number.isFinite(trial.metrics?.generationMeanRssBytes)) return null;
-  const sampledRss = trial.memory.samples.map(sample => sample[1]);
+  const peakRss = trial.memory.samples.reduce((peak, sample) => Math.max(peak, sample[1]), 0);
   return { n: row.cell.trials.length, meanRssBytes: trial.metrics.generationMeanRssBytes,
-    peakRssBytes: Math.max(...sampledRss),
+    peakRssBytes: peakRss,
     sampleCount: trial.metrics.generationRssSampleCount };
 }
 

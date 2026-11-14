@@ -75,3 +75,20 @@ test('timing-only results preserve their existing shape and report names the RSS
  assert.ok(report.includes('Per-trial mean generation Chrome process-tree RSS'));
  assert.ok(report.includes('In-window Chrome RSS observations'));
 });
+
+test('a 24-hour resource run retains every in-window RSS sample', async () => {
+  const receipt = await resourceResult();
+  const trial = receipt.cells[0].trials[0];
+  const count = 172_801;
+  const rss = 4_000_000_000;
+  const start = 1_800_000_000_000;
+  trial.generationMs = (count - 1) * 500;
+  trial.memory = {
+    ...trial.memory,
+    generationStartedAtEpochMs: start,
+    finalPcmAtEpochMs: start + trial.generationMs,
+    samples: Array.from({length: count}, (_, index) => [start + index * 500, rss]),
+  };
+  trial.metrics = {articleCallPeakRssBytes: rss, generationMeanRssBytes: rss, generationRssSampleCount: count};
+  assert.equal(validateResult(receipt), receipt);
+});

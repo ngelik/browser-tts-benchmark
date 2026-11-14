@@ -49,7 +49,7 @@ It cannot be submitted as a benchmark score.
 Full `warm` runs default to **one excluded 20,000-character warm-up and five full
 scored repetitions**. `--repetitions N` may increase this count, but may not reduce
 a publishable warm run below five. The last scored output is saved as local WAV.
-Default per-article timeout is 120 minutes; `--timeout-minutes N` accepts up to 240.
+Default per-article timeout is 120 minutes; `--timeout-minutes N` accepts up to 1,440 (24 hours) for slow models. Campaign plans can set `timeoutMinutes` per cell. The timeout applies to each full article independently.
 PiVo WebGPU can take several hours for the complete warm sequence.
 
 ## Other scenarios

@@ -19,6 +19,7 @@ for(const cell of plan.cells) {
   getModel(cell.model);
   if(!['cpu','webgpu'].includes(cell.backend)||!['warm','cached','cold','network','offline'].includes(cell.scenario)) throw new Error('Invalid campaign cell');
   if(!Number.isSafeInteger(cell.repetitions)||cell.repetitions<1||cell.repetitions>100||(cell.scenario==='warm'&&cell.repetitions<5)) throw new Error('Invalid campaign repetitions');
+  if(cell.timeoutMinutes!==undefined&&(!Number.isFinite(cell.timeoutMinutes)||cell.timeoutMinutes<=0||cell.timeoutMinutes>1440)) throw new Error('Invalid per-article timeout');
   if(cell.resources!==undefined&&typeof cell.resources!=='boolean') throw new Error('Invalid resources flag');
 }
 const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim();
@@ -35,6 +36,7 @@ try {
   if(aborted)break;assertSource();
   const note=`Campaign ${id}; cell ${index+1}/${plan.cells.length}; source ${commit}; ${plan.conditions??'Record local power and background conditions separately.'}`;
   const command=['bin/bench.mjs','run','--model',cell.model,'--backend',cell.backend,'--scenario',cell.scenario,'--repetitions',String(cell.repetitions),'--machine',options.machine,'--accept-license','--note',note];
+  if(cell.timeoutMinutes!==undefined)command.push('--timeout-minutes',String(cell.timeoutMinutes));
   if(cell.resources)command.push('--resources');
   console.log(`START ${index+1}/${plan.cells.length} ${cell.model}/${cell.backend}/${cell.scenario}`);
   await writeFile(join(out,'status.json'),JSON.stringify({index,cell,commit,startedAt:new Date().toISOString()},null,2)+'\n');

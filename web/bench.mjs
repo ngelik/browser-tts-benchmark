@@ -1,3 +1,5 @@
+import { createAudio8Adapter } from './adapters/audio8.mjs';
+import { createCosyVoice3Adapter } from './adapters/cosyvoice3.mjs';
 import { createPocketAdapter } from './adapters/pocket.mjs';
 import { createMachBoomAdapter } from './adapters/mach-boom.mjs';
 import { createLiquidCpuAdapter } from './adapters/liquid-cpu.mjs';
@@ -21,6 +23,8 @@ import { createInflectAdapter } from './adapters/inflect.mjs';
 const statusNode = document.querySelector('#status');
 const state = { fixture: null, chunks: null, engine: null, model: null, backend: null, smoke: false };
 const FACTORIES = {
+  'audio8-realistic-0.6b-int4': createAudio8Adapter,
+  'fun-cosyvoice3-0.5b-2512': createCosyVoice3Adapter,
   'pocket-tts-100m-english-int8': createPocketAdapter,
   'mach-boom': createMachBoomAdapter,
   'lfm3-audio-2b-fusor-q7-cpu': () => createLiquidCpuAdapter('audio'),

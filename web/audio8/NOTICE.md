@@ -1,0 +1,3 @@
+# Audio8 TTS browser port
+
+Audio8 Realistic is by Edge0. Its upstream NOTICE credits the DualAR architecture in Fish Audio S2 Pro. The reference-free prompt and dual autoregressive sampler in `generation.mjs` adapt Edge0's Apache-2.0 processor and reference runtime for JavaScript. The benchmark replaces the native random-number generator with a seeded JavaScript categorical sampler and rejects generation that exhausts the frame limit before EOS. The ONNX integration runs the stephvax quantization of the Realistic checkpoint. Component licenses and sources are in [the model notes](../../docs/AUDIO8_REALISTIC.md), [LICENSE-upstream](LICENSE-upstream) and [NOTICE-upstream](NOTICE-upstream).
