@@ -52,7 +52,7 @@
       "precision": "Q8 LLM and flow steps; Q4 embeddings and flow encoder; Q4/int8 HiFT"
     },
     "ming": {
-      "label": "Ming 3.0 TTS 0.5B",
+      "label": "Ming 3.0 TTS 0.5B · Q8_0 GGUF",
       "weights": "https://huggingface.co/audio-cpp/Ming-3.0-TTS-0.5B-GGUF/tree/2eb8d37c7f10672e69c8aa33091baa04c461b66c",
       "modelRevision": "2eb8d37c7f10672e69c8aa33091baa04c461b66c",
       "runtime": "audio.cpp d38518a0 · audio-cpp-browser-v1",
@@ -74,6 +74,18 @@
       "runtime": "audio.cpp d38518a0 (Emscripten browser port)",
       "runtimeRevision": "d38518a0d6a7aaab9d3f3dd91e9780c69857b0ac",
       "precision": "Q8_0"
+    },
+    "ming-fusor": {
+      "label": "Ming 3.0 TTS 0.5B · Fusor mix",
+      "weights": "https://huggingface.co/fusorlabs/ming-3.0-tts-0.5b-web/tree/62588575d91dceb33822fe1e3925e748393c6b3e",
+      "modelRevision": "62588575d91dceb33822fe1e3925e748393c6b3e",
+      "runtime": "Fusor web-threaded-relaxed",
+      "runtimeRevision": "bdf46b41e966340f398fdd82d3ca64f4058ad892",
+      "precision": "Fusor mix: Q4 LLM/VAE, Q7 flow/aggregator/embeddings",
+      "voice": "US_James (built-in US English male narrator)",
+      "preset": "quality",
+      "seed": 1895,
+      "baseModelRevision": "e5bd8da31ecf1b9276cdbdda821fa891068f1368"
     }
   },
   "observations": [
@@ -227,7 +239,38 @@
       "recording": "ming-3.0-tts-0.5b-gguf--webgpu",
       "capabilityProbeMethod": "A separate worker verified 254,143 WebGPU dispatches before a fresh worker rendered the warm-up and timed pass.",
       "comparison": "individual",
-      "pairStatus": "CPU generation of this input is still under evaluation."
+      "pairStatus": "The Q8_0 GGUF CPU path has no completed first-span timing. The Fusor CPU observation uses its own runtime and mixed-precision weights."
+    },
+    {
+      "model": "ming-fusor",
+      "requestedBackend": "cpu",
+      "effectiveBackend": "cpu/wasm",
+      "input": "first",
+      "timedTrials": 1,
+      "warmup": "same-input",
+      "warmupLabel": "One identical warm-up",
+      "generationSeconds": 10.91778499996662,
+      "audioFrames": 524790,
+      "sampleRateHz": 44100,
+      "audioSeconds": 11.9,
+      "rawReceiptSha256": "9f70da3e5a654aabdc186990672eaa85603c83b152ad5e76646b783ee3c1ade5",
+      "sourceStatus": "Clean source c112b9f",
+      "benchmarkCommit": "c112b9f63a11f3cd6049d18d604566dad223f1cf",
+      "dirty": false,
+      "wasmThreads": 6,
+      "capability": {
+        "gpuDispatchVerified": null,
+        "description": "Pinned Fusor web-threaded-relaxed WebAssembly runtime initialized with 6 compute threads."
+      },
+      "warmupInput": "first",
+      "warmupMs": 11225.365000009537,
+      "firstPcmMs": 876.7400000095367,
+      "pcmSha256": "7e9b0e57a5dc16437eee88aff560d567632ba487ad62cbf64c61099947d09e81",
+      "externalRequests": 0,
+      "finitePcm": true,
+      "recording": "ming-3.0-tts-0.5b-fusor-mix-cpu--cpu",
+      "comparison": "individual",
+      "capabilityProbeMethod": "The six-thread WASM instance rendered one complete warm-up followed by one timed repeat."
     },
     {
       "model": "audio8",

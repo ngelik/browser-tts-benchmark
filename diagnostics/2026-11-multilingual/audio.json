@@ -62,6 +62,22 @@
       "attribution": "Preset adapted from LibriTTS-R, Koizumi et al. (2023), speaker 4446, CC BY 4.0."
     },
     {
+      "id": "ming-3.0-tts-0.5b-fusor-mix-cpu--cpu",
+      "model": "ming-3.0-tts-0.5b-fusor-mix-cpu",
+      "backend": "cpu",
+      "receipt": "receipts/ming-3.0-tts-0.5b-fusor-mix-cpu--cpu.json",
+      "receiptSha256": "9f70da3e5a654aabdc186990672eaa85603c83b152ad5e76646b783ee3c1ade5",
+      "releaseUrl": "https://github.com/ngelik/tts-bench/releases/download/first-span-2026-11/ming-3.0-tts-0.5b-fusor-mix-cpu--cpu.wav",
+      "voice": "US_James (built-in US English male narrator)",
+      "modelLicense": "MIT",
+      "sourceUrls": [
+        "https://github.com/inclusionAI/Ming-3.0-tts/blob/e999c39fa676722aaa9ea29b5aa19a90525b271f/cookbooks/instruction_en.md#built-in-premium-voices",
+        "https://huggingface.co/fusorlabs/ming-3.0-tts-0.5b-web/blob/62588575d91dceb33822fe1e3925e748393c6b3e/README.md",
+        "https://huggingface.co/spaces/fusorlabs/ming-wasm/tree/bdf46b41e966340f398fdd82d3ca64f4058ad892/engine/dist/web-threaded-relaxed",
+        "https://github.com/fusor-rs/ming-wasm/blob/bcbcf268f6b32db48c075aec94f3b7ff59208085/README.md"
+      ]
+    },
+    {
       "id": "ming-3.0-tts-0.5b-gguf--webgpu",
       "model": "ming-3.0-tts-0.5b-gguf",
       "backend": "webgpu",
