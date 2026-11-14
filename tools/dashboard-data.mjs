@@ -138,19 +138,24 @@ export function summarizeMemoryTrials(trials) {
 
 function createMemoryMetric(candidate) {
   if (!candidate) return missingMetric('No native cached resource result has been submitted.', {
-    meanMB: null, peakMB: null, n: null, sampleCount: null,
+    meanMB: null, peakMB: null, n: null, sampleCount: null, generationSeconds: null, audioSeconds: null,
   });
   const { result, cell } = candidate;
   const base = metricBase(result, cell);
   if (cell.status !== 'measured') return {
-    ...base, meanMB: null, peakMB: null, n: null, sampleCount: null,
+    ...base, meanMB: null, peakMB: null, n: null, sampleCount: null, generationSeconds: null, audioSeconds: null,
   };
   const summary = summarizeMemoryTrials(cell.trials);
   if (!summary) return {
     ...base, status: 'unavailable', reason: 'Generation RSS evidence is missing, unmeasured, or has no in-window samples.',
-    evidenceStatus: cell.status, meanMB: null, peakMB: null, n: null, sampleCount: null,
+    evidenceStatus: cell.status, meanMB: null, peakMB: null, n: null, sampleCount: null, generationSeconds: null, audioSeconds: null,
   };
-  return { ...base, ...summary };
+  return {
+    ...base,
+    ...summary,
+    generationSeconds: median(cell.trials.map(trial => trial.generationMs / 1000)),
+    audioSeconds: median(cell.trials.map(trial => trial.samples / trial.sampleRate)),
+  };
 }
 
 function sameSettings(a, b) {
