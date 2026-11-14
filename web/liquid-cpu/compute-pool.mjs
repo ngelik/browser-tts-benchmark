@@ -16,7 +16,7 @@ function parsePinnedUrl(raw, runtimeRoot) {
   return { url, relative: url.pathname.slice(root.pathname.length) };
 }
 
-export function validateComputeSpawn(message, { runtimeRoot, threads }) {
+export function validateComputeSpawn(message, { runtimeRoot, threads, glueName = 'lfm3_runtime.js' }) {
   if (message?.type !== SPAWN_COMPUTE) throw new Error('Unexpected Fusor worker message.');
   if (!Number.isSafeInteger(threads) || threads < 1 || message.count !== threads) {
     throw new Error(`Fusor requested ${String(message.count)} compute workers; this protocol requires exactly ${threads}.`);
@@ -28,13 +28,13 @@ export function validateComputeSpawn(message, { runtimeRoot, threads }) {
   const { url: workerUrl, relative: workerPath } = parsePinnedUrl(message.url, runtimeRoot);
   const { url: mainUrl, relative: mainPath } = parsePinnedUrl(message.mainJS, runtimeRoot);
   const workerBuild = workerPath.match(/^(web-threaded(?:-relaxed)?)\/snippets\/wasm-bindgen-rayon-38edf6e439f6d70d\/src\/workerHelpers\.no-bundler\.js$/)?.[1];
-  const mainBuild = mainPath.match(/^(web-threaded(?:-relaxed)?)\/lfm3_runtime\.js$/)?.[1];
-  if (!workerBuild || workerBuild !== mainBuild) throw new Error('Fusor compute worker modules do not match the pinned threaded runtime build.');
+  if (!['lfm3_runtime.js', 'ming_runtime.js'].includes(glueName) || !workerBuild || mainPath !== workerBuild + '/' + glueName) throw new Error('Fusor compute worker modules do not match the pinned threaded runtime build.');
   return { workerUrl: workerUrl.href, mainJS: mainUrl.href, build: workerBuild };
 }
 
 export class ComputePool {
   #runtimeRoot;
+  #glueName;
   #threads;
   #Worker;
   #onCrash;
@@ -45,8 +45,9 @@ export class ComputePool {
   #terminated = false;
   #crashed = false;
 
-  constructor({ runtimeRoot, threads, onCrash, WorkerClass = globalThis.Worker, readyTimeoutMs = 60_000 }) {
+  constructor({ runtimeRoot, threads, glueName = 'lfm3_runtime.js', onCrash, WorkerClass = globalThis.Worker, readyTimeoutMs = 60_000 }) {
     this.#runtimeRoot = runtimeRoot;
+    this.#glueName = glueName;
     this.#threads = threads;
     this.#onCrash = onCrash;
     this.#Worker = WorkerClass;
@@ -56,7 +57,7 @@ export class ComputePool {
   async spawn(message) {
     const port = message?.port;
     try {
-      const { workerUrl, mainJS } = validateComputeSpawn(message, { runtimeRoot: this.#runtimeRoot, threads: this.#threads });
+      const { workerUrl, mainJS } = validateComputeSpawn(message, { runtimeRoot: this.#runtimeRoot, threads: this.#threads, glueName: this.#glueName });
       if (this.#spawned || this.#terminated) throw new Error('Fusor compute pool may only be started once.');
       if (typeof this.#Worker !== 'function') throw new Error('Web Workers are unavailable for the Fusor CPU pool.');
       this.#spawned = true;
