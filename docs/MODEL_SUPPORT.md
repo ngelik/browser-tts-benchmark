@@ -215,3 +215,9 @@ The checkpoint supports **9 languages** and open-ended reference voices. The bro
 ## Ming 3.0 TTS 0.5B (Q8_0 GGUF)
 
 The upstream catalog lists **117 named base voices**: 50 Chinese voices without emotion variants, 62 Chinese base voices with variants, and five English voices. Each base voice counts once. The benchmark exposes one preset, **US_James**. The checkpoint supports **seven languages** (Chinese, English, Japanese, Korean, German, French and Spanish). [Pinned voice catalog](https://github.com/inclusionAI/Ming-3.0-tts/blob/e999c39fa676722aaa9ea29b5aa19a90525b271f/cookbooks/instruction_en.md#built-in-premium-voices) · [Pinned GGUF model card](https://huggingface.co/audio-cpp/Ming-3.0-TTS-0.5B-GGUF/blob/2eb8d37c7f10672e69c8aa33091baa04c461b66c/README.md).
+
+<a id="ming-3.0-tts-0.5b-fusor-mix-cpu"></a>
+
+## Ming 3.0 TTS 0.5B, Fusor mixed-quantization CPU
+
+The base cookbook lists 117 named voices. Fusor's pinned WASM runtime enumerates **seven built-in presets**. Five are English (US_James, US_Emma, US_Stella, UK_George and UK_Charlotte) and two are Chinese (灵小柔 and 灵楷). The benchmark evaluates US_James in English. Ming's base checkpoint lists Chinese, English, German, Spanish, French, Korean and Japanese. [Base voice catalog](https://github.com/inclusionAI/Ming-3.0-tts/blob/e999c39fa676722aaa9ea29b5aa19a90525b271f/cookbooks/instruction_en.md#built-in-premium-voices) · [Fusor runtime](https://huggingface.co/spaces/fusorlabs/ming-wasm/tree/bdf46b41e966340f398fdd82d3ca64f4058ad892/engine/dist/web-threaded-relaxed) · [Checkpoint card](https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B/blob/e5bd8da31ecf1b9276cdbdda821fa891068f1368/README.md)

@@ -171,6 +171,7 @@ Counts describe the pinned model/catalog, not the number of voices or languages 
 | Fun-CosyVoice3 0.5B (Q8/Q4 ONNX) | Unknown | 1 | 9 | [Details](docs/MODEL_SUPPORT.md#fun-cosyvoice3-0.5b-2512) |
 | Audio8 TTS Realistic 0.6B INT4 | Unknown | 0 | 23 | [Details](docs/MODEL_SUPPORT.md#audio8-realistic-0.6b-int4) |
 | Ming 3.0 TTS 0.5B (Q8_0 GGUF) | 117 | 1 | 7 | [Details](docs/MODEL_SUPPORT.md#ming-3.0-tts-0.5b-gguf) |
+| Ming 3.0 TTS 0.5B (Fusor mixed quantization / CPU) | 117 | 7 | 7 | [Details](docs/MODEL_SUPPORT.md#ming-3.0-tts-0.5b-fusor-mix-cpu) |
 
 ### Controlled native comparisons
 

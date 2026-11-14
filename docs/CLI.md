@@ -132,3 +132,13 @@ and inference settings must match except for the selected execution providers.
 Different models retain their own voices/configurations; a resource comparison
 does not imply equal speech quality. Comparisons never pool repetitions from
 independent runs. Keep all run-specific power/thermal/order notes in the inputs.
+
+### Ming with the Fusor CPU runtime
+
+```sh
+npm run assets -- fetch --model ming-3.0-tts-0.5b-fusor-mix-cpu --accept-license
+node tools/check-ming-fusor-assets.mjs --accept-license
+npm run bench -- run --model ming-3.0-tts-0.5b-fusor-mix-cpu --backend cpu --smoke --accept-license
+```
+
+This configuration uses the six-thread relaxed-SIMD build from the pinned Hugging Face Space. The 15 weight files contain 838,595,904 bytes. With the tokenizer they total 850,027,293 bytes. The model's runtime revalidates every BLAKE3 digest on load, including parts read from its private filesystem cache. The local staging tool also verifies SHA-256. It passes the complete source span to the upstream fragmenter and uses US_James, quality preset, seed 1895 and a maximum of 512 frames per fragment. Any reported frame at that cap rejects the span. Record and compare this configuration separately from the Q8_0 GGUF export. [Pinned model bundle](https://huggingface.co/fusorlabs/ming-3.0-tts-0.5b-web/tree/62588575d91dceb33822fe1e3925e748393c6b3e)

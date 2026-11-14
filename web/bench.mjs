@@ -1,3 +1,4 @@
+import { createMingAdapter } from './adapters/ming.mjs';
 import { createMingGgufAdapter } from './adapters/audio-cpp-gguf.mjs';
 import { createAudio8Adapter } from './adapters/audio8.mjs';
 import { createCosyVoice3Adapter } from './adapters/cosyvoice3.mjs';
@@ -24,6 +25,7 @@ import { createInflectAdapter } from './adapters/inflect.mjs';
 const statusNode = document.querySelector('#status');
 const state = { fixture: null, chunks: null, engine: null, model: null, backend: null, smoke: false };
 const FACTORIES = {
+  'ming-3.0-tts-0.5b-fusor-mix-cpu': createMingAdapter,
   'ming-3.0-tts-0.5b-gguf': createMingGgufAdapter,
   'audio8-realistic-0.6b-int4': createAudio8Adapter,
   'fun-cosyvoice3-0.5b-2512': createCosyVoice3Adapter,
