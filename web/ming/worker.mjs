@@ -1,3 +1,5 @@
+import { fetchModelAsset } from '../cache-model-asset.mjs';
+import { loadHttpParts } from '../liquid-cpu/part-loader.mjs';
 // Adapter for the pinned public Fusor Ming WASM runtime. No model code, normalization or synthesis
 // math is reimplemented here; this worker maps the upstream Runtime API to benchmark source spans.
 import { MING_EXPORT, validateMingManifest, validateMingPlan, validateMingProgress } from './contract.mjs';
@@ -40,7 +42,7 @@ async function initialize(options = {}) {
       baseModelRevision: MING_EXPORT.revision,
       modelBundleRevision: BUNDLE_REVISION,
       runtimeSpaceRevision: SPACE_REVISION,
-      loadingCache: 'Fusor loader streams BLAKE3-verified parts and uses OPFS when available; cache initialization is outside generation timing.',
+      loadingCache: 'Revision-scoped Cache Storage supplies verified part responses to the bounded Fusor loader; the runtime checks BLAKE3 on every load.',
       textProcessing: 'Pinned upstream Ming fragmenter; benchmark source spans are passed verbatim, and a source span may become multiple internal fragments.',
     },
   };
@@ -62,7 +64,7 @@ async function initialize(options = {}) {
       return { ...baseInfo, status: 'unsupported', reason, backendEffective: 'none', capability: { gpuDispatchVerified: false, description: reason } };
     }
 
-    const manifestResponse = await loader.fetchOk(new URL('manifest.json', modelUrl));
+    const manifestResponse = await fetchModelAsset(new URL('manifest.json', modelUrl), BUNDLE_REVISION);
     const manifestText = await manifestResponse.text();
     const manifest = JSON.parse(manifestText);
     validateMingManifest(manifest);
@@ -77,11 +79,11 @@ async function initialize(options = {}) {
     }
     glue = started.glue;
     runtime = new glue.Runtime(manifestText);
-    await loader.loadParts({
+    await loadHttpParts({
       runtime,
       manifest,
       baseUrl: modelUrl,
-      cacheName: `ming-mix-${BUNDLE_REVISION}`,
+      fetchImpl: url => fetchModelAsset(url, BUNDLE_REVISION),
     });
 
     if (runtime.threads() !== THREADS) throw new Error('The model did not activate the six-thread CPU pool.');
