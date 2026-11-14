@@ -2,6 +2,35 @@
   "schemaVersion": 1,
   "entries": [
     {
+      "resultId": "2026-11-14t15-12-11-363z-fun-cosyvoice3-0.5b-2512-webgpu-cached-168c91d4",
+      "model": "fun-cosyvoice3-0.5b-2512",
+      "backend": "webgpu",
+      "trialIndex": 1,
+      "voice": "LibriTTS-R 4446 default",
+      "language": "en",
+      "attribution": "Fun-CosyVoice3-0.5B-2512 by FunAudioLLM. ONNX export by Danyal Malik. The English preset derives from LibriTTS-R speaker 4446, Koizumi et al., licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Generated evaluation recording.",
+      "modelTerms": "Apache-2.0; preset voice features CC BY 4.0",
+      "sourceUrls": [
+        "https://huggingface.co/danyalmalik/Fun-CosyVoice3-0.5B-ONNX-WebGPU/blob/dcdb9df4bce4a47d318f5f8736de0b080efd944f/README.md",
+        "https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512/blob/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/README.md",
+        "https://github.com/mdanyalmalik/quick-inf/blob/b50b3b8576f486d55fec5c366a0d8305a1fe8c41/src/runtime/speech/speech-engine.ts"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-14t15-12-11-363z-fun-cosyvoice3-0.5b-2512-webgpu-cached-168c91d4--fun-cosyvoice3-0.5b-2512--webgpu.wav",
+        "sha256": "595d9dc4d61f075fe6a69357a9350319987878b327abd62079e09112738422f7",
+        "bytes": 1440044,
+        "startSample": 0,
+        "sampleRate": 24000,
+        "samples": 720000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-14t15-12-11-363z-fun-cosyvoice3-0.5b-2512-webgpu-cached-168c91d4--fun-cosyvoice3-0.5b-2512--webgpu-full.wav",
+        "sha256": "df301af8463cbdaaf7d9bde4d3b610ead2b34ba02dab4399153cdb9936f8bf00",
+        "bytes": 56805164
+      }
+    },
+    {
       "resultId": "2026-11-10t17-52-21-838z-inflect-micro-v2-cpu-warm-c57a83a6",
       "model": "inflect-micro-v2",
       "backend": "cpu",
