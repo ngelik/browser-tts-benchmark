@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-14",
+  "kind": "short-input-engineering-observations",
+  "timingBoundary": "Synthesis call to CPU-readable PCM, after model setup.",
+  "environment": {
+    "cpu": "Apple M1 Pro",
+    "architecture": "arm64",
+    "logicalCores": 8,
+    "ramBytes": 17179869184,
+    "chrome": "157.0.8103.40",
+    "kernel": "Darwin 25.6.0"
+  },
+  "inputs": {
+    "first": {
+      "label": "Article opening",
+      "text": "The first sound Mara Venn heard on Gull Point was not the sea. It was the old harbor bell, a bronze note that came once from somewhere beyond the fog, paused, then came again. She came to sort town records before that terminal sale, ",
+      "characters": 233,
+      "sha256": "54006eb541e2056b2a11c4cdb38692df161553c1682a1f17c5951c1f49c3af6b",
+      "fixture": "english-20k-v1",
+      "fixtureSha256": "4cd173ad03d14ba96df6eb1e58b193c0c796032c114cfb954838b5150651eb0b",
+      "spanId": 0,
+      "start": 0,
+      "end": 233
+    },
+    "rain": {
+      "label": "Short sentence",
+      "text": "The rain has stopped.",
+      "characters": 21,
+      "sha256": "8aee791238390ecde2a9567503dd3a0396ab83691518c186474174c982ae696a"
+    },
+    "hello": {
+      "label": "Greeting",
+      "text": "Hello, world.",
+      "characters": 13,
+      "sha256": "f8c3bf62a9aa3e6fc1619c250e48abe7519373d3edf41be62eb5dc45199af2ef"
+    }
+  },
+  "models": {
+    "audio8": {
+      "label": "Audio8 TTS Realistic 0.6B",
+      "weights": "https://huggingface.co/stephvax/audio8-tts-realistic-0.6b-onnx-int4/tree/04313606782af6b9a1aa93724555bc7b64ba9197",
+      "modelRevision": "04313606782af6b9a1aa93724555bc7b64ba9197",
+      "runtime": "ONNX Runtime Web 1.31.1",
+      "precision": "INT4 slow/fast AR, FP16 codec"
+    },
+    "cosy": {
+      "label": "Fun-CosyVoice3 0.5B",
+      "weights": "https://huggingface.co/danyalmalik/Fun-CosyVoice3-0.5B-ONNX-WebGPU/tree/dcdb9df4bce4a47d318f5f8736de0b080efd944f",
+      "modelRevision": "dcdb9df4bce4a47d318f5f8736de0b080efd944f",
+      "runtime": "ONNX Runtime Web 1.31.1",
+      "precision": "Q8 LLM and flow steps; Q4 embeddings and flow encoder; Q4/int8 HiFT"
+    },
+    "ming": {
+      "label": "Ming 3.0 TTS 0.5B",
+      "weights": "https://huggingface.co/audio-cpp/Ming-3.0-TTS-0.5B-GGUF/tree/2eb8d37c7f10672e69c8aa33091baa04c461b66c",
+      "modelRevision": "2eb8d37c7f10672e69c8aa33091baa04c461b66c",
+      "runtime": "audio.cpp d38518a0 (Emscripten browser port)",
+      "runtimeRevision": "d38518a0d6a7aaab9d3f3dd91e9780c69857b0ac",
+      "precision": "Q8_0"
+    }
+  },
+  "observations": [
+    {
+      "model": "audio8",
+      "requestedBackend": "cpu",
+      "effectiveBackend": "cpu/wasm",
+      "input": "first",
+      "timedTrials": 1,
+      "warmup": "none",
+      "warmupLabel": "First generation",
+      "generationSeconds": 256.37941000008584,
+      "audioFrames": 755712,
+      "sampleRateHz": 44100,
+      "audioSeconds": 17.136326530612244,
+      "rawReceiptSha256": "8df952eb7e4a0d76934f31ded09f25a0e190c7714a908c62a8d0063ee8e06cf8",
+      "sourceStatus": "Development checkout",
+      "wasmThreads": 6,
+      "finitePcm": true,
+      "benchmarkCommit": null,
+      "peakAbsPcm": 0.921099066734314
+    },
+    {
+      "model": "audio8",
+      "requestedBackend": "webgpu",
+      "effectiveBackend": "webgpu+wasm",
+      "input": "first",
+      "timedTrials": 1,
+      "warmup": "same-input",
+      "warmupLabel": "One identical warm-up",
+      "generationSeconds": 97.37900999999046,
+      "audioFrames": 733184,
+      "sampleRateHz": 44100,
+      "audioSeconds": 16.62548752834467,
+      "rawReceiptSha256": "ae89cf51b7b7740ae91cef68344f77905472039baac43a3ba8fb99176ab43044",
+      "sourceStatus": "Development checkout",
+      "wasmThreads": 6,
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "301954 dispatches in separate capability probe; WebGPU with WASM fallback."
+      },
+      "benchmarkCommit": "4025479ff497031132ea280792781422a850f83d",
+      "dirty": true,
+      "warmupInput": "first",
+      "warmupMs": 97886.34000003338,
+      "firstPcmMs": 97378.61500000954,
+      "pcmSha256": "c0d57c882ce5d4fb5339c969efe7647fc44ea3f174625fe4a0a6db2947d59b02",
+      "externalRequests": 0,
+      "finitePcm": true
+    },
+    {
+      "model": "cosy",
+      "requestedBackend": "webgpu",
+      "effectiveBackend": "webgpu+wasm",
+      "input": "first",
+      "timedTrials": 1,
+      "warmup": "different-input",
+      "warmupLabel": "Greeting probe",
+      "generationSeconds": 23.235894999980925,
+      "audioFrames": 410880,
+      "sampleRateHz": 24000,
+      "audioSeconds": 17.12,
+      "rawReceiptSha256": "792e01d9fa5e60023c1beff25847f0d8a9e4d0c27bc88d5f3e949b1c8e950e33",
+      "sourceStatus": "Development checkout",
+      "wasmThreads": 4,
+      "warmupInput": "hello",
+      "firstPcmMs": 23235.579999923706,
+      "externalRequests": 0,
+      "capability": {
+        "gpuDispatchVerified": true,
+        "description": "Observed 26999 WebGPU compute dispatches during a separate PCM probe; WASM fallback enabled."
+      },
+      "finitePcm": true,
+      "benchmarkCommit": null
+    },
+    {
+      "model": "cosy",
+      "requestedBackend": "cpu",
+      "effectiveBackend": "cpu/wasm",
+      "input": "rain",
+      "timedTrials": 1,
+      "warmup": "different-input",
+      "warmupLabel": "Greeting probe",
+      "generationSeconds": 31.060639999985696,
+      "audioFrames": 29760,
+      "sampleRateHz": 24000,
+      "audioSeconds": 1.24,
+      "rawReceiptSha256": "b18b294bf250fc71de5fcdc829958aa475832bad59a70b2e5e29fd101f6f144e",
+      "sourceStatus": "Development checkout",
+      "wasmThreads": 4,
+      "warmupInput": "hello",
+      "firstPcmMs": 31060.445000052452,
+      "externalRequests": 0,
+      "capability": {
+        "gpuDispatchVerified": null,
+        "description": "Four WASM threads for the five ONNX graphs; browser-worker frontend and sampling."
+      },
+      "finitePcm": true,
+      "benchmarkCommit": null
+    },
+    {
+      "model": "ming",
+      "requestedBackend": "webgpu",
+      "effectiveBackend": null,
+      "input": "hello",
+      "timedTrials": 0,
+      "warmup": "none",
+      "warmupLabel": "Output check only",
+      "generationSeconds": null,
+      "audioFrames": 57330,
+      "sampleRateHz": 44100,
+      "audioSeconds": 1.3,
+      "rawReceiptSha256": "09ca13e911bef1dfb25478fbabaa6d4e13151b3346c608fd32e9feff4935013d",
+      "sourceStatus": "Development checkout",
+      "wasmThreads": 1,
+      "benchmarkCommit": null,
+      "dispatches": null,
+      "finitePcm": true,
+      "minPcm": -0.5229383111000061,
+      "maxPcm": 0.45437490940093994
+    }
+  ]
+}
