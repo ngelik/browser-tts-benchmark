@@ -2,6 +2,34 @@
   "schemaVersion": 1,
   "entries": [
     {
+      "resultId": "2026-11-14t17-07-22-490z-audio8-realistic-0.6b-int4-webgpu-cached-5ffbf694",
+      "model": "audio8-realistic-0.6b-int4",
+      "backend": "webgpu",
+      "trialIndex": 1,
+      "voice": "Reference-free English synthesis",
+      "language": "en",
+      "attribution": "Audio8 TTS Realistic Air by Edge0. INT4 ONNX conversion by stephvax. Reference-free English synthesis. Apache-2.0.",
+      "modelTerms": "Apache-2.0",
+      "sourceUrls": [
+        "https://huggingface.co/Edge0/Audio8-TTS-Realistic-Air/blob/1e857568bfd4f02931aca3988ee773a44d2d26d3/README.md",
+        "https://huggingface.co/stephvax/audio8-tts-realistic-0.6b-onnx-int4/blob/04313606782af6b9a1aa93724555bc7b64ba9197/provenance.json"
+      ],
+      "clip": {
+        "path": "audio/samples/2026-11-14t17-07-22-490z-audio8-realistic-0.6b-int4-webgpu-cached-5ffbf694--audio8-realistic-0.6b-int4--webgpu.wav",
+        "sha256": "8174ece230543c817770cc9631f5482e41f18963265260b1dae54280ea2bf8cf",
+        "bytes": 2646044,
+        "startSample": 0,
+        "sampleRate": 44100,
+        "samples": 1323000,
+        "seconds": 30
+      },
+      "full": {
+        "url": "https://github.com/ngelik/tts-bench/releases/download/benchmark-audio-v1/2026-11-14t17-07-22-490z-audio8-realistic-0.6b-int4-webgpu-cached-5ffbf694--audio8-realistic-0.6b-int4--webgpu-full.wav",
+        "sha256": "05664d30dbbdfe2b6731fa8e9b32db822f95b72a2e65e5c11f108bde83a1812f",
+        "bytes": 125927468
+      }
+    },
+    {
       "resultId": "2026-11-14t15-12-11-363z-fun-cosyvoice3-0.5b-2512-webgpu-cached-168c91d4",
       "model": "fun-cosyvoice3-0.5b-2512",
       "backend": "webgpu",
