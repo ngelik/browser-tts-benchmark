@@ -440,6 +440,8 @@ cold, offline, bandwidth-limited and model-switch scenarios. Assets are fetched/
 Use a smoke check to validate installation; use the full article and five
 repetitions for a publishable warm result. Do not run models concurrently.
 
+Reproduce the November Ming, Audio8 and CosyVoice3 results with the [14-cell full-article campaign](docs/campaigns/nov14-english/README.md).
+
 Pinned model IDs (use these with `--model`):
 
 | Model ID | CPU/WASM | WebGPU | Local terms acknowledgment |
